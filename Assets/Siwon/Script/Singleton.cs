@@ -5,13 +5,21 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour
     where T : MonoBehaviour
 {
-    public T instance;
+    public static T instance;
 
-    public T Instance
+    public static T Instance { get; private set; } = null;
+
+    protected virtual void Awake()
     {
-        get
+        if (instance == null)
         {
-            return instance = GetComponent<T>();
+            instance = GetComponent<T>();
         }
     }
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
 }

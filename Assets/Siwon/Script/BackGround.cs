@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ETheme//Å×¸¶
-{
 
-}
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class BackGround : PoolingObj
@@ -28,10 +25,9 @@ public class BackGround : PoolingObj
         
     }
 
-    
     public override void Return()
     {
         base.Return();
-
+        BackGroundSpawner.Instance.SpawnBackGround();
     }
 }

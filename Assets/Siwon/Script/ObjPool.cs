@@ -1,15 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum EPoolType
-{
-    back1,
-    back2,
-    back3,
-    back4,
-    back5,
-    back6,
-}
+
 public class ObjPool : Singleton<ObjPool>
 {
     public EPoolType poolType;
@@ -21,7 +13,7 @@ public class ObjPool : Singleton<ObjPool>
     public Dictionary<EPoolType, Queue<PoolingObj>> pool = new Dictionary<EPoolType, Queue<PoolingObj>>();
 
     /// <summary>
-    /// 
+    /// 가져오는 함수
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
@@ -52,12 +44,18 @@ public class ObjPool : Singleton<ObjPool>
         return obj;
     }
 
-
-    public void GetBackGround()
+    /// <summary>
+    /// 반환값에 구애 받지 않는 Get함수
+    /// 따로 BackGroundGet을 만들지 않아도됨
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public T Get<T>(EPoolType type, Vector3 pos)
     {
-
+        return Get(type,pos).GetComponent<T>();
     }
-
 
     /// <summary>
     /// 다시 풀로 넣는 함수
@@ -65,7 +63,7 @@ public class ObjPool : Singleton<ObjPool>
     /// <param name="type"></param>
     /// <param name="obj"></param>
     public void Return(EPoolType type, PoolingObj obj)
-    {
+    { 
         obj.Return();
         obj.gameObject.SetActive(false);
         pool[type].Enqueue(obj);
