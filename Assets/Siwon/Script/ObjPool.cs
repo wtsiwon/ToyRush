@@ -12,6 +12,7 @@ public class ObjPool : Singleton<ObjPool>
 
     public Dictionary<EPoolType, Queue<PoolingObj>> pool = new Dictionary<EPoolType, Queue<PoolingObj>>();
 
+
     /// <summary>
     /// 가져오는 함수
     /// </summary>
