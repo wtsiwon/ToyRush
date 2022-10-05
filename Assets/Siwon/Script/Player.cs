@@ -12,13 +12,16 @@ public class Player : Singleton<Player>
     public bool isBig;
     #endregion
 
-    void Start()
+    private Rigidbody2D rb;
+
+    
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
-    void Update()
+    private void Update()
     {
         
     }
