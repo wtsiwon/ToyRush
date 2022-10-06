@@ -41,6 +41,7 @@ public class ObjPool : Singleton<ObjPool>
         }
             
         obj.transform.position = pos;
+        obj.gameObject.SetActive(true);
         
         return obj;
     }

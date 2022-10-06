@@ -7,6 +7,8 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     //[Tooltip("현재 보여지고 있는 배경을 저장하는 queue")]
     //public Queue<BackGround> backgroundQueue = new Queue<BackGround>();
 
+    public float backgroundSpd;
+
     private void Start()
     {
         SpawnBackGround();
