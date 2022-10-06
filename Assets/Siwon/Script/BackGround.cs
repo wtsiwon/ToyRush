@@ -10,6 +10,7 @@ public class BackGround : PoolingObj
 {
     private const float SCROLLXPOS = -21f;
 
+    private Rigidbody2D rb;
 
     private void Update()
     {
@@ -18,16 +19,26 @@ public class BackGround : PoolingObj
         {
             Return();
         }
+        MoveBackGround();
     }
 
     private void OnEnable()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void MoveBackGround()
+    {
+        rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
     }
 
     public override void Return()
     {
         base.Return();
+    }
+
+    private void OnDisable()
+    {
         BackGroundSpawner.Instance.SpawnBackGround();
     }
 }
