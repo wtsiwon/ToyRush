@@ -30,7 +30,5 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
                   .Append(mainBtn.transform.GetChild(1).DOLocalMoveY(distance, time).SetEase(easeType))
                   .Append(mainBtn.transform.GetChild(2).DOLocalMoveY(distance, time).SetEase(easeType))
                   .Append(mainBtn.transform.GetChild(3).DOLocalMoveY(distance, time).SetEase(easeType));
-
-
     }
 }
