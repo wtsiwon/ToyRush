@@ -5,9 +5,12 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class UI_Manager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI TouchToStart;
+    public static UIManager inst;
+    private void Awake() => inst = this;
+
+    public TextMeshProUGUI touchToStart;
 
     void Start()
     {
@@ -16,7 +19,7 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
 
@@ -25,14 +28,14 @@ public class UI_Manager : MonoBehaviour
 
     public IEnumerator TouchToStart_FadeOut()
     {
-        TouchToStart.DOFade(0, 1);
+        touchToStart.DOFade(0, 1);
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(TouchToStart_FadeIn());
     }
 
     public IEnumerator TouchToStart_FadeIn()
     {
-        TouchToStart.DOFade(1, 1);
+        touchToStart.DOFade(1, 1);
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(TouchToStart_FadeOut());
     }
