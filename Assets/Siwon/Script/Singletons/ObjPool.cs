@@ -68,9 +68,14 @@ public class ObjPool : Singleton<ObjPool>
     {
         Item item = null;
         item = Get(EPoolType.Item, pos).GetComponent<Item>();
-
-        
+        //ItemSprite변경해야함
     }
+
+    public void GetObstacle()
+    {
+
+    }
+    
 
     /// <summary>
     /// 다시 풀로 넣는 함수

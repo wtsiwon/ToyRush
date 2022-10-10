@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Item : MonoBehaviour
+public class Item : PoolingObj
 {
-    public enum EITem
+    public enum EItem
     {
         Transformation, //변신
         Magnet,         //자석
@@ -14,9 +14,9 @@ public class Item : MonoBehaviour
         Coinconverter,  //코인변환기
         Sizecontrol,    //크기조절
     }
-    public EITem eITem;
+    public EItem eItem;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     [Header("아이템 : 자석")]
     public int magnetWaitingTime; // 기다릴 시간
@@ -34,12 +34,10 @@ public class Item : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     void Update()
     {
-
         Item_Delay();
     }
 
@@ -58,14 +56,14 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            switch (eITem)
+            switch (eItem)
             {
-                case EITem.Transformation:
+                case EItem.Transformation:
 
                     break;
 
 
-                case EITem.Magnet: // 자석
+                case EItem.Magnet: // 자석
 
                     Player.Instance.isMagneting = true;
                     spriteRenderer.DOFade(0, 0);
@@ -78,19 +76,19 @@ public class Item : MonoBehaviour
                     break;
 
 
-                case EITem.Piggybank:
+                case EItem.Piggybank:
                     break;
 
 
-                case EITem.Booster:
+                case EItem.Booster:
                     break;
 
 
-                case EITem.Coinconverter:
+                case EItem.Coinconverter:
                     break;
 
 
-                case EITem.Sizecontrol: // 크기 조절
+                case EItem.Sizecontrol: // 크기 조절
 
                     Player.Instance.isBig = true;
                     collision.transform.DOScale(size, sizeTime);

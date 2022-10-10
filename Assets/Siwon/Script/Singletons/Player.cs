@@ -12,9 +12,13 @@ public class Player : Singleton<Player>
     public bool isBig;
     #endregion
 
+    [Tooltip("현재 무엇을 타고 있는가")]
+    public EVehicleType vehicleType;
+
     private const float FORCE = 12f;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriterenderer;
 
     [Tooltip("누르고 있나")]
     public bool isPressing;
@@ -22,26 +26,72 @@ public class Player : Singleton<Player>
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriterenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        InputKey();
-        Flying();
+        InputKey(vehicleType);
+        CurrentVehicle(vehicleType);
     }
 
     /// <summary>
     /// 날아가는 키 입력(PC)
     /// </summary>
-    private void InputKey()
+    private void InputKey(EVehicleType type)
     {
-        if (Input.GetKey(KeyCode.Space))
+        switch (type)
         {
-            isPressing = true;
+            case EVehicleType.None:
+            case EVehicleType.Wyvern:
+            case EVehicleType.Frog:
+            case EVehicleType.BusterMachine:
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    isPressing = true;
+                }
+                else
+                {
+                    isPressing = false;
+                }
+                break;
+            case EVehicleType.ProfitUFO:
+            case EVehicleType.GravitySuit:
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    isPressing = true;
+                }
+                else
+                {
+                    isPressing = false;
+                }
+                break;
         }
-        else
+                
+    }
+
+    private void CurrentVehicle(EVehicleType type)
+    {
+        switch (type)
         {
-            isPressing = false;
+            case EVehicleType.None:
+                Flying();
+                break;
+            case EVehicleType.GravitySuit:
+                ChangeGravity();
+                break;
+            case EVehicleType.Wyvern:
+                FlyingWyvern();
+                break;
+            case EVehicleType.ProfitUFO:
+
+                break;
+            case EVehicleType.BusterMachine:
+
+                break;
+            case EVehicleType.Frog:
+
+                break;
         }
     }
 
@@ -53,6 +103,28 @@ public class Player : Singleton<Player>
         if (isPressing == true)
         {
             rb.AddForce(Vector3.up * FORCE);
+        }
+    }
+
+    /// <summary>
+    /// 중력 바꾸기
+    /// </summary>
+    private void ChangeGravity()
+    {
+        if(isPressing == true)
+        {
+            rb.gravityScale *= -1;
+        }
+    }
+
+    /// <summary>
+    /// 와이번으로 날기
+    /// </summary>
+    private void FlyingWyvern()
+    {
+        if(isPressing == true)
+        {
+            rb.AddForce(Vector3.down * FORCE);
         }
     }
 }

@@ -52,6 +52,16 @@ public enum EItemType
 }
 
 /// <summary>
+/// 장애물 타입
+/// </summary>
+public enum EObstacleType
+{
+    Type1,
+    Type2,
+    Type3,
+}
+
+/// <summary>
 /// 코인패턴들
 /// </summary>
 public enum ECoinPatternType
