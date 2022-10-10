@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BackGroundSpawner : Singleton<BackGroundSpawner>
 {
-    //[Tooltip("현재 보여지고 있는 배경을 저장하는 queue")]
-    //public Queue<BackGround> backgroundQueue = new Queue<BackGround>();
+
+    [Tooltip("현재 있는 배경들을 담는다")]
+    public List<BackGround> backgroundList = new List<BackGround>();
 
     [Tooltip("배경 속도")]
     public float backgroundSpd;
@@ -17,8 +18,6 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
 
     public void SpawnBackGround()
     {
-        int rand = Random.Range(0, (int)EPoolType.ShippingBack2 + 1);
-
-        ObjPool.Instance.Get((EPoolType)rand, transform.position);
+        ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
     }
 }

@@ -2,31 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 풀링할 Types
+/// </summary>
 public enum EPoolType
 {
-    SupplyBack1,
-    SupplyBack2,
-    ProcessBack1,
-    ProcessBack2,
-    ProduceBack1,
-    ProduceBack2,
-    PackageBack1,
-    PackageBack2,
-    ShippingBack1,
-    ShippingBack2,
+    BackGround,
     Gold,
-    BigItem,
-    BoosterItem,
-    Obstacle1,
-    Obstacle2,
-    Obstacle3,
-    Obstacle4,
-    Rocket1,
-    Press1
+    Item,
+    Obstacle,
+    Rocket,
+    Press,
 }
 
+/// <summary>
+/// 탈것
+/// </summary>
 public enum EVehicleType
 {
+    None,//아무것도 아님
     BusterMachine,//버스터머신
     Frog,//개구리
     Wyvern,//와이번
@@ -44,7 +38,30 @@ public enum ETheme//테마
     End,
 }
 
+/// <summary>
+/// 아이템들
+/// </summary>
+public enum EItemType
+{
+    Big,
+    Booster,
+    Magnet,
+    ChangeCoin,
+    TakeVehicle,
+    PiggyBank,
+}
 
+/// <summary>
+/// 코인패턴들
+/// </summary>
+public enum ECoinPatternType
+{
+    CoinPattern1,
+    CoinPattern2,
+    CoinPattern3,
+    CoinPattern4,
+    CoinPattern5,
+}
 public class Defines : MonoBehaviour
 {
     

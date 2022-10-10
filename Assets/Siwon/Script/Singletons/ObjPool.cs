@@ -46,6 +46,11 @@ public class ObjPool : Singleton<ObjPool>
         return obj;
     }
 
+    public void InitializeKey()
+    {
+        pool.Add(EPoolType.BackGround, new Queue<PoolingObj>());
+    }
+
     /// <summary>
     /// 반환값에 구애 받지 않는 Get함수
     /// 따로 BackGroundGet을 만들지 않아도됨
@@ -59,6 +64,14 @@ public class ObjPool : Singleton<ObjPool>
         return Get(type,pos).GetComponent<T>();
     }
 
+    public void GetItem(EItemType type, Vector3 pos)
+    {
+        Item item = null;
+        item = Get(EPoolType.Item, pos).GetComponent<Item>();
+
+        
+    }
+
     /// <summary>
     /// 다시 풀로 넣는 함수
     /// </summary>
@@ -66,7 +79,6 @@ public class ObjPool : Singleton<ObjPool>
     /// <param name="obj"></param>
     public void Return(EPoolType type, PoolingObj obj)
     { 
-        obj.Return();
         obj.gameObject.SetActive(false);
         pool[type].Enqueue(obj);
     }

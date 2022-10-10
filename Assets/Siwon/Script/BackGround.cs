@@ -8,18 +8,24 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BackGround : PoolingObj
 {
-    private const float SCROLLXPOS = -21f;
-
     private Rigidbody2D rb;
 
     private void Update()
     {
         //거리비례 속도조절
-        if(transform.position.x < SCROLLXPOS)
+        //if(transform.position.x < SCROLLXPOS)
+        //{
+        //    Return();
+        //}
+        MoveBackGround();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DestroyZone"))
         {
             Return();
         }
-        MoveBackGround();
     }
 
     private void OnEnable()
@@ -35,10 +41,5 @@ public class BackGround : PoolingObj
     public override void Return()
     {
         base.Return();
-    }
-
-    private void OnDisable()
-    {
-        BackGroundSpawner.Instance.SpawnBackGround();
     }
 }
