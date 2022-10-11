@@ -77,6 +77,10 @@ public class Item : PoolingObj
 
 
                 case EItem.Piggybank:
+
+
+                    Destroy(this.gameObject);
+
                     break;
 
 

@@ -122,8 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8135ab885cae8334d856fcdefef52dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eITem: 5
-  itemTouch: 0
+  poolType: 0
+  eItem: 5
+  spriteRenderer: {fileID: 0}
+  magnetWaitingTime: 0
   sizeTime: 1
-  waitingTime: 2
+  sizeWaitingTime: 2
   size: {x: 2.5, y: 2.5, z: 2.5}

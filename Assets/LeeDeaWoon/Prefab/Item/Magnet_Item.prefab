@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8135ab885cae8334d856fcdefef52dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eITem: 1
+  poolType: 0
+  eItem: 1
+  spriteRenderer: {fileID: 0}
   magnetWaitingTime: 2
   sizeTime: 1
   sizeWaitingTime: 0
