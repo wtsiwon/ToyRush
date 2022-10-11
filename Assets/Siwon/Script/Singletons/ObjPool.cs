@@ -64,6 +64,11 @@ public class ObjPool : Singleton<ObjPool>
         return Get(type,pos).GetComponent<T>();
     }
 
+    /// <summary>
+    /// 아이템 가져오는 함수
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
     public void GetItem(EItemType type, Vector3 pos)
     {
         Item item = null;
@@ -71,11 +76,39 @@ public class ObjPool : Singleton<ObjPool>
         //ItemSprite변경해야함
     }
 
-    public void GetObstacle()
+    /// <summary>
+    /// 장애물 가져오는 함수
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
+    public void GetObstacle(EObstacleType type, Vector3 pos)
     {
+        Obstacle obstacle = null;
+        obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
 
     }
-    
+
+    /// <summary>
+    /// Effect 가져오는함수
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
+    public void GetEffect(EEffectType type, Vector3 pos)
+    {
+        Effector2D effect = null;
+        effect = Get(EPoolType.Effect, pos).GetComponent<Effector2D>();
+    }
+
+    /// <summary>
+    /// 사운드 가져오는 함수
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
+    public void GetSound(ESoundType type, Vector3 pos)
+    {
+        
+    }
+
 
     /// <summary>
     /// 다시 풀로 넣는 함수

@@ -8,11 +8,14 @@ using UnityEngine;
 public enum EPoolType
 {
     BackGround,
-    Gold,
+    Coin,
     Item,
     Obstacle,
     Rocket,
     Press,
+    Effect,
+    Sound,
+
 }
 
 /// <summary>
@@ -72,6 +75,19 @@ public enum ECoinPatternType
     CoinPattern4,
     CoinPattern5,
 }
+
+public enum EEffectType
+{
+
+}
+
+public enum ESoundType
+{
+
+}
+
+
+
 public class Defines : MonoBehaviour
 {
     
