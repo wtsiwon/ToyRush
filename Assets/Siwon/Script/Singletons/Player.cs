@@ -30,7 +30,6 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
-        print(rb.velocity);
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
     }
@@ -105,6 +104,13 @@ public class Player : Singleton<Player>
         }
     }
 
+    private void MoveUFO()
+    {
+        if(isPressing == true)
+        {
+            rb.AddForce(Vector2.up * force);
+        }
+    }
     /// <summary>
     /// 중력 바꾸기
     /// </summary>
