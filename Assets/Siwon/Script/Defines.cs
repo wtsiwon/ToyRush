@@ -18,6 +18,12 @@ public enum EPoolType
 
 }
 
+public enum EGadgetType
+{
+    GravityBelt,
+
+}
+
 /// <summary>
 /// Å»°Í
 /// </summary>
