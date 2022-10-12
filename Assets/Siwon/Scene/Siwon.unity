@@ -405,6 +405,7 @@ MonoBehaviour:
   isMagneting: 0
   isBig: 0
   vehicleType: 0
+  force: 9
   isPressing: 0
 --- !u!70 &886361328
 CapsuleCollider2D:
@@ -437,12 +438,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &890431375
 GameObject:
   m_ObjectHideFlags: 0

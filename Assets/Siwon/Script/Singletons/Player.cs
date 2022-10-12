@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.UIElements;
 
 public class Player : Singleton<Player>
 {
@@ -15,7 +14,7 @@ public class Player : Singleton<Player>
     [Tooltip("현재 무엇을 타고 있는가")]
     public EVehicleType vehicleType;
 
-    private const float FORCE = 12f;
+    public float force;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
@@ -31,6 +30,7 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
+        print(rb.velocity);
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
     }
@@ -67,7 +67,6 @@ public class Player : Singleton<Player>
                 }
                 break;
         }
-                
     }
 
     private void CurrentVehicle(EVehicleType type)
@@ -102,7 +101,7 @@ public class Player : Singleton<Player>
     {
         if (isPressing == true)
         {
-            rb.AddForce(Vector3.up * FORCE);
+            rb.AddForce(Vector2.up * force);
         }
     }
 
@@ -124,7 +123,7 @@ public class Player : Singleton<Player>
     {
         if(isPressing == true)
         {
-            rb.AddForce(Vector3.down * FORCE);
+            rb.AddForce(Vector3.down * force);
         }
     }
 }
