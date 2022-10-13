@@ -20,19 +20,20 @@ public class Item : PoolingObj
     public SpriteRenderer spriteRenderer;
     private Vector2 playerDistance;
 
-
     [Header("아이템 : 부스터")]
     public float boosterDuration; // 지속시간
     public float boosterDistance; // 거리
     public float boosterSpeed; // 연출속도
     public Ease ease;
 
-
     [Header("아이템 : 자석")]
     public int magnetWaitingTime; // 기다릴 시간
 
     float magnetTimer;
 
+    [Header("아이템 : 저금통")]
+    public GameObject piggybankCoin; // 소환될 프리팹 코인
+    public int coinCountMax; // 최대 갯수
 
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
@@ -51,6 +52,7 @@ public class Item : PoolingObj
     void Update()
     {
         Item_Delay();
+
     }
 
 
@@ -71,6 +73,9 @@ public class Item : PoolingObj
             collider2D.enabled = false;
             spriteRenderer.DOFade(0, 0);
 
+            int randX = Random.Range(0, 2);
+            int randY = Random.Range(0, 2);
+
             switch (eItem)
             {
                 case EItem.Transformation:
@@ -90,8 +95,9 @@ public class Item : PoolingObj
                     break;
 
 
-                case EItem.Piggybank:
-
+                case EItem.Piggybank: // 저금통
+                    for (int i = 0; i < coinCountMax; i++)
+                        Instantiate(piggybankCoin, new Vector2(transform.position.x + randX, transform.position.y + randY), Quaternion.identity);
                     break;
 
 
