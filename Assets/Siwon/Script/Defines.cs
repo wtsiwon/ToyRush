@@ -65,9 +65,9 @@ public enum EItemType
 /// </summary>
 public enum EObstacleType
 {
-    Type1,
-    Type2,
-    Type3,
+    Basic,
+    Swing,
+    Spin,
 }
 
 /// <summary>
