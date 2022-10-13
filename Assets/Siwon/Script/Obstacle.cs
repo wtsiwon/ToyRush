@@ -6,7 +6,13 @@ public class Obstacle : PoolingObj
 {
     public EObstacleType obstacleType;
 
+    private void OnEnable()
+    {
 
+    }
+
+
+    
 
 
 }
