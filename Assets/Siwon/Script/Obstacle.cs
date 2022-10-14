@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
-    private Rigidbody2D rb;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if(obstacleType == EObstacleType.Basic)
+        base.OnEnable();
+        //obstacleType = GetComponent<EObstacleType>();
+        switch (obstacleType)
         {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
+            case EObstacleType.Basic:
+                
+                break;
         }
     }
 
