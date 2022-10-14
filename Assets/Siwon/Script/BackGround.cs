@@ -6,7 +6,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class BackGround : PoolingObj
+public class BackGround : MovingElement
 {
     private Rigidbody2D rb;
 
