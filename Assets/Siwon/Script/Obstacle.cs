@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Obstacle : PoolingObj
+public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
