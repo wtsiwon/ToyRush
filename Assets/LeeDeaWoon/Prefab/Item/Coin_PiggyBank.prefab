@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6941708765738491221}
   - component: {fileID: 6941708765738491226}
   - component: {fileID: 6941708765738491227}
+  - component: {fileID: 9066376055125294982}
   m_Layer: 6
   m_Name: Coin_PiggyBank
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 63aefb70176e9f54ab5a2f70a9e5a2d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6dd6189e9f4e6fe47a05572b5bc7237a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,3 +122,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9066376055125294982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941708765738491224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14295eba90430b44b0887ddb36e7e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}

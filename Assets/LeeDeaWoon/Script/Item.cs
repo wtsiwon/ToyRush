@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Item : PoolingObj
+public class Item : MovingElement
 {
     public enum EItem
     {
@@ -73,8 +73,6 @@ public class Item : PoolingObj
             collider2D.enabled = false;
             spriteRenderer.DOFade(0, 0);
 
-            int randX = Random.Range(0, 2);
-            int randY = Random.Range(0, 2);
 
             switch (eItem)
             {
@@ -97,7 +95,13 @@ public class Item : PoolingObj
 
                 case EItem.Piggybank: // Àú±ÝÅë
                     for (int i = 0; i < coinCountMax; i++)
-                        Instantiate(piggybankCoin, new Vector2(transform.position.x + randX, transform.position.y + randY), Quaternion.identity);
+                    {
+                        float randX = Random.Range(0, 2.5f);
+                        float randY = Random.Range(0, 2.5f);
+
+                        Instantiate(piggybankCoin, new Vector2(transform.position.x + randX, transform.position.y + randY), Quaternion.identity).transform.parent = gameObject.transform;
+                    }
+
                     break;
 
 
