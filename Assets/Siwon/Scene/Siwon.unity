@@ -435,7 +435,7 @@ MonoBehaviour:
   isMagneting: 0
   isBig: 0
   vehicleType: 0
-  force: 9
+  force: 15
   isPressing: 0
 --- !u!70 &886361328
 CapsuleCollider2D:
