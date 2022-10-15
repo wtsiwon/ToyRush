@@ -6,10 +6,11 @@ public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
+    public float spinSpd;
 
     protected override void OnEnable()
     {
-        base.OnEnable();
+        //base.OnEnable();
         TypeofDefine();
     }
 
@@ -45,8 +46,8 @@ public class Obstacle : MovingElement
 
     private IEnumerator ISpin()
     {
-        transform.rotation = new Quaternion(0, 0, 1, 0);
-        yield return new WaitForSeconds(0.1f);
+        transform.Rotate(new Vector3(0, 0, spinSpd));
+        yield return new WaitForSeconds(0.02f);
         StartCoroutine(ISpin());
     }
 
