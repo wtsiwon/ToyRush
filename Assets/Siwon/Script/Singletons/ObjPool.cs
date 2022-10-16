@@ -46,6 +46,10 @@ public class ObjPool : Singleton<ObjPool>
         return obj;
     }
 
+    private void OnEnable()
+    {
+        InitializeKey();
+    }
     public void InitializeKey()
     {
         pool.Add(EPoolType.BackGround, new Queue<PoolingObj>());

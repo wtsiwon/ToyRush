@@ -8,16 +8,9 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BackGround : MovingElement
 {
-    private Rigidbody2D rb;
-
     private void Update()
     {
         //거리비례 속도조절
-        //if(transform.position.x < SCROLLXPOS)
-        //{
-        //    Return();
-        //}
-        MoveBackGround();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,9 +21,9 @@ public class BackGround : MovingElement
         }
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.OnEnable();
     }
 
     private void MoveBackGround()

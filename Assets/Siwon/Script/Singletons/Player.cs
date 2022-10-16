@@ -44,7 +44,6 @@ public class Player : Singleton<Player>
             case EVehicleType.None:
             case EVehicleType.Wyvern:
             case EVehicleType.Frog:
-            case EVehicleType.BusterMachine:
                 if (Input.GetKey(KeyCode.Space))
                 {
                     isPressing = true;
@@ -54,6 +53,7 @@ public class Player : Singleton<Player>
                     isPressing = false;
                 }
                 break;
+            case EVehicleType.BusterMachine:
             case EVehicleType.ProfitUFO:
             case EVehicleType.GravitySuit:
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -68,6 +68,10 @@ public class Player : Singleton<Player>
         }
     }
 
+    /// <summary>
+    /// 현재 탈것에 따라 Input
+    /// </summary>
+    /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)
     {
         switch (type)
@@ -82,13 +86,13 @@ public class Player : Singleton<Player>
                 FlyingWyvern();
                 break;
             case EVehicleType.ProfitUFO:
-
+                MoveUFO();
                 break;
             case EVehicleType.BusterMachine:
-
+                //점프 뛰로 누를시 천천히 활공
                 break;
             case EVehicleType.Frog:
-
+                //길게 누를수록 높게 점프
                 break;
         }
     }
@@ -104,6 +108,9 @@ public class Player : Singleton<Player>
         }
     }
 
+    /// <summary>
+    /// UFO조작
+    /// </summary>
     private void MoveUFO()
     {
         if(isPressing == true)
@@ -111,6 +118,16 @@ public class Player : Singleton<Player>
             rb.AddForce(Vector2.up * force);
         }
     }
+
+
+    private void BusterJump()
+    {
+        if(isPressing == true)
+        {
+
+        }
+    }
+
     /// <summary>
     /// 중력 바꾸기
     /// </summary>

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BackGroundSpawner : Singleton<BackGroundSpawner>
 {
-
-    [Tooltip("현재 있는 배경들을 담는다")]
-    public List<BackGround> backgroundList = new List<BackGround>();
-
     [Tooltip("배경 속도")]
     public float backgroundSpd;
 

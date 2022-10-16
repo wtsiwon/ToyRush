@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class ObstacleSpawner : Singleton<ObstacleSpawner>
 {
     [SerializeField]
     [Tooltip("장애물을 소환할 위치들")]
@@ -15,6 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
         //ObjPool.Instance.GetObstacle()
         yield return null;
     }
+
 
 
 }

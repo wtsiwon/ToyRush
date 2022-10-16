@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovingElement : PoolingObj
 {
-
     protected Rigidbody2D rb;
 
     protected virtual void OnEnable()
@@ -13,6 +12,7 @@ public class MovingElement : PoolingObj
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
     }
+
 
     
 }

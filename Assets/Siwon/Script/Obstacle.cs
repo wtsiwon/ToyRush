@@ -6,8 +6,17 @@ public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
+    [Range(0f, 5f)]
+    [Tooltip("돌아가는 속도")]
     public float spinSpd;
 
+    [Tooltip("최대 각도")]
+    public float maxAngle;
+
+    [Tooltip("최소 각도")]
+    public float minAngle;
+
+    //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
     {
         //base.OnEnable();
@@ -36,7 +45,8 @@ public class Obstacle : MovingElement
 
     private void Swing()
     {
-
+        //왔다 갔다 하는 코드
+        
     }
 
     private void Spin()
