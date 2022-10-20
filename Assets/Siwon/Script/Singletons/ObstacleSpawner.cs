@@ -14,7 +14,12 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private void Start()
     {
-        
+        obstaclePattern[1] = SpawnPattern1;
+    }
+
+    private void SpawnPattern1()
+    {
+        StartCoroutine(CSpawnPattern1());
     }
 
     private IEnumerator CSpawnPattern1()
@@ -29,6 +34,20 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Basic, pos.position);
+        return obstacle;
+    }
+
+    private Obstacle GetSwingObstacle(Transform pos)
+    {
+        Obstacle obstacle = null;
+        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Swing, pos.position);
+        return obstacle;
+    }
+
+    private Obstacle GetSpinObstacle(Transform pos)
+    {
+        Obstacle obstacle = null;
+        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Spin, pos.position);
         return obstacle;
     }
 
