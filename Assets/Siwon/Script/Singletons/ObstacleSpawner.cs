@@ -1,20 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
 {
     [SerializeField]
     [Tooltip("장애물을 소환할 위치들")]
-    private List<Transform> poses = new List<Transform>();
+    private List<Transform> spawnPoses = new List<Transform>();
 
-    private IEnumerator ISpawnPattern1()
+    [Tooltip("장애물 패턴 함수들")]
+    public List<Action> obstaclePattern = new List<Action>();
+
+    private void Start()
+    {
+        
+    }
+
+    private IEnumerator CSpawnPattern1()
     {
         yield return new WaitForSeconds(1f);
-        int rand = Random.Range(0, poses.Count);
-        //ObjPool.Instance.GetObstacle()
+        GetBasicObstacle(spawnPoses[1]);
+
         yield return null;
     }
+
+    private Obstacle GetBasicObstacle(Transform pos)
+    {
+        Obstacle obstacle = null;
+        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Basic, pos.position);
+        return obstacle;
+    }
+
+
 
 
 
