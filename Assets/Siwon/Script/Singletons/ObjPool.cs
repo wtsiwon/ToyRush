@@ -73,11 +73,12 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public void GetItem(EItemType type, Vector3 pos)
+    public Item GetItem(EItemType type, Vector3 pos)
     {
         Item item = null;
         item = Get(EPoolType.Item, pos).GetComponent<Item>();
         //ItemSprite변경해야함
+        return item;
     }
 
     /// <summary>
@@ -85,10 +86,11 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public void GetObstacle(EObstacleType type, Vector3 pos)
+    public Obstacle GetObstacle(EObstacleType type, Vector3 pos)
     {
         Obstacle obstacle = null;
         obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
+        return obstacle;
 
     }
 
@@ -97,10 +99,11 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public void GetEffect(EEffectType type, Vector3 pos)
+    public Effector2D GetEffect(EEffectType type, Vector3 pos)
     {
         Effector2D effect = null;
         effect = Get(EPoolType.Effect, pos).GetComponent<Effector2D>();
+        return effect;
     }
 
     /// <summary>
@@ -108,9 +111,10 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public void GetSound(ESoundType type, Vector3 pos)
+    public AudioClip GetSound(ESoundType type, Vector3 pos)
     {
-        
+        AudioClip audioClip = null;
+        return audioClip;
     }
 
 
