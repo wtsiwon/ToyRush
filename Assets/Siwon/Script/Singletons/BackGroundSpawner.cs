@@ -15,5 +15,6 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     public void SpawnBackGround()
     {
         ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
+        print(transform.position);
     }
 }

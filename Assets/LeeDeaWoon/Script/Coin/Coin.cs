@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Coin : MonoBehaviour
+public class Coin : PoolingObj
 {
     [Header("범위")]
     public float flySpeed; // 날아가는 속도
@@ -36,6 +36,7 @@ public class Coin : MonoBehaviour
         {
             this.gameObject.transform.DOKill();
             Destroy(this.gameObject);
+            //Return();
         }
     }
 }

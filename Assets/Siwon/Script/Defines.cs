@@ -68,6 +68,7 @@ public enum EObstacleType
     Basic,
     Swing,
     Spin,
+    End,
 }
 
 /// <summary>
@@ -92,6 +93,14 @@ public enum ESoundType
 
 }
 
+public enum EDir
+{
+    Up = 0,
+    Down = 180,
+    Left = 90,
+    Right = 270,
+    End = 5,
+}
 
 
 public class Defines : MonoBehaviour

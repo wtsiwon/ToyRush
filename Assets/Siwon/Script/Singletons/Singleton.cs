@@ -27,10 +27,10 @@ public class Singleton<T> : MonoBehaviour
 
     protected void Awake()
     {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-        }
+        //if(instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
         DontDestroyOnLoad(gameObject);
     }
 

@@ -7,6 +7,8 @@ public class MovingElement : PoolingObj
 {
     protected Rigidbody2D rb;
 
+    public SpriteRenderer spriterenderer;
+
     private Time time;
     public Time Time
     {
@@ -27,6 +29,10 @@ public class MovingElement : PoolingObj
         rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
     }
 
+    protected virtual void Start()
+    {
+        spriterenderer = GetComponent<SpriteRenderer>();
+    }
 
     
 }
