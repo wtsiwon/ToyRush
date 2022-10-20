@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Coin_PigglyBank
-  - 
+  - Player
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Coin_PiggyBank
+    uniqueID: 2157330565
     locked: 0

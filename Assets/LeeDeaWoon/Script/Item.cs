@@ -33,7 +33,7 @@ public class Item : MovingElement
 
     [Header("아이템 : 저금통")]
     public GameObject piggybankCoin; // 소환될 프리팹 코인
-    public int coinCountMax; // 최대 갯수
+    public GameObject piggybankCoinObj; // 소환될 프리팹 코인을 담을 오브젝트
 
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
@@ -53,6 +53,10 @@ public class Item : MovingElement
     {
         Item_Delay();
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+        }
     }
 
 
@@ -72,7 +76,6 @@ public class Item : MovingElement
         {
             collider2D.enabled = false;
             spriteRenderer.DOFade(0, 0);
-
 
             switch (eItem)
             {
@@ -94,13 +97,8 @@ public class Item : MovingElement
 
 
                 case EItem.Piggybank: // 저금통
-                    for (int i = 0; i < coinCountMax; i++)
-                    {
-                        float randX = Random.Range(0, 2.5f);
-                        float randY = Random.Range(0, 2.5f);
 
-                        Instantiate(piggybankCoin, new Vector2(transform.position.x + randX, transform.position.y + randY), Quaternion.identity).transform.parent = gameObject.transform;
-                    }
+                    Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = piggybankCoinObj.transform;
 
                     break;
 
