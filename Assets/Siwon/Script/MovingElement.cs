@@ -7,6 +7,20 @@ public class MovingElement : PoolingObj
 {
     protected Rigidbody2D rb;
 
+    private Time time;
+    public Time Time
+    {
+        get
+        {
+            return time;
+        }
+        set
+        {
+
+        }
+    }
+
+    
     protected virtual void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
