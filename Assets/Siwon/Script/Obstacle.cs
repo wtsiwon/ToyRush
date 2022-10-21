@@ -16,6 +16,9 @@ public class Obstacle : MovingElement
     [Tooltip("최소 각도")]
     public float minAngle;
 
+    [Tooltip("SwingSpd")]
+    private const float swingSpd = 100; 
+
     //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
     {
@@ -35,7 +38,7 @@ public class Obstacle : MovingElement
                 //없음
                 break;
             case EObstacleType.Swing:
-                Swing();
+                //Swing();
                 break;
             case EObstacleType.Spin:
                 Spin();
@@ -43,22 +46,37 @@ public class Obstacle : MovingElement
         }
     }
 
+    private void Update()
+    {
+        if(obstacleType == EObstacleType.Swing)
+        {
+            Swing();
+        }
+    }
     private void Swing()
     {
         //왔다 갔다 하는 코드
-        
+        if (Mathf.Abs(transform.rotation.z) >= 50)
+        {
+            transform.Rotate(new Vector3(0, 0, swingSpd * -1));
+        }
+    }
+
+    private IEnumerator CSwing()
+    {
+        yield return null;
     }
 
     private void Spin()
     {
-        StartCoroutine(ISpin());
+        StartCoroutine(CSpin());
     }
 
-    private IEnumerator ISpin()
+    private IEnumerator CSpin()
     {
         transform.Rotate(new Vector3(0, 0, spinSpd));
         yield return new WaitForSeconds(0.02f);
-        StartCoroutine(ISpin());
+        StartCoroutine(CSpin());
     }
 
 

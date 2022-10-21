@@ -7,6 +7,7 @@ public class MovingElement : PoolingObj
 {
     protected Rigidbody2D rb;
 
+    [HideInInspector]
     public SpriteRenderer spriterenderer;
 
     private Time time;
