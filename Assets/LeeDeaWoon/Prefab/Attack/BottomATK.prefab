@@ -209,7 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7788fbd1e063349bdcc31c834ea274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ease: 13
+  eAttackPattern: 0
   atk: {fileID: 8378623112291639829}
   warningLine: {fileID: 8378623112708322429}
-  ease: 20
-  fadeTimer: 0.5
+  test: 0

@@ -10,11 +10,12 @@ public class UIManager : MonoBehaviour
     public static UIManager inst;
     private void Awake() => inst = this;
 
+    public GameObject Title;
     public TextMeshProUGUI touchToStart;
 
     void Start()
     {
-        StartCoroutine(TouchToStart_FadeOut());
+        UI_Dot();
     }
 
     void Update()
@@ -22,23 +23,14 @@ public class UIManager : MonoBehaviour
 
     }
 
-
-
-    #region 터치시 시작 페이드인아웃
-
-    public IEnumerator TouchToStart_FadeOut()
+    public void UI_Dot()
     {
-        touchToStart.DOFade(0, 1);
-        yield return new WaitForSecondsRealtime(1f);
-        StartCoroutine(TouchToStart_FadeIn());
-    }
+        int touchWaitTime = 1;
 
-    public IEnumerator TouchToStart_FadeIn()
-    {
-        touchToStart.DOFade(1, 1);
-        yield return new WaitForSecondsRealtime(1f);
-        StartCoroutine(TouchToStart_FadeOut());
-    }
+        int Move = 310;
+        float titleWaitTime = 0.5f;
 
-    #endregion
+        touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
+        Title.transform.DOLocalMoveY(Move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+    }
 }

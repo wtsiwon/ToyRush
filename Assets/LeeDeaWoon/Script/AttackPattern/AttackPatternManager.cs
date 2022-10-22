@@ -27,7 +27,7 @@ public class AttackPatternManager : MonoBehaviour
         {
             isAttackSummon = false;
             yield return new WaitForSeconds(coolTime);
-            Instantiate(attackList[Random.Range(0, attackList.Count)], transform.position, Quaternion.identity);
+            Instantiate(attackList[Random.Range(0, attackList.Count)], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
         }
 
     }
