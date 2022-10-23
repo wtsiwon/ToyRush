@@ -6,8 +6,13 @@ using UnityEngine.EventSystems;
 
 public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject mainBtn;
     public Ease easeType;
+
+    [Header("UI 버튼")]
+    public GameObject mainBtn;
+
+    [Header("타이틀")]
+    public GameObject Title;
 
     void Start()
     {
@@ -21,14 +26,39 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Sequence mySequence = DOTween.Sequence();
-        int distance = -1100;
+        StartCoroutine("BtnMove");
+    }
+
+    public IEnumerator BtnMove()
+    {
+        int btnDistance = -1100;
+        int titleDistance = 1250;
+
         float time = 0.5f;
+        float waitTime = 0.2f;
 
+        UIManager.inst.touchToStart.DOKill();
+        UIManager.inst.Title.transform.DOKill();
 
-        mySequence.Append(mainBtn.transform.GetChild(0).DOLocalMoveY(distance, time).SetEase(easeType))
-                  .Append(mainBtn.transform.GetChild(1).DOLocalMoveY(distance, time).SetEase(easeType))
-                  .Append(mainBtn.transform.GetChild(2).DOLocalMoveY(distance, time).SetEase(easeType))
-                  .Append(mainBtn.transform.GetChild(3).DOLocalMoveY(distance, time).SetEase(easeType));
+        UIManager.inst.touchToStart.DOFade(0, time);
+
+        for (int i = 1; i <= 4; i++)
+        {
+
+            mainBtn.transform.GetChild(i).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+            yield return new WaitForSeconds(waitTime);
+
+            switch (i)
+            {
+                case 1:
+                    Title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
+                    break;
+
+                case 4:
+                    mainBtn.transform.GetChild(0).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+                    break;
+            }
+
+        }
     }
 }
