@@ -53,8 +53,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private void AddObstaclePattern()
     {
         obstaclePatterns.Add(SpawnPattern1);
-
     }
+
+    #region 패턴 함수들
 
     private void SpawnPattern1()
     {
@@ -63,7 +64,17 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private void SpawnPattern2()
     {
+        StartCoroutine(CSpawnPattern2());
+    }
 
+    private void SpawnPattern3()
+    {
+        StartCoroutine(CSpawnPattern3());
+    }
+
+    private void SpawnPattern4()
+    {
+        //StartCoroutine(CSpawnPattern3());
     }
 
     private IEnumerator CSpawnPattern1()
@@ -75,14 +86,51 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         yield return new WaitForSeconds(1f);
         Obstacle obstacle2 = GetSwingObstacle(spawnPoses[5]);
+    }
 
+    private IEnumerator CSpawnPattern2()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[2]);
+
+        yield return new WaitForSeconds(0.5f);
+        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[2]);
 
         yield return new WaitForSeconds(1f);
+        Obstacle obstacle3 = GetBasicObstacle(spawnPoses[4]);
+        obstacle3.transform.rotation = rotatesDic[EDir.Down];
+    }
 
+    private IEnumerator CSpawnPattern3()
+    {
+        yield return new WaitForSeconds(0.7f);
+        Obstacle obstacle1 = GetSwingObstacle(spawnPoses[5]);
 
+        yield return new WaitForSeconds(0.5f);
+        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[1]);
 
+        yield return new WaitForSeconds(0.8f);
+        Obstacle obstacle3 = GetSwingObstacle(spawnPoses[1]);
+    }
+
+    private IEnumerator CSpawnPattern4()
+    {
+        yield return new WaitForSeconds(1f);
+        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
+        obstacle1.transform.rotation = rotatesDic[EDir.Left];
+
+        yield return new WaitForSeconds(0.5f);
+        Obstacle obstacle2 = GetSwingObstacle(spawnPoses[1]);
+        obstacle2.transform.rotation = rotatesDic[EDir.Down];
 
     }
+
+
+    private IEnumerator CSpawnPattern5()
+    {
+        yield return null;
+    }
+    #endregion
 
     private Obstacle GetBasicObstacle(Transform pos)
     {
