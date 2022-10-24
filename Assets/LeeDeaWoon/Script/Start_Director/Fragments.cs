@@ -1,10 +1,11 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class Fragments : MonoBehaviour
 {
+    public float flyingSpeed;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class Fragments : MonoBehaviour
 
 
         transform.Rotate(0, 0, Random.Range(rotMin, rotMax));
-        transform.DOLocalMoveX(Random.Range(posXMin, posXMax), 2f);
+        transform.DOLocalMoveX(Random.Range(posXMin, posXMax), flyingSpeed);
 
     }
 }
