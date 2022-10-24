@@ -17,7 +17,7 @@ public class Obstacle : MovingElement
     public float minAngle;
 
     [Tooltip("SwingSpd")]
-    private const float swingSpd = 100; 
+    private const float swingSpd = 100;
 
     //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
@@ -56,9 +56,13 @@ public class Obstacle : MovingElement
     private void Swing()
     {
         //왔다 갔다 하는 코드
-        if (Mathf.Abs(transform.rotation.z) >= 50)
+        if(transform.rotation.z >= maxAngle)
         {
-            transform.Rotate(new Vector3(0, 0, swingSpd * -1));
+            transform.Rotate(new Vector3(0, 0, spinSpd));
+        }
+        else if(transform.rotation.z <= minAngle)
+        {
+            transform.Rotate(new Vector3(0, 0, -spinSpd));
         }
     }
 

@@ -99,10 +99,13 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public Effector2D GetEffect(EEffectType type, Vector3 pos)
+    public GameObject GetEffect(EEffectType type, Vector3 pos)
     {
-        Effector2D effect = null;
-        effect = Get(EPoolType.Effect, pos).GetComponent<Effector2D>();
+        GameObject effect = null;
+        effect = Get(EPoolType.Effect, pos).GetComponent<GameObject>();
+
+        //이펙트 List에서 가져와서 EffectType에 따라 변경해주기
+
         return effect;
     }
 
@@ -111,7 +114,7 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public AudioClip GetSound(ESoundType type, Vector3 pos)
+    public AudioClip GetSound(ESoundType type)
     {
         AudioClip audioClip = null;
         return audioClip;
