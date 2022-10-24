@@ -105,7 +105,6 @@ public class ObjPool : Singleton<ObjPool>
         effect = Get(EPoolType.Effect, pos).GetComponent<GameObject>();
 
         //이펙트 List에서 가져와서 EffectType에 따라 변경해주기
-
         return effect;
     }
 

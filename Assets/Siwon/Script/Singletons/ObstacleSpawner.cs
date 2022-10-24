@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 using System;
 
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
@@ -22,7 +24,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private void Start()
     {
         AddRotates();
-        AddObstacleSprite();
+        //AddObstacleSprite();
+        //int rand = Random.Range(0, obstacleSpriteList.Count);
+        SpawnPattern(1);
     }
 
     /// <summary>
@@ -44,21 +48,20 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         rotatesDic.Add(EDir.Right, new Quaternion(0, 0, (float)EDir.Right, 0));
     }
 
-    #region 패턴 함수들
-    private void SpawnPattern(int index)
+    public void SpawnPattern(int index)
     {
         StartCoroutine($"CSpawnPattern{index}");
     }
 
+    #region 패턴 함수들
     private IEnumerator CSpawnPattern1()
     {
         yield return new WaitForSeconds(1f);
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Up];
 
-
         yield return new WaitForSeconds(1f);
-        Obstacle obstacle2 = GetSwingObstacle(spawnPoses[5]);
+        Obstacle obstacle2 = GetSwingObstacle(spawnPoses[4]);
     }
 
     private IEnumerator CSpawnPattern2()
@@ -128,10 +131,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern7()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Obstacle obstacle1 = GetSwingObstacle(spawnPoses[0]);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
     }
@@ -190,7 +193,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private IEnumerator CSpawnPattern13()
     {
         yield return new WaitForSeconds(2f);
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[3]);
 
         yield return new WaitForSeconds(3f);
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[0]);
@@ -199,21 +202,36 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern14()
     {
-        yield return null;
-    }
-    //20까지
+        yield return new WaitForSeconds(2f);
+        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
+        obstacle1.transform.rotation = rotatesDic[EDir.Left];
 
+        yield return new WaitForSeconds(3f);
+        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
+    }
+
+    private IEnumerator CSpawnPattern15()
+    {
+        yield return new WaitForSeconds(2f);
+        Obstacle obstacle1 = GetSwingObstacle(spawnPoses[2]);
+
+        yield return new WaitForSeconds(3f);
+        Obstacle obstacle = GetBasicObstacle(spawnPoses[3]);
+    }
+
+    //20까지
     #endregion
 
+    #region 장애물 불러오는 함수
     private Obstacle GetBasicObstacle(Transform pos)
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Basic, pos.position);
-        obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Basic];
+        //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Basic];
         return obstacle;
     }
 
-    #region 장애물 불러오는 함수
+    
 
     /// <summary>
     /// Swing
@@ -224,7 +242,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Swing, pos.position);
-        obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Swing];
+        //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Swing];
         return obstacle;
     }
 
@@ -238,7 +256,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Spin, pos.position);
-        obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Spin];
+        //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Spin];
         return obstacle;
     }
     #endregion

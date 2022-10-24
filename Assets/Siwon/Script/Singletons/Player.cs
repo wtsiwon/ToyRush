@@ -34,6 +34,8 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
     }
 
+    
+
     /// <summary>
     /// 날아가는 키 입력(PC)
     /// </summary>
@@ -148,5 +150,10 @@ public class Player : Singleton<Player>
         {
             rb.AddForce(Vector3.down * force);
         }
+    }
+
+    private void GameOver()
+    {
+
     }
 }

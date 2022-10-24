@@ -19,10 +19,16 @@ public class Obstacle : MovingElement
     [Tooltip("SwingSpd")]
     private const float swingSpd = 100;
 
+    private Vector3 spawnPoint;
+
+    private const float DISTANCE = 50f;
+
     //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
     {
-        //base.OnEnable();
+        spawnPoint = Player.Instance.transform.position;
+
+        base.OnEnable();
         TypeofDefine();
     }
 
@@ -48,11 +54,17 @@ public class Obstacle : MovingElement
 
     private void Update()
     {
+        if (spawnPoint.x - transform.position.x  > DISTANCE)
+        {
+            Return();
+        }
+
         if(obstacleType == EObstacleType.Swing)
         {
             Swing();
         }
     }
+
     private void Swing()
     {
         //왔다 갔다 하는 코드

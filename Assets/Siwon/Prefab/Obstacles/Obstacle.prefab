@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6987003392076574130}
   - component: {fileID: 6987003392076574129}
   m_Layer: 0
-  m_Name: SpinObstacle
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -176,5 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 3
+  spriterenderer: {fileID: 0}
   obstacleType: 2
   spinSpd: 4
+  maxAngle: 0
+  minAngle: 0
