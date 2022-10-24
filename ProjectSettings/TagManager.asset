@@ -19,7 +19,7 @@ TagManager:
   - Coin_PigglyBank
   - Player
   - Fragments
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -46,9 +46,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 4172699285
+    locked: 0
   - name: Coin_PiggyBank
     uniqueID: 2157330565
     locked: 0
   - name: Warning_Line
     uniqueID: 15744157
+    locked: 0
+  - name: Player
+    uniqueID: 983346869
+    locked: 0
+  - name: UI
+    uniqueID: 484574557
     locked: 0

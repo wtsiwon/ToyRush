@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 
-public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
+public class BackgroundTouchDot : MonoBehaviour
 {
     public Ease easeType;
 
@@ -13,6 +13,14 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
     [Header("타이틀")]
     public GameObject Title;
+
+    [Header("시작 연출")]
+    public GameObject smokeBoomb;
+
+    [Header("플레이어")]
+    public GameObject player;
+    public float playerDistance;
+    public float playerWaitTime;
 
     void Start()
     {
@@ -23,11 +31,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     {
 
     }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        StartCoroutine("BtnMove");
-    }
+    public void OnMouseUp() => StartCoroutine("BtnMove");
 
     public IEnumerator BtnMove()
     {
@@ -58,7 +62,10 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
                     mainBtn.transform.GetChild(0).DOLocalMoveY(btnDistance, time).SetEase(easeType);
                     break;
             }
-
         }
+
+        yield return new WaitForSeconds(1);
+        smokeBoomb.SetActive(true);
+        player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
     }
 }
