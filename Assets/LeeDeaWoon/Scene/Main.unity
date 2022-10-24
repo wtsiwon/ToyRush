@@ -601,7 +601,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
   m_FlipX: 0
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8476a8c6275d24492312b1fcd77e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fragmentPrefab: {fileID: 8563333405813686968, guid: 724f1a4899f683448bc06b40550db039, type: 3}
+  fragmentPrefab: {fileID: 3839140291741668807, guid: 724f1a4899f683448bc06b40550db039, type: 3}
 --- !u!1 &1922587014
 GameObject:
   m_ObjectHideFlags: 0

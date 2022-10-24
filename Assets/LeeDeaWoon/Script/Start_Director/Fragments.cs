@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Fragments : MonoBehaviour
 {
+
     void Start()
     {
         Fragments_Transform();
@@ -25,7 +26,7 @@ public class Fragments : MonoBehaviour
 
 
         transform.Rotate(0, 0, Random.Range(rotMin, rotMax));
-
         transform.DOLocalMoveX(Random.Range(posXMin, posXMax), 2f);
+
     }
 }
