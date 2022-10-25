@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SetGame()
+    {
+
+    }
+
     private void Start()
     {
         //StartCoroutine(UpDate());

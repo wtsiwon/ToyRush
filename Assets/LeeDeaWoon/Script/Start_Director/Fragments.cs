@@ -7,8 +7,10 @@ public class Fragments : MonoBehaviour
 {
     public float flyingSpeed;
 
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         Fragments_Transform();
     }
 
@@ -29,5 +31,10 @@ public class Fragments : MonoBehaviour
         transform.Rotate(0, 0, Random.Range(rotMin, rotMax));
         transform.DOLocalMoveX(Random.Range(posXMin, posXMax), flyingSpeed);
 
+    }
+
+    private void ByeBye()
+    {
+        rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
     }
 }

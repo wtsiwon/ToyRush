@@ -10,11 +10,18 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     private void Start()
     {
         SpawnBackGround();
+        StartCoroutine(WaitStartProduction());
     }
 
     public void SpawnBackGround()
     {
         ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
         print(transform.position);
+    }
+
+    private IEnumerator WaitStartProduction()
+    {
+        yield return new WaitForSeconds(3f);
+        backgroundSpd = 9f;
     }
 }

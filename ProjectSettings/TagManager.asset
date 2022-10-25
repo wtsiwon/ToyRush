@@ -9,6 +9,7 @@ TagManager:
   - Coin_PiggyBank
   - BackGround
   - DestroyZone
+  - Obstacle
   layers:
   - Default
   - TransparentFX

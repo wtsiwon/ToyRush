@@ -21,12 +21,25 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Space(15f)]
     public List<Sprite> obstacleSpriteList = new List<Sprite>();
 
+    public bool canSpawn;
+
     private void Start()
     {
         AddRotates();
         //AddObstacleSprite();
-        //int rand = Random.Range(0, obstacleSpriteList.Count);
-        SpawnPattern(1);
+        StartCoroutine(SpawnObstacle());
+    }
+
+    private IEnumerator SpawnObstacle()
+    {
+        while (true)
+        {
+            if (canSpawn)
+            {
+                int rand = Random.Range(1, 16);
+                SpawnPattern(rand);
+            }
+        }
     }
 
     /// <summary>
@@ -105,7 +118,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         yield return new WaitForSeconds(2f);
         Obstacle obstacle1 = GetSpinObstacle(spawnPoses[0]);
-        
+
         yield return new WaitForSeconds(2f);
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
@@ -231,7 +244,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
 
-    
+
 
     /// <summary>
     /// Swing
