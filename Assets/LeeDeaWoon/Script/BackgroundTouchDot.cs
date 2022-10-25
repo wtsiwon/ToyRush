@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BackgroundTouchDot : MovingElement, IPointerClickHandler
+public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 {
     public Ease easeType;
 

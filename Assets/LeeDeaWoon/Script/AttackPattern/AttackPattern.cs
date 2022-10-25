@@ -43,6 +43,7 @@ public class AttackPattern : MonoBehaviour
 
                 warningLine.DOFade(0, 0);
 
+                Camera.main.transform.DOShakeRotation(1, new Vector3(1,1,1));
                 atk.transform.DOLocalMoveY(warningLine.transform.position.y, 1f).SetEase(ease);
 
                 yield return new WaitForSeconds(1f);
