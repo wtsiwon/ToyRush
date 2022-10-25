@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SetGame()
+    private IEnumerator CSetGame()
     {
+        yield return new WaitForSeconds(1f);
 
     }
 

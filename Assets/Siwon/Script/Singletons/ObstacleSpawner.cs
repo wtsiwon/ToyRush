@@ -39,6 +39,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                 int rand = Random.Range(1, 16);
                 SpawnPattern(rand);
             }
+            yield return new WaitForSeconds(2.5f);
         }
     }
 
