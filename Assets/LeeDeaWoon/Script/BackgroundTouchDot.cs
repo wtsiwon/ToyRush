@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
+public class BackgroundTouchDot : MovingElement, IPointerClickHandler
 {
     public Ease easeType;
 
@@ -37,6 +37,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     {
 
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine("BtnMove");
