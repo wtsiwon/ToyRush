@@ -31,12 +31,25 @@ public class MovingElement : PoolingObj
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
+
+        MovingElementManager.movingElementList.Add(this);
     }
 
+    /// <summary>
+    /// SpdπŸ≤„¡‹
+    /// </summary>
+    /// <param name="spd"></param>
+    public void SetMovingSpd(float spd)
+    {
+        rb.velocity = Vector3.left * spd;
+    }
     protected virtual void Start()
     {
         spriterenderer = GetComponent<SpriteRenderer>();
     }
 
-    
+    public override void Return()
+    {
+
+    }
 }
