@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+    private void Awake() => Instance = this;
+
     [Tooltip("거리")]
     public int distance;
 
     public bool isBoosting;
     public bool isBig;
+
+    [Tooltip("시작확인")]
+    public bool isGameStart;
 
     [SerializeField]
     private bool gameStart;
@@ -30,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(UpDate());
+        //StartCoroutine(UpDate());
     }
 
     private IEnumerator UpDate()

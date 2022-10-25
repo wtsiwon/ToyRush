@@ -144,7 +144,7 @@ SpriteRenderer:
   m_Size: {x: 2.59, y: 2.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4746980502108482129
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 0
   spriterenderer: {fileID: 0}
-  eItem: 2
+  itemType: 2
   collider2D: {fileID: 0}
   spriteRenderer: {fileID: 0}
   boosterDuration: 5

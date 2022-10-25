@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class BackgroundTouchDot : MonoBehaviour
+public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 {
     public Ease easeType;
+
+    [Header("화면 클릭")]
+    public Image screenClick;
 
     [Header("UI 버튼")]
     public GameObject mainBtn;
@@ -22,6 +26,8 @@ public class BackgroundTouchDot : MonoBehaviour
     public float playerDistance;
     public float playerWaitTime;
 
+    bool isStartClick = false;
+
     void Start()
     {
 
@@ -31,41 +37,52 @@ public class BackgroundTouchDot : MonoBehaviour
     {
 
     }
-    public void OnMouseUp() => StartCoroutine("BtnMove");
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        StartCoroutine("BtnMove");
+    }
 
     public IEnumerator BtnMove()
     {
-        int btnDistance = -1100;
-        int titleDistance = 1250;
-
-        float time = 0.5f;
-        float waitTime = 0.2f;
-
-        UIManager.inst.touchToStart.DOKill();
-        UIManager.inst.Title.transform.DOKill();
-
-        UIManager.inst.touchToStart.DOFade(0, time);
-
-        for (int i = 1; i <= 4; i++)
+        if (isStartClick == false)
         {
+            screenClick.raycastTarget = false;
+            isStartClick = true;
 
-            mainBtn.transform.GetChild(i).DOLocalMoveY(btnDistance, time).SetEase(easeType);
-            yield return new WaitForSeconds(waitTime);
+            int btnDistance = -1100;
+            int titleDistance = 1250;
 
-            switch (i)
+            float time = 0.5f;
+            float waitTime = 0.2f;
+
+            UIManager.inst.touchToStart.DOKill();
+            UIManager.inst.Title.transform.DOKill();
+
+            UIManager.inst.touchToStart.DOFade(0, time);
+
+            for (int i = 1; i <= 4; i++)
             {
-                case 1:
-                    Title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
-                    break;
 
-                case 4:
-                    mainBtn.transform.GetChild(0).DOLocalMoveY(btnDistance, time).SetEase(easeType);
-                    break;
+                mainBtn.transform.GetChild(i).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+                yield return new WaitForSeconds(waitTime);
+
+                switch (i)
+                {
+                    case 1:
+                        Title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
+                        break;
+
+                    case 4:
+                        mainBtn.transform.GetChild(0).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+                        break;
+                }
             }
-        }
 
-        yield return new WaitForSeconds(1);
-        smokeBoomb.SetActive(true);
-        player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
+            yield return new WaitForSeconds(1);
+            smokeBoomb.SetActive(true);
+            player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
+            yield return new WaitForSeconds(playerWaitTime);
+            GameManager.Instance.isGameStart = true;
+        }
     }
 }

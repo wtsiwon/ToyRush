@@ -34,7 +34,7 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
     }
 
-    
+
 
     /// <summary>
     /// 날아가는 키 입력(PC)
@@ -76,26 +76,29 @@ public class Player : Singleton<Player>
     /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)
     {
-        switch (type)
+        if (GameManager.Instance.isGameStart == true)
         {
-            case EVehicleType.None:
-                Flying();
-                break;
-            case EVehicleType.GravitySuit:
-                ChangeGravity();
-                break;
-            case EVehicleType.Wyvern:
-                FlyingWyvern();
-                break;
-            case EVehicleType.ProfitUFO:
-                MoveUFO();
-                break;
-            case EVehicleType.BusterMachine:
-                //점프 뛰로 누를시 천천히 활공
-                break;
-            case EVehicleType.Frog:
-                //길게 누를수록 높게 점프
-                break;
+            switch (type)
+            {
+                case EVehicleType.None:
+                    Flying();
+                    break;
+                case EVehicleType.GravitySuit:
+                    ChangeGravity();
+                    break;
+                case EVehicleType.Wyvern:
+                    FlyingWyvern();
+                    break;
+                case EVehicleType.ProfitUFO:
+                    MoveUFO();
+                    break;
+                case EVehicleType.BusterMachine:
+                    //점프 뛰로 누를시 천천히 활공
+                    break;
+                case EVehicleType.Frog:
+                    //길게 누를수록 높게 점프
+                    break;
+            }
         }
     }
 
@@ -115,7 +118,7 @@ public class Player : Singleton<Player>
     /// </summary>
     private void MoveUFO()
     {
-        if(isPressing == true)
+        if (isPressing == true)
         {
             rb.AddForce(Vector2.up * force);
         }
@@ -124,7 +127,7 @@ public class Player : Singleton<Player>
 
     private void BusterJump()
     {
-        if(isPressing == true)
+        if (isPressing == true)
         {
 
         }
@@ -135,7 +138,7 @@ public class Player : Singleton<Player>
     /// </summary>
     private void ChangeGravity()
     {
-        if(isPressing == true)
+        if (isPressing == true)
         {
             rb.gravityScale *= -1;
         }
@@ -146,7 +149,7 @@ public class Player : Singleton<Player>
     /// </summary>
     private void FlyingWyvern()
     {
-        if(isPressing == true)
+        if (isPressing == true)
         {
             rb.AddForce(Vector3.down * force);
         }

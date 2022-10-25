@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 0
-  eItem: 5
+  spriterenderer: {fileID: 0}
+  itemType: 5
   collider2D: {fileID: 0}
   spriteRenderer: {fileID: 0}
   boosterDuration: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   ease: 0
   magnetWaitingTime: 0
   piggybankCoin: {fileID: 0}
-  coinCountMax: 0
+  piggybankCoinObj: {fileID: 0}
   sizeTime: 1
   sizeWaitingTime: 2
   size: {x: 2.5, y: 2.5}
