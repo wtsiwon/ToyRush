@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Obstacle : MovingElement
 {
@@ -44,7 +45,7 @@ public class Obstacle : MovingElement
                 //없음
                 break;
             case EObstacleType.Swing:
-                //Swing();
+                Swing();
                 break;
             case EObstacleType.Spin:
                 Spin();
@@ -54,33 +55,34 @@ public class Obstacle : MovingElement
 
     private void Update()
     {
-        if (spawnPoint.x - transform.position.x  > DISTANCE)
+        if (spawnPoint.x - transform.position.x > DISTANCE)
         {
             Return();
         }
 
-        if(obstacleType == EObstacleType.Swing)
+        if (obstacleType == EObstacleType.Swing)
         {
-            Swing();
+            //Swing();
         }
     }
 
     private void Swing()
     {
-        //왔다 갔다 하는 코드
-        if(transform.rotation.z >= maxAngle)
-        {
-            transform.Rotate(new Vector3(0, 0, spinSpd));
-        }
-        else if(transform.rotation.z <= minAngle)
-        {
-            transform.Rotate(new Vector3(0, 0, -spinSpd));
-        }
+        StartCoroutine(CSwing());
     }
 
     private IEnumerator CSwing()
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        if (transform.rotation.z >= 50)
+        {
+            transform.DORotate(new Vector3(0, 0, -50), 1f);
+        }
+        else if (transform.rotation.z <= -50)
+        {
+            transform.DORotate(new Vector3(0, 0, 50), 1f);
+        }
+        yield return StartCoroutine(CSwing());
     }
 
     private void Spin()

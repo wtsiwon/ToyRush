@@ -19,10 +19,13 @@ public class MovingElement : PoolingObj
         }
         set
         {
-
+            time = value;
+            if (time.Equals(1))
+            {
+                rb.velocity = Vector3.left * 1f;
+            }
         }
     }
-
     
     protected virtual void OnEnable()
     {

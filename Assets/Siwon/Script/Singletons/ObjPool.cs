@@ -77,6 +77,7 @@ public class ObjPool : Singleton<ObjPool>
     {
         Item item = null;
         item = Get(EPoolType.Item, pos).GetComponent<Item>();
+        item.itemType = type;
         //ItemSprite변경해야함
         return item;
     }
@@ -90,6 +91,7 @@ public class ObjPool : Singleton<ObjPool>
     {
         Obstacle obstacle = null;
         obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
+        obstacle.obstacleType = type;
         return obstacle;
 
     }

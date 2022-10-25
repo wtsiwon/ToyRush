@@ -242,6 +242,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Swing, pos.position);
+        print(obstacle.obstacleType);
         //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Swing];
         return obstacle;
     }

@@ -10,7 +10,7 @@ public class ItemSpawner : Singleton<ItemSpawner>
     {
         switch (type)
         {
-            case EItemType.Big:
+            case EItemType.Sizecontrol:
 
                 break;
         }

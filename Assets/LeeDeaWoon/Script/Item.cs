@@ -5,16 +5,7 @@ using DG.Tweening;
 
 public class Item : MovingElement
 {
-    public enum EItem
-    {
-        Transformation, //변신
-        Magnet,         //자석
-        Piggybank,      //저금통
-        Booster,        //부스터
-        Coinconverter,  //코인변환기
-        Sizecontrol,    //크기조절
-    }
-    public EItem eItem;
+    public EItemType itemType;
 
     public new Collider2D collider2D;
     public SpriteRenderer spriteRenderer;
@@ -77,14 +68,14 @@ public class Item : MovingElement
             collider2D.enabled = false;
             spriteRenderer.DOFade(0, 0);
 
-            switch (eItem)
+            switch (itemType)
             {
-                case EItem.Transformation:
+                case EItemType.Transformation:
 
                     break;
 
 
-                case EItem.Magnet: // 자석
+                case EItemType.Magnet: // 자석
 
                     Player.Instance.isMagneting = true;
 
@@ -96,14 +87,14 @@ public class Item : MovingElement
                     break;
 
 
-                case EItem.Piggybank: // 저금통
+                case EItemType.Piggybank: // 저금통
 
                     Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = piggybankCoinObj.transform;
 
                     break;
 
 
-                case EItem.Booster: // 부스터
+                case EItemType.Booster: // 부스터
 
                     Player.Instance.isBoosting = true;
                     collision.transform.DOLocalMoveX(boosterDistance, boosterSpeed).SetEase(ease);
@@ -114,11 +105,11 @@ public class Item : MovingElement
                     break;
 
 
-                case EItem.Coinconverter:
+                case EItemType.Coinconverter:
                     break;
 
 
-                case EItem.Sizecontrol: // 크기 조절
+                case EItemType.Sizecontrol: // 크기 조절
 
                     Player.Instance.isBig = true;
                     collision.transform.DOScale(size, sizeTime);

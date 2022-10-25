@@ -52,12 +52,12 @@ public enum ETheme//테마
 /// </summary>
 public enum EItemType
 {
-    Big,
-    Booster,
-    Magnet,
-    ChangeCoin,
-    TakeVehicle,
-    PiggyBank,
+    Transformation, //변신
+    Magnet,         //자석
+    Piggybank,      //저금통
+    Booster,        //부스터
+    Coinconverter,  //코인변환기
+    Sizecontrol,    //크기조절
 }
 
 /// <summary>
