@@ -16,6 +16,12 @@ public class AttackPattern : MonoBehaviour
     public Ease ease;
     public GameObject atk;
     public SpriteRenderer warningLine;
+    public float shakeWaitTime;
+
+    [Header("오른쪽 공격")]
+    public GameObject enemy;
+    public GameObject bulletPrefab;
+    public int enemyMoveTime;
 
     private void Start()
     {
@@ -34,6 +40,8 @@ public class AttackPattern : MonoBehaviour
         {
             #region 아랫공격
             case EAttackPattern.Bottom:
+                int moveWait = 1;
+
                 StartCoroutine("FadeOn");
                 yield return new WaitForSeconds(3.5f);
 
@@ -43,12 +51,14 @@ public class AttackPattern : MonoBehaviour
 
                 warningLine.DOFade(0, 0);
 
-                Camera.main.transform.DOShakeRotation(1, new Vector3(1,1,1));
-                atk.transform.DOLocalMoveY(warningLine.transform.position.y, 1f).SetEase(ease);
+                atk.transform.DOLocalMoveY(warningLine.transform.position.y, moveWait).SetEase(ease);
+
+                yield return new WaitForSeconds(0.5f);
+                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1,1,1));
 
                 yield return new WaitForSeconds(1f);
 
-                atk.transform.DOLocalMoveY(warningLine.transform.position.y * 2, 1f).SetEase(ease);
+                atk.transform.DOLocalMoveY(warningLine.transform.position.y * 2, moveWait).SetEase(ease);
 
                 yield return new WaitForSeconds(1f);
 
@@ -58,8 +68,24 @@ public class AttackPattern : MonoBehaviour
                 break;
             #endregion
 
+            #region 오른쪽 공격
             case EAttackPattern.Right:
+                int enemyYValue = 7;
+                float waitTime = 0.5f;
 
+                enemy.transform.DOLocalMoveY(enemyYValue, enemyMoveTime);
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+                    yield return new WaitForSeconds(waitTime);
+                }
+
+                yield return new WaitForSeconds(3f);
+                enemy.transform.DOKill();
+                bulletPrefab.transform.DOKill();
+                Destroy(this.gameObject);
+            #endregion
                 break;
         }
 
