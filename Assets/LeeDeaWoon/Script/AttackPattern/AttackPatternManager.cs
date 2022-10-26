@@ -25,7 +25,7 @@ public class AttackPatternManager : MonoBehaviour
     {
         // 소환시간 약 20초로 해놓기
 
-        if (isAttackSummon == true)
+        if (isAttackSummon == true && GameManager.Instance.IsGameStart == true)
         {
             isAttackSummon = false;
             yield return new WaitForSeconds(coolTime);

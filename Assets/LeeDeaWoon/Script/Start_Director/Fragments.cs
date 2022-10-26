@@ -30,8 +30,8 @@ public class Fragments : MonoBehaviour
         int rotMin = 0;
         int rotMax = 90;
 
-        float posXMin = -5.0f;
-        float posXMax = 8.0f;
+        float posXMin = 5.0f;
+        float posXMax = 10.0f;
 
 
         transform.Rotate(0, 0, Random.Range(rotMin, rotMax));

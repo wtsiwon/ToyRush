@@ -24,7 +24,6 @@ public class Item : MovingElement
 
     [Header("아이템 : 저금통")]
     public GameObject piggybankCoin; // 소환될 프리팹 코인
-    public GameObject piggybankCoinObj; // 소환될 프리팹 코인을 담을 오브젝트
 
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
@@ -45,10 +44,6 @@ public class Item : MovingElement
     {
         Item_Delay();
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-        }
     }
 
 
@@ -73,6 +68,7 @@ public class Item : MovingElement
             {
                 case EItemType.Transformation:
 
+                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -82,6 +78,7 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(magnetWaitingTime);
                     Destroy(this.gameObject);
+                    ItemManager.inst.isItemSummon = true;
                     Player.Instance.isMagneting = false;
                     magnetTimer = 0;
 
@@ -90,8 +87,9 @@ public class Item : MovingElement
 
                 case EItemType.Piggybank: // 저금통
 
-                    Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = piggybankCoinObj.transform;
-
+                    Instantiate(piggybankCoin, transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
+                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -103,10 +101,12 @@ public class Item : MovingElement
                     collision.transform.DOLocalMoveX(playerDistance.x, boosterSpeed).SetEase(ease);
                     yield return new WaitForSeconds(boosterSpeed);
                     Destroy(this.gameObject);
+                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
                 case EItemType.Coinconverter:
+                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -118,6 +118,7 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(sizeWaitingTime);
                     Destroy(this.gameObject);
+                    ItemManager.inst.isItemSummon = true;
                     Player.Instance.isBig = false;
                     sizeTimer = 0;
 
