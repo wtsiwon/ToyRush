@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CSetGame()
     {
-        yield return new WaitForSeconds(1f);
         MovingElementManager.Instance.BackGroundSpeedSet(STARTSPD);
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
+        ObstacleSpawner.Instance.canSpawn = true;
     }
 
     private void Start()

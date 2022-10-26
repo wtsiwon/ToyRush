@@ -102,6 +102,11 @@ public class Player : Singleton<Player>
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
     /// <summary>
     /// 날아 가보자~
     /// </summary>

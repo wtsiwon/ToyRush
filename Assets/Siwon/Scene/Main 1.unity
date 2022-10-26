@@ -345,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4375055872220011208, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 4375055872220011208, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2380,7 +2380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 12}
+  m_Size: {x: 0.01, y: 12}
   m_EdgeRadius: 0
 --- !u!1 &1860033639
 GameObject:
@@ -2426,7 +2426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8476a8c6275d24492312b1fcd77e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fragmentPrefab: {fileID: 3839140291741668807, guid: 724f1a4899f683448bc06b40550db039, type: 3}
+  fragmentList:
+  - {fileID: 6164951292826147401, guid: 1cdbe14774aaff84f950d5f796d34148, type: 3}
+  - {fileID: 2605115647521101104, guid: 3d27f8a47b18e8f418cff553efa69da9, type: 3}
+  - {fileID: 5430399089835639828, guid: dd4ce67c6e954144591ba8a7cfb17a77, type: 3}
+  - {fileID: 3839140291741668807, guid: 724f1a4899f683448bc06b40550db039, type: 3}
   posYMin: -3
   posYMax: 2
 --- !u!1 &1875079700

@@ -21,6 +21,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Space(15f)]
     public List<Sprite> obstacleSpriteList = new List<Sprite>();
 
+    [Tooltip("장애물 소환 간격")]
+    public const float OBSTACLESPAWNINTERVAL = 7f;
+
     public bool canSpawn;
 
     private void Start()
@@ -39,7 +42,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                 int rand = Random.Range(1, 16);
                 SpawnPattern(rand);
             }
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(7f);
         }
     }
 
@@ -62,6 +65,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         rotatesDic.Add(EDir.Right, new Quaternion(0, 0, (float)EDir.Right, 0));
     }
 
+    /// <summary>
+    /// 패턴소환!
+    /// </summary>
+    /// <param name="index"></param>
     public void SpawnPattern(int index)
     {
         StartCoroutine($"CSpawnPattern{index}");
@@ -93,13 +100,13 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern3()
     {
-        yield return new WaitForSeconds(0.7f);
-        Obstacle obstacle1 = GetSwingObstacle(spawnPoses[5]);
+        yield return new WaitForSeconds(2.5f);
+        Obstacle obstacle1 = GetSwingObstacle(spawnPoses[4]);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[1]);
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(2f);
         Obstacle obstacle3 = GetSwingObstacle(spawnPoses[1]);
     }
 
@@ -132,13 +139,13 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern6()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Obstacle obstacle1 = GetSwingObstacle(spawnPoses[2]);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         Obstacle obstacle3 = GetBasicObstacle(spawnPoses[0]);
         obstacle3.transform.rotation = rotatesDic[EDir.Up];
     }

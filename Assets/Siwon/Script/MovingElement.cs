@@ -47,9 +47,4 @@ public class MovingElement : PoolingObj
     {
         spriterenderer = GetComponent<SpriteRenderer>();
     }
-
-    public override void Return()
-    {
-
-    }
 }
