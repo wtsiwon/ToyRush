@@ -24,6 +24,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("장애물 소환 간격")]
     public float obstacleSpawnInterval;
 
+    public float obstacleSpawnDelay;
+
     public bool canSpawn;
 
     private void Start()
@@ -43,7 +45,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                 int rand = Random.Range(1, 16);
                 SpawnPattern(rand);
             }
-            yield return new WaitForSeconds(obstacleSpawnInterval);
+            yield return new WaitForSeconds(obstacleSpawnDelay 
+                + Random.Range(-obstacleSpawnInterval,obstacleSpawnInterval));
         }
     }
 

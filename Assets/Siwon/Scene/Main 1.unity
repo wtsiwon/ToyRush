@@ -770,6 +770,8 @@ MonoBehaviour:
   - {fileID: 1517825123}
   - {fileID: 814032872}
   obstacleSpriteList: []
+  obstacleSpawnInterval: 1
+  obstacleSpawnDelay: 6
   canSpawn: 0
 --- !u!4 &607694792
 Transform:

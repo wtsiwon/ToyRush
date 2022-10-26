@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("거리")]
     public int distance;
+
+    [SerializeField]
+    [Tooltip("거리 Text")]
+    private TextMeshProUGUI distanceText;
 
     public int coin;
 
@@ -38,6 +43,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
         ObstacleSpawner.Instance.canSpawn = true;
+
     }
 
     private void Start()
