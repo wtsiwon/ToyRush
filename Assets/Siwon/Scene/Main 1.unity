@@ -2483,6 +2483,8 @@ MonoBehaviour:
   - {fileID: 2605115647521101104, guid: 3d27f8a47b18e8f418cff553efa69da9, type: 3}
   - {fileID: 5430399089835639828, guid: dd4ce67c6e954144591ba8a7cfb17a77, type: 3}
   - {fileID: 3839140291741668807, guid: 724f1a4899f683448bc06b40550db039, type: 3}
+  - {fileID: 6164951292826147401, guid: 1cdbe14774aaff84f950d5f796d34148, type: 3}
+  - {fileID: 2605115647521101104, guid: 3d27f8a47b18e8f418cff553efa69da9, type: 3}
   posYMin: -3
   posYMax: 2
 --- !u!1 &1875079700

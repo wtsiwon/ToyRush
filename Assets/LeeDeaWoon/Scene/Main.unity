@@ -2406,6 +2406,8 @@ MonoBehaviour:
   - {fileID: 2605115647521101104, guid: 3d27f8a47b18e8f418cff553efa69da9, type: 3}
   - {fileID: 5430399089835639828, guid: dd4ce67c6e954144591ba8a7cfb17a77, type: 3}
   - {fileID: 3839140291741668807, guid: 724f1a4899f683448bc06b40550db039, type: 3}
+  - {fileID: 2605115647521101104, guid: 3d27f8a47b18e8f418cff553efa69da9, type: 3}
+  - {fileID: 5430399089835639828, guid: dd4ce67c6e954144591ba8a7cfb17a77, type: 3}
   posYMin: -3
   posYMax: 2
 --- !u!1 &1922587014
@@ -2513,10 +2515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 0
-  isBoosting: 0
-  isBig: 0
-  isGameStart: 0
-  gameStart: 0
+  coin: 0
 --- !u!4 &1950499007
 Transform:
   m_ObjectHideFlags: 0

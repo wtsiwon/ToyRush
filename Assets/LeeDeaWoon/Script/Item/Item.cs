@@ -24,7 +24,6 @@ public class Item : MovingElement
 
     [Header("아이템 : 저금통")]
     public GameObject piggybankCoin; // 소환될 프리팹 코인
-    public GameObject piggybankCoinObj; // 소환될 프리팹 코인을 담을 오브젝트
 
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
@@ -45,10 +44,6 @@ public class Item : MovingElement
     {
         Item_Delay();
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-        }
     }
 
 
@@ -90,8 +85,8 @@ public class Item : MovingElement
 
                 case EItemType.Piggybank: // 저금통
 
-                    Instantiate(piggybankCoin, transform.position, Quaternion.identity).transform.parent = piggybankCoinObj.transform;
-
+                    Instantiate(piggybankCoin, transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
                     break;
 
 

@@ -22,7 +22,7 @@ public class FragmentsSummon : MonoBehaviour
 
     void Fragments_Summon()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < fragmentList.Count; i++)
             Instantiate(fragmentList[i], new Vector3(-10, Random.Range(posYMin, posYMax), 0), Quaternion.identity).transform.parent = gameObject.transform;
     }
 }
