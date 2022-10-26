@@ -15,8 +15,6 @@ public class ItemManager : MonoBehaviour
 
     public float spawnValue = 12.5f;
 
-    public bool isItemSummon;
-
     void Start()
     {
         StartCoroutine(Item_Spawn());
@@ -30,9 +28,9 @@ public class ItemManager : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(spawnValue + Random.Range(-spawnInterval, spawnInterval));
             if (GameManager.Instance.IsGameStart == true)
             {
-                yield return new WaitForSeconds(spawnValue + Random.Range(-spawnInterval, spawnInterval));
                 Instantiate(itemList[Random.Range(0, itemList.Count)], new Vector2(spawnXValue, spawnYValue), Quaternion.identity).transform.parent = gameObject.transform;
             }
         }

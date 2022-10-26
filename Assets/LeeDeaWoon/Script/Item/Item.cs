@@ -68,7 +68,6 @@ public class Item : MovingElement
             {
                 case EItemType.Transformation:
 
-                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -78,7 +77,6 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(magnetWaitingTime);
                     Destroy(this.gameObject);
-                    ItemManager.inst.isItemSummon = true;
                     Player.Instance.isMagneting = false;
                     magnetTimer = 0;
 
@@ -89,7 +87,6 @@ public class Item : MovingElement
 
                     Instantiate(piggybankCoin, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
-                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -101,12 +98,10 @@ public class Item : MovingElement
                     collision.transform.DOLocalMoveX(playerDistance.x, boosterSpeed).SetEase(ease);
                     yield return new WaitForSeconds(boosterSpeed);
                     Destroy(this.gameObject);
-                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
                 case EItemType.Coinconverter:
-                    ItemManager.inst.isItemSummon = true;
                     break;
 
 
@@ -118,7 +113,6 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(sizeWaitingTime);
                     Destroy(this.gameObject);
-                    ItemManager.inst.isItemSummon = true;
                     Player.Instance.isBig = false;
                     sizeTimer = 0;
 
