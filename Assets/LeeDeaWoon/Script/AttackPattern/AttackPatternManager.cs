@@ -18,11 +18,13 @@ public class AttackPatternManager : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(Attack_Summon());
+        StartCoroutine("Attack_Spawn");
     }
 
-    IEnumerator Attack_Summon()
+    IEnumerator Attack_Spawn()
     {
+        // 소환시간 약 20초로 해놓기
+
         if (isAttackSummon == true)
         {
             isAttackSummon = false;

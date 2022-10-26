@@ -8,10 +8,14 @@ public class Fragments : MonoBehaviour
     public float flyingSpeed;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Fragments_Transform();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        StartCoroutine("Fragments_Transform");
     }
 
     void Update()
@@ -19,8 +23,10 @@ public class Fragments : MonoBehaviour
 
     }
 
-    void Fragments_Transform()
+    IEnumerator Fragments_Transform()
     {
+        int waitTime = 3;
+
         int rotMin = 0;
         int rotMax = 90;
 
@@ -31,6 +37,9 @@ public class Fragments : MonoBehaviour
         transform.Rotate(0, 0, Random.Range(rotMin, rotMax));
         transform.DOLocalMoveX(Random.Range(posXMin, posXMax), flyingSpeed);
 
+        yield return new WaitForSeconds(waitTime);
+
+        spriteRenderer.DOFade(0, 3);
     }
 
     private void ByeBye()
