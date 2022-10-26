@@ -76,7 +76,7 @@ public class Player : Singleton<Player>
     /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)
     {
-        if (GameManager.Instance.isGameStart == true)
+        if (GameManager.Instance.IsGameStart == true)
         {
             switch (type)
             {

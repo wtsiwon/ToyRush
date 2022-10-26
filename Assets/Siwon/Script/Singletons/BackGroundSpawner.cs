@@ -22,6 +22,5 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     private IEnumerator WaitStartProduction()
     {
         yield return new WaitForSeconds(3f);
-        backgroundSpd = 9f;
     }
 }

@@ -10,34 +10,34 @@ public class GameManager : MonoBehaviour
     [Tooltip("거리")]
     public int distance;
 
-    public bool isBoosting;
-    public bool isBig;
+    public int coin;
+
+    public const float STARTSPD = 8f;
 
     [Tooltip("시작확인")]
-    public bool isGameStart;
-
-    [SerializeField]
-    private bool gameStart;
-    public bool GameStart
+    private bool isGameStart;
+    public bool IsGameStart
     {
         get
         {
-            return gameStart;
+            return isGameStart;
         }
         set
         {
-            GameStart = value;
-            if (GameStart == true)
-            {
-
-            }
+            isGameStart = value;
+            StartCoroutine(CSetGame());
         }
     }
+
+    
 
     private IEnumerator CSetGame()
     {
         yield return new WaitForSeconds(1f);
-
+        MovingElementManager.Instance.BackGroundSpeedSet(STARTSPD);
+        BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
+        yield return new WaitForSeconds(3f);
+        MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
     }
 
     private void Start()
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpDate()
     {
-        if(GameStart == true)
+        if(isGameStart == true)
         {
             //속도가 빨라지면 점수도 빨리 오름
             distance += (int)BackGroundSpawner.Instance.backgroundSpd / 10;

@@ -32,7 +32,7 @@ public class MovingElement : PoolingObj
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
 
-        MovingElementManager.movingElementList.Add(this);
+        MovingElementManager.Instance.movingElementList.Add(this);
     }
 
     /// <summary>

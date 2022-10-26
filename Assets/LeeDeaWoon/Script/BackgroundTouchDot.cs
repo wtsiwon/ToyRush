@@ -83,7 +83,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
             smokeBoomb.SetActive(true);
             player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
             yield return new WaitForSeconds(playerWaitTime);
-            GameManager.Instance.isGameStart = true;
+            GameManager.Instance.IsGameStart = true;
         }
     }
 }
