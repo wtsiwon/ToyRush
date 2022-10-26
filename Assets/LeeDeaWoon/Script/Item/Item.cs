@@ -37,6 +37,7 @@ public class Item : MovingElement
     {
         collider2D = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         playerDistance.x = Player.Instance.transform.position.x;
     }
 

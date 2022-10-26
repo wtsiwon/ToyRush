@@ -84,6 +84,7 @@ public class AttackPattern : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 enemy.transform.DOKill();
                 bulletPrefab.transform.DOKill();
+                AttackPatternManager.inst.isAttackSummon = true;
                 Destroy(this.gameObject);
             #endregion
                 break;
