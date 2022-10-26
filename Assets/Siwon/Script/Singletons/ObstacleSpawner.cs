@@ -22,7 +22,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     public List<Sprite> obstacleSpriteList = new List<Sprite>();
 
     [Tooltip("장애물 소환 간격")]
-    public const float OBSTACLESPAWNINTERVAL = 7f;
+    public float obstacleSpawnInterval;
 
     public bool canSpawn;
 
@@ -35,6 +35,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator SpawnObstacle()
     {
+        yield return new WaitForSeconds(1f);
         while (true)
         {
             if (canSpawn)
@@ -42,7 +43,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                 int rand = Random.Range(1, 16);
                 SpawnPattern(rand);
             }
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(obstacleSpawnInterval);
         }
     }
 
@@ -77,23 +78,23 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     #region 패턴 함수들
     private IEnumerator CSpawnPattern1()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Up];
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Obstacle obstacle2 = GetSwingObstacle(spawnPoses[4]);
     }
 
     private IEnumerator CSpawnPattern2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.2f);
         Obstacle obstacle1 = GetSpinObstacle(spawnPoses[2]);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.2f);
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[2]);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Obstacle obstacle3 = GetBasicObstacle(spawnPoses[4]);
         obstacle3.transform.rotation = rotatesDic[EDir.Down];
     }
@@ -116,7 +117,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
         obstacle1.transform.rotation = rotatesDic[EDir.Left];
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         Obstacle obstacle2 = GetSwingObstacle(spawnPoses[1]);
         obstacle2.transform.rotation = rotatesDic[EDir.Down];
 
@@ -130,11 +131,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(2f);
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
-
-
-        yield return new WaitForSeconds(1f);
-        Obstacle obstacle3 = GetBasicObstacle(spawnPoses[1]);
-        obstacle3.transform.rotation = rotatesDic[EDir.Right];
     }
 
     private IEnumerator CSpawnPattern6()
@@ -144,10 +140,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         yield return new WaitForSeconds(2f);
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
-
-        yield return new WaitForSeconds(3f);
-        Obstacle obstacle3 = GetBasicObstacle(spawnPoses[0]);
-        obstacle3.transform.rotation = rotatesDic[EDir.Up];
     }
 
     private IEnumerator CSpawnPattern7()
@@ -180,7 +172,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         obstacle2.transform.rotation = rotatesDic[EDir.Down];
     }
 
-    private IEnumerator CSpawnPatten10()
+    private IEnumerator CSpawnPattern10()
     {
         yield return new WaitForSeconds(2f);
         Obstacle obstacle1 = GetSwingObstacle(spawnPoses[3]);
@@ -192,9 +184,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern11()
     {
-        yield return new WaitForSeconds(2f);
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[0]);
-
         yield return new WaitForSeconds(2f);
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
 

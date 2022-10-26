@@ -13,6 +13,7 @@ public class ItemManager : MonoBehaviour
     public float spawnValue = 12.5f;
     void Start()
     {
+
     }
 
     void Update()
