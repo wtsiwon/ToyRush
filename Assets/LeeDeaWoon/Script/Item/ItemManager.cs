@@ -5,25 +5,24 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     public List<GameObject> itemList = new List<GameObject>();
-    public float[] spawnTime = new float[2];
+    public float spawnInterval;
 
-    public int spawnXValue;
-    public int spawnYValue;
+    public const int spawnXValue = 11;
+    public const int spawnYValue = 2;
 
+    public float spawnValue = 12.5f;
     void Start()
     {
     }
 
     void Update()
     {
-        StartCoroutine("Item_Spawn");
+        StartCoroutine(Item_Spawn());
     }
 
     IEnumerator Item_Spawn()
     {
-        float spawnValue = 12.5f;
-
-        yield return new WaitForSeconds(spawnValue + Random.Range(spawnTime[0], spawnTime[1]));
+        yield return new WaitForSeconds(spawnValue + Random.Range(-spawnInterval, spawnInterval));
         Instantiate(itemList[Random.Range(0, itemList.Count)], new Vector2(spawnXValue, spawnYValue), Quaternion.identity).transform.parent = gameObject.transform;
     }
 }
