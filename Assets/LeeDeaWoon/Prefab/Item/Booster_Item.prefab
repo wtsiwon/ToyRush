@@ -103,12 +103,11 @@ MonoBehaviour:
   collider2D: {fileID: 0}
   spriteRenderer: {fileID: 0}
   boosterDuration: 5
-  boosterDistance: 6
+  boosterDistance: 5
   boosterSpeed: 2
   ease: 26
   magnetWaitingTime: 2
   piggybankCoin: {fileID: 0}
-  piggybankCoinObj: {fileID: 0}
   sizeTime: 1
   sizeWaitingTime: 0
   size: {x: 2.5, y: 2.5}
