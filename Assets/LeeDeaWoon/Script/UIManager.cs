@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager inst;
     private void Awake() => inst = this;
 
+    [Header("타이틀")]
     public GameObject Title;
     public TextMeshProUGUI touchToStart;
+
+    [Header("설정")]
+    public GameObject settingWindow;
 
     void Start()
     {
@@ -32,5 +35,10 @@ public class UIManager : MonoBehaviour
 
         touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
         Title.transform.DOLocalMoveY(Move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void Setting()
+    {
+
     }
 }
