@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -15,6 +16,9 @@ public class UIManager : MonoBehaviour
 
     [Header("¼³Á¤")]
     public GameObject settingWindow;
+    public GameObject blackScreen; 
+
+    public Image blackScreenTarget;
 
     void Start()
     {
@@ -39,6 +43,21 @@ public class UIManager : MonoBehaviour
 
     public void Setting()
     {
+        blackScreen.SetActive(true);
+        blackScreenTarget.raycastTarget = true;
 
+        settingWindow.transform.DOLocalMoveY(0, 3);
+    }
+
+    public void Setting_Cancel()
+    {
+        blackScreen.SetActive(false);
+        blackScreenTarget.raycastTarget = false;
+
+        settingWindow.transform.DOLocalMoveY(1570, 3);
+    }
+
+    public void Setting_BGM()
+    {
     }
 }

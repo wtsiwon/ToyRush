@@ -102,6 +102,13 @@ public enum EDir
     End = 5,
 }
 
+/// <summary>
+/// ¼³Á¤
+/// </summary>
+public enum ESettingType
+{
+
+}
 
 public class Defines : MonoBehaviour
 {
