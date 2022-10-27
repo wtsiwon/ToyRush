@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 3915099}
   - component: {fileID: 3915098}
   m_Layer: 5
-  m_Name: Cancell_Btn
+  m_Name: Cancel_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876976605}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3915099}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482618930}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Setting_Cancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3915099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +729,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876976605}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1361,7 +1373,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 533815624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &533815624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6958,9 +6982,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1165491267}
-  - {fileID: 3915097}
   - {fileID: 148635393}
   - {fileID: 1977295173}
+  - {fileID: 3915097}
   - {fileID: 1042206186}
   - {fileID: 1496519844}
   - {fileID: 533815622}
@@ -7055,7 +7079,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 901086120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482618930}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Setting_Credit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &901086120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7423,7 +7459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1001252104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482618930}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Setting_Btn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1001252104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7544,7 +7592,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1042206188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482618930}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Setting_BGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1042206188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8373,9 +8433,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: {fileID: 513447559}
   touchToStart: {fileID: 1629472620}
-  settingWindow: {fileID: 0}
-  blackScreen: {fileID: 0}
-  blackScreenTarget: {fileID: 0}
+  settingWindow: {fileID: 876976604}
+  blackScreen: {fileID: 201886685}
+  blackScreenTarget: {fileID: 201886687}
+  bgmColor: {fileID: 1042206188}
+  effectColor: {fileID: 1496519846}
+  isBGMCheck: 1
+  isEffectCheck: 1
 --- !u!1 &1496519843
 GameObject:
   m_ObjectHideFlags: 0
@@ -8458,7 +8522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1496519846}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482618930}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Setting_Effect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1496519846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9091,7 +9167,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876976605}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
