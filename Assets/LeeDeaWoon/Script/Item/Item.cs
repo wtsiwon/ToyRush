@@ -91,13 +91,15 @@ public class Item : MovingElement
 
 
                 case EItemType.Booster: // ∫ŒΩ∫≈Õ
-
                     Player.Instance.isBoosting = true;
+
                     collision.transform.DOLocalMoveX(boosterDistance, boosterSpeed).SetEase(ease);
                     yield return new WaitForSeconds(boosterDuration);
                     collision.transform.DOLocalMoveX(playerDistance.x, boosterSpeed).SetEase(ease);
                     yield return new WaitForSeconds(boosterSpeed);
+
                     Destroy(this.gameObject);
+                    Player.Instance.isBoosting = false;
                     break;
 
 

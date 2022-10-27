@@ -40,27 +40,26 @@ public class AttackPattern : MonoBehaviour
         {
             #region ¾Æ·§°ø°Ý
             case EAttackPattern.Bottom:
-                int moveWait = 1;
+                float moveWait = 0.5f;
 
                 StartCoroutine("FadeOn");
                 yield return new WaitForSeconds(3.5f);
 
                 StopCoroutine("FadeOn");
                 StopCoroutine("FadeOff");
-                yield return new WaitForSeconds(0.5f);
 
                 warningLine.DOFade(0, 0);
 
                 atk.transform.DOLocalMoveY(warningLine.transform.position.y, moveWait).SetEase(ease);
 
-                yield return new WaitForSeconds(0.5f);
-                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1,1,1));
+                yield return new WaitForSeconds(0.2f);
+                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(0.5f, 0.5f, 0f));
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
                 atk.transform.DOLocalMoveY(warningLine.transform.position.y * 2, moveWait).SetEase(ease);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
                 atk.transform.DOKill();
                 Destroy(this.gameObject);

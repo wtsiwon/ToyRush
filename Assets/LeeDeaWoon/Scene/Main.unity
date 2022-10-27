@@ -6130,7 +6130,7 @@ MonoBehaviour:
   isMagneting: 0
   isBig: 0
   vehicleType: 0
-  force: 9
+  force: 12
   isPressing: 0
 --- !u!212 &827267997
 SpriteRenderer:
