@@ -9,7 +9,22 @@ public class GameManager : MonoBehaviour
     private void Awake() => Instance = this;
 
     [Tooltip("거리")]
-    public int distance;
+    [SerializeField]
+    private int distance;
+
+    public int Distance
+    {
+        get
+        {
+            return distance;
+        }
+        set
+        {
+            distance = value;
+            distance = (int)(Time.deltaTime * BackGroundSpawner.Instance.backgroundSpd);
+            distanceText.text = $"{distance} + m";
+        }
+    }
 
     [SerializeField]
     [Tooltip("거리 Text")]
@@ -34,7 +49,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private void Update()
+    {
+
+    }
 
     private IEnumerator CSetGame()
     {
@@ -53,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpDate()
     {
-        if(isGameStart == true)
+        if (isGameStart == true)
         {
             //속도가 빨라지면 점수도 빨리 오름
             distance += (int)BackGroundSpawner.Instance.backgroundSpd / 10;
