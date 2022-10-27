@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void Setting_Language()
+    public void Setting_GameRule()
     {
 
     }
