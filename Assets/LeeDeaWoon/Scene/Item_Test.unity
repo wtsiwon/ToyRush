@@ -577,6 +577,7 @@ MonoBehaviour:
   distance: 0
   distanceText: {fileID: 0}
   coin: 0
+  isGameStart: 1
 --- !u!4 &1231483279
 Transform:
   m_ObjectHideFlags: 0

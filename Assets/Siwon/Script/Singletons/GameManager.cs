@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public const float STARTSPD = 8f;
 
     [Tooltip("시작확인")]
-    private bool isGameStart;
+    public bool isGameStart;
     public bool IsGameStart
     {
         get

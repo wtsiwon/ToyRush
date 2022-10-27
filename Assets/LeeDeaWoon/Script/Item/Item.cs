@@ -13,8 +13,7 @@ public class Item : MovingElement
 
     [Header("아이템 : 부스터")]
     public float boosterDuration; // 지속시간
-    public float boosterDistance; // 거리
-    public float boosterSpeed; // 연출속도
+    public float boosterSpeed; // 속력
     public Ease ease;
 
     [Header("아이템 : 자석")]
@@ -74,7 +73,6 @@ public class Item : MovingElement
                 case EItemType.Magnet: // 자석
 
                     Player.Instance.isMagneting = true;
-
                     yield return new WaitForSeconds(magnetWaitingTime);
                     Destroy(this.gameObject);
                     Player.Instance.isMagneting = false;
@@ -91,11 +89,17 @@ public class Item : MovingElement
 
 
                 case EItemType.Booster: // 부스터
-                    Player.Instance.isBoosting = true;
+                    Sequence mySequence = DOTween.Sequence();
+                    float playerXValue = collision.transform.position.x;
 
-                    collision.transform.DOLocalMoveX(boosterDistance, boosterSpeed).SetEase(ease);
-                    yield return new WaitForSeconds(boosterDuration);
-                    collision.transform.DOLocalMoveX(playerDistance.x, boosterSpeed).SetEase(ease);
+                    Player.Instance.isBoosting = true;
+                    mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
+                              .Append(collision.transform.DOLocalMoveX(5, boosterSpeed));
+
+                    yield return new WaitForSeconds(boosterDuration); // 지속시간
+
+                    collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
+
                     yield return new WaitForSeconds(boosterSpeed);
 
                     Destroy(this.gameObject);
