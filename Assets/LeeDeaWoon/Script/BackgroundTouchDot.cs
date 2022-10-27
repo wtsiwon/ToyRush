@@ -11,12 +11,12 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
     [Header("화면 클릭")]
     public Image screenClick;
-
-    [Header("UI 버튼")]
-    public GameObject mainBtn;
+    public Image screenPrevent;
 
     [Header("타이틀")]
-    public GameObject Title;
+    public GameObject title;
+    public GameObject mainBtn;
+    public GameObject settingBtn;
 
     [Header("시작 연출")]
     public GameObject smokeBoomb;
@@ -47,14 +47,16 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     {
         if (isStartClick == false)
         {
-            screenClick.raycastTarget = false;
-            isStartClick = true;
-
-            int btnDistance = -1100;
             int titleDistance = 1250;
+            int mainBtnDistance = -1100;
+            int settingBtnDistance = 1250;
 
             float time = 0.5f;
             float waitTime = 0.2f;
+
+            isStartClick = true;
+            screenPrevent.raycastTarget = true;
+            screenClick.raycastTarget = false;
 
             UIManager.inst.touchToStart.DOKill();
             UIManager.inst.Title.transform.DOKill();
@@ -63,18 +65,18 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
             for (int i = 1; i <= 4; i++)
             {
-
-                mainBtn.transform.GetChild(i).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+                mainBtn.transform.GetChild(i).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                 yield return new WaitForSeconds(waitTime);
 
                 switch (i)
                 {
                     case 1:
-                        Title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
+                        title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
+                        settingBtn.transform.DOLocalMoveY(settingBtnDistance, time).SetEase(easeType);
                         break;
 
                     case 4:
-                        mainBtn.transform.GetChild(0).DOLocalMoveY(btnDistance, time).SetEase(easeType);
+                        mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }
             }
