@@ -67,10 +67,16 @@ public class UIManager : MonoBehaviour
 
     public void Setting_Cancel()
     {
+        int settingMovePos = 1570;
+        int rightMovePos = 1723;
+        float waitTime = 0.5f;
+
         blackScreen.SetActive(false);
         blackScreenTarget.raycastTarget = false;
 
-        settingWindow.transform.DOLocalMoveY(1570, 0.5f);
+        settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime);
+        gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
+        creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
     }
 
     public void Setting_BGM()
@@ -107,24 +113,38 @@ public class UIManager : MonoBehaviour
 
     public void Setting_GameRule()
     {
-        int MovePos = -1723;
-        if (isRuleCheck == false)
+        int MovePos = 1723;
+        float waitTime = 0.5f;
+
+        if (isRuleCheck == true)
         {
-            isRuleCheck = true;
-            gameruleWindow.transform.DOLocalMoveX(MovePos, 0.5f);
+            gameruleWindow.transform.DOLocalMoveX(MovePos, waitTime);
+            isRuleCheck = false;
         }
         
         else
         {
-            isRuleCheck = false;
-            gameruleWindow.transform.DOLocalMoveX(-50, 0.5f);
+            gameruleWindow.transform.DOLocalMoveX(-MovePos, waitTime);
+            isRuleCheck = true;
         }
-
     }
 
     public void Setting_Credit()
     {
+        int MovePos = 1723;
+        float waitTime = 0.5f;
 
+        if (isCreditCheck == true)
+        {
+            isCreditCheck = false;
+            creditWindow.transform.DOLocalMoveX(MovePos, waitTime);
+        }
+
+        else
+        {
+            isCreditCheck = true;
+            creditWindow.transform.DOLocalMoveX(-MovePos, waitTime);
+        }
     }
     #endregion
 
