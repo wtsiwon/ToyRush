@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [Header("¼³Á¤")]
     public GameObject settingWindow;
     public GameObject blackScreen;
+    public GameObject gameruleWindow;
+    public GameObject creditWindow;
 
     public Image blackScreenTarget;
     public Image bgmColor;
@@ -25,7 +27,8 @@ public class UIManager : MonoBehaviour
 
     public bool isBGMCheck;
     public bool isEffectCheck;
-
+    public bool isRuleCheck;
+    public bool isCreditCheck;
 
 
     void Start()
@@ -69,7 +72,7 @@ public class UIManager : MonoBehaviour
 
         settingWindow.transform.DOLocalMoveY(1570, 0.5f);
     }
-    
+
     public void Setting_BGM()
     {
         if (isBGMCheck == true)
@@ -104,6 +107,18 @@ public class UIManager : MonoBehaviour
 
     public void Setting_GameRule()
     {
+        int MovePos = -1723;
+        if (isRuleCheck == false)
+        {
+            isRuleCheck = true;
+            gameruleWindow.transform.DOLocalMoveX(MovePos, 0.5f);
+        }
+        
+        else
+        {
+            isRuleCheck = false;
+            gameruleWindow.transform.DOLocalMoveX(-50, 0.5f);
+        }
 
     }
 
@@ -112,4 +127,9 @@ public class UIManager : MonoBehaviour
 
     }
     #endregion
+
+    public void Stop_Btn()
+    {
+
+    }
 }
