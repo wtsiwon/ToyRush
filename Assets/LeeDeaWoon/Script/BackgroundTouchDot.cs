@@ -17,6 +17,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     public GameObject title;
     public GameObject mainBtn;
     public GameObject settingBtn;
+    public GameObject stopBtn;
 
     [Header("시작 연출")]
     public GameObject smokeBoomb;
@@ -49,7 +50,9 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
         {
             int titleDistance = 1250;
             int mainBtnDistance = -1100;
-            int settingBtnDistance = 1250;
+
+            Vector2 settingPos = settingBtn.transform.localPosition;
+            Vector2 stopPos = stopBtn.transform.localPosition;
 
             float time = 0.5f;
             float waitTime = 0.2f;
@@ -72,10 +75,11 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
                 {
                     case 1:
                         title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
-                        settingBtn.transform.DOLocalMoveY(settingBtnDistance, time).SetEase(easeType);
+                        settingBtn.transform.DOLocalMove(stopPos, time).SetEase(easeType);
                         break;
 
                     case 4:
+                        stopBtn.transform.DOLocalMove(settingPos, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }

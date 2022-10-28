@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [Header("¼³Á¤")]
     public GameObject settingWindow;
     public GameObject blackScreen;
+    public GameObject gameruleWindow;
+    public GameObject creditWindow;
 
     public Image blackScreenTarget;
     public Image bgmColor;
@@ -25,7 +27,8 @@ public class UIManager : MonoBehaviour
 
     public bool isBGMCheck;
     public bool isEffectCheck;
-
+    public bool isRuleCheck;
+    public bool isCreditCheck;
 
 
     void Start()
@@ -64,12 +67,18 @@ public class UIManager : MonoBehaviour
 
     public void Setting_Cancel()
     {
+        int settingMovePos = 1570;
+        int rightMovePos = 1723;
+        float waitTime = 0.5f;
+
         blackScreen.SetActive(false);
         blackScreenTarget.raycastTarget = false;
 
-        settingWindow.transform.DOLocalMoveY(1570, 0.5f);
+        settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime);
+        gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
+        creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
     }
-    
+
     public void Setting_BGM()
     {
         if (isBGMCheck == true)
@@ -104,12 +113,43 @@ public class UIManager : MonoBehaviour
 
     public void Setting_GameRule()
     {
+        int MovePos = 1723;
+        float waitTime = 0.5f;
 
+        if (isRuleCheck == true)
+        {
+            gameruleWindow.transform.DOLocalMoveX(MovePos, waitTime);
+            isRuleCheck = false;
+        }
+        
+        else
+        {
+            gameruleWindow.transform.DOLocalMoveX(-MovePos, waitTime);
+            isRuleCheck = true;
+        }
     }
 
     public void Setting_Credit()
     {
+        int MovePos = 1723;
+        float waitTime = 0.5f;
 
+        if (isCreditCheck == true)
+        {
+            isCreditCheck = false;
+            creditWindow.transform.DOLocalMoveX(MovePos, waitTime);
+        }
+
+        else
+        {
+            isCreditCheck = true;
+            creditWindow.transform.DOLocalMoveX(-MovePos, waitTime);
+        }
     }
     #endregion
+
+    public void Stop_Btn()
+    {
+
+    }
 }
