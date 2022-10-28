@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -21,15 +22,29 @@ public class UIManager : MonoBehaviour
     public GameObject gameruleWindow;
     public GameObject creditWindow;
 
-    public Image blackScreenTarget;
     public Image bgmColor;
     public Image effectColor;
+
+    public Button settingBtn;
+    public Button cancelBtn;
+    public Button bgmBtn;
+    public Button effectBtn;
+    public Button gameruleBtn;
+    public Button creditBtn;
 
     public bool isBGMCheck;
     public bool isEffectCheck;
     public bool isRuleCheck;
     public bool isCreditCheck;
 
+    [Header("일시정지")]
+    public GameObject stopWindow;
+
+    public Button stopBtn;
+    public Button backBtn;
+    public Button reGameBtn;
+
+    WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(0.01f);
 
     void Start()
     {
@@ -37,6 +52,9 @@ public class UIManager : MonoBehaviour
 
         isBGMCheck = true;
         isEffectCheck = true;
+
+        Setting_Btns();
+        Stop_Btns();
     }
 
     void Update()
@@ -57,99 +75,136 @@ public class UIManager : MonoBehaviour
 
 
     #region 설정 창
-    public void Setting_Btn()
+    public void Setting_Btns()
     {
-        blackScreen.SetActive(true);
-        blackScreenTarget.raycastTarget = true;
-
-        settingWindow.transform.DOLocalMoveY(0, 0.5f);
-    }
-
-    public void Setting_Cancel()
-    {
-        int settingMovePos = 1570;
-        int rightMovePos = 1723;
-        float waitTime = 0.5f;
-
-        blackScreen.SetActive(false);
-        blackScreenTarget.raycastTarget = false;
-
-        settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime);
-        gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
-        creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime);
-    }
-
-    public void Setting_BGM()
-    {
-        if (isBGMCheck == true)
+        // 설정 버튼을 눌렀을 때
+        settingBtn.onClick.AddListener(() =>
         {
-            isBGMCheck = false;
-            bgmColor.DOColor(Color.gray, 0);
-            Debug.Log("BGM이 꺼졌습니다");
-        }
-        else
-        {
-            isBGMCheck = true;
-            bgmColor.DOColor(Color.white, 0);
-            Debug.Log("BGM이 켜졌습니다.");
-        }
-    }
+            blackScreen.SetActive(true);
 
-    public void Setting_Effect()
-    {
-        if (isEffectCheck == true)
-        {
-            isEffectCheck = false;
-            effectColor.DOColor(Color.gray, 0);
-            Debug.Log("Effect가 꺼졌습니다");
-        }
-        else
-        {
-            isEffectCheck = true;
-            effectColor.DOColor(Color.white, 0);
-            Debug.Log("Effect가 켜졌습니다.");
-        }
-    }
+            settingWindow.transform.DOLocalMoveY(0, 0.5f).SetUpdate(true);
+        });
 
-    public void Setting_GameRule()
-    {
-        int MovePos = 1723;
-        float waitTime = 0.5f;
-
-        if (isRuleCheck == true)
+        // 취소 버튼을 눌렀을 때
+        cancelBtn.onClick.AddListener(() =>
         {
-            gameruleWindow.transform.DOLocalMoveX(MovePos, waitTime);
-            isRuleCheck = false;
-        }
-        
-        else
-        {
-            gameruleWindow.transform.DOLocalMoveX(-MovePos, waitTime);
-            isRuleCheck = true;
-        }
-    }
+            int settingMovePos = 1570;
+            int rightMovePos = 1723;
+            float waitTime = 0.5f;
 
-    public void Setting_Credit()
-    {
-        int MovePos = 1723;
-        float waitTime = 0.5f;
+            blackScreen.SetActive(false);
 
-        if (isCreditCheck == true)
-        {
-            isCreditCheck = false;
-            creditWindow.transform.DOLocalMoveX(MovePos, waitTime);
-        }
+            settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true);
+            gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
+            creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
+        });
 
-        else
+        // BGM 버튼을 눌렀을 때
+        bgmBtn.onClick.AddListener(() =>
         {
-            isCreditCheck = true;
-            creditWindow.transform.DOLocalMoveX(-MovePos, waitTime);
-        }
+            if (isBGMCheck == true)
+            {
+                isBGMCheck = false;
+                bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
+                Debug.Log("BGM이 꺼졌습니다");
+            }
+            else
+            {
+                isBGMCheck = true;
+                bgmColor.DOColor(Color.white, 0).SetUpdate(true);
+                Debug.Log("BGM이 켜졌습니다.");
+            }
+        });
+
+        // 효과음 버튼을 눌렀을 때
+        effectBtn.onClick.AddListener(() =>
+        {
+            if (isEffectCheck == true)
+            {
+                isEffectCheck = false;
+                effectColor.DOColor(Color.gray, 0).SetUpdate(true);
+                Debug.Log("Effect가 꺼졌습니다");
+            }
+            else
+            {
+                isEffectCheck = true;
+                effectColor.DOColor(Color.white, 0).SetUpdate(true);
+                Debug.Log("Effect가 켜졌습니다.");
+            }
+        });
+
+        // 게임규칙 버튼을 눌렀을 때
+        gameruleBtn.onClick.AddListener(() =>
+        {
+            int MovePos = 1723;
+            float waitTime = 0.5f;
+
+            if (isRuleCheck == true)
+            {
+                gameruleWindow.transform.DOLocalMoveX(MovePos, waitTime).SetUpdate(true);
+                isRuleCheck = false;
+            }
+
+            else
+            {
+                gameruleWindow.transform.DOLocalMoveX(-MovePos, waitTime).SetUpdate(true);
+                isRuleCheck = true;
+            }
+        });
+
+        // 크레딧 버튼을 눌렀을 때
+        creditBtn.onClick.AddListener(() =>
+        {
+            int MovePos = 1723;
+            float waitTime = 0.5f;
+
+            if (isCreditCheck == true)
+            {
+                isCreditCheck = false;
+                creditWindow.transform.DOLocalMoveX(MovePos, waitTime).SetUpdate(true);
+            }
+
+            else
+            {
+                isCreditCheck = true;
+                creditWindow.transform.DOLocalMoveX(-MovePos, waitTime).SetUpdate(true);
+            }
+        });
     }
     #endregion
 
-    public void Stop_Btn()
+    public void Stop_Btns()
     {
+        // 일시정지 버튼을 눌렀을 때
+        stopBtn.onClick.AddListener(() =>
+        {
+            int movePos = 0;
+            float waitTime = 0.5f;
 
+            Time.timeScale = 0;
+
+            blackScreen.SetActive(true);
+
+            stopWindow.transform.DOLocalMoveY(movePos, waitTime).SetUpdate(true);
+        });
+
+        // 돌아가기 버튼을 눌렀을 때
+        backBtn.onClick.AddListener(() =>
+        {
+            int movePos = 1450;
+            float waitTime = 0.5f;
+
+            Time.timeScale = 1;
+
+            blackScreen.SetActive(false);
+
+            stopWindow.transform.DOLocalMoveY(movePos, waitTime).SetUpdate(true);
+        });
+
+        reGameBtn.onClick.AddListener(() =>
+        {
+            DOTween.PauseAll();
+            SceneManager.LoadScene("Main");
+        });
     }
 }

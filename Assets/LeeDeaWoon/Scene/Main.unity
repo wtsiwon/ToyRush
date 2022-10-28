@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_Cancel
         m_Mode: 1
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_Btn
         m_Mode: 1
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 295089670}
   - component: {fileID: 295089669}
   m_Layer: 5
-  m_Name: GameRule_Btn (1)
+  m_Name: Back_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1303,11 +1303,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1653684116}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 413}
+  m_AnchoredPosition: {x: 0, y: 314}
   m_SizeDelta: {x: 378, y: 214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295089669
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_GameRule
         m_Mode: 1
@@ -1786,9 +1786,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Setting_GameRule
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6863,7 +6863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 96}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 586, y: 1012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634809592
@@ -7879,7 +7879,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_Credit
         m_Mode: 1
@@ -8410,9 +8410,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Setting_Btn
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8543,7 +8543,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_BGM
         m_Mode: 1
@@ -8681,7 +8681,7 @@ GameObject:
   - component: {fileID: 1097855433}
   - component: {fileID: 1097855432}
   m_Layer: 5
-  m_Name: GameRule_Btn (2)
+  m_Name: ReGame_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8703,7 +8703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -113}
+  m_AnchoredPosition: {x: 0, y: -212}
   m_SizeDelta: {x: 378, y: 214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097855432
@@ -8750,7 +8750,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_GameRule
         m_Mode: 1
@@ -9593,13 +9593,22 @@ MonoBehaviour:
   blackScreen: {fileID: 201886685}
   gameruleWindow: {fileID: 752971479}
   creditWindow: {fileID: 46106860}
-  blackScreenTarget: {fileID: 201886687}
   bgmColor: {fileID: 1042206188}
   effectColor: {fileID: 1496519846}
+  settingBtn: {fileID: 1001252103}
+  cancelBtn: {fileID: 3915098}
+  bgmBtn: {fileID: 1042206187}
+  effectBtn: {fileID: 1496519845}
+  gameruleBtn: {fileID: 533815623}
+  creditBtn: {fileID: 901086119}
   isBGMCheck: 1
   isEffectCheck: 1
   isRuleCheck: 0
   isCreditCheck: 0
+  stopWindow: {fileID: 1653684115}
+  stopBtn: {fileID: 128671192}
+  backBtn: {fileID: 295089669}
+  reGameBtn: {fileID: 1097855432}
 --- !u!1 &1496519843
 GameObject:
   m_ObjectHideFlags: 0
@@ -9683,7 +9692,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_Effect
         m_Mode: 1
@@ -9848,7 +9857,7 @@ GameObject:
   - component: {fileID: 1628738229}
   - component: {fileID: 1628738228}
   m_Layer: 5
-  m_Name: GameRule_Btn
+  m_Name: StopSetting_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9866,11 +9875,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1653684116}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 149}
+  m_AnchoredPosition: {x: 0, y: 49.999992}
   m_SizeDelta: {x: 378, y: 214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628738228
@@ -9917,7 +9926,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482618930}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Setting_GameRule
         m_Mode: 1
@@ -10129,17 +10138,17 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 634809591}
-  - {fileID: 1628738227}
   - {fileID: 295089668}
+  - {fileID: 1628738227}
   - {fileID: 1097855431}
   m_Father: {fileID: 409202688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 645, y: 1445}
+  m_AnchoredPosition: {x: 771.98895, y: 1476}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5000007, y: 0.49999994}
 --- !u!1 &1654122255
 GameObject:
   m_ObjectHideFlags: 0
@@ -11083,7 +11092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2099266514
 RectTransform:
   m_ObjectHideFlags: 0

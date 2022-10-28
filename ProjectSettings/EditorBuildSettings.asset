@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/LeeDeaWoon/Scene/Main.unity
+    guid: 78c484d0526fb3b409e02f3ac26bbb10
   m_configObjects: {}
