@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using System;
 public class Player : Singleton<Player>
 {
     #region Condition
@@ -18,6 +18,8 @@ public class Player : Singleton<Player>
 
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
+
+    public Action OnDie;
 
     [Tooltip("누르고 있나")]
     public bool isPressing;
@@ -104,7 +106,19 @@ public class Player : Singleton<Player>
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        //공격패턴 맞아도 죽게 추가하기
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            
+        }
+    }
+
+    private void Die()
+    {
+        if(vehicleType == EVehicleType.None)
+        {
+
+        }
     }
 
     /// <summary>
