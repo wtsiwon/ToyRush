@@ -21,13 +21,14 @@ public class AttackPattern : MonoBehaviour
     [Header("오른쪽 공격")]
     public GameObject enemy;
     public GameObject bulletPrefab;
-    public GameObject questionMarkPrefab;
+    public GameObject warningSummon;
+    public GameObject warningLinePrefab;
 
-    public int enemyMoveSpeed;
-    public float bulletSummonSpeed;
     public int bulletNumber;
-
+    public float enemyMoveSpeed;
     public const int enemeyMovePos = 7;
+
+    float[] summonPos = new float[4];
 
     private void Start()
     {
@@ -74,19 +75,29 @@ public class AttackPattern : MonoBehaviour
 
             #region 오른쪽 공격
             case EAttackPattern.Right:
+                int waitTime = 3;
 
-                enemy.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
-
+                warningSummon.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
                 for (int i = 0; i < bulletNumber; i++)
                 {
-                    if (transform.position.y <= 11)
-                    {
-                        Instantiate(questionMarkPrefab, enemy.transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-                        yield return new WaitForSeconds(bulletSummonSpeed);
-                    }
+                    float warninTimeMin = 0.1f;
+                    float warninTimeMax = 0.4f;
+
+                    summonPos[i] = Random.Range(warninTimeMin, warninTimeMax);
+                    Instantiate(warningLinePrefab, new Vector2(0, warningSummon.transform.position.y), Quaternion.identity).transform.parent = gameObject.transform;
+                    yield return new WaitForSeconds(summonPos[i]);
                 }
 
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(waitTime);
+
+                enemy.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
+                for (int i = 0; i < bulletNumber; i++)
+                {
+                    Instantiate(bulletPrefab, new Vector2(enemy.transform.position.x, enemy.transform.position.y), Quaternion.identity).transform.parent = gameObject.transform;
+                    yield return new WaitForSeconds(summonPos[i]);
+                }
+
+                yield return new WaitForSeconds(waitTime);
                 enemy.transform.DOKill();
                 bulletPrefab.transform.DOKill();
                 Destroy(this.gameObject);
