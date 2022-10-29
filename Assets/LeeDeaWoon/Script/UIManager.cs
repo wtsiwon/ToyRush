@@ -199,6 +199,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    #region 일시정지 창
     public void Stop_Btns()
     {
         // 일시정지 버튼을 눌렀을 때
@@ -254,7 +255,9 @@ public class UIManager : MonoBehaviour
         {
             DOTween.PauseAll();
             Time.timeScale = 1;
+
             SceneManager.LoadScene("Main");
         });
     }
+    #endregion
 }

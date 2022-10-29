@@ -21,7 +21,13 @@ public class AttackPattern : MonoBehaviour
     [Header("오른쪽 공격")]
     public GameObject enemy;
     public GameObject bulletPrefab;
-    public int enemyMoveTime;
+    public GameObject questionMarkPrefab;
+
+    public int enemyMoveSpeed;
+    public float bulletSummonSpeed;
+    public int bulletNumber;
+
+    public const int enemeyMovePos = 7;
 
     private void Start()
     {
@@ -68,22 +74,23 @@ public class AttackPattern : MonoBehaviour
 
             #region 오른쪽 공격
             case EAttackPattern.Right:
-                int enemyYValue = 7;
-                float waitTime = 0.5f;
 
-                enemy.transform.DOLocalMoveY(enemyYValue, enemyMoveTime);
+                enemy.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < bulletNumber; i++)
                 {
-                    Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-                    yield return new WaitForSeconds(waitTime);
+                    if (transform.position.y <= 11)
+                    {
+                        Instantiate(questionMarkPrefab, enemy.transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+                        yield return new WaitForSeconds(bulletSummonSpeed);
+                    }
                 }
 
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(5);
                 enemy.transform.DOKill();
                 bulletPrefab.transform.DOKill();
                 Destroy(this.gameObject);
-            #endregion
+                #endregion
                 break;
         }
 

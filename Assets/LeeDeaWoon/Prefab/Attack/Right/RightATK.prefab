@@ -51,7 +51,9 @@ MonoBehaviour:
   shakeWaitTime: 0
   enemy: {fileID: 2516807148198077480}
   bulletPrefab: {fileID: 8774235711557805857, guid: b4a0af8fe66f4b24a9865cc90dba0e56, type: 3}
-  enemyMoveTime: 3
+  questionMarkPrefab: {fileID: 2279750570935234984, guid: e796634c4d3a0e449a016e0f6be33770, type: 3}
+  enemyMoveSpeed: 1
+  bulletSummonSpeed: 0.1
 --- !u!1 &2516807148198077480
 GameObject:
   m_ObjectHideFlags: 0

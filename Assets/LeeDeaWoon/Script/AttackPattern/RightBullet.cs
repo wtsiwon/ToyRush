@@ -18,7 +18,13 @@ public class RightBullet : MonoBehaviour
         BulletMove();
     }
 
-    void BulletMove() => rb2D.velocity = Vector2.left * speed;
+    void BulletMove()
+    {
+        rb2D.velocity = Vector2.left * speed;
+
+        if (transform.position.x < -11)
+            Destroy(this.gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
