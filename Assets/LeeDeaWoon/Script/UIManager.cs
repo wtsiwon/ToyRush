@@ -253,6 +253,7 @@ public class UIManager : MonoBehaviour
         reGameBtn.onClick.AddListener(() =>
         {
             DOTween.PauseAll();
+            Time.timeScale = 1;
             SceneManager.LoadScene("Main");
         });
     }
