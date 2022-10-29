@@ -42,9 +42,10 @@ public class UIManager : MonoBehaviour
 
     public Button stopBtn;
     public Button backBtn;
+    public Button stopSettingBtn;
     public Button reGameBtn;
 
-    WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(0.01f);
+    public bool isStopCheck;
 
     void Start()
     {
@@ -92,11 +93,26 @@ public class UIManager : MonoBehaviour
             int rightMovePos = 1723;
             float waitTime = 0.5f;
 
-            blackScreen.SetActive(false);
+            Sequence sequence = DOTween.Sequence();
 
-            settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true);
-            gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
-            creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
+            if (isStopCheck == false)
+            {
+                gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
+                creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
+
+                sequence.Append(settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true))
+                        .OnComplete(() =>
+                        {
+                            blackScreen.SetActive(false);
+                            settingWindow.transform.DOLocalMoveX(0, 0).SetUpdate(true);
+                        });
+            }
+
+            else
+            {
+                settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true);
+                stopWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
+            }
         });
 
         // BGM 버튼을 눌렀을 때
@@ -136,18 +152,23 @@ public class UIManager : MonoBehaviour
         // 게임규칙 버튼을 눌렀을 때
         gameruleBtn.onClick.AddListener(() =>
         {
-            int MovePos = 1723;
             float waitTime = 0.5f;
+            int gameRuleMovePos = 1723;
+            int settingMovePos = -720;
 
             if (isRuleCheck == true)
             {
-                gameruleWindow.transform.DOLocalMoveX(MovePos, waitTime).SetUpdate(true);
+                if (isCreditCheck == false)
+                    settingWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
+
                 isRuleCheck = false;
+                gameruleWindow.transform.DOLocalMoveX(gameRuleMovePos, waitTime).SetUpdate(true);
             }
 
             else
             {
-                gameruleWindow.transform.DOLocalMoveX(-MovePos, waitTime).SetUpdate(true);
+                settingWindow.transform.DOLocalMoveX(settingMovePos, waitTime).SetUpdate(true);
+                gameruleWindow.transform.DOLocalMoveX(-gameRuleMovePos, waitTime).SetUpdate(true);
                 isRuleCheck = true;
             }
         });
@@ -155,19 +176,24 @@ public class UIManager : MonoBehaviour
         // 크레딧 버튼을 눌렀을 때
         creditBtn.onClick.AddListener(() =>
         {
-            int MovePos = 1723;
             float waitTime = 0.5f;
+            int creditMovePos = 1723;
+            int settingMovePos = -720;
 
             if (isCreditCheck == true)
             {
+                if (isRuleCheck == false)
+                    settingWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
+
                 isCreditCheck = false;
-                creditWindow.transform.DOLocalMoveX(MovePos, waitTime).SetUpdate(true);
+                creditWindow.transform.DOLocalMoveX(creditMovePos, waitTime).SetUpdate(true);
             }
 
             else
             {
                 isCreditCheck = true;
-                creditWindow.transform.DOLocalMoveX(-MovePos, waitTime).SetUpdate(true);
+                creditWindow.transform.DOLocalMoveX(-creditMovePos, waitTime).SetUpdate(true);
+                settingWindow.transform.DOLocalMoveX(settingMovePos, waitTime).SetUpdate(true);
             }
         });
     }
@@ -178,29 +204,52 @@ public class UIManager : MonoBehaviour
         // 일시정지 버튼을 눌렀을 때
         stopBtn.onClick.AddListener(() =>
         {
-            int movePos = 0;
             float waitTime = 0.5f;
-
+            int stopMovePos = 0;
+            int settingMovePos = -720;
+            int MusicMovePos = -45;
             Time.timeScale = 0;
 
+            isStopCheck = true;
             blackScreen.SetActive(true);
+            creditBtn.gameObject.SetActive(false);
+            gameruleBtn.gameObject.SetActive(false);
 
-            stopWindow.transform.DOLocalMoveY(movePos, waitTime).SetUpdate(true);
+            bgmBtn.transform.DOLocalMoveY(MusicMovePos, 0).SetUpdate(true);
+            effectBtn.transform.DOLocalMoveY(MusicMovePos, 0).SetUpdate(true);
+
+            stopWindow.transform.DOLocalMoveX(0, 0).SetUpdate(true);
+            settingWindow.transform.DOLocalMoveX(settingMovePos, 0).SetUpdate(true);
+            stopWindow.transform.DOLocalMoveY(stopMovePos, waitTime).SetUpdate(true);
         });
 
         // 돌아가기 버튼을 눌렀을 때
         backBtn.onClick.AddListener(() =>
         {
-            int movePos = 1450;
             float waitTime = 0.5f;
+            int stopMovePos = 1450;
+            int settingMovePos = 1570;
 
             Time.timeScale = 1;
 
             blackScreen.SetActive(false);
 
-            stopWindow.transform.DOLocalMoveY(movePos, waitTime).SetUpdate(true);
+            stopWindow.transform.DOLocalMoveY(stopMovePos, waitTime).SetUpdate(true);
+            settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true);
         });
 
+        // 설정 버튼을 눌렀을 때
+        stopSettingBtn.onClick.AddListener(() =>
+        {
+            float waitTime = 0.5f;
+            int stopMovePos = 450;
+            int settingMovePos = 0;
+
+            stopWindow.transform.DOLocalMoveX(stopMovePos, waitTime).SetUpdate(true);
+            settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true);
+        });
+
+        // 메뉴로 버튼을 눌렀을 때
         reGameBtn.onClick.AddListener(() =>
         {
             DOTween.PauseAll();
