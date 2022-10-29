@@ -11,6 +11,10 @@ public class DestroyZone : MonoBehaviour
             case "BackGround":
                 BackGroundSpawner.Instance.SpawnBackGround();
                 break;
+            case "Item":
+                collision.GetComponent<Item>().Return();
+                break;
+
         }
     }
 }

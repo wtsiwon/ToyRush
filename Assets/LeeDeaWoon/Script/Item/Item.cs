@@ -8,7 +8,6 @@ public class Item : MovingElement
     public EItemType itemType;
 
     public new Collider2D collider2D;
-    public SpriteRenderer spriteRenderer;
     private Vector2 playerDistance;
 
     [Header("아이템 : 부스터")]
@@ -31,10 +30,10 @@ public class Item : MovingElement
 
     float sizeTimer;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         collider2D = GetComponent<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerDistance.x = Player.Instance.transform.position.x;
     }
@@ -61,7 +60,7 @@ public class Item : MovingElement
         if (collision.CompareTag("Player"))
         {
             collider2D.enabled = false;
-            spriteRenderer.DOFade(0, 0);
+            spriterenderer.DOFade(0, 0);
 
             switch (itemType)
             {

@@ -8,6 +8,29 @@ public class MovingElementManager : Singleton<MovingElementManager>
     public List<MovingElement> movingElementList = new List<MovingElement>();
     //여기서 장애물 상태조정, 아이템상태, 배경의 속도 등을 조정할 예정
 
+    public float firstBoostingSpd;
+
+    public void ReturnObstacle()
+    {
+
+    }
+
+    private void Start()
+    {
+
+    }
+
+    private IEnumerator Check()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            for (int i = 0; i < movingElementList.Count; i++)
+            {
+                print(movingElementList[i]);
+            }
+        }
+    }
 
     public void BackGroundSpeedSet(float spd)
     {
@@ -33,7 +56,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
     {
         foreach (MovingElement item in movingElementList)
         {
-            if(item is Item)
+            if (item is Item)
             {
                 item.SetMovingSpd(spd);
             }
@@ -42,9 +65,21 @@ public class MovingElementManager : Singleton<MovingElementManager>
 
     public void MovingElementSpeedSet(float spd)
     {
-        foreach(MovingElement movingElement in movingElementList)
+        foreach (MovingElement movingElement in movingElementList)
         {
             movingElement.SetMovingSpd(spd);
         }
     }
+
+    public void BoostingSpeedSet(float duration)
+    {
+        MovingElementSpeedSet(firstBoostingSpd);
+    }
+
+    private IEnumerator Boosting()
+    {
+
+        yield return new WaitForSeconds(1f);
+    }
+
 }
