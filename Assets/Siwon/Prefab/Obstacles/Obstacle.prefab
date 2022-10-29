@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6987003390071588547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6987003392076574127}
   m_RootOrder: 0
@@ -178,6 +178,6 @@ MonoBehaviour:
   poolType: 3
   spriterenderer: {fileID: 0}
   obstacleType: 2
-  spinSpd: 4
+  spinSpd: 2.75
   maxAngle: 0
   minAngle: 0

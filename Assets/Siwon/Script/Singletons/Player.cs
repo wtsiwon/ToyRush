@@ -9,6 +9,19 @@ public class Player : Singleton<Player>
     public bool isBoosting;
     public bool isMagneting;
     public bool isBig;
+    private bool shouldObstacleBreak;
+    public bool ShouldObstacleBreak
+    {
+        get => shouldObstacleBreak;
+
+        set
+        {
+            if(isBoosting == true)
+            {
+
+            }
+        }
+    }
     #endregion
 
     [Tooltip("현재 무엇을 타고 있는가")]
@@ -106,19 +119,21 @@ public class Player : Singleton<Player>
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //공격패턴 맞아도 죽게 추가하기
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            
-        }
+        
+
+        
     }
 
-    private void Die()
+
+    private void Die(GameObject obj)
     {
+        
+
         if(vehicleType == EVehicleType.None)
         {
 
         }
+
     }
 
     /// <summary>

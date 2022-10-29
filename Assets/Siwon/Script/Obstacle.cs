@@ -57,7 +57,7 @@ public class Obstacle : MovingElement
     {
         if (spawnPoint.x - transform.position.x > DISTANCE)
         {
-            Return();
+            base.Return();
         }
 
         if (obstacleType == EObstacleType.Swing)

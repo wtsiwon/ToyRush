@@ -10,22 +10,6 @@ public class MovingElement : PoolingObj
     [HideInInspector]
     public SpriteRenderer spriterenderer;
 
-    private Time time;
-    public Time Time
-    {
-        get
-        {
-            return time;
-        }
-        set
-        {
-            time = value;
-            if (time.Equals(1))
-            {
-                rb.velocity = Vector3.left * 1f;
-            }
-        }
-    }
     
     protected virtual void OnEnable()
     {
@@ -46,5 +30,11 @@ public class MovingElement : PoolingObj
     protected virtual void Start()
     {
         spriterenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public override void Return()
+    {
+        base.Return();
+        MovingElementManager.Instance.movingElementList.Remove(this);
     }
 }
