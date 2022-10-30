@@ -769,7 +769,13 @@ MonoBehaviour:
   - {fileID: 1124581160}
   - {fileID: 1517825123}
   - {fileID: 814032872}
-  obstacleSpriteList: []
+  obstacleSpriteList:
+  - {fileID: 21300000, guid: aeda37a5075a3604c890d9e1cbf5a0b0, type: 3}
+  - {fileID: 21300000, guid: 80c3106f713ddb64ba1998dacbaf9fbc, type: 3}
+  coinPatterns:
+  - {fileID: 282082266851877188, guid: 5d431c0440313af478a33dff585072c0, type: 3}
+  - {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}
+  - {fileID: 7484336930525869784, guid: 09b54fbabb474ea4584eaa9efa91fa90, type: 3}
   obstacleSpawnInterval: 1
   obstacleSpawnDelay: 6
   canSpawn: 0
@@ -1170,6 +1176,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: {fileID: 136761414}
   touchToStart: {fileID: 120554823}
+  settingWindow: {fileID: 0}
+  blackScreen: {fileID: 0}
+  gameruleWindow: {fileID: 0}
+  creditWindow: {fileID: 0}
+  bgmColor: {fileID: 0}
+  effectColor: {fileID: 0}
+  settingBtn: {fileID: 0}
+  cancelBtn: {fileID: 0}
+  bgmBtn: {fileID: 0}
+  effectBtn: {fileID: 0}
+  gameruleBtn: {fileID: 0}
+  creditBtn: {fileID: 0}
+  isBGMCheck: 0
+  isEffectCheck: 0
+  isRuleCheck: 0
+  isCreditCheck: 0
+  stopWindow: {fileID: 0}
+  stopBtn: {fileID: 0}
+  backBtn: {fileID: 0}
+  stopSettingBtn: {fileID: 0}
+  reGameBtn: {fileID: 0}
+  isStopCheck: 0
 --- !u!4 &866972323
 Transform:
   m_ObjectHideFlags: 0
@@ -1673,8 +1701,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easeType: 4
   screenClick: {fileID: 1273626438}
+  screenPrevent: {fileID: 0}
+  title: {fileID: 0}
   mainBtn: {fileID: 1435940256}
-  Title: {fileID: 136761414}
+  settingBtn: {fileID: 0}
+  stopBtn: {fileID: 0}
   smokeBoomb: {fileID: 1860033639}
   player: {fileID: 1322078922}
   playerDistance: -5
@@ -2823,6 +2854,7 @@ MonoBehaviour:
   distance: 0
   distanceText: {fileID: 1053278587}
   coin: 0
+  isGameStart: 0
 --- !u!4 &1950499007
 Transform:
   m_ObjectHideFlags: 0
