@@ -101,14 +101,11 @@ MonoBehaviour:
   spriterenderer: {fileID: 0}
   itemType: 5
   collider2D: {fileID: 0}
-  spriteRenderer: {fileID: 0}
   boosterDuration: 0
-  boosterDistance: 0
   boosterSpeed: 0
   ease: 0
   magnetWaitingTime: 0
   piggybankCoin: {fileID: 0}
-  piggybankCoinObj: {fileID: 0}
   sizeTime: 1
   sizeWaitingTime: 2
   size: {x: 2.5, y: 2.5}

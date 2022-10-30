@@ -101,7 +101,6 @@ MonoBehaviour:
   spriterenderer: {fileID: 0}
   itemType: 3
   collider2D: {fileID: 0}
-  spriteRenderer: {fileID: 0}
   boosterDuration: 5
   boosterSpeed: 0.5
   ease: 26

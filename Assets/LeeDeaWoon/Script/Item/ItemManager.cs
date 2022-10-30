@@ -29,17 +29,20 @@ public class ItemManager : MonoBehaviour
     public Button booster1500Btn;
 
     public bool isStartItemClick;
+    public bool isStartItemSummon;
+    public bool isStartItemCheck;
 
     void Start()
     {
-        StartItem();
+        StartItem_Btn();
         StartCoroutine(Item_Spawn());
+
     }
 
     void Update()
     {
-        if (GameManager.Instance.isGameStart == true)
-            startItem.SetActive(true);
+        StartItem_Summon();
+        StartCoroutine(StartItem());
     }
 
     IEnumerator Item_Spawn()
@@ -54,29 +57,91 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public void StartItem()
+
+    #region 시작 아이템
+    public void StartItem_Btn()
     {
+        int movePos = 1250;
+        float waitTime = 0.5f;
+
+        // 500원 부스터 버튼을 눌렀을 때
         booster500Btn.onClick.AddListener(() =>
         {
+            isStartItemClick = true;
+
+            StartItem_DoKill();
             boosterRayCast500.raycastTarget = false;
             boosterRayCast1500.raycastTarget = false;
 
-            booster500Btn.transform.DOScale(new Vector2(0, 0), 0.5f);
-            booster1500Btn.transform.DOLocalMoveY(1250, 0.5f);
+            booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
+            booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
             StartCoroutine(Start_Booster());
         });
 
+        // 1500원 부스터 버튼을 눌렀을 때
         booster1500Btn.onClick.AddListener(() =>
         {
+            isStartItemClick = true;
+
+            StartItem_DoKill();
             boosterRayCast500.raycastTarget = false;
             boosterRayCast1500.raycastTarget = false;
 
-            booster500Btn.transform.DOLocalMoveY(1250, 0.5f);
-            booster1500Btn.transform.DOScale(new Vector2(0, 0), 0.5f);
+            booster500Btn.transform.DOLocalMoveY(movePos, waitTime);
+            booster1500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
             StartCoroutine(Start_Booster());
         });
+    }
+
+    void StartItem_Summon()
+    {
+        if (GameManager.Instance.isGameStart == true && isStartItemSummon == false)
+        {
+            isStartItemSummon = true;
+            Instantiate(startItem, transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+        }
+    }
+
+    void StartItem_DoKill()
+    {
+        booster500Btn.transform.DOKill();
+        booster1500Btn.transform.DOKill();
+    }
+
+    IEnumerator StartItem()
+    {
+        if (GameManager.Instance.isGameStart == true && isStartItemCheck == false)
+        {
+            isStartItemCheck = true;
+
+            startItem.SetActive(true);
+
+            booster500Btn.transform.DOLocalMoveY(100, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            yield return new WaitForSeconds(0.2f);
+            booster1500Btn.transform.DOLocalMoveY(100, 0.5f).SetLoops(-1, LoopType.Yoyo);
+
+            yield return new WaitForSeconds(4f);
+
+            if (isStartItemClick == false)
+            {
+                StartItem_DoKill();
+
+                boosterRayCast500.raycastTarget = false;
+                boosterRayCast1500.raycastTarget = false;
+
+                booster500Btn.transform.DOLocalMoveY(1250, 0.5f);
+                booster1500Btn.transform.DOLocalMoveY(1250, 0.5f);
+
+                yield return new WaitForSeconds(1);
+
+                StartItem_DoKill();
+
+                Destroy(startItem);
+            }
+
+        }
     }
 
     IEnumerator Start_Booster()
@@ -97,4 +162,6 @@ public class ItemManager : MonoBehaviour
 
         //Player.Instance.isBoosting = false;
     }
+
+    #endregion
 }

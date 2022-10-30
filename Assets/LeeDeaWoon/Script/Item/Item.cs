@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class Item : MovingElement
@@ -41,12 +42,10 @@ public class Item : MovingElement
     void Update()
     {
         Item_Delay();
-
     }
 
-
     // 아이템 딜레이
-    public void Item_Delay()
+    void Item_Delay()
     {
         if (sizeTimer < sizeWaitingTime && Player.Instance.isBig == true)
             sizeTimer += Time.deltaTime;
@@ -81,9 +80,13 @@ public class Item : MovingElement
 
 
                 case EItemType.Piggybank: // 저금통
+                    float posMinX = 3f;
+                    float posMaxX = 6f;
 
-                    Instantiate(piggybankCoin, transform.position, Quaternion.identity);
-                    Destroy(this.gameObject);
+                    float posMinY = 2f;
+                    float posMaxY = 3f;
+
+                    Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity).transform.parent = gameObject.transform;
                     break;
 
 
