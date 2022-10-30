@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2429847750684184442}
   m_Layer: 0
-  m_Name: Coin2
+  m_Name: BoomCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
