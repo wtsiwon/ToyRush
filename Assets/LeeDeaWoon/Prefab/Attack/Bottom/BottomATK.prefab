@@ -212,8 +212,11 @@ MonoBehaviour:
   eAttackPattern: 0
   ease: 13
   atk: {fileID: 8378623112291639829}
-  warningLine: {fileID: 8378623112708322429}
+  warningLineBottom: {fileID: 8378623112708322429}
   shakeWaitTime: 0.5
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 0}
-  enemyMoveTime: 0
+  warningSummon: {fileID: 0}
+  warningLineRight: {fileID: 0}
+  bulletNumber: 0
+  enemyMoveSpeed: 0
