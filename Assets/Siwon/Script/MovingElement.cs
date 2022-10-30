@@ -30,6 +30,7 @@ public class MovingElement : PoolingObj
     protected virtual void Start()
     {
         spriterenderer = GetComponent<SpriteRenderer>();
+        print("Á¦¹ß");
     }
 
     public override void Return()

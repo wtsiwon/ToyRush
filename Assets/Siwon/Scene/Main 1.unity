@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1150964592}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &65824027
 MonoBehaviour:
@@ -171,8 +171,15 @@ MonoBehaviour:
   - {fileID: 1629106816624145166, guid: 4d927cb598fb8d6448b9ffd731ca237e, type: 3}
   - {fileID: 4684645278609450343, guid: b756d5f1a3cdf29499b67dd0830d2ce3, type: 3}
   - {fileID: 6239244220281146425, guid: 7ff7e711b923f0f48ada85e10f4a8b36, type: 3}
+  player: {fileID: 0}
   spawnInterval: 2.5
   spawnValue: 12.5
+  startItem: {fileID: 0}
+  boosterRayCast500: {fileID: 0}
+  boosterRayCast1500: {fileID: 0}
+  booster500Btn: {fileID: 0}
+  booster1500Btn: {fileID: 0}
+  isStartItemClick: 0
 --- !u!1 &120554821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,73 +1152,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859113921}
   m_CullTransparentMesh: 1
---- !u!1 &866972321
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 866972323}
-  - component: {fileID: 866972322}
-  m_Layer: 0
-  m_Name: UI_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &866972322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866972321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ab723dc508ee241a1c6e1cc60c3db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Title: {fileID: 136761414}
-  touchToStart: {fileID: 120554823}
-  settingWindow: {fileID: 0}
-  blackScreen: {fileID: 0}
-  gameruleWindow: {fileID: 0}
-  creditWindow: {fileID: 0}
-  bgmColor: {fileID: 0}
-  effectColor: {fileID: 0}
-  settingBtn: {fileID: 0}
-  cancelBtn: {fileID: 0}
-  bgmBtn: {fileID: 0}
-  effectBtn: {fileID: 0}
-  gameruleBtn: {fileID: 0}
-  creditBtn: {fileID: 0}
-  isBGMCheck: 0
-  isEffectCheck: 0
-  isRuleCheck: 0
-  isCreditCheck: 0
-  stopWindow: {fileID: 0}
-  stopBtn: {fileID: 0}
-  backBtn: {fileID: 0}
-  stopSettingBtn: {fileID: 0}
-  reGameBtn: {fileID: 0}
-  isStopCheck: 0
---- !u!4 &866972323
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866972321}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1059.2244, y: 1105, z: -639.0001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1150964592}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956998886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1461,6 @@ Transform:
   - {fileID: 1285827055}
   - {fileID: 607694792}
   - {fileID: 1950499007}
-  - {fileID: 866972323}
   - {fileID: 2073310915}
   - {fileID: 65824026}
   m_Father: {fileID: 0}
@@ -7901,7 +7840,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1150964592}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2073310916
 MonoBehaviour:

@@ -34,7 +34,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private void Start()
     {
         AddRotates();
-        //AddObstacleSprite();
+        AddObstacleSprite();
         StartCoroutine(SpawnObstacle());
     }
 
@@ -45,8 +45,20 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         {
             if (canSpawn)
             {
-                int rand = Random.Range(1, 16);
-                SpawnPattern(rand);
+                int obstacleorcoin = Random.Range(0, 5);
+
+                if (obstacleorcoin == 0)
+                {
+                    int coinRand = Random.Range(1, 3);
+                    SpawnCoinPattern(coinRand);
+                }
+                else
+                {
+                    int obstacleRand = Random.Range(1, 16);
+                    SpawnObstaclePattern(obstacleRand);
+                }
+
+
                 yield return new WaitForSeconds(obstacleSpawnDelay
                     + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
             }
@@ -71,15 +83,22 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         rotatesDic.Add(EDir.Down, new Quaternion(0, 0, (float)EDir.Down, 0));
         rotatesDic.Add(EDir.Left, new Quaternion(0, 0, (float)EDir.Left, 0));
         rotatesDic.Add(EDir.Right, new Quaternion(0, 0, (float)EDir.Right, 0));
+        rotatesDic.Add(EDir.Cross1, new Quaternion(0, 0, (float)EDir.Cross1, 0));
+        rotatesDic.Add(EDir.Cross2, new Quaternion(0, 0, (float)EDir.Cross2, 0));
     }
 
     /// <summary>
     /// 패턴소환!
     /// </summary>
     /// <param name="index"></param>
-    public void SpawnPattern(int index)
+    public void SpawnObstaclePattern(int index)
     {
         StartCoroutine($"CSpawnPattern{index}");
+    }
+
+    public void SpawnCoinPattern(int index)
+    {
+        StartCoroutine($"CCoinPattern{index}");
     }
 
     #region 장애물 패턴 함수들
@@ -241,7 +260,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Basic, pos.position);
-        //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Basic];
+        obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Basic];
+        obstacle.gameObject.AddComponent<PolygonCollider2D>();
+        obstacle.GetComponent<PolygonCollider2D>().isTrigger = true;
         MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
     }
@@ -267,27 +288,29 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Spin, pos.position);
-        //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Spin];
+        obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Spin];
+        obstacle.gameObject.AddComponent<PolygonCollider2D>();
+        obstacle.GetComponent<PolygonCollider2D>().isTrigger = true;
         MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
     }
     #endregion
 
-    private IEnumerator CCoinPattern1(int patternIndex, int posIndex)
+    private IEnumerator CCoinPattern1()
     {
-        Instantiate(coinPatterns[patternIndex], spawnPoses[posIndex]);
-        coinPatterns[patternIndex].GetComponent<Rigidbody2D>().velocity
+        Instantiate(coinPatterns[0], spawnPoses[2]);
+        coinPatterns[0].GetComponent<Rigidbody2D>().velocity
             = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
         yield return new WaitForSeconds(1f);
     }
 
-    private IEnumerator CCoinPattern2(int patternIndex, int posIndex)
+    private IEnumerator CCoinPattern2()
     {
-        Instantiate(coinPatterns[patternIndex], spawnPoses[posIndex].position, Quaternion.identity);
-        coinPatterns[patternIndex].GetComponent<Rigidbody2D>().velocity
+        Instantiate(coinPatterns[1], spawnPoses[1].position, Quaternion.identity);
+        coinPatterns[1].GetComponent<Rigidbody2D>().velocity
             = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
         yield return new WaitForSeconds(1f);
 
     }
-    
+
 }

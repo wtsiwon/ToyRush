@@ -34,6 +34,8 @@ public class Player : Singleton<Player>
 
     public Action OnDie;
 
+    
+
     [Tooltip("누르고 있나")]
     public bool isPressing;
 

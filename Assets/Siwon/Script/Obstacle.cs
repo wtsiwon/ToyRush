@@ -24,6 +24,11 @@ public class Obstacle : MovingElement
 
     private const float DISTANCE = 50f;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
     {
@@ -44,9 +49,6 @@ public class Obstacle : MovingElement
             case EObstacleType.Basic:
                 //없음
                 break;
-            case EObstacleType.Swing:
-                Swing();
-                break;
             case EObstacleType.Spin:
                 Spin();
                 break;
@@ -59,30 +61,6 @@ public class Obstacle : MovingElement
         {
             base.Return();
         }
-
-        if (obstacleType == EObstacleType.Swing)
-        {
-            //Swing();
-        }
-    }
-
-    private void Swing()
-    {
-        StartCoroutine(CSwing());
-    }
-
-    private IEnumerator CSwing()
-    {
-        yield return new WaitForSeconds(1f);
-        if (transform.rotation.z >= 50)
-        {
-            transform.DORotate(new Vector3(0, 0, -50), 1f);
-        }
-        else if (transform.rotation.z <= -50)
-        {
-            transform.DORotate(new Vector3(0, 0, 50), 1f);
-        }
-        yield return StartCoroutine(CSwing());
     }
 
     private void Spin()

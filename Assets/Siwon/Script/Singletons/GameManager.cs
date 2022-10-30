@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("거리")]
     [SerializeField]
-    private int distance;
+    private float distance;
 
-    public int Distance
+    public float Distance
     {
         get
         {
@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            distance = (int)(Time.deltaTime * BackGroundSpawner.Instance.backgroundSpd);
-            distanceText.text = $"{distance} + m";
+
         }
     }
 
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public int coin;
 
-    public const float STARTSPD = 8f;
+    public const float STARTSPD = 5f;
 
     [Tooltip("시작확인")]
     public bool isGameStart;
@@ -51,7 +50,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        distanceText.text = $"{distance}m";
 
+    }
+    private void Start()
+    {
+        //StartCoroutine(UpDate());
+    }
+
+    private IEnumerator CAddDistance()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            distance += BackGroundSpawner.Instance.backgroundSpd / 2;
+        }
     }
 
     private IEnumerator CSetGame()
@@ -61,13 +74,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
         ObstacleSpawner.Instance.canSpawn = true;
-
+        StartCoroutine(CAddDistance());
     }
 
-    private void Start()
-    {
-        //StartCoroutine(UpDate());
-    }
 
     private IEnumerator UpDate()
     {

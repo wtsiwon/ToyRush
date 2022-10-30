@@ -66,7 +66,6 @@ public enum EItemType
 public enum EObstacleType
 {
     Basic,
-    Swing,
     Spin,
     End,
 }
@@ -99,7 +98,9 @@ public enum EDir
     Down = 180,
     Left = 90,
     Right = 270,
-    End = 5,
+    Cross1 = 45,
+    Cross2 = 135,
+    End = 7,
 }
 
 public class Defines : MonoBehaviour
