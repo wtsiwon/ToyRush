@@ -7031,9 +7031,9 @@ Transform:
   - {fileID: 38346284}
   - {fileID: 996360438}
   - {fileID: 2037995276}
-  - {fileID: 1482618929}
-  - {fileID: 137094271}
   - {fileID: 1602358010}
+  - {fileID: 137094271}
+  - {fileID: 1482618929}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8067,6 +8067,7 @@ MonoBehaviour:
   - {fileID: 1796220158}
   - {fileID: 99254214}
   obstacleSpriteList: []
+  coinPatterns: []
   obstacleSpawnInterval: 1
   obstacleSpawnDelay: 6
   canSpawn: 0
@@ -9166,7 +9167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 723033010}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1482618930
 MonoBehaviour:
@@ -9418,7 +9419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 723033010}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1602358011
 MonoBehaviour:
@@ -10266,6 +10267,7 @@ MonoBehaviour:
   distance: 0
   distanceText: {fileID: 0}
   coin: 0
+  isGameStart: 0
 --- !u!1 &2099266513
 GameObject:
   m_ObjectHideFlags: 0
