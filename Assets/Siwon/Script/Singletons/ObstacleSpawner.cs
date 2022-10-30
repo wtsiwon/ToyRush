@@ -21,6 +21,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Space(15f)]
     public List<Sprite> obstacleSpriteList = new List<Sprite>();
 
+    [Tooltip("코인 패턴들")]
+    public List<GameObject> coinPatterns = new List<GameObject>();
+
     [Tooltip("장애물 소환 간격")]
     public float obstacleSpawnInterval;
 
@@ -79,7 +82,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         StartCoroutine($"CSpawnPattern{index}");
     }
 
-    #region 패턴 함수들
+    #region 장애물 패턴 함수들
     private IEnumerator CSpawnPattern1()
     {
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
@@ -269,4 +272,22 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
     #endregion
+
+    private IEnumerator CCoinPattern1(int patternIndex, int posIndex)
+    {
+        Instantiate(coinPatterns[patternIndex], spawnPoses[posIndex]);
+        coinPatterns[patternIndex].GetComponent<Rigidbody2D>().velocity
+            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator CCoinPattern2(int patternIndex, int posIndex)
+    {
+        Instantiate(coinPatterns[patternIndex], spawnPoses[posIndex].position, Quaternion.identity);
+        coinPatterns[patternIndex].GetComponent<Rigidbody2D>().velocity
+            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
+        yield return new WaitForSeconds(1f);
+
+    }
+    
 }
