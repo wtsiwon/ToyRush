@@ -15,14 +15,14 @@ public class AttackPattern : MonoBehaviour
     [Header("아랫 공격")]
     public Ease ease;
     public GameObject atk;
-    public SpriteRenderer warningLine;
+    public SpriteRenderer warningLineBottom;
     public float shakeWaitTime;
 
     [Header("오른쪽 공격")]
     public GameObject enemy;
     public GameObject bulletPrefab;
     public GameObject warningSummon;
-    public GameObject warningLinePrefab;
+    public GameObject warningLineRight;
 
     public int bulletNumber;
     public float enemyMoveSpeed;
@@ -48,26 +48,27 @@ public class AttackPattern : MonoBehaviour
             #region 아랫공격
             case EAttackPattern.Bottom:
                 float moveWait = 0.5f;
+                float warningWaitTime = 0.3f;
+                float shakeWaitTime = 0.2f;
 
-                StartCoroutine("FadeOn");
-                yield return new WaitForSeconds(3.5f);
 
-                StopCoroutine("FadeOn");
-                StopCoroutine("FadeOff");
+                AttackPatternManager.inst.isAttackSummon = true;
+                warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
+                yield return new WaitForSeconds(warningWaitTime * 10);
 
-                warningLine.DOFade(0, 0);
+                warningLineBottom.DOKill();
+                warningLineBottom.DOFade(0, 0);
+                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, moveWait).SetEase(ease);
 
-                atk.transform.DOLocalMoveY(warningLine.transform.position.y, moveWait).SetEase(ease);
-
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(shakeWaitTime);
                 Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(0.5f, 0.5f, 0f));
+                yield return new WaitForSeconds(shakeWaitTime);
+
+                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y * 2, moveWait).SetEase(ease);
 
                 yield return new WaitForSeconds(0.5f);
 
-                atk.transform.DOLocalMoveY(warningLine.transform.position.y * 2, moveWait).SetEase(ease);
-
-                yield return new WaitForSeconds(0.5f);
-
+                AttackPatternManager.inst.isAttackSummon = false;
                 atk.transform.DOKill();
                 Destroy(this.gameObject);
                 break;
@@ -84,7 +85,7 @@ public class AttackPattern : MonoBehaviour
                     float warninTimeMax = 0.4f;
 
                     summonPos[i] = Random.Range(warninTimeMin, warninTimeMax);
-                    Instantiate(warningLinePrefab, new Vector2(0, warningSummon.transform.position.y), Quaternion.identity).transform.parent = gameObject.transform;
+                    Instantiate(warningLineRight, new Vector2(0, warningSummon.transform.position.y), Quaternion.identity).transform.parent = gameObject.transform;
                     yield return new WaitForSeconds(summonPos[i]);
                 }
 
@@ -98,6 +99,7 @@ public class AttackPattern : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(waitTime);
+                AttackPatternManager.inst.isAttackSummon = false;
                 enemy.transform.DOKill();
                 bulletPrefab.transform.DOKill();
                 Destroy(this.gameObject);
@@ -107,20 +109,4 @@ public class AttackPattern : MonoBehaviour
 
 
     }
-
-    #region Fade On / Off
-    IEnumerator FadeOn()
-    {
-        warningLine.DOFade(0f, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine("FadeOff");
-    }
-
-    IEnumerator FadeOff()
-    {
-        warningLine.DOFade(0.5f, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine("FadeOn");
-    }
-    #endregion
 }

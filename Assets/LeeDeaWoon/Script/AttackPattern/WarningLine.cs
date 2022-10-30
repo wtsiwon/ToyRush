@@ -20,8 +20,8 @@ public class WarningLine : MonoBehaviour
 
     IEnumerator WarningLine_FadeOnOff()
     {
+        AttackPatternManager.inst.isAttackSummon = true;
         warningLinePrefab.DOFade(0, 0.5f).SetLoops(-1, LoopType.Yoyo);
-
         yield return new WaitForSeconds(3);
 
         warningLinePrefab.DOKill();

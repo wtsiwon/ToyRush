@@ -48,12 +48,12 @@ MonoBehaviour:
   eAttackPattern: 1
   ease: 0
   atk: {fileID: 0}
-  warningLine: {fileID: 0}
+  warningLineBottom: {fileID: 0}
   shakeWaitTime: 0
   enemy: {fileID: 2516807148198077480}
   bulletPrefab: {fileID: 8774235711557805857, guid: b4a0af8fe66f4b24a9865cc90dba0e56, type: 3}
   warningSummon: {fileID: 4718148748112355734}
-  warningLinePrefab: {fileID: 2579666854653615614, guid: c485bbeaab7ff1a42868cfa9500e0336, type: 3}
+  warningLineRight: {fileID: 2579666854653615614, guid: c485bbeaab7ff1a42868cfa9500e0336, type: 3}
   bulletNumber: 4
   enemyMoveSpeed: 1.5
 --- !u!1 &2516807148198077480
