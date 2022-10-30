@@ -28,7 +28,7 @@ public class ItemManager : MonoBehaviour
     public Button booster500Btn;
     public Button booster1500Btn;
 
-    bool isStartItemClick = false;
+    public bool isStartItemClick;
 
     void Start()
     {
@@ -38,7 +38,8 @@ public class ItemManager : MonoBehaviour
 
     void Update()
     {
-
+        if (GameManager.Instance.isGameStart == true)
+            startItem.SetActive(true);
     }
 
     IEnumerator Item_Spawn()
@@ -57,8 +58,8 @@ public class ItemManager : MonoBehaviour
     {
         booster500Btn.onClick.AddListener(() =>
         {
-            isStartItemClick = true;
-
+            boosterRayCast500.raycastTarget = false;
+            boosterRayCast1500.raycastTarget = false;
 
             booster500Btn.transform.DOScale(new Vector2(0, 0), 0.5f);
             booster1500Btn.transform.DOLocalMoveY(1250, 0.5f);
@@ -70,6 +71,11 @@ public class ItemManager : MonoBehaviour
         {
             boosterRayCast500.raycastTarget = false;
             boosterRayCast1500.raycastTarget = false;
+
+            booster500Btn.transform.DOLocalMoveY(1250, 0.5f);
+            booster1500Btn.transform.DOScale(new Vector2(0, 0), 0.5f);
+
+            StartCoroutine(Start_Booster());
         });
     }
 
@@ -79,7 +85,7 @@ public class ItemManager : MonoBehaviour
 
         float playerXValue = player.transform.position.x;
 
-        Player.Instance.isBoosting = true;
+        //Player.Instance.isBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .Append(player.transform.DOLocalMoveX(5, 0.5f));
 
@@ -89,7 +95,6 @@ public class ItemManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        Destroy(this.gameObject);
-        Player.Instance.isBoosting = false;
+        //Player.Instance.isBoosting = false;
     }
 }
