@@ -13,8 +13,17 @@ public class UIManager : MonoBehaviour
     private void Awake() => inst = this;
 
     [Header("타이틀")]
-    public GameObject Title;
+    public GameObject title;
     public TextMeshProUGUI touchToStart;
+
+    [Header("상점")]
+    public GameObject shopWindow;
+
+    public Button shopBtn;
+    public Button characterBtn;
+    public Button gadgetBtn;
+    public Button vehicleBtn;
+    public Button shopsCancelBtn;
 
     [Header("설정")]
     public GameObject settingWindow;
@@ -26,7 +35,7 @@ public class UIManager : MonoBehaviour
     public Image effectColor;
 
     public Button settingBtn;
-    public Button cancelBtn;
+    public Button settingCancelBtn;
     public Button bgmBtn;
     public Button effectBtn;
     public Button gameruleBtn;
@@ -71,7 +80,35 @@ public class UIManager : MonoBehaviour
         float titleWaitTime = 0.5f;
 
         touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
-        Title.transform.DOLocalMoveY(move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+        title.transform.DOLocalMoveY(move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void Main_Btn()
+    {
+        shopBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(true);
+        });
+
+        characterBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(true);
+        });
+
+        gadgetBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(true);
+        });
+
+        vehicleBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(true);
+        });
+
+        shopsCancelBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(false);
+        });
     }
 
 
@@ -87,7 +124,7 @@ public class UIManager : MonoBehaviour
         });
 
         // 취소 버튼을 눌렀을 때
-        cancelBtn.onClick.AddListener(() =>
+        settingCancelBtn.onClick.AddListener(() =>
         {
             int settingMovePos = 1570;
             int rightMovePos = 1723;

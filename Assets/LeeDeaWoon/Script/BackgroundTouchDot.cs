@@ -62,7 +62,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
             screenClick.raycastTarget = false;
 
             UIManager.inst.touchToStart.DOKill();
-            UIManager.inst.Title.transform.DOKill();
+            UIManager.inst.title.transform.DOKill();
 
             UIManager.inst.touchToStart.DOFade(0, time);
 
