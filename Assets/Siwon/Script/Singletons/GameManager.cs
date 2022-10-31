@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float distance;
 
+    public int coin;
+
     public float Distance
     {
         get
@@ -29,12 +31,14 @@ public class GameManager : MonoBehaviour
     [Tooltip("거리 Text")]
     private TextMeshProUGUI distanceText;
 
-    public int coin;
+    [SerializeField]
+    private TextMeshProUGUI coinText;
 
     public const float STARTSPD = 5f;
 
     [Tooltip("시작확인")]
-    public bool isGameStart;
+    [SerializeField]
+    private bool isGameStart;
     public bool IsGameStart
     {
         get

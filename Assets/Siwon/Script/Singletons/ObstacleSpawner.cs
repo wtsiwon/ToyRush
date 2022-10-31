@@ -7,9 +7,8 @@ using System;
 
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
 {
-    [SerializeField]
     [Tooltip("장애물을 소환할 위치들")]
-    private List<Transform> spawnPoses = new List<Transform>();
+    public List<Transform> spawnPoses = new List<Transform>();
 
     [Tooltip("방향 값을 담는 Dictionary")]
     private Dictionary<EDir, Quaternion> rotatesDic = new Dictionary<EDir, Quaternion>();
@@ -45,19 +44,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         {
             if (canSpawn)
             {
-                int obstacleorcoin = Random.Range(0, 5);
-
-                if (obstacleorcoin == 0)
-                {
-                    int coinRand = Random.Range(1, 3);
-                    SpawnCoinPattern(coinRand);
-                }
-                else
-                {
-                    int obstacleRand = Random.Range(1, 16);
-                    SpawnObstaclePattern(obstacleRand);
-                }
-
+                int obstacleRand = Random.Range(1, 16);
+                SpawnObstaclePattern(obstacleRand);
 
                 yield return new WaitForSeconds(obstacleSpawnDelay
                     + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
@@ -110,6 +98,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(1.5f);
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator CSpawnPattern2()
@@ -168,11 +158,14 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private IEnumerator CSpawnPattern7()
     {
         Obstacle obstacle1 = GetSpinObstacle(spawnPoses[0]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
+
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator CSpawnPattern8()
@@ -182,7 +175,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(2f);
 
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
     }
 
     private IEnumerator CSpawnPattern9()
@@ -240,7 +233,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(1.5f);
 
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
+
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator CSpawnPattern15()

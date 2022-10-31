@@ -97,7 +97,7 @@ public class ItemManager : MonoBehaviour
 
     void StartItem_Summon()
     {
-        if (GameManager.Instance.isGameStart == true && isStartItemSummon == false)
+        if (GameManager.Instance.IsGameStart == true && isStartItemSummon == false)
         {
             isStartItemSummon = true;
             Instantiate(startItem, transform.position, Quaternion.identity).transform.parent = gameObject.transform;
@@ -112,7 +112,7 @@ public class ItemManager : MonoBehaviour
 
     IEnumerator StartItem()
     {
-        if (GameManager.Instance.isGameStart == true && isStartItemCheck == false)
+        if (GameManager.Instance.IsGameStart == true && isStartItemCheck == false)
         {
             isStartItemCheck = true;
 
