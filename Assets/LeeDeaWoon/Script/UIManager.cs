@@ -105,10 +105,10 @@ public class UIManager : MonoBehaviour
             shopWindow.SetActive(true);
         });
 
-        shopsCancelBtn.onClick.AddListener(() =>
-        {
-            shopWindow.SetActive(false);
-        });
+        //shopsCancelBtn.onClick.AddListener(() =>
+        //{
+        //    shopWindow.SetActive(false);
+        //});
     }
 
 

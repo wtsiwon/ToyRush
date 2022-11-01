@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9418aceadf43ae24ca5b4387beb589c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 0
-  spriterenderer: {fileID: 0}
+  poolType: 1
   flySpeed: 1
   coinRange: 5
 --- !u!50 &1453205873398879332

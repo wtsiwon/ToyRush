@@ -86,7 +86,10 @@ public class Item : MovingElement
                     float posMinY = 2f;
                     float posMaxY = 3f;
 
-                    Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity).transform.parent = gameObject.transform;
+                    GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
+                    bankCoinPattern.transform.parent = gameObject.transform;
+                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
+
                     break;
 
 

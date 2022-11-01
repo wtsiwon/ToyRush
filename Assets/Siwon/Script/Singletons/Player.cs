@@ -10,18 +10,7 @@ public class Player : Singleton<Player>
     public bool isMagneting;
     public bool isBig;
     private bool shouldObstacleBreak;
-    public bool ShouldObstacleBreak
-    {
-        get => shouldObstacleBreak;
-
-        set
-        {
-            if(isBoosting == true)
-            {
-
-            }
-        }
-    }
+    
     #endregion
 
     [Tooltip("현재 무엇을 타고 있는가")]
@@ -119,11 +108,9 @@ public class Player : Singleton<Player>
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
-        
+        print(collision.gameObject);
     }
 
 
