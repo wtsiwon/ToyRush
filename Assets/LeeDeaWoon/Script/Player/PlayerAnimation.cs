@@ -23,13 +23,13 @@ public class PlayerAnimation : MonoBehaviour
 
     void Animator_Controller(EVehicleType type)
     {
-        //if(Input.GetKeyDown)
-        //switch (type)
-        //{
-        //    case EVehicleType.None:
-                
-        //        break;
-        //}
+        //if (Input.GetKeyDown)
+        //    switch (type)
+        //    {
+        //        case EVehicleType.None:
+
+        //            break;
+        //    }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
