@@ -36,4 +36,5 @@ public class BackGround : MovingElement
         base.Return();
         MovingElementManager.Instance.movingElementList.Remove(this);
     }
+
 }

@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
+public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Ease easeType;
 
@@ -46,6 +46,18 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine("BtnMove");
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (GameManager.Instance.IsGameStart == true)
+            Player.Instance.isPressing = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (GameManager.Instance.IsGameStart == true)
+            Player.Instance.isPressing = false;
     }
 
     public IEnumerator BtnMove()
@@ -95,6 +107,8 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
             smokeBoomb.SetActive(true);
             player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
             yield return new WaitForSeconds(playerWaitTime);
+            screenPrevent.raycastTarget = false;
+            screenClick.raycastTarget = true;
             GameManager.Instance.IsGameStart = true;
         }
     }
