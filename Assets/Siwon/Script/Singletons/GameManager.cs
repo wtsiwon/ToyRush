@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private float distance;
 
     public int coin;
+    public int haveCoin;
 
     public float Distance
     {

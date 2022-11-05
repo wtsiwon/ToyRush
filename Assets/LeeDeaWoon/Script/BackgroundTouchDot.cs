@@ -15,9 +15,13 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
     [Header("타이틀")]
     public GameObject title;
+    public GameObject haveCoin;
+    public GameObject stopBtn;
     public GameObject mainBtn;
     public GameObject settingBtn;
-    public GameObject stopBtn;
+
+    [Header("인게임")]
+    public GameObject coinDistance;
 
     [Header("시작 연출")]
     public GameObject smokeBoomb;
@@ -76,10 +80,12 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
                     case 1:
                         title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
                         settingBtn.transform.DOLocalMove(stopPos, time).SetEase(easeType);
+                        haveCoin.transform.DOLocalMoveY(stopPos.y, time).SetEase(easeType);
                         break;
 
                     case 4:
                         stopBtn.transform.DOLocalMove(settingPos, time).SetEase(easeType);
+                        coinDistance.transform.DOLocalMoveY(0, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }

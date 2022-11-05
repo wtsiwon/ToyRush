@@ -8,13 +8,17 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-
     public static UIManager inst;
     private void Awake() => inst = this;
 
     [Header("타이틀")]
     public GameObject title;
     public TextMeshProUGUI touchToStart;
+    public TextMeshProUGUI haveCoin;
+
+    [Header("인게임")]
+    public TextMeshProUGUI coin;
+    public TextMeshProUGUI distance;
 
     [Header("상점")]
     public GameObject shopWindow;
@@ -58,59 +62,67 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        UI_Dot();
-
         isBGMCheck = true;
         isEffectCheck = true;
 
-        Setting_Btns();
+        UI_Dot();
         Stop_Btns();
+        Setting_Btns();
     }
 
     void Update()
     {
-
+        coin.text = GameManager.Instance.coin.ToString();
+        distance.text = GameManager.Instance.Distance.ToString();
+        haveCoin.text = GameManager.Instance.haveCoin.ToString();
     }
 
     public void UI_Dot()
     {
-        int touchWaitTime = 1;
-
         int move = 310;
+        int touchWaitTime = 1;
         float titleWaitTime = 0.5f;
 
         touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
         title.transform.DOLocalMoveY(move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
     }
 
+    #region 메인버튼
     public void Main_Btn()
     {
+        // 상점 버튼을 눌렀을 때
         shopBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
         });
 
+        // 캐릭터 버튼을 눌렀을 때
         characterBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
         });
 
+        // 가젯 버튼을 눌렀을 때
         gadgetBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
         });
 
+        // 탈것 버튼을 눌렀을 때
         vehicleBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
         });
 
+        // 상점취소 버튼을 눌렀을 때
         //shopsCancelBtn.onClick.AddListener(() =>
         //{
         //    shopWindow.SetActive(false);
         //});
     }
 
+
+    #endregion
 
     #region 설정 창
     public void Setting_Btns()
