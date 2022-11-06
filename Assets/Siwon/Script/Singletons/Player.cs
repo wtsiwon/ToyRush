@@ -10,7 +10,8 @@ public class Player : Singleton<Player>
     public bool isMagneting;
     public bool isBig;
     private bool shouldObstacleBreak;
-    
+
+    public EBoosterType boosterType;
     #endregion
 
     [Tooltip("현재 무엇을 타고 있는가")]

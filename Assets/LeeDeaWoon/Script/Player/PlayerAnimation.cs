@@ -12,7 +12,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        Animator_Controller(Player.Instance.vehicleType);
+        Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType);
     }
 
     void Awake()
@@ -20,18 +20,34 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Animator_Controller(EVehicleType type)
+    void Animator_Controller(EVehicleType vehicleType, EBoosterType boosterType)
     {
         animator.SetBool("Booster", Player.Instance.isBoosting);
 
         if (Player.Instance.isBoosting == true)
-            animator.SetInteger("Booster_Number", 0);
+        {
+            switch (boosterType)
+            {
+                case EBoosterType.Booster500:
+                    animator.SetInteger("Booster_Number", 0);
+                    break;
+
+                case EBoosterType.Booster1500:
+                    animator.SetInteger("Booster_Number", 1);
+                    break;
+
+                case EBoosterType.BoosterItem:
+                    animator.SetInteger("Booster_Number", 2);
+                    break;
+            }
+
+        }
 
         else
         {
             if (Player.Instance.isPressing == true)
             {
-                switch (type)
+                switch (vehicleType)
                 {
                     case EVehicleType.None:
                         animator.SetBool("fly", true);

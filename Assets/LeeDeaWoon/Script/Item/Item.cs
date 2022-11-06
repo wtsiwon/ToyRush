@@ -100,6 +100,7 @@ public class Item : MovingElement
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
+                                  Player.Instance.boosterType = EBoosterType.BoosterItem;
                                   Player.Instance.isBoosting = true;
                                   collision.transform.DOLocalMoveX(-0.9f, boosterSpeed);
                               });

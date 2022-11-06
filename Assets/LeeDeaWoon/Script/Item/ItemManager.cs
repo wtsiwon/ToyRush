@@ -76,6 +76,7 @@ public class ItemManager : MonoBehaviour
             booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
             booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
+            Player.Instance.boosterType = EBoosterType.Booster500;
             StartCoroutine(Start_Booster());
         });
 
@@ -91,6 +92,7 @@ public class ItemManager : MonoBehaviour
             booster500Btn.transform.DOLocalMoveY(movePos, waitTime);
             booster1500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
+            Player.Instance.boosterType = EBoosterType.Booster1500;
             StartCoroutine(Start_Booster());
         });
     }
@@ -150,17 +152,20 @@ public class ItemManager : MonoBehaviour
 
         float playerXValue = player.transform.position.x;
 
-        //Player.Instance.isBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
-                  .Append(player.transform.DOLocalMoveX(5, 0.5f));
+                  .OnComplete(() =>
+                  {
+                      Player.Instance.isBoosting = true;
+                      player.transform.DOLocalMoveX(-0.9f, 0.5f);
+                  });
 
         yield return new WaitForSeconds(5); // 지속시간
 
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
+        Player.Instance.isBoosting = false;
 
         yield return new WaitForSeconds(0.5f);
 
-        //Player.Instance.isBoosting = false;
     }
 
     #endregion
