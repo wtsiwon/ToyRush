@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private void Awake() => Instance = this;
 
-    [Tooltip("°Å¸®")]
+    [Tooltip("ê±°ë¦¬")]
     [SerializeField]
     private float distance;
 
@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            BackGroundSpawner.Instance.backgroundSpd = distance / 10 + STARTSPD;
+            //BackGroundSpawner.Instance.backgroundSpd = distance / 10 + STARTSPD;
         }
     }
 
     [SerializeField]
-    [Tooltip("°Å¸® Text")]
+    [Tooltip("ê±°ë¦¬ Text")]
     private TextMeshProUGUI distanceText;
 
     [SerializeField]
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public const float STARTSPD = 1000f;
 
-    [Tooltip("½ÃÀÛÈ®ÀÎ")]
+    [Tooltip("ì‹œì‘í™•ì¸")]
     [SerializeField]
     private bool isGameStart;
     public bool IsGameStart
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameStart == true)
         {
-            //¼Óµµ°¡ »¡¶óÁö¸é Á¡¼öµµ »¡¸® ¿À¸§
+            //ì†ë„ê°€ ë¹¨ë¼ì§€ë©´ ì ìˆ˜ë„ ë¹¨ë¦¬ ì˜¤ë¦„
             distance += (int)BackGroundSpawner.Instance.backgroundSpd / 10;
         }
         yield return StartCoroutine(UpDate());

@@ -36,6 +36,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
     {
         foreach (MovingElement background in movingElementList)
         {
+            if (background == null) return;
             if (background is BackGround)
             {
                 background.SetMovingSpd(spd);
@@ -46,6 +47,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
     {
         foreach (MovingElement obstacle in movingElementList)
         {
+            if (obstacle == null) return;
             if (obstacle is Obstacle)
             {
                 obstacle.SetMovingSpd(spd);
@@ -54,8 +56,10 @@ public class MovingElementManager : Singleton<MovingElementManager>
     }
     public void ItemSpeedSet(float spd)
     {
+        
         foreach (MovingElement item in movingElementList)
         {
+            if (item == null) return;
             if (item is Item)
             {
                 item.SetMovingSpd(spd);
@@ -71,7 +75,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
         }
     }
 
-    public void BoostingSpeedSet(float duration)
+    public void BoostingSpeedSet()
     {
         MovingElementSpeedSet(firstBoostingSpd);
     }

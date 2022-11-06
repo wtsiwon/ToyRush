@@ -126,7 +126,7 @@ public class Player : Singleton<Player>
 
     private void OnDie(GameObject obj)
     {
-        if(vehicleType == EVehicleType.None)
+        if (vehicleType == EVehicleType.None && isBig == false && isBoosting == false)
         {
             MovingElementManager.Instance.MovingElementSpeedSet(0);
             UIManager.inst.GameOver();
