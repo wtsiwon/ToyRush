@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,22 +10,22 @@ public class Item : MovingElement
 
     public new Collider2D collider2D;
 
-    [Header("¾ÆÀÌÅÛ : ºÎ½ºÅÍ")]
-    public float boosterDuration; // Áö¼Ó½Ã°£
-    public float boosterSpeed; // ¼Ó·Â
+    [Header("ì•„ì´í…œ : ë¶€ìŠ¤í„°")]
+    public float boosterDuration; // ì§€ì†ì‹œê°„
+    public float boosterSpeed; // ì†ë ¥
     public Ease ease;
 
-    [Header("¾ÆÀÌÅÛ : ÀÚ¼®")]
-    public int magnetWaitingTime; // ±â´Ù¸± ½Ã°£
+    [Header("ì•„ì´í…œ : ìì„")]
+    public int magnetWaitingTime; // ê¸°ë‹¤ë¦´ ì‹œê°„
 
     float magnetTimer;
 
-    [Header("¾ÆÀÌÅÛ : Àú±İÅë")]
-    public GameObject piggybankCoin; // ¼ÒÈ¯µÉ ÇÁ¸®ÆÕ ÄÚÀÎ
+    [Header("ì•„ì´í…œ : ì €ê¸ˆí†µ")]
+    public GameObject piggybankCoin; // ì†Œí™˜ë  í”„ë¦¬íŒ¹ ì½”ì¸
 
-    [Header("¾ÆÀÌÅÛ : Å©±âÁ¶Àı")]
-    public int sizeTime; //Ä¿Áö´Â ½Ã°£
-    public int sizeWaitingTime; //±â´Ù¸± ½Ã°£
+    [Header("ì•„ì´í…œ : í¬ê¸°ì¡°ì ˆ")]
+    public int sizeTime; //ì»¤ì§€ëŠ” ì‹œê°„
+    public int sizeWaitingTime; //ê¸°ë‹¤ë¦´ ì‹œê°„
     public Vector2 playerSize;
 
     float sizeTimer;
@@ -43,7 +43,7 @@ public class Item : MovingElement
         Item_Delay();
     }
 
-    // ¾ÆÀÌÅÛ µô·¹ÀÌ
+    // ì•„ì´í…œ ë”œë ˆì´
     void Item_Delay()
     {
         if (sizeTimer < sizeWaitingTime && Player.Instance.isBig == true)
@@ -67,7 +67,7 @@ public class Item : MovingElement
                     break;
 
 
-                case EItemType.Magnet: // ÀÚ¼®
+                case EItemType.Magnet: // ìì„
 
                     Player.Instance.isMagneting = true;
                     yield return new WaitForSeconds(magnetWaitingTime);
@@ -78,7 +78,7 @@ public class Item : MovingElement
                     break;
 
 
-                case EItemType.Piggybank: // Àú±İÅë
+                case EItemType.Piggybank: // ì €ê¸ˆí†µ
                     float posMinX = 3f;
                     float posMaxX = 6f;
 
@@ -87,12 +87,12 @@ public class Item : MovingElement
 
                     GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     bankCoinPattern.transform.parent = gameObject.transform;
-                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
+                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
 
                     break;
 
 
-                case EItemType.Booster: // ºÎ½ºÅÍ
+                case EItemType.Booster: // ë¶€ìŠ¤í„°
                     Sequence mySequence = DOTween.Sequence();
                     float playerXValue = collision.transform.position.x;
 
@@ -103,7 +103,7 @@ public class Item : MovingElement
                                   Player.Instance.isBoosting = true;
                                   collision.transform.DOLocalMoveX(-0.9f, boosterSpeed);
                               });
-                    yield return new WaitForSeconds(boosterDuration); // Áö¼Ó½Ã°£
+                    yield return new WaitForSeconds(boosterDuration); // ì§€ì†ì‹œê°„
 
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
@@ -118,11 +118,11 @@ public class Item : MovingElement
                     break;
 
 
-                case EItemType.Sizecontrol: // Å©±â Á¶Àı
+                case EItemType.Sizecontrol: // í¬ê¸° ì¡°ì ˆ
 
                     Player.Instance.isBig = true;
                     collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime);
-                    // Àå¾Ö¹°ÀÇ Äİ¶óÀÌ´õ¸¦ ²¨ÁÖ±â
+                    // ì¥ì• ë¬¼ì˜ ì½œë¼ì´ë”ë¥¼ êº¼ì£¼ê¸°
 
                     yield return new WaitForSeconds(sizeWaitingTime);
                     Destroy(this.gameObject);
@@ -130,7 +130,7 @@ public class Item : MovingElement
                     sizeTimer = 0;
 
                     collision.transform.DOScale(playerSize, sizeTime);
-                    // Àå¾Ö¹°ÀÇ Äİ¶óÀÌ´õ¸¦ ÄÑÁÖ±â
+                    // ì¥ì• ë¬¼ì˜ ì½œë¼ì´ë”ë¥¼ ì¼œì£¼ê¸°
                     break;
             }
 

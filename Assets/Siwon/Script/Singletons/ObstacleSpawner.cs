@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,23 +7,23 @@ using System;
 
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
 {
-    [Tooltip("Àå¾Ö¹°À» ¼ÒÈ¯ÇÒ À§Ä¡µé")]
+    [Tooltip("ì¥ì• ë¬¼ì„ ì†Œí™˜í•  ìœ„ì¹˜ë“¤")]
     public List<Transform> spawnPoses = new List<Transform>();
 
-    [Tooltip("¹æÇâ °ªÀ» ´ã´Â Dictionary")]
+    [Tooltip("ë°©í–¥ ê°’ì„ ë‹´ëŠ” Dictionary")]
     private Dictionary<EDir, Quaternion> rotatesDic = new Dictionary<EDir, Quaternion>();
 
-    [Tooltip("Àå¾Ö¹° Sprite¸¦ enumÅ¸ÀÔ¿¡ µû¶ó ºĞ·ùÇÑ dictionary")]
+    [Tooltip("ì¥ì• ë¬¼ Spriteë¥¼ enumíƒ€ì…ì— ë”°ë¼ ë¶„ë¥˜í•œ dictionary")]
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
-    [Tooltip("Àå¾Ö¹° SpriteµéList")]
+    [Tooltip("ì¥ì• ë¬¼ Spriteë“¤List")]
     [Space(15f)]
     public List<Sprite> obstacleSpriteList = new List<Sprite>();
 
-    [Tooltip("ÄÚÀÎ ÆĞÅÏµé")]
+    [Tooltip("ì½”ì¸ íŒ¨í„´ë“¤")]
     public List<GameObject> coinPatterns = new List<GameObject>();
 
-    [Tooltip("Àå¾Ö¹° ¼ÒÈ¯ °£°İ")]
+    [Tooltip("ì¥ì• ë¬¼ ì†Œí™˜ ê°„ê²©")]
     public float obstacleSpawnInterval;
 
     public float obstacleSpawnDelay;
@@ -55,7 +55,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     }
 
     /// <summary>
-    /// Àå¾Ö¹° SpriteDictionary¿¡ Ãß°¡
+    /// ì¥ì• ë¬¼ SpriteDictionaryì— ì¶”ê°€
     /// </summary>
     private void AddObstacleSprite()
     {
@@ -76,7 +76,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     }
 
     /// <summary>
-    /// ÆĞÅÏ¼ÒÈ¯!
+    /// íŒ¨í„´ì†Œí™˜!
     /// </summary>
     /// <param name="index"></param>
     public void SpawnObstaclePattern(int index)
@@ -89,7 +89,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         StartCoroutine($"CCoinPattern{index}");
     }
 
-    #region Àå¾Ö¹° ÆĞÅÏ ÇÔ¼öµé
+    #region ì¥ì• ë¬¼ íŒ¨í„´ í•¨ìˆ˜ë“¤
     private IEnumerator CSpawnPattern1()
     {
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
@@ -248,10 +248,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(2.5f);
     }
 
-    //20±îÁö
+    //20ê¹Œì§€
     #endregion
 
-    #region Àå¾Ö¹° ºÒ·¯¿À´Â ÇÔ¼ö
+    #region ì¥ì• ë¬¼ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜
     private Obstacle GetBasicObstacle(Transform pos)
     {
         Obstacle obstacle = null;
@@ -300,7 +300,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Instantiate(coinPatterns[0], spawnPoses[2]);
         coinPatterns[0].GetComponent<Rigidbody2D>().velocity
-            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
+            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
         yield return new WaitForSeconds(1f);
     }
 
@@ -308,7 +308,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Instantiate(coinPatterns[1], spawnPoses[1].position, Quaternion.identity);
         coinPatterns[1].GetComponent<Rigidbody2D>().velocity
-            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd;
+            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
         yield return new WaitForSeconds(1f);
 
     }

@@ -33,6 +33,7 @@ public class Coin : MovingElement
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            print("충돌이요");
             Destroy(this.gameObject);
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
