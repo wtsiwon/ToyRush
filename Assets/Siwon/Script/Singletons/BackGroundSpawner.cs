@@ -7,6 +7,12 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     [Tooltip("배경 속도")]
     public float backgroundSpd;
 
+    [SerializeField]
+    private List<Sprite> backgroundSpriteList = new List<Sprite>();
+
+    [Tooltip("현재 배경 Index")]
+    public int currentBackgroundIndex;
+
     private void Start()
     {
         SpawnBackGround();
@@ -14,6 +20,16 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
 
     public void SpawnBackGround()
     {
-        ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
+        if (currentBackgroundIndex == 3)
+        {
+            currentBackgroundIndex = 0;
+            BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
+            back.GetComponent<SpriteRenderer>().sprite = backgroundSpriteList[currentBackgroundIndex];
+        }
+        else
+        {
+            BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
+            back.GetComponent<SpriteRenderer>().sprite = backgroundSpriteList[currentBackgroundIndex];
+        }
     }
 }
