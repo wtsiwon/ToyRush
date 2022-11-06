@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -17,7 +17,7 @@ public class Player : Singleton<Player>
     public bool isUseItem =>
      isMagneting || isBig || isBoosting;
 
-    [Tooltip("���� ������ Ÿ�� �ִ°�")]
+    [Tooltip("탈것의 종류")]
     public EVehicleType vehicleType;
 
     public float force;
@@ -25,7 +25,7 @@ public class Player : Singleton<Player>
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
 
-    [Tooltip("������ �ֳ�")]
+    [Tooltip("눌렀음?")]
     public bool isPressing;
 
     private void Start()
@@ -106,10 +106,10 @@ public class Player : Singleton<Player>
                     MoveUFO();
                     break;
                 case EVehicleType.BusterMachine:
-                    //���� �ٷ� ������ õõ�� Ȱ��
+                    
                     break;
                 case EVehicleType.Frog:
-                    //��� �������� ��� ����
+
                     break;
             }
         }
@@ -132,7 +132,7 @@ public class Player : Singleton<Player>
             //���â����
         }
     }
-    #region Ż��
+    #region 탈것
 
     /// <summary>
     /// ���� ������~

@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class Coin : MovingElement
 {
-    [Header("¹üÀ§")]
-    public float flySpeed; // ³¯¾Æ°¡´Â ¼Óµµ
-    public int coinRange; // ÄÚÀÎ¹üÀ§
+    [Header("ë²”ìœ„")]
+    public float flySpeed; // ë‚ ì•„ê°€ëŠ” ì†ë„
+    public int coinRange; // ì½”ì¸ë²”ìœ„
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class Coin : MovingElement
         Coin_ColliderRange();
     }
 
-    //ÀÚ¼® ¾ÆÀÌÅÛÀ» ¸ÔÀº ÈÄ 
+    //ìì„ ì•„ì´í…œì„ ë¨¹ì€ í›„ 
     public void Coin_ColliderRange()
     {
         if (Player.Instance.isMagneting == true)
@@ -29,21 +29,11 @@ public class Coin : MovingElement
                 this.gameObject.transform.DOLocalMove(Player.Instance.transform.position, flySpeed);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            this.gameObject.transform.DOKill();
-            Destroy(this.gameObject);
-            //Return();
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Destroy(this.gameObject);
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {
