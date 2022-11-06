@@ -97,18 +97,20 @@ public class Item : MovingElement
                     Sequence mySequence = DOTween.Sequence();
                     float playerXValue = collision.transform.position.x;
 
-                    Player.Instance.isBoosting = true;
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
-                              .Append(collision.transform.DOLocalMoveX(5, boosterSpeed));
-
+                              .OnComplete(() =>
+                              {
+                                  Player.Instance.isBoosting = true;
+                                  collision.transform.DOLocalMoveX(-0.9f, boosterSpeed);
+                              });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간
 
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
+                    Player.Instance.isBoosting = false;
                     yield return new WaitForSeconds(boosterSpeed);
 
                     Destroy(this.gameObject);
-                    Player.Instance.isBoosting = false;
                     break;
 
 

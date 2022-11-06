@@ -22,19 +22,22 @@ public class PlayerAnimation : MonoBehaviour
 
     void Animator_Controller(EVehicleType type)
     {
-        if (Player.Instance.isPressing == true && Player.Instance.isBoosting == false)
-        {
-            switch (type)
-            {
-                case EVehicleType.None:
-                    animator.SetBool("fly", true);
-                    break;
-            }
-        }
+        animator.SetBool("Booster", Player.Instance.isBoosting);
 
         if (Player.Instance.isBoosting == true)
+            animator.SetInteger("Booster_Number", 0);
+
+        else
         {
-            animator.SetBool("Booster", Player.Instance.isBoosting);
+            if (Player.Instance.isPressing == true)
+            {
+                switch (type)
+                {
+                    case EVehicleType.None:
+                        animator.SetBool("fly", true);
+                        break;
+                }
+            }
         }
     }
 
