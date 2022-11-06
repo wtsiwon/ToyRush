@@ -9,7 +9,6 @@ public class Item : MovingElement
     public EItemType itemType;
 
     public new Collider2D collider2D;
-    private Vector2 playerDistance;
 
     [Header("아이템 : 부스터")]
     public float boosterDuration; // 지속시간
@@ -27,7 +26,7 @@ public class Item : MovingElement
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
     public int sizeWaitingTime; //기다릴 시간
-    public Vector2 size = new Vector2(); //원하는 사이즈
+    public Vector2 playerSize;
 
     float sizeTimer;
 
@@ -36,7 +35,7 @@ public class Item : MovingElement
         base.Start();
         collider2D = GetComponent<Collider2D>();
 
-        playerDistance.x = Player.Instance.transform.position.x;
+        playerSize = Player.Instance.transform.localScale;
     }
 
     void Update()
@@ -122,7 +121,7 @@ public class Item : MovingElement
                 case EItemType.Sizecontrol: // 크기 조절
 
                     Player.Instance.isBig = true;
-                    collision.transform.DOScale(size, sizeTime);
+                    collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime);
                     // 장애물의 콜라이더를 꺼주기
 
                     yield return new WaitForSeconds(sizeWaitingTime);
@@ -130,7 +129,7 @@ public class Item : MovingElement
                     Player.Instance.isBig = false;
                     sizeTimer = 0;
 
-                    collision.transform.DOScale(new Vector2(1, 1), sizeTime);
+                    collision.transform.DOScale(playerSize, sizeTime);
                     // 장애물의 콜라이더를 켜주기
                     break;
             }
