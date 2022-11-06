@@ -61,6 +61,16 @@ public enum EItemType
 }
 
 /// <summary>
+/// 부스터 타입
+/// </summary>
+public enum EBoosterType
+{
+    Booster500,
+    Booster1500,
+    BoosterItem,
+}
+
+/// <summary>
 /// 장애물 타입
 /// </summary>
 public enum EObstacleType

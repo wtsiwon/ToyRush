@@ -9,7 +9,7 @@ public class DestroyZone : MonoBehaviour
         switch (collision.tag)
         {
             case "BackGround":
-                BackGroundSpawner.Instance.SpawnBackGround();
+                //BackGroundSpawner.Instance.SpawnBackGround(BackGroundSpawner.Instance.currentBackgroundIndex + 1);
                 break;
             case "Item":
                 collision.GetComponent<Item>().Return();
