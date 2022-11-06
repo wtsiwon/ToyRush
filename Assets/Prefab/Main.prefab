@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 8217996070594618494}
   - component: {fileID: 1245878708907248752}
   m_Layer: 5
-  m_Name: ReGame_Btn
+  m_Name: GameOverReGame_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8758,7 +8758,7 @@ MonoBehaviour:
   isBig: 0
   boosterType: 0
   vehicleType: 0
-  force: 10
+  force: 15
   isPressing: 0
 --- !u!114 &1046378356742022170
 MonoBehaviour:

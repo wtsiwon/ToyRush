@@ -25,10 +25,7 @@ public class MovingElement : PoolingObj
     /// <param name="spd"></param>
     public void SetMovingSpd(float spd)
     {
-        if (TryGetComponent<Rigidbody2D>(out var rigidbody2d))
-        {
-            rigidbody2d.velocity = Vector3.left * spd * Time.deltaTime;
-        }
+        rb.velocity = Vector3.left * spd * Time.deltaTime;
     }
     protected virtual void Start()
     {

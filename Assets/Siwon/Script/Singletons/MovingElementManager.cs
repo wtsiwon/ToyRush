@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingElementManager : Singleton<MovingElementManager>
 {
-    [Tooltip("ÇöÀç ³ª¿ÍÀÖ´Â MovingElements")]
+    [Tooltip("í˜„ì¬ ë‚˜ì™€ìˆëŠ” MovingElements")]
     public List<MovingElement> movingElementList = new List<MovingElement>();
-    //¿©±â¼­ Àå¾Ö¹° »óÅÂÁ¶Á¤, ¾ÆÀÌÅÛ»óÅÂ, ¹è°æÀÇ ¼Óµµ µîÀ» Á¶Á¤ÇÒ ¿¹Á¤
+    //ì—¬ê¸°ì„œ ì¥ì• ë¬¼ ìƒíƒœì¡°ì •, ì•„ì´í…œìƒíƒœ, ë°°ê²½ì˜ ì†ë„ ë“±ì„ ì¡°ì •í•  ì˜ˆì •
 
     public float firstBoostingSpd;
 
@@ -67,7 +67,6 @@ public class MovingElementManager : Singleton<MovingElementManager>
     {
         foreach (MovingElement movingElement in movingElementList)
         {
-            if (!movingElement.gameObject.activeSelf) continue;
             movingElement.SetMovingSpd(spd);
         }
     }
