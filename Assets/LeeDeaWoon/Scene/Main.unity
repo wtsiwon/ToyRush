@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6091478076752055844, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_Name
-      value: GameOverReGame_Btn
-      objectReference: {fileID: 0}
     - target: {fileID: 8262276506556927204, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_Name
       value: Main
