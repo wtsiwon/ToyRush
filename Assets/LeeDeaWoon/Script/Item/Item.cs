@@ -101,7 +101,7 @@ public class Item : MovingElement
                               {
                                   Player.Instance.boosterType = EBoosterType.BoosterItem;
                                   Player.Instance.isBoosting = true;
-                                  collision.transform.DOLocalMoveX(-0.9f, boosterSpeed);
+                                  collision.transform.DOLocalMoveX(3, boosterSpeed);
                               });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간
 

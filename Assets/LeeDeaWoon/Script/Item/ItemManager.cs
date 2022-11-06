@@ -156,7 +156,7 @@ public class ItemManager : MonoBehaviour
                   .OnComplete(() =>
                   {
                       Player.Instance.isBoosting = true;
-                      player.transform.DOLocalMoveX(-0.9f, 0.5f);
+                      player.transform.DOLocalMoveX(3, 0.5f);
                   });
 
         yield return new WaitForSeconds(5); // 지속시간
