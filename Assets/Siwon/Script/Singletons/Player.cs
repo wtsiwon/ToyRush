@@ -38,6 +38,10 @@ public class Player : Singleton<Player>
     {
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
+        if(isBoosting == true)
+        {
+            BackGroundSpawner.Instance.backgroundSpd = 50;
+        }
     }
 
 
@@ -110,7 +114,7 @@ public class Player : Singleton<Player>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject);
+        
     }
 
 
@@ -120,7 +124,7 @@ public class Player : Singleton<Player>
 
         if(vehicleType == EVehicleType.None)
         {
-
+            //µðÁü
         }
 
     }
