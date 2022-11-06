@@ -56,14 +56,14 @@ public class Player : Singleton<Player>
             case EVehicleType.None:
             case EVehicleType.Wyvern:
             case EVehicleType.Frog:
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    isPressing = true;
-                }
-                else
-                {
-                    isPressing = false;
-                }
+                //if (Input.GetKey(KeyCode.Space))
+                //{
+                //    isPressing = true;
+                //}
+                //else
+                //{
+                //    isPressing = false;
+                //}
                 break;
             case EVehicleType.BusterMachine:
             case EVehicleType.ProfitUFO:
@@ -71,6 +71,7 @@ public class Player : Singleton<Player>
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     isPressing = true;
+                    Debug.Log("asdfasdf");
                 }
                 else
                 {

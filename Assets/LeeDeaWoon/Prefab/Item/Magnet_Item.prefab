@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8135ab885cae8334d856fcdefef52dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 0
+  poolType: 2
   spriterenderer: {fileID: 0}
   itemType: 1
   collider2D: {fileID: 0}

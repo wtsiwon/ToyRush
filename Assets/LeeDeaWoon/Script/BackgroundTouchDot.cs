@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
+public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Ease easeType;
 
@@ -15,9 +15,13 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
 
     [Header("타이틀")]
     public GameObject title;
+    public GameObject haveCoin;
+    public GameObject stopBtn;
     public GameObject mainBtn;
     public GameObject settingBtn;
-    public GameObject stopBtn;
+
+    [Header("인게임")]
+    public GameObject coinDistance;
 
     [Header("시작 연출")]
     public GameObject smokeBoomb;
@@ -42,6 +46,18 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine("BtnMove");
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (GameManager.Instance.IsGameStart == true)
+            Player.Instance.isPressing = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (GameManager.Instance.IsGameStart == true)
+            Player.Instance.isPressing = false;
     }
 
     public IEnumerator BtnMove()
@@ -76,10 +92,12 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
                     case 1:
                         title.transform.DOLocalMoveY(titleDistance, time).SetEase(easeType);
                         settingBtn.transform.DOLocalMove(stopPos, time).SetEase(easeType);
+                        haveCoin.transform.DOLocalMoveY(stopPos.y, time).SetEase(easeType);
                         break;
 
                     case 4:
                         stopBtn.transform.DOLocalMove(settingPos, time).SetEase(easeType);
+                        coinDistance.transform.DOLocalMoveY(0, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }
@@ -89,6 +107,8 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler
             smokeBoomb.SetActive(true);
             player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
             yield return new WaitForSeconds(playerWaitTime);
+            screenPrevent.raycastTarget = false;
+            screenClick.raycastTarget = true;
             GameManager.Instance.IsGameStart = true;
         }
     }

@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1817033885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8262276507104916875, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 1913511323}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1882345571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8262276507601493018, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 1913511323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1913511323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,45 +178,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8262276508343826787, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: title
-      value: 
-      objectReference: {fileID: 1817033885}
-    - target: {fileID: 8262276508343826787, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: shopWindow
-      value: 
-      objectReference: {fileID: 1882345571}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: coinPatterns.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: coinPatterns.Array.data[0]
-      value: 
-      objectReference: {fileID: 282082266851877188, guid: 5d431c0440313af478a33dff585072c0, type: 3}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: coinPatterns.Array.data[1]
-      value: 
-      objectReference: {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: coinPatterns.Array.data[2]
-      value: 
-      objectReference: {fileID: 7484336930525869784, guid: 09b54fbabb474ea4584eaa9efa91fa90, type: 3}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: obstacleSpriteList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: obstacleSpriteList.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: aeda37a5075a3604c890d9e1cbf5a0b0, type: 3}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: obstacleSpriteList.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 80c3106f713ddb64ba1998dacbaf9fbc, type: 3}
-    - target: {fileID: 8262276508349197294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: obstacleSpriteList.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 67b4ca3fe6833e342842d73c0f73e1d4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
