@@ -65,6 +65,8 @@ public class UIManager : MonoBehaviour
     [Header("게임오버")]
     public GameObject gameOverWindow;
 
+    public Button gameOverMenuBtn;
+
     public TextMeshProUGUI gameOverCoin;
     public TextMeshProUGUI gameOverDistance;
 
@@ -76,6 +78,7 @@ public class UIManager : MonoBehaviour
         UI_Dot();
         Stop_Btns();
         Setting_Btns();
+        GameOver_Btn();
     }
 
     void Update()
@@ -324,10 +327,21 @@ public class UIManager : MonoBehaviour
 
         blackScreen.SetActive(true);
 
-        gameOverCoin.text = "거리 : " + GameManager.Instance.coin;
-        gameOverDistance.text = "코인 : " + GameManager.Instance.Distance;
+        gameOverCoin.text = $"코인 : {GameManager.Instance.coin}";
+        gameOverDistance.text = $"거리 : {GameManager.Instance.Distance}m";
 
         gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);
+    }
+
+    void GameOver_Btn()
+    {
+        gameOverMenuBtn.onClick.AddListener(() =>
+        {
+            DOTween.PauseAll();
+            Time.timeScale = 1;
+
+            SceneManager.LoadScene("Main");
+        });
     }
     #endregion
 }

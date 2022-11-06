@@ -53,7 +53,7 @@ public class Item : MovingElement
             magnetTimer += Time.deltaTime;
     }
 
-    private IEnumerator OnCollisionEnter(Collision collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Player"))
         {

@@ -14597,6 +14597,7 @@ MonoBehaviour:
   reGameBtn: {fileID: 8262276508110705348}
   isStopCheck: 0
   gameOverWindow: {fileID: 157424559734666491}
+  gameOverMenuBtn: {fileID: 1245878708907248752}
   gameOverCoin: {fileID: 2815336039626871395}
   gameOverDistance: {fileID: 1000739865522064550}
 --- !u!1 &8262276508349197292
