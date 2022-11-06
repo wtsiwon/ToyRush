@@ -1,7 +1,7 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//ÀÎ°ÔÀÓ ¿òÁ÷ÀÌ´Â ¿ä¼Òµé
+//ì¸ê²Œì„ ì›€ì§ì´ëŠ” ìš”ì†Œë“¤
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovingElement : PoolingObj
 {
@@ -20,12 +20,15 @@ public class MovingElement : PoolingObj
     }
 
     /// <summary>
-    /// Spd¹Ù²ãÁÜ
+    /// Spdë°”ê¿”ì¤Œ
     /// </summary>
     /// <param name="spd"></param>
     public void SetMovingSpd(float spd)
     {
-        rb.velocity = Vector3.left * spd * Time.deltaTime;
+        if (TryGetComponent<Rigidbody2D>(out var rigidbody2d))
+        {
+            rigidbody2d.velocity = Vector3.left * spd * Time.deltaTime;
+        }
     }
     protected virtual void Start()
     {
