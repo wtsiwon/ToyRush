@@ -86,11 +86,6 @@ public class UIManager : MonoBehaviour
         coin.text = GameManager.Instance.coin.ToString();
         distance.text = GameManager.Instance.Distance.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameOver();
-        }
     }
 
     public void UI_Dot()
