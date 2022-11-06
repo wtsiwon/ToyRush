@@ -53,9 +53,9 @@ public class Item : MovingElement
             magnetTimer += Time.deltaTime;
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnCollisionEnter(Collision collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);
