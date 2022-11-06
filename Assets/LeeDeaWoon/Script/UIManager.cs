@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public static UIManager inst;
     private void Awake() => inst = this;
 
+    private float waitTime = 0.5f;
+
     [Header("타이틀")]
     public GameObject title;
     public TextMeshProUGUI touchToStart;
@@ -60,6 +62,12 @@ public class UIManager : MonoBehaviour
 
     public bool isStopCheck;
 
+    [Header("게임오버")]
+    public GameObject gameOverWindow;
+
+    public TextMeshProUGUI gameOverCoin;
+    public TextMeshProUGUI gameOverDistance;
+
     void Start()
     {
         isBGMCheck = true;
@@ -75,6 +83,11 @@ public class UIManager : MonoBehaviour
         coin.text = GameManager.Instance.coin.ToString();
         distance.text = GameManager.Instance.Distance.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameOver();
+        }
     }
 
     public void UI_Dot()
@@ -140,7 +153,6 @@ public class UIManager : MonoBehaviour
         {
             int settingMovePos = 1570;
             int rightMovePos = 1723;
-            float waitTime = 0.5f;
 
             Sequence sequence = DOTween.Sequence();
 
@@ -201,7 +213,6 @@ public class UIManager : MonoBehaviour
         // 게임규칙 버튼을 눌렀을 때
         gameruleBtn.onClick.AddListener(() =>
         {
-            float waitTime = 0.5f;
             int gameRuleMovePos = 1723;
             int settingMovePos = -720;
 
@@ -225,7 +236,6 @@ public class UIManager : MonoBehaviour
         // 크레딧 버튼을 눌렀을 때
         creditBtn.onClick.AddListener(() =>
         {
-            float waitTime = 0.5f;
             int creditMovePos = 1723;
             int settingMovePos = -720;
 
@@ -254,7 +264,6 @@ public class UIManager : MonoBehaviour
         // 일시정지 버튼을 눌렀을 때
         stopBtn.onClick.AddListener(() =>
         {
-            float waitTime = 0.5f;
             int stopMovePos = 0;
             int settingMovePos = -720;
             int MusicMovePos = -45;
@@ -276,7 +285,6 @@ public class UIManager : MonoBehaviour
         // 돌아가기 버튼을 눌렀을 때
         backBtn.onClick.AddListener(() =>
         {
-            float waitTime = 0.5f;
             int stopMovePos = 1450;
             int settingMovePos = 1570;
 
@@ -291,7 +299,6 @@ public class UIManager : MonoBehaviour
         // 설정 버튼을 눌렀을 때
         stopSettingBtn.onClick.AddListener(() =>
         {
-            float waitTime = 0.5f;
             int stopMovePos = 450;
             int settingMovePos = 0;
 
@@ -307,6 +314,20 @@ public class UIManager : MonoBehaviour
 
             SceneManager.LoadScene("Main");
         });
+    }
+    #endregion
+
+    #region 게임오버 창
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+
+        blackScreen.SetActive(true);
+
+        gameOverCoin.text = "거리 : " + GameManager.Instance.coin;
+        gameOverDistance.text = "코인 : " + GameManager.Instance.Distance;
+
+        gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);
     }
     #endregion
 }
