@@ -10,19 +10,16 @@ public class BackGround : MovingElement
 {
     private void Update()
     {
-        if(transform.position.x <= -21)
+        if(transform.position.x <= -20.7f)
         {
-            Return();
             BackGroundSpawner.Instance.SpawnBackGround();
+            Return();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("DestroyZone"))
-        {
-            Return();
-        }
+        
     }
 
     protected override void OnEnable()
