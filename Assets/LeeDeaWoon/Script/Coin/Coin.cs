@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Coin : PoolingObj
+public class Coin : MovingElement
 {
     [Header("범위")]
     public float flySpeed; // 날아가는 속도

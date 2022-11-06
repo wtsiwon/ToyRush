@@ -82,8 +82,8 @@ public class Item : MovingElement
                     float posMinX = 3f;
                     float posMaxX = 6f;
 
-                    float posMinY = 2f;
-                    float posMaxY = 3f;
+                    float posMinY = 1f;
+                    float posMaxY = 2f;
 
                     GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     bankCoinPattern.transform.parent = gameObject.transform;
