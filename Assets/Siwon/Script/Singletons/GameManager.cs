@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-
+            BackGroundSpawner.Instance.backgroundSpd = distance / 10 + STARTSPD;
         }
     }
 
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI coinText;
 
-    public const float STARTSPD = 5f;
+    public const float STARTSPD = 1000f;
 
     [Tooltip("시작확인")]
     [SerializeField]
@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
-            distance += BackGroundSpawner.Instance.backgroundSpd / 2;
+            yield return new WaitForSeconds(0.01f);
+            distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
         }
     }
 

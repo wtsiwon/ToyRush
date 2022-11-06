@@ -14,7 +14,6 @@ public class DestroyZone : MonoBehaviour
             case "Item":
                 collision.GetComponent<Item>().Return();
                 break;
-
         }
     }
 }

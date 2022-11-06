@@ -14,7 +14,10 @@ public class Player : Singleton<Player>
     public EBoosterType boosterType;
     #endregion
 
-    [Tooltip("ÇöÀç ¹«¾ùÀ» Å¸°í ÀÖ´Â°¡")]
+    public bool isUseItem =>
+     isMagneting || isBig || isBoosting;
+
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½Ö´Â°ï¿½")]
     public EVehicleType vehicleType;
 
     public float force;
@@ -22,17 +25,15 @@ public class Player : Singleton<Player>
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
 
-    public Action OnDie;
-
-    
-
-    [Tooltip("´©¸£°í ÀÖ³ª")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½")]
     public bool isPressing;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+
+        
     }
 
     private void Update()
@@ -41,14 +42,14 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
         if(isBoosting == true)
         {
-            BackGroundSpawner.Instance.backgroundSpd = 50;
+            BackGroundSpawner.Instance.backgroundSpd = 50000;
         }
     }
 
 
 
     /// <summary>
-    /// ³¯¾Æ°¡´Â Å° ÀÔ·Â(PC)
+    /// ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ Å° ï¿½Ô·ï¿½(PC)
     /// </summary>
     private void InputKey(EVehicleType type)
     {
@@ -83,7 +84,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// ÇöÀç Å»°Í¿¡ µû¶ó Input
+    /// ï¿½ï¿½ï¿½ï¿½ Å»ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Input
     /// </summary>
     /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)
@@ -105,10 +106,10 @@ public class Player : Singleton<Player>
                     MoveUFO();
                     break;
                 case EVehicleType.BusterMachine:
-                    //Á¡ÇÁ ¶Ù·Î ´©¸¦½Ã ÃµÃµÈ÷ È°°ø
+                    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ÃµÃµï¿½ï¿½ È°ï¿½ï¿½
                     break;
                 case EVehicleType.Frog:
-                    //±æ°Ô ´©¸¦¼ö·Ï ³ô°Ô Á¡ÇÁ
+                    //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     break;
             }
         }
@@ -116,23 +117,25 @@ public class Player : Singleton<Player>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Obstacle"))
+        {
+            OnDie(gameObject);
+        }
     }
 
 
-    private void Die(GameObject obj)
+    private void OnDie(GameObject obj)
     {
-        
-
         if(vehicleType == EVehicleType.None)
         {
-            //µðÁü
+            MovingElementManager.Instance.MovingElementSpeedSet(0);
+            //ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½
         }
-
     }
+    #region Å»ï¿½ï¿½
 
     /// <summary>
-    /// ³¯¾Æ °¡º¸ÀÚ~
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~
     /// </summary>
     private void Flying()
     {
@@ -143,7 +146,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// UFOÁ¶ÀÛ
+    /// UFOï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void MoveUFO()
     {
@@ -163,7 +166,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// Áß·Â ¹Ù²Ù±â
+    /// ï¿½ß·ï¿½ ï¿½Ù²Ù±ï¿½
     /// </summary>
     private void ChangeGravity()
     {
@@ -174,7 +177,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// ¿ÍÀÌ¹øÀ¸·Î ³¯±â
+    /// ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void FlyingWyvern()
     {
@@ -184,8 +187,5 @@ public class Player : Singleton<Player>
         }
     }
 
-    private void GameOver()
-    {
-
-    }
+    #endregion
 }

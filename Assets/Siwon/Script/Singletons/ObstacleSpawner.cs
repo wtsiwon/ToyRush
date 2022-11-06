@@ -259,8 +259,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Basic];
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
-            obstacle.gameObject.AddComponent<PolygonCollider2D>();
-            obstacle.GetComponent<PolygonCollider2D>().isTrigger = true;
+            obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
         MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
@@ -290,8 +289,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Spin];
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
-            obstacle.gameObject.AddComponent<PolygonCollider2D>();
-            obstacle.GetComponent<PolygonCollider2D>().isTrigger = true;
+            obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
         MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;

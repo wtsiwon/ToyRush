@@ -67,6 +67,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
     {
         foreach (MovingElement movingElement in movingElementList)
         {
+            if (!movingElement.gameObject.activeSelf) continue;
             movingElement.SetMovingSpd(spd);
         }
     }
@@ -81,5 +82,4 @@ public class MovingElementManager : Singleton<MovingElementManager>
 
         yield return new WaitForSeconds(1f);
     }
-
 }
