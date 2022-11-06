@@ -10,7 +10,11 @@ public class BackGround : MovingElement
 {
     private void Update()
     {
-        //거리비례 속도조절
+        if(transform.position.x <= -21)
+        {
+            Return();
+            BackGroundSpawner.Instance.SpawnBackGround();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -31,5 +31,6 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
             BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
             back.GetComponent<SpriteRenderer>().sprite = backgroundSpriteList[currentBackgroundIndex];
         }
+        currentBackgroundIndex++;
     }
 }

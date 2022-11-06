@@ -10,8 +10,11 @@ public class Player : Singleton<Player>
     public bool isMagneting;
     public bool isBig;
     private bool shouldObstacleBreak;
-    
+
     #endregion
+
+    public bool isUseItem =>
+     isMagneting || isBig || isBoosting;
 
     [Tooltip("현재 무엇을 타고 있는가")]
     public EVehicleType vehicleType;
@@ -21,10 +24,6 @@ public class Player : Singleton<Player>
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
 
-    public Action OnDie;
-
-    
-
     [Tooltip("누르고 있나")]
     public bool isPressing;
 
@@ -32,6 +31,8 @@ public class Player : Singleton<Player>
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+
+        
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
         if(isBoosting == true)
         {
-            BackGroundSpawner.Instance.backgroundSpd = 50;
+            BackGroundSpawner.Instance.backgroundSpd = 50000;
         }
     }
 
@@ -115,20 +116,22 @@ public class Player : Singleton<Player>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Obstacle"))
+        {
+            OnDie(gameObject);
+        }
     }
 
 
-    private void Die(GameObject obj)
+    private void OnDie(GameObject obj)
     {
-        
-
         if(vehicleType == EVehicleType.None)
         {
-            //디짐
+            MovingElementManager.Instance.MovingElementSpeedSet(0);
+            //결과창띄우기
         }
-
     }
+    #region 탈것
 
     /// <summary>
     /// 날아 가보자~
@@ -183,8 +186,5 @@ public class Player : Singleton<Player>
         }
     }
 
-    private void GameOver()
-    {
-
-    }
+    #endregion
 }
