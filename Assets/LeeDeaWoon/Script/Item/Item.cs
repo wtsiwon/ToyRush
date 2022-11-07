@@ -11,6 +11,7 @@ public class Item : MovingElement
     public new Collider2D collider2D;
 
     [Header("아이템 : 부스터")]
+    public Image whiteScreen;
     public float boosterDuration; // 지속시간
     public float boosterSpeed; // 속력
     public Ease ease;
@@ -102,6 +103,8 @@ public class Item : MovingElement
                               {
                                   Player.Instance.boosterType = EBoosterType.BoosterItem;
                                   Player.Instance.isBoosting = true;
+
+                                  whiteScreen.DOFade(1, 0.2f).SetLoops(2, LoopType.Yoyo);
                                   collision.transform.DOLocalMoveX(3, boosterSpeed);
                               });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간

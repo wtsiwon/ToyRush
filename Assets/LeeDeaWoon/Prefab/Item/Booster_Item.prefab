@@ -108,7 +108,7 @@ MonoBehaviour:
   piggybankCoin: {fileID: 0}
   sizeTime: 1
   sizeWaitingTime: 0
-  size: {x: 2.5, y: 2.5}
+  playerSize: {x: 0, y: 0}
 --- !u!58 &4878117971467270624
 CircleCollider2D:
   m_ObjectHideFlags: 0
