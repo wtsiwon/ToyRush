@@ -87,7 +87,8 @@ public class Item : MovingElement
 
                     GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     bankCoinPattern.transform.parent = gameObject.transform;
-                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * 
+                        BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
 
                     break;
 

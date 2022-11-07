@@ -81,16 +81,4 @@ public class GameManager : MonoBehaviour
         ObstacleSpawner.Instance.canSpawn = true;
         StartCoroutine(CAddDistance());
     }
-
-
-    private IEnumerator UpDate()
-    {
-        if (isGameStart == true)
-        {
-            //속도가 빨라지면 점수도 빨리 오름
-            distance += (int)BackGroundSpawner.Instance.backgroundSpd / 10;
-        }
-        yield return StartCoroutine(UpDate());
-    }
-
 }
