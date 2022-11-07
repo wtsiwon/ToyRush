@@ -6,13 +6,11 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private void Awake() => Instance = this;
 
     [Tooltip("거리")]
     [SerializeField]
     private float distance;
 
-    public int coin;
     public int haveCoin;
 
     public float Distance
@@ -28,12 +26,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    [Tooltip("거리 Text")]
-    private TextMeshProUGUI distanceText;
+    //[SerializeField]
+    //[Tooltip("거리 Text")]
+    //private TextMeshProUGUI distanceText;
 
-    [SerializeField]
-    private TextMeshProUGUI coinText;
+    //[SerializeField]
+    //private TextMeshProUGUI coinText;
 
     public const float STARTSPD = 1000f;
 
@@ -53,14 +51,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        distanceText.text = $"{distance}m";
 
-    }
+
     private void Start()
     {
         //StartCoroutine(UpDate());
+    }
+
+    private void Update()
+    {
+        //distanceText.text = $"{distance}m";
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator CAddDistance()

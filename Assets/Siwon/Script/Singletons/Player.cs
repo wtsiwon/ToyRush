@@ -129,7 +129,7 @@ public class Player : Singleton<Player>
         if (vehicleType == EVehicleType.None && isBig == false && isBoosting == false)
         {
             MovingElementManager.Instance.MovingElementSpeedSet(0);
-            UIManager.inst.GameOver();
+            UIManager.Instance.GameOver();
         }
     }
     #region 탈것

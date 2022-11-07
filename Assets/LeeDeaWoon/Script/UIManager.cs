@@ -8,8 +8,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager inst;
-    private void Awake() => inst = this;
+    public static UIManager Instance;
+    private void Awake() => Instance = this;
 
     private float waitTime = 0.5f;
 
@@ -19,8 +19,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI haveCoin;
 
     [Header("인게임")]
-    public TextMeshProUGUI coin;
-    public TextMeshProUGUI distance;
+    public int coin;
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI distanceText;
 
     [Header("상점")]
     public GameObject shopWindow;
@@ -83,8 +84,9 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        coin.text = GameManager.Instance.coin.ToString();
-        distance.text = GameManager.Instance.Distance.ToString();
+        distanceText.text = $"{GameManager.Instance.Distance}m";
+
+        coinText.text = coin.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
     }
 
@@ -322,7 +324,7 @@ public class UIManager : MonoBehaviour
 
         blackScreen.SetActive(true);
 
-        gameOverCoin.text = $"코인 : {GameManager.Instance.coin}";
+        gameOverCoin.text = $"코인 : {coin}";
         gameOverDistance.text = $"거리 : {GameManager.Instance.Distance}m";
 
         gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);
