@@ -27,11 +27,6 @@ public class BackGround : MovingElement
         base.OnEnable();
     }
 
-    private void MoveBackGround()
-    {
-        rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
-    }
-
     public override void Return()
     {
         base.Return();

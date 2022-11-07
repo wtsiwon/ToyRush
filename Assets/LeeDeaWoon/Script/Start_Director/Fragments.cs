@@ -41,9 +41,4 @@ public class Fragments : MonoBehaviour
 
         spriteRenderer.DOFade(0, 3);
     }
-
-    private void ByeBye()
-    {
-        rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd;
-    }
 }

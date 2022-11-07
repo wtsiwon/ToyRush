@@ -42,7 +42,7 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
         if(isBoosting == true)
         {
-            BackGroundSpawner.Instance.backgroundSpd = 50000;
+            BackGroundSpawner.Instance.backgroundSpd = 500;
         }
     }
 
