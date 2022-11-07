@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
+using DG.Tweening;
 public class Player : Singleton<Player>
 {
     #region Condition
     public bool isBoosting;
     public bool isMagneting;
-    public bool isBig;
+    public bool IsBig { get; set; }
     private bool shouldObstacleBreak;
 
     public EBoosterType boosterType;
     #endregion
 
     public bool isUseItem =>
-     isMagneting || isBig || isBoosting;
+     isMagneting || IsBig || isBoosting;
 
     [Tooltip("탈것의 종류")]
     public EVehicleType vehicleType;
@@ -32,8 +33,6 @@ public class Player : Singleton<Player>
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
-
-        
     }
 
     private void Update()
@@ -43,6 +42,10 @@ public class Player : Singleton<Player>
         if(isBoosting == true)
         {
             BackGroundSpawner.Instance.backgroundSpd = 500;
+        }
+        else
+        {
+            BackGroundSpawner.Instance.backgroundSpd = GameManager.STARTSPD;
         }
     }
 
@@ -123,10 +126,20 @@ public class Player : Singleton<Player>
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if(IsBig == true)
+            {
+                Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f));
+            }
+        }
+    }
 
     private void OnDie(GameObject obj)
     {
-        if (vehicleType == EVehicleType.None && isBig == false && isBoosting == false)
+        if (vehicleType == EVehicleType.None && isUseItem == false)
         {
             MovingElementManager.Instance.MovingElementSpeedSet(0);
             UIManager.inst.GameOver();

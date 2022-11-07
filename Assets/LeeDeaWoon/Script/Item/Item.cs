@@ -46,7 +46,7 @@ public class Item : MovingElement
     // 아이템 딜레이
     void Item_Delay()
     {
-        if (sizeTimer < sizeWaitingTime && Player.Instance.isBig == true)
+        if (sizeTimer < sizeWaitingTime && Player.Instance.IsBig == true)
             sizeTimer += Time.deltaTime;
 
         if (magnetTimer < magnetWaitingTime && Player.Instance.isMagneting == true)
@@ -121,13 +121,13 @@ public class Item : MovingElement
 
                 case EItemType.Sizecontrol: // 크기 조절
 
-                    Player.Instance.isBig = true;
+                    Player.Instance.IsBig = true;
                     collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime);
                     // 장애물의 콜라이더를 꺼주기
 
                     yield return new WaitForSeconds(sizeWaitingTime);
                     Destroy(this.gameObject);
-                    Player.Instance.isBig = false;
+                    Player.Instance.IsBig = false;
                     sizeTimer = 0;
 
                     collision.transform.DOScale(playerSize, sizeTime);

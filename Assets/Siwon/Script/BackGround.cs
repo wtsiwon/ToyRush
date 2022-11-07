@@ -10,7 +10,7 @@ public class BackGround : MovingElement
 {
     private void Update()
     {
-        if(transform.position.x <= -20.7f)
+        if (transform.position.x <= -20.7f)
         {
             BackGroundSpawner.Instance.SpawnBackGround();
             Return();
@@ -19,18 +19,28 @@ public class BackGround : MovingElement
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        StartCoroutine(CUpdate());
     }
+
+    private IEnumerator CUpdate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            print(BackGroundSpawner.Instance.backgroundSpd);
+        }
+    }
+
 
     public override void Return()
     {
         base.Return();
-        MovingElementManager.Instance.movingElementList.Remove(this);
     }
 
 }

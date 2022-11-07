@@ -11,7 +11,7 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     private List<Sprite> backgroundSpriteList = new List<Sprite>();
 
     [Tooltip("현재 배경 Index")]
-    public int currentBackgroundIndex;
+    public int currentBackgroundIndex = 1;
 
     private void Start()
     {

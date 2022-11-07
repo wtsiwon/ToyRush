@@ -8,6 +8,8 @@ public class Singleton<T> : MonoBehaviour
 {
     private static T instance;
 
+    public bool dontdestroy;
+
     public static T Instance
     {
         get
@@ -27,11 +29,14 @@ public class Singleton<T> : MonoBehaviour
 
     protected void Awake()
     {
-        //if(instance != null)
-        //{
-        //    Destroy(gameObject);
-        //}
-        DontDestroyOnLoad(gameObject);
+        if (dontdestroy == true)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

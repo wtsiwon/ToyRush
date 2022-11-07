@@ -53,6 +53,7 @@ public class ObjPool : Singleton<ObjPool>
     public void InitializeKey()
     {
         pool.Add(EPoolType.BackGround, new Queue<PoolingObj>());
+        pool.Add(EPoolType.Coin, new Queue<PoolingObj>());
     }
 
     /// <summary>
