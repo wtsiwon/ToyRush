@@ -48,7 +48,7 @@ public class AttackPattern : MonoBehaviour
             #region ¾Æ·§°ø°Ý
             case EAttackPattern.Bottom:
                 float moveWait = 0.5f;
-                float warningWaitTime = 0.3f;
+                float warningWaitTime = 0.5f;
                 float shakeWaitTime = 0.2f;
 
 

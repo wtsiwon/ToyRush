@@ -39,12 +39,15 @@ public class Coin : MovingElement
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {
-                GameManager.Instance.coin += 2;
+                UIManager.Instance.coin += 2;
+                GameManager.Instance.haveCoin += 2;
             }
             else
             {
-                GameManager.Instance.coin += 1;
+                UIManager.Instance.coin += 1;
+                GameManager.Instance.haveCoin += 1;
             }
+
             Return();
         }
     }
