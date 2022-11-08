@@ -42,7 +42,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(0.6f);
         while (true)
         {
-            if (canSpawn)
+            if (canSpawn && GameManager.Instance.IsGameStart == true)
             {
                 int obstacleRand = Random.Range(1, 16);
                 SpawnObstaclePattern(obstacleRand);

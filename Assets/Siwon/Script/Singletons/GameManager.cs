@@ -87,10 +87,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CSetGame()
     {
-        MovingElementManager.Instance.BackGroundSpeedSet(STARTSPD);
+        //MovingElementManager.Instance.BackGroundSpeedSet(STARTSPD);
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
         yield return new WaitForSeconds(1f);
-        MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
+        //MovingElementManager.Instance.ObstacleSpeedSet(STARTSPD);
         ObstacleSpawner.Instance.canSpawn = true;
         StartCoroutine(CAddDistance());
     }

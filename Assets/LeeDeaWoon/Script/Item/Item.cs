@@ -39,8 +39,9 @@ public class Item : MovingElement
         playerSize = Player.Instance.transform.localScale;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Item_Delay();
     }
 
@@ -88,7 +89,7 @@ public class Item : MovingElement
 
                     GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     bankCoinPattern.transform.parent = gameObject.transform;
-                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left * 
+                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left *
                         BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
 
                     break;
@@ -101,8 +102,8 @@ public class Item : MovingElement
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
-                                  Player.Instance.boosterType = EBoosterType.BoosterItem;
                                   Player.Instance.isBoosting = true;
+                                  Player.Instance.boosterType = EBoosterType.BoosterItem;
 
                                   whiteScreen.DOFade(1, 0.2f).SetLoops(2, LoopType.Yoyo);
                                   collision.transform.DOLocalMoveX(3, boosterSpeed);

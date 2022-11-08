@@ -154,7 +154,7 @@ public class Player : Singleton<Player>
     {
         if (isPressing == true)
         {
-            rb.AddForce(Vector2.up * force);
+            rb.AddForce(Vector2.up * force * Time.deltaTime);
         }
     }
 

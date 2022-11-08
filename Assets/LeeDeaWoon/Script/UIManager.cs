@@ -328,6 +328,7 @@ public class UIManager : MonoBehaviour
         gameOverDistance.text = $"°Å¸® : {GameManager.Instance.Distance}m";
 
         gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);
+        GameManager.Instance.IsGameStart = false;
     }
 
     void GameOver_Btn()

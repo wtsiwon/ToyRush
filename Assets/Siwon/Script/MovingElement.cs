@@ -14,9 +14,17 @@ public class MovingElement : PoolingObj
     protected virtual void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+
 
         MovingElementManager.Instance.movingElementList.Add(this);
+    }
+
+    protected virtual void Update()
+    {
+        if (GameManager.Instance.IsGameStart == true)
+        {
+            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -25,7 +33,7 @@ public class MovingElement : PoolingObj
     /// <param name="spd"></param>
     public void SetMovingSpd(float spd)
     {
-        rb.velocity = Vector3.left * spd * Time.deltaTime;
+        //rb.velocity = Vector3.left * spd * Time.deltaTime;
     }
     protected virtual void Start()
     {

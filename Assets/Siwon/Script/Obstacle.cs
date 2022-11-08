@@ -55,8 +55,9 @@ public class Obstacle : MovingElement
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (spawnPoint.x - transform.position.x > DISTANCE)
         {
             base.Return();

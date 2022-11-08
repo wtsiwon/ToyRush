@@ -33,10 +33,10 @@ public class Singleton<T> : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
+        //if (instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnDestroy()

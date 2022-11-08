@@ -8,10 +8,13 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BackGround : MovingElement
 {
-    private void Update()
+    public bool isfirstBack;
+    protected override void Update()
     {
-        if (transform.position.x <= -20.7f)
+        base.Update();
+        if (transform.position.x <= -20.6f)
         {
+            //transform.position = new Vector3(41f, 0, 0);
             BackGroundSpawner.Instance.SpawnBackGround();
             Return();
         }
@@ -24,6 +27,7 @@ public class BackGround : MovingElement
 
     protected override void OnEnable()
     {
+        
         base.OnEnable();
         StartCoroutine(CUpdate());
     }
@@ -33,7 +37,7 @@ public class BackGround : MovingElement
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            print(BackGroundSpawner.Instance.backgroundSpd);
+            print(rb.velocity);
         }
     }
 

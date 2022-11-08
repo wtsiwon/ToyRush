@@ -16,10 +16,6 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
 
     private void Start()
     {
-        if(backgroundSprites.Length == 0)
-        {
-            backgroundSprites = Resources.LoadAll<Sprite>("Resource/BackGround");
-        }
         SpawnBackGround();
     }
 

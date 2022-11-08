@@ -14,8 +14,9 @@ public class Coin : MovingElement
 
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Coin_ColliderRange();
     }
 
