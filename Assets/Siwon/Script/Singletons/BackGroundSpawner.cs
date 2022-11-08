@@ -8,6 +8,8 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     [Tooltip("배경 속도")]
     public float backgroundSpd;
 
+    public BackGround standardBackGround;
+
     [SerializeField]
     private Sprite[] backgroundSprites;
 
@@ -16,7 +18,7 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
 
     private void Start()
     {
-        SpawnBackGround();
+        //SpawnBackGround();
     }
 
     public void SpawnBackGround()

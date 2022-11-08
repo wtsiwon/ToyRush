@@ -14,9 +14,9 @@ public class BackGround : MovingElement
         base.Update();
         if (transform.position.x <= -20.6f)
         {
-            //transform.position = new Vector3(41f, 0, 0);
-            BackGroundSpawner.Instance.SpawnBackGround();
-            Return();
+            transform.position = new Vector3(82.8f, 0, 0);
+            //BackGroundSpawner.Instance.SpawnBackGround();
+            //Return();
         }
     }
 

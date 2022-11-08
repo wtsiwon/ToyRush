@@ -205,7 +205,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Right];
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(2f);
+
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
 
         Obstacle obstacle3 = GetSpinObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.6f);
@@ -224,6 +227,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle1 = GetSpinObstacle(spawnPoses[3]);
         yield return new WaitForSeconds(1.7f);
+
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
 
         Obstacle obstacle2 = GetBasicObstacle(spawnPoses[0]);
         yield return new WaitForSeconds(2.1f);

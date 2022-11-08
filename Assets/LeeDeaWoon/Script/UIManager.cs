@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        distanceText.text = $"{GameManager.Instance.Distance}m";
+        distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
         coinText.text = coin.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
