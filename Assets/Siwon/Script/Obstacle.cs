@@ -62,6 +62,12 @@ public class Obstacle : MovingElement
         {
             base.Return();
         }
+
+
+    }
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 
     private void Spin()

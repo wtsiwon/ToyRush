@@ -41,7 +41,7 @@ public class Player : Singleton<Player>
         CurrentVehicle(vehicleType);
         if(isBoosting == true)
         {
-            BackGroundSpawner.Instance.backgroundSpd = 500;
+            BackGroundSpawner.Instance.backgroundSpd = 5000f;
         }
         else
         {
@@ -122,6 +122,7 @@ public class Player : Singleton<Player>
     {
         if (collision.CompareTag("Obstacle"))
         {
+            print(collision.gameObject);
             OnDie(gameObject);
         }
     }

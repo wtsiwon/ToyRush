@@ -20,6 +20,7 @@ public class MovingElementManager : Singleton<MovingElementManager>
 
     }
 
+
     private IEnumerator Check()
     {
         while (true)
@@ -78,11 +79,5 @@ public class MovingElementManager : Singleton<MovingElementManager>
     public void BoostingSpeedSet()
     {
         MovingElementSpeedSet(firstBoostingSpd);
-    }
-
-    private IEnumerator Boosting()
-    {
-
-        yield return new WaitForSeconds(1f);
     }
 }

@@ -20,6 +20,11 @@ public class Coin : MovingElement
         Coin_ColliderRange();
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     //자석 아이템을 먹은 후 
     public void Coin_ColliderRange()
     {

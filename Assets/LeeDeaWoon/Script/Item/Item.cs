@@ -43,6 +43,11 @@ public class Item : MovingElement
         Item_Delay();
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     // 아이템 딜레이
     void Item_Delay()
     {

@@ -21,11 +21,17 @@ public class MovingElement : PoolingObj
 
     protected virtual void Update()
     {
+        
+    }
+
+    protected virtual void FixedUpdate()
+    {
         if (GameManager.Instance.IsGameStart == true)
         {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
         }
     }
+
 
     /// <summary>
     /// Spd바꿔줌

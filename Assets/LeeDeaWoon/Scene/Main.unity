@@ -134,6 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &81399147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493952218361883668, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+  m_PrefabInstance: {fileID: 4815618705780800758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &230907968 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9218151209275044208, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
@@ -143,6 +154,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1318929371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+  m_PrefabInstance: {fileID: 4815618705780800758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1046378356440709505
@@ -174,6 +196,7 @@ MonoBehaviour:
   - {fileID: 282082266851877188, guid: 5d431c0440313af478a33dff585072c0, type: 3}
   - {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}
   - {fileID: 7484336930525869784, guid: 09b54fbabb474ea4584eaa9efa91fa90, type: 3}
+  - {fileID: 2429847750684184441, guid: fdd59a4deb03ca04d9a15460174dfa59, type: 3}
 --- !u!4 &1714152311047617837
 Transform:
   m_ObjectHideFlags: 0
@@ -591,6 +614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   haveCoin: 0
+  distanceText: {fileID: 81399147}
+  coinText: {fileID: 1318929371}
   isGameStart: 0
 --- !u!4 &8262276507760920034
 Transform:

@@ -151,6 +151,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.8f);
 
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.5f);
+
         Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(1.7f);
     }

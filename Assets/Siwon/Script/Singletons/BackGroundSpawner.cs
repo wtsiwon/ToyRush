@@ -23,9 +23,9 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     {
         if (currentBackgroundIndex == 3)
         {
-            currentBackgroundIndex = 0;
             BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
             back.GetComponent<SpriteRenderer>().sprite = backgroundSprites[currentBackgroundIndex];
+            currentBackgroundIndex = 0;
         }
         else
         {
@@ -33,5 +33,6 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
             back.GetComponent<SpriteRenderer>().sprite = backgroundSprites[currentBackgroundIndex];
         }
         currentBackgroundIndex++;
+        print(currentBackgroundIndex);
     }
 }

@@ -26,14 +26,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //[Tooltip("거리 Text")]
-    //private TextMeshProUGUI distanceText;
+    [SerializeField]
+    [Tooltip("거리 Text")]
+    private TextMeshProUGUI distanceText;
 
-    //[SerializeField]
-    //private TextMeshProUGUI coinText;
+    [SerializeField]
+    private TextMeshProUGUI coinText;
 
-    public const float STARTSPD = 1000f;
+    public const float STARTSPD = 200f;
 
     [Tooltip("시작확인")]
     [SerializeField]
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //distanceText.text = $"{distance}m";
+        //distanceText.text = $"{distance.ToString("F0")}m";
     }
 
     private void Awake()

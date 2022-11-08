@@ -20,6 +20,11 @@ public class BackGround : MovingElement
         }
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -29,7 +34,7 @@ public class BackGround : MovingElement
     {
         
         base.OnEnable();
-        StartCoroutine(CUpdate());
+        //StartCoroutine(CUpdate());
     }
 
     private IEnumerator CUpdate()

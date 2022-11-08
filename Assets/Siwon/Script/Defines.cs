@@ -102,6 +102,14 @@ public enum ESoundType
 
 }
 
+public enum EMovingElementType
+{
+    Obstacle,
+    Item,
+    BackGround,
+    Coin,
+}
+
 public enum EDir
 {
     Up = 0,
