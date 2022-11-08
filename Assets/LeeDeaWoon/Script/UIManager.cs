@@ -324,7 +324,7 @@ public class UIManager : MonoBehaviour
 
         blackScreen.SetActive(true);
 
-        gameOverCoin.text = $"코인 : {coin}";
+        gameOverCoin.text = coin.ToString();
         gameOverDistance.text = $"거리 : {GameManager.Instance.Distance}m";
 
         gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);

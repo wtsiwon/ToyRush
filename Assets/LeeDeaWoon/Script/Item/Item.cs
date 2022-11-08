@@ -20,7 +20,8 @@ public class Item : MovingElement
     float magnetTimer;
 
     [Header("아이템 : 저금통")]
-    public GameObject piggybankCoin; // 소환될 프리팹 코인
+    public int getCoin;
+    //public GameObject piggybankCoin; // 소환될 프리팹 코인
 
     [Header("아이템 : 크기조절")]
     public int sizeTime; //커지는 시간
@@ -79,16 +80,14 @@ public class Item : MovingElement
 
 
                 case EItemType.Piggybank: // 저금통
-                    float posMinX = 3f;
-                    float posMaxX = 6f;
+                    Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
+                    UIManager.Instance.coin += getCoin;
+                    GameManager.Instance.haveCoin += getCoin;
 
-                    float posMinY = 1f;
-                    float posMaxY = 2f;
-
-                    GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
-                    bankCoinPattern.transform.parent = gameObject.transform;
-                    bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left *
-                        BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+                    //GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
+                    //bankCoinPattern.transform.parent = gameObject.transform;
+                    //bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left *
+                    //    BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
 
                     break;
 
@@ -97,10 +96,10 @@ public class Item : MovingElement
                     Sequence mySequence = DOTween.Sequence();
                     float playerXValue = collision.transform.position.x;
 
+                    Player.Instance.isBoosting = true;
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
-                                  Player.Instance.isBoosting = true;
                                   Player.Instance.boosterType = EBoosterType.BoosterItem;
 
                                   Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);

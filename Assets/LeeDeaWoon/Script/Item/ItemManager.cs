@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour
     [Header("시작 아이템")]
     public GameObject whiteScreen;
     public GameObject startItem;
+    public GameObject piggybankDirector;
 
     public Image boosterRayCast500;
     public Image boosterRayCast1500;
@@ -153,10 +154,10 @@ public class ItemManager : MonoBehaviour
 
         float playerXValue = player.transform.position.x;
 
+        Player.Instance.isBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .OnComplete(() =>
                   {
-                      Player.Instance.isBoosting = true;
 
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(3, 0.5f);
