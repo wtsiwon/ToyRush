@@ -40,9 +40,9 @@ public class Coin : MovingElement
     {
         if (collision.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
+            Instantiate(ItemManager.inst.piggybankDirector, transform.position, Quaternion.identity)/*.transform.SetParent(gameObject.transform, false)*/;
+            //Destroy(this.gameObject);
 
-            //Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {

@@ -471,6 +471,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3493952218374339959, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952218717909855, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -667,6 +671,7 @@ MonoBehaviour:
   spawnValue: 12.5
   whiteScreen: {fileID: 8720617552238912954, guid: a5e1a01c2ea4ccc41b799d55e1b6caad, type: 3}
   startItem: {fileID: 3890023020495159763}
+  piggybankDirector: {fileID: 1582093471560866857, guid: 59fb534b8d29efa459731789c0556556, type: 3}
   boosterRayCast500: {fileID: 3890023021223222108}
   boosterRayCast1500: {fileID: 3890023021772988625}
   booster500Btn: {fileID: 3890023021223222109}
