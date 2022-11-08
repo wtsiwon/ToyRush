@@ -532,6 +532,7 @@ MonoBehaviour:
   player: {fileID: 8262276508141446414}
   spawnInterval: 2.5
   spawnValue: 12.5
+  whiteScreen: {fileID: 8720617552238912954, guid: a5e1a01c2ea4ccc41b799d55e1b6caad, type: 3}
   startItem: {fileID: 3890023020495159763}
   boosterRayCast500: {fileID: 3890023021223222108}
   boosterRayCast1500: {fileID: 3890023021772988625}

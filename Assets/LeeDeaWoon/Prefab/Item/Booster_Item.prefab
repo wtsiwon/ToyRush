@@ -101,6 +101,7 @@ MonoBehaviour:
   spriterenderer: {fileID: 0}
   itemType: 3
   collider2D: {fileID: 0}
+  whiteScreen: {fileID: 8211322786673524832, guid: a5e1a01c2ea4ccc41b799d55e1b6caad, type: 3}
   boosterDuration: 5
   boosterSpeed: 0.5
   ease: 26

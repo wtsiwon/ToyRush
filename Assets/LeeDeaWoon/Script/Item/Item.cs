@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
 public class Item : MovingElement
@@ -11,7 +10,6 @@ public class Item : MovingElement
     public new Collider2D collider2D;
 
     [Header("아이템 : 부스터")]
-    public Image whiteScreen;
     public float boosterDuration; // 지속시간
     public float boosterSpeed; // 속력
     public Ease ease;
@@ -105,7 +103,7 @@ public class Item : MovingElement
                                   Player.Instance.isBoosting = true;
                                   Player.Instance.boosterType = EBoosterType.BoosterItem;
 
-                                  whiteScreen.DOFade(1, 0.2f).SetLoops(2, LoopType.Yoyo);
+                                  Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
                                   collision.transform.DOLocalMoveX(3, boosterSpeed);
                               });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간

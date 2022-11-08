@@ -20,6 +20,7 @@ public class ItemManager : MonoBehaviour
     public float spawnValue = 12.5f;
 
     [Header("시작 아이템")]
+    public GameObject whiteScreen;
     public GameObject startItem;
 
     public Image boosterRayCast500;
@@ -156,6 +157,8 @@ public class ItemManager : MonoBehaviour
                   .OnComplete(() =>
                   {
                       Player.Instance.isBoosting = true;
+
+                      Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(3, 0.5f);
                   });
 
