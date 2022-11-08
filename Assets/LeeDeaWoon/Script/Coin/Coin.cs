@@ -42,6 +42,7 @@ public class Coin : MovingElement
         {
             Destroy(this.gameObject);
 
+            //Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {
@@ -53,7 +54,6 @@ public class Coin : MovingElement
                 UIManager.Instance.coin += 1;
                 GameManager.Instance.haveCoin += 1;
             }
-
             Return();
         }
     }
