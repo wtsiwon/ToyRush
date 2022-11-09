@@ -12,7 +12,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType);
+        StartCoroutine(Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType));
     }
 
     void Awake()
@@ -20,24 +20,27 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Animator_Controller(EVehicleType vehicleType, EBoosterType boosterType)
+    IEnumerator Animator_Controller(EVehicleType vehicleType, EBoosterType boosterType)
     {
         animator.SetBool("Booster", Player.Instance.isBoosting);
 
         if (Player.Instance.isBoosting == true)
         {
+            animator.SetInteger("Booster_Number", 0);
+            yield return new WaitForSeconds(2);
+
             switch (boosterType)
             {
                 case EBoosterType.Booster500:
-                    animator.SetInteger("Booster_Number", 0);
-                    break;
-
-                case EBoosterType.Booster1500:
                     animator.SetInteger("Booster_Number", 1);
                     break;
 
-                case EBoosterType.BoosterItem:
+                case EBoosterType.Booster1500:
                     animator.SetInteger("Booster_Number", 2);
+                    break;
+
+                case EBoosterType.BoosterItem:
+                    animator.SetInteger("Booster_Number", 3);
                     break;
             }
 

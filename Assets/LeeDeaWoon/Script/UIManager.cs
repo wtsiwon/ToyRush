@@ -78,6 +78,7 @@ public class UIManager : MonoBehaviour
 
         UI_Dot();
         Stop_Btns();
+        Main_Btns();
         Setting_Btns();
         GameOver_Btn();
     }
@@ -101,7 +102,7 @@ public class UIManager : MonoBehaviour
     }
 
     #region 메인버튼
-    public void Main_Btn()
+    public void Main_Btns()
     {
         // 상점 버튼을 눌렀을 때
         shopBtn.onClick.AddListener(() =>
@@ -127,11 +128,11 @@ public class UIManager : MonoBehaviour
             shopWindow.SetActive(true);
         });
 
-        // 상점취소 버튼을 눌렀을 때
-        //shopsCancelBtn.onClick.AddListener(() =>
-        //{
-        //    shopWindow.SetActive(false);
-        //});
+        //상점취소 버튼을 눌렀을 때
+        shopsCancelBtn.onClick.AddListener(() =>
+        {
+            shopWindow.SetActive(false);
+        });
     }
 
 
