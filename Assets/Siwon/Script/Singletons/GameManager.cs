@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
 
     public const float STARTSPD = 200f;
 
+    [Tooltip("죽을 때 나오는 조각들의 Sprite")]
+    public List<Sprite> piecesList = new List<Sprite>();
+
     [Tooltip("시작확인")]
     [SerializeField]
     private bool isGameStart;
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //distanceText.text = $"{distance.ToString("F0")}m";
+        
     }
 
     private void Awake()
@@ -77,6 +81,34 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator CToDropOnePieces()
+    {
+        yield return new WaitForSeconds(2f);
+        UIManager.Instance.GameOver();
+    }
+
+    public void OnDie()
+    {
+        ToDropPieces();
+        StartCoroutine(CToDropOnePieces());
+    }
+
+    private void ToDropPieces()
+    {
+        Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+
+        for (int i = 0; i < piecesList.Count; i++)
+        {
+            GameObject piece = new GameObject();
+            piece.transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
+            piece.AddComponent<SpriteRenderer>();
+            piece.AddComponent<CircleCollider2D>();
+            piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, -0.5f));
+            piece.GetComponent<SpriteRenderer>().sprite = piecesList[i];
         }
     }
 

@@ -18,7 +18,7 @@ public class Player : Singleton<Player>
         set
         {
             isBoosting = value;
-            if(value == true)
+            if (value == true)
             {
                 StartCoroutine(CWaitChangeBoosterSpd());
             }
@@ -38,13 +38,35 @@ public class Player : Singleton<Player>
     public bool isUseItem =>
      isMagneting || IsBig || isBoosting;
 
+    private bool isDie;
+    public bool IsDie
+    {
+        get => isDie;
+
+        set
+        {
+            isDie = value;
+            if(isDie == true)
+            {
+                GameManager.Instance.OnDie();
+            }
+        }
+    }
+
     [Tooltip("탈것의 종류")]
     public EVehicleType vehicleType;
 
+    [Tooltip("힘")]
+    [Range(100, 5000)]
     public float force;
 
+    [Tooltip("죽을 때 나오는 조각들의 Sprite")]
+    public List<Sprite> piecesList = new List<Sprite>();
+
+    #region GetComponent한 Component
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
+    #endregion
 
     [Tooltip("눌렀음?")]
     public bool isPressing;
@@ -53,6 +75,7 @@ public class Player : Singleton<Player>
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+        IsDie = false;
     }
 
     private void Update()
@@ -126,7 +149,7 @@ public class Player : Singleton<Player>
                     MoveUFO();
                     break;
                 case EVehicleType.BusterMachine:
-                    
+
                     break;
                 case EVehicleType.Frog:
 
@@ -140,7 +163,10 @@ public class Player : Singleton<Player>
         if (collision.CompareTag("Obstacle"))
         {
             print(collision.gameObject);
-            OnDie();
+            if (vehicleType == EVehicleType.None && isUseItem == false)
+            {
+                IsDie = true;
+            }
         }
     }
 
@@ -148,21 +174,15 @@ public class Player : Singleton<Player>
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if(IsBig == true)
+            if (IsBig == true)
             {
                 Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f));
             }
         }
     }
 
-    private void OnDie()
-    {
-        if (vehicleType == EVehicleType.None && isUseItem == false)
-        {
-            //MovingElementManager.Instance.MovingElementSpeedSet(0);
-            UIManager.Instance.GameOver();
-        }
-    }
+    
+
     #region 탈것
 
     /// <summary>

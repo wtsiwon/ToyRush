@@ -17,12 +17,15 @@ public class UIManager : MonoBehaviour
     public GameObject title;
     public TextMeshProUGUI touchToStart;
     public TextMeshProUGUI haveCoin;
+    public GameObject firstBackGround;
+    public Sprite brokenBackGround;
 
     [Header("인게임")]
     public int coin;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI distanceText;
 
+    #region 상점
     [Header("상점")]
     public GameObject shopWindow;
     public GameObject content;
@@ -32,7 +35,9 @@ public class UIManager : MonoBehaviour
     public Button gadgetBtn;
     public Button vehicleBtn;
     public Button shopsCancelBtn;
+    #endregion
 
+    #region 설정
     [Header("설정")]
     public GameObject settingWindow;
     public GameObject blackScreen;
@@ -53,7 +58,9 @@ public class UIManager : MonoBehaviour
     public bool isEffectCheck;
     public bool isRuleCheck;
     public bool isCreditCheck;
+    #endregion
 
+    #region 일시정지
     [Header("일시정지")]
     public GameObject stopWindow;
 
@@ -63,7 +70,9 @@ public class UIManager : MonoBehaviour
     public Button reGameBtn;
 
     public bool isStopCheck;
+    #endregion
 
+    #region 게임오버
     [Header("게임오버")]
     public GameObject gameOverWindow;
 
@@ -71,6 +80,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI gameOverCoin;
     public TextMeshProUGUI gameOverDistance;
+    #endregion
 
     void Start()
     {
@@ -330,7 +340,7 @@ public class UIManager : MonoBehaviour
     #region 게임오버 창
     public void GameOver()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.5f;
 
         blackScreen.SetActive(true);
 

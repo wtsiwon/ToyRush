@@ -105,6 +105,8 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
 
             yield return new WaitForSeconds(1);
             smokeBoomb.SetActive(true);
+            UIManager.Instance.firstBackGround.GetComponent<SpriteRenderer>().sprite
+                = UIManager.Instance.brokenBackGround;
             player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
             yield return new WaitForSeconds(playerWaitTime);
             screenPrevent.raycastTarget = false;
