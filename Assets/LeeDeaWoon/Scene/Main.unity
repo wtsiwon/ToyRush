@@ -664,7 +664,7 @@ MonoBehaviour:
   itemList:
   - {fileID: 405193218991603937, guid: 424aa0ca8d201e145b157e56d8f64968, type: 3}
   - {fileID: 1629106816624145166, guid: 4d927cb598fb8d6448b9ffd731ca237e, type: 3}
-  - {fileID: 4684645278609450343, guid: b756d5f1a3cdf29499b67dd0830d2ce3, type: 3}
+  - {fileID: 5919289148243670930, guid: b756d5f1a3cdf29499b67dd0830d2ce3, type: 3}
   - {fileID: 6239244220281146425, guid: 7ff7e711b923f0f48ada85e10f4a8b36, type: 3}
   player: {fileID: 8262276508141446414}
   spawnInterval: 2.5
@@ -851,7 +851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontdestroy: 0
-  isBoosting: 0
   isMagneting: 0
   boosterType: 0
   vehicleType: 0

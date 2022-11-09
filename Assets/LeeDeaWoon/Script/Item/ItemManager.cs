@@ -154,7 +154,7 @@ public class ItemManager : MonoBehaviour
 
         float playerXValue = player.transform.position.x;
 
-        Player.Instance.isBoosting = true;
+        Player.Instance.IsBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .OnComplete(() =>
                   {
@@ -166,7 +166,7 @@ public class ItemManager : MonoBehaviour
         yield return new WaitForSeconds(5); // 지속시간
 
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
-        Player.Instance.isBoosting = false;
+        Player.Instance.IsBoosting = false;
 
         yield return new WaitForSeconds(0.5f);
 

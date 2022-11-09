@@ -18,10 +18,6 @@ public class Player : Singleton<Player>
         set
         {
             isBoosting = value;
-            if(isBoosting == true)
-            {
-                
-            }
         }
     }
     public bool isMagneting;
