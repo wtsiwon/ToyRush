@@ -22,9 +22,9 @@ public class PlayerAnimation : MonoBehaviour
 
     IEnumerator Animator_Controller(EVehicleType vehicleType, EBoosterType boosterType)
     {
-        animator.SetBool("Booster", Player.Instance.isBoosting);
+        animator.SetBool("Booster", Player.Instance.IsBoosting);
 
-        if (Player.Instance.isBoosting == true)
+        if (Player.Instance.IsBoosting == true)
         {
             animator.SetInteger("Booster_Number", 0);
             yield return new WaitForSeconds(2);
@@ -62,7 +62,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Ground") && Player.Instance.isBoosting == false)
+        if (collision.transform.CompareTag("Ground") && Player.Instance.IsBoosting == false)
         {
             animator.SetBool("fly", false);
             Debug.Log("asdf");
