@@ -101,7 +101,7 @@ public class Item : MovingElement
                     Sequence mySequence = DOTween.Sequence();
                     float playerXValue = collision.transform.position.x;
 
-                    Player.Instance.isBoosting = true;
+                    Player.Instance.IsBoosting = true;
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
@@ -114,7 +114,7 @@ public class Item : MovingElement
 
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
-                    Player.Instance.isBoosting = false;
+                    Player.Instance.IsBoosting = false;
                     yield return new WaitForSeconds(boosterSpeed);
 
                     Destroy(this.gameObject);

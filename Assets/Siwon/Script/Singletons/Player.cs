@@ -7,7 +7,23 @@ using DG.Tweening;
 public class Player : Singleton<Player>
 {
     #region Condition
-    public bool isBoosting;
+
+    private bool isBoosting;
+    public bool IsBoosting
+    {
+        get
+        {
+            return isBoosting;
+        }
+        set
+        {
+            isBoosting = value;
+            if(isBoosting == true)
+            {
+                
+            }
+        }
+    }
     public bool isMagneting;
     public bool IsBig { get; set; }
     private bool shouldObstacleBreak;
@@ -49,6 +65,7 @@ public class Player : Singleton<Player>
         }
     }
 
+    
 
 
     /// <summary>
