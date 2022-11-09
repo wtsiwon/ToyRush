@@ -70,22 +70,31 @@ public class ItemManager : MonoBehaviour
         // 500원 부스터 버튼을 눌렀을 때
         booster500Btn.onClick.AddListener(() =>
         {
-            isStartItemClick = true;
+            //if (GameManager.Instance.haveCoin > 500)
+            //{
 
-            StartItem_DoKill();
-            boosterRayCast500.raycastTarget = false;
-            boosterRayCast1500.raycastTarget = false;
+            //}
+                isStartItemClick = true;
 
-            booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
-            booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
+                StartItem_DoKill();
+                boosterRayCast500.raycastTarget = false;
+                boosterRayCast1500.raycastTarget = false;
 
-            Player.Instance.boosterType = EBoosterType.Booster500;
-            StartCoroutine(Start_Booster());
+                booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
+                booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
+
+                Player.Instance.boosterType = EBoosterType.Booster500;
+                StartCoroutine(Start_Booster());
         });
 
         // 1500원 부스터 버튼을 눌렀을 때
         booster1500Btn.onClick.AddListener(() =>
         {
+            //if (GameManager.Instance.haveCoin >= 1500)
+            //{
+
+            //}
+
             isStartItemClick = true;
 
             StartItem_DoKill();
@@ -155,7 +164,7 @@ public class ItemManager : MonoBehaviour
 
         float playerXValue = player.transform.position.x;
 
-        Player.Instance.isBoosting = true;
+        Player.Instance.IsBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .OnComplete(() =>
                   {
@@ -167,7 +176,7 @@ public class ItemManager : MonoBehaviour
         yield return new WaitForSeconds(5); // 지속시간
 
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
-        Player.Instance.isBoosting = false;
+        Player.Instance.IsBoosting = false;
 
         yield return new WaitForSeconds(0.5f);
 

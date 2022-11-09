@@ -5,13 +5,16 @@ using DG.Tweening;
 
 public class Coin : MovingElement
 {
+    SpriteRenderer SpriteRenderer;
+
     [Header("범위")]
     public float flySpeed; // 날아가는 속도
     public int coinRange; // 코인범위
 
-    void Start()
+    protected override void Start()
     {
-
+        base.Start();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected override void Update()
@@ -36,12 +39,15 @@ public class Coin : MovingElement
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Instantiate(ItemManager.inst.piggybankDirector, transform.position, Quaternion.identity)/*.transform.SetParent(gameObject.transform, false)*/;
-            //Destroy(this.gameObject);
+            GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+            director.transform.SetParent(gameObject.transform, false);
+
+
+            spriterenderer.DOFade(0, 0);
 
             gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
@@ -54,6 +60,10 @@ public class Coin : MovingElement
                 UIManager.Instance.coin += 1;
                 GameManager.Instance.haveCoin += 1;
             }
+
+            yield return new WaitForSeconds(1f);
+            Destroy(gameObject);
+
             Return();
         }
     }
