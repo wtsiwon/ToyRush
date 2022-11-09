@@ -33,9 +33,7 @@ public class Coin : MovingElement
     {
         if (Player.Instance.isMagneting == true)
         {
-
-            if (Player.Instance.transform.position.x <= this.transform.position.x + coinRange && Player.Instance.transform.position.y <= this.transform.position.y + coinRange)
-                this.gameObject.transform.DOLocalMove(Player.Instance.transform.position, flySpeed);
+            gameObject.transform.DOLocalMove(Player.Instance.transform.position, flySpeed);
         }
     }
 
