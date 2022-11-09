@@ -161,16 +161,14 @@ public class ItemManager : MonoBehaviour
     IEnumerator Start_Booster()
     {
         Sequence mySequence = DOTween.Sequence();
-
         float playerXValue = player.transform.position.x;
 
         Player.Instance.IsBoosting = true;
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .OnComplete(() =>
                   {
-
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
-                      player.transform.DOLocalMoveX(3, 0.5f);
+                      player.transform.DOLocalMoveX(-11, 0.5f);
                   });
 
         yield return new WaitForSeconds(5); // 지속시간
