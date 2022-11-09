@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
+    private bool Check;
 
     void Start()
     {
@@ -24,9 +25,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool("Booster", Player.Instance.IsBoosting);
 
-        if (Player.Instance.IsBoosting == true)
+        if (Player.Instance.IsBoosting == true && Check == false)
         {
-            animator.SetInteger("Booster_Number", 0);
+            Check = true;
+
             yield return new WaitForSeconds(2);
             animator.SetBool("Booster_Wait", true);
 
@@ -44,19 +46,18 @@ public class PlayerAnimation : MonoBehaviour
                     animator.SetInteger("Booster_Number", 3);
                     break;
             }
-
+            yield return new WaitForSeconds(3);
+            Check = false;
+            animator.SetBool("Booster_Wait", false);
         }
 
-        else if(animator.GetBool("Booster_Wait") == false)
+        if (Player.Instance.isPressing == true && animator.GetBool("Booster_Wait") == false)
         {
-            if (Player.Instance.isPressing == true)
+            switch (vehicleType)
             {
-                switch (vehicleType)
-                {
-                    case EVehicleType.None:
-                        animator.SetBool("fly", true);
-                        break;
-                }
+                case EVehicleType.None:
+                    animator.SetBool("fly", true);
+                    break;
             }
         }
     }
