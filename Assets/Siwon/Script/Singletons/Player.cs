@@ -18,6 +18,14 @@ public class Player : Singleton<Player>
         set
         {
             isBoosting = value;
+            if(value == true)
+            {
+                StartCoroutine(CWaitChangeBoosterSpd());
+            }
+            else
+            {
+                BackGroundSpawner.Instance.backgroundSpd = GameManager.STARTSPD;
+            }
         }
     }
     public bool isMagneting;
@@ -51,17 +59,13 @@ public class Player : Singleton<Player>
     {
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
-        if(isBoosting == true)
-        {
-            BackGroundSpawner.Instance.backgroundSpd = 5000f;
-        }
-        else
-        {
-            BackGroundSpawner.Instance.backgroundSpd = GameManager.STARTSPD;
-        }
     }
 
-    
+    private IEnumerator CWaitChangeBoosterSpd()
+    {
+        yield return new WaitForSeconds(2f);
+        BackGroundSpawner.Instance.backgroundSpd = 5000f;
+    }
 
 
     /// <summary>

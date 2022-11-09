@@ -270,6 +270,11 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         {
             obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
+        else
+        {
+            Destroy(obstacle.GetComponent<PolygonCollider2D>());
+            obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
+        }
         MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
     }

@@ -347,7 +347,7 @@ public class UIManager : MonoBehaviour
         {
             DOTween.PauseAll();
             Time.timeScale = 1;
-
+            
             SceneManager.LoadScene("Main");
         });
     }

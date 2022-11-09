@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
         set
         {
             isGameStart = value;
+            if(value == false)
+            {
+                distance = 0;
+            }
             StartCoroutine(CSetGame());
         }
     }
