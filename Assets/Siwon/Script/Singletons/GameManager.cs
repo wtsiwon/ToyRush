@@ -80,11 +80,12 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(0.01f);
             if (isGameStart == true)
             {
-                yield return new WaitForSeconds(0.01f);
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
             }
+
         }
     }
 

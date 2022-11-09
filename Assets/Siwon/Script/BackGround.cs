@@ -11,26 +11,41 @@ public class BackGround : MovingElement
     public bool isfirstBack;
 
     public int backgroundNum;
+
+    public GameObject standardObj;
     protected override void Update()
     {
         base.Update();
-        if (transform.position.x <= -82.8f)
+        //if (transform.position.x <= -82.8f)
+        //{
+        if (isfirstBack == false && GameManager.Instance.IsGameStart == true)
         {
-            if (isfirstBack == false)
-            {
-                transform.position = new Vector3(0, 0, 0);
-            }
-            else
+            transform.position = new Vector3(standardObj.transform.position.x + (20.7f * backgroundNum), 0, 0);
+        }
+        else if(isfirstBack == true && GameManager.Instance.IsGameStart == true)
+        {
+            if(transform.position.x <= -20.7f)
             {
                 Return();
             }
-            //BackGroundSpawner.Instance.SpawnBackGround();
         }
+        //BackGroundSpawner.Instance.SpawnBackGround();
+        //}
+    }
+
+    private IEnumerator CWait()
+    {
+        yield return new WaitForSeconds(5f);
+        Return();
     }
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
+        if(isfirstBack == true && GameManager.Instance.IsGameStart == true)
+        {
+            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
+        }
+        //base.FixedUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

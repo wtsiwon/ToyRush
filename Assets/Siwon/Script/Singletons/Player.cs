@@ -136,7 +136,7 @@ public class Player : Singleton<Player>
         if (collision.CompareTag("Obstacle"))
         {
             print(collision.gameObject);
-            OnDie(gameObject);
+            OnDie();
         }
     }
 
@@ -151,11 +151,11 @@ public class Player : Singleton<Player>
         }
     }
 
-    private void OnDie(GameObject obj)
+    private void OnDie()
     {
         if (vehicleType == EVehicleType.None && isUseItem == false)
         {
-            MovingElementManager.Instance.MovingElementSpeedSet(0);
+            //MovingElementManager.Instance.MovingElementSpeedSet(0);
             UIManager.Instance.GameOver();
         }
     }
