@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     [Header("상점")]
     public GameObject shopWindow;
+    public GameObject content;
 
     public Button shopBtn;
     public Button characterBtn;
@@ -108,30 +109,38 @@ public class UIManager : MonoBehaviour
         shopBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
+            content.transform.GetChild(0).gameObject.SetActive(true);
         });
 
         // 캐릭터 버튼을 눌렀을 때
         characterBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
+            content.transform.GetChild(1).gameObject.SetActive(true);
         });
 
         // 가젯 버튼을 눌렀을 때
         gadgetBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
+            content.transform.GetChild(2).gameObject.SetActive(true);
         });
 
         // 탈것 버튼을 눌렀을 때
         vehicleBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(true);
+            content.transform.GetChild(3).gameObject.SetActive(true);
         });
 
         //상점취소 버튼을 눌렀을 때
         shopsCancelBtn.onClick.AddListener(() =>
         {
             shopWindow.SetActive(false);
+
+            for(int i = 0; i<4; i++)
+                content.transform.GetChild(i).gameObject.SetActive(false);
+
         });
     }
 
