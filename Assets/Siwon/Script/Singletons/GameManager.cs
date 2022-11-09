@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
     private void ToDropPieces()
     {
         Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
-        gameObject.SetActive(false);
+        Player.Instance.gameObject.SetActive(false);
 
         for (int i = 0; i < piecesList.Count; i++)
         {
@@ -107,8 +107,9 @@ public class GameManager : MonoBehaviour
             piece.transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
             piece.AddComponent<SpriteRenderer>();
             piece.AddComponent<CircleCollider2D>();
-            piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, -0.5f));
+            piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
             piece.GetComponent<SpriteRenderer>().sprite = piecesList[i];
+            piece.transform.localScale = new Vector3(0.2f, 0.2f, 1);
         }
     }
 

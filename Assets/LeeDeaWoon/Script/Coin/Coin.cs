@@ -33,6 +33,8 @@ public class Coin : MovingElement
         {
             GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             director.transform.SetParent(gameObject.transform, false);
+            director.transform.position = new Vector3(director.transform.position.x,
+                director.transform.position.y, 0);
 
 
             spriterenderer.DOFade(0, 0);
