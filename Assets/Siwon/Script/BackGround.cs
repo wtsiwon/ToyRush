@@ -9,14 +9,22 @@ using UnityEngine;
 public class BackGround : MovingElement
 {
     public bool isfirstBack;
+
+    public int backgroundNum;
     protected override void Update()
     {
         base.Update();
-        if (transform.position.x <= -20.6f)
+        if (transform.position.x <= -82.8f)
         {
-            transform.position = new Vector3(82.8f, 0, 0);
+            if (isfirstBack == false)
+            {
+                transform.position = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                Return();
+            }
             //BackGroundSpawner.Instance.SpawnBackGround();
-            //Return();
         }
     }
 
@@ -32,7 +40,7 @@ public class BackGround : MovingElement
 
     protected override void OnEnable()
     {
-        
+
         base.OnEnable();
         //StartCoroutine(CUpdate());
     }

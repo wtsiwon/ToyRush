@@ -54,7 +54,8 @@ public class ItemManager : MonoBehaviour
             yield return new WaitForSeconds(spawnValue + Random.Range(-spawnInterval, spawnInterval));
             if (GameManager.Instance.IsGameStart == true)
             {
-                Instantiate(itemList[Random.Range(0, itemList.Count)], new Vector2(spawnXValue, spawnYValue), Quaternion.identity).transform.parent = gameObject.transform;
+                Instantiate(itemList[Random.Range(0, itemList.Count)], new Vector2(spawnXValue, spawnYValue),
+                    Quaternion.identity).transform.parent = gameObject.transform;
             }
         }
     }
