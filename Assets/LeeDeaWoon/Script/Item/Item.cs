@@ -15,6 +15,7 @@ public class Item : MovingElement
     public Ease ease;
 
     [Header("아이템 : 자석")]
+    public SpriteRenderer magnetScale;
     public int magnetWaitingTime; // 기다릴 시간
 
     float magnetTimer;
@@ -76,11 +77,22 @@ public class Item : MovingElement
                 case EItemType.Magnet: // 자석
 
                     Player.Instance.isMagneting = true;
-                    yield return new WaitForSeconds(magnetWaitingTime);
-                    Destroy(this.gameObject);
-                    Player.Instance.isMagneting = false;
-                    magnetTimer = 0;
+                    GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
+                    magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
+                    SpriteRenderer spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
+                    magnetScaleObj.transform.DOScale(new Vector2(10,10), 0.8f).SetLoops(-1, LoopType.Restart);
+                    spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
+
+                    yield return new WaitForSeconds(magnetWaitingTime);
+                    Player.Instance.isMagneting = false;
+
+                    magnetScaleObj.transform.DOKill();
+                    spriteRenderer.DOKill();
+
+                    Destroy(magnetScaleObj);
+
+                    magnetTimer = 0;
                     break;
 
 
@@ -108,10 +120,9 @@ public class Item : MovingElement
                                   Player.Instance.boosterType = EBoosterType.BoosterItem;
 
                                   Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
-                                  collision.transform.DOLocalMoveX(3, boosterSpeed);
+                                  collision.transform.DOLocalMoveX(-11, boosterSpeed);
                               });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간
-
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                     Player.Instance.IsBoosting = false;

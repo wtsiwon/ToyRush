@@ -20,21 +20,11 @@ public class Coin : MovingElement
     protected override void Update()
     {
         base.Update();
-        Coin_ColliderRange();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-    }
-
-    //자석 아이템을 먹은 후 
-    public void Coin_ColliderRange()
-    {
-        if (Player.Instance.isMagneting == true)
-        {
-            gameObject.transform.DOLocalMove(Player.Instance.transform.position, flySpeed);
-        }
     }
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -47,7 +37,6 @@ public class Coin : MovingElement
 
             spriterenderer.DOFade(0, 0);
 
-            gameObject.transform.DOKill();
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {
                 UIManager.Instance.coin += 2;
@@ -60,9 +49,17 @@ public class Coin : MovingElement
             }
 
             yield return new WaitForSeconds(1f);
+            transform.DOKill();
             Destroy(gameObject);
 
             Return();
         }
+
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MagnetRange") && Player.Instance.isMagneting == true)
+            transform.DOMove(Player.Instance.transform.position, flySpeed);
     }
 }

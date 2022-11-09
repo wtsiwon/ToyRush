@@ -28,6 +28,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetInteger("Booster_Number", 0);
             yield return new WaitForSeconds(2);
+            animator.SetBool("Booster_Wait", true);
 
             switch (boosterType)
             {
@@ -46,7 +47,7 @@ public class PlayerAnimation : MonoBehaviour
 
         }
 
-        else
+        else if(animator.GetBool("Booster_Wait") == false)
         {
             if (Player.Instance.isPressing == true)
             {
@@ -62,10 +63,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Ground") && Player.Instance.IsBoosting == false)
-        {
+        if (collision.transform.CompareTag("Ground") && animator.GetBool("Booster_Wait") == false)
             animator.SetBool("fly", false);
-            Debug.Log("asdf");
-        }
     }
 }
