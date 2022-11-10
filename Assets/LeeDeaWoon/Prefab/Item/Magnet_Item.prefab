@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1629106816624145163}
   - component: {fileID: 4276667451316611505}
   - component: {fileID: 5830898442894932103}
+  - component: {fileID: 7833927110374278672}
   m_Layer: 0
   m_Name: Magnet_Item
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 683e07dc2d54c114bbb7f0b5502a0cdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82a350ed436729a45aebffe2abc42c0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,3 +148,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &7833927110374278672
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629106816624145166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77d62891d15c0c4438f4b0f6a8166aff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

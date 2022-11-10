@@ -267,11 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca48a7c5cb93434cab62199a66d5545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoosting: 0
+  dontdestroy: 0
   isMagneting: 0
-  isBig: 0
+  boosterType: 0
   vehicleType: 0
   force: 9
+  piecesList: []
   isPressing: 0
 --- !u!212 &1157234787
 SpriteRenderer:
@@ -518,8 +519,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 0
+  haveCoin: 0
   distanceText: {fileID: 0}
-  coin: 0
+  coinText: {fileID: 0}
+  piecesList: []
   isGameStart: 1
 --- !u!4 &1231483279
 Transform:
@@ -756,12 +759,16 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnInterval: 0
   spawnValue: 12.5
+  whiteScreen: {fileID: 0}
   startItem: {fileID: 0}
+  piggybankDirector: {fileID: 0}
   boosterRayCast500: {fileID: 0}
   boosterRayCast1500: {fileID: 0}
   booster500Btn: {fileID: 0}
   booster1500Btn: {fileID: 0}
   isStartItemClick: 0
+  isStartItemSummon: 0
+  isStartItemCheck: 0
 --- !u!4 &1833240077
 Transform:
   m_ObjectHideFlags: 0

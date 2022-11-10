@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 405193218991603940}
   - component: {fileID: 4878117971467270624}
   - component: {fileID: 5624320728203501953}
+  - component: {fileID: 188048759}
   m_Layer: 0
   m_Name: Booster_Item
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f3189bf38b5f83043b0b76f5944d75b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08e9eb68238d36b45a6dba3f794d9fcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,12 +102,12 @@ MonoBehaviour:
   spriterenderer: {fileID: 0}
   itemType: 3
   collider2D: {fileID: 0}
-  whiteScreen: {fileID: 8211322786673524832, guid: a5e1a01c2ea4ccc41b799d55e1b6caad, type: 3}
   boosterDuration: 5
   boosterSpeed: 0.5
   ease: 26
+  magnetScale: {fileID: 0}
   magnetWaitingTime: 2
-  piggybankCoin: {fileID: 0}
+  getCoin: 0
   sizeTime: 1
   sizeWaitingTime: 0
   playerSize: {x: 0, y: 0}
@@ -147,3 +148,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &188048759
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405193218991603937}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9427463e55be13144af8cdd93ad8f1c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
