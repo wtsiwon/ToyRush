@@ -585,6 +585,7 @@ MonoBehaviour:
   boosterRayCast1500: {fileID: 3890023021772988625}
   booster500Btn: {fileID: 3890023021223222109}
   booster1500Btn: {fileID: 3890023021772988630}
+  isItemTouch: 0
   isStartItemClick: 0
   isStartItemSummon: 0
   isStartItemCheck: 0

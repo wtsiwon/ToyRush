@@ -66,6 +66,7 @@ public class Item : MovingElement
         {
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);
+            ItemManager.inst.isItemTouch = true;
 
             switch (itemType)
             {
@@ -86,6 +87,7 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(magnetWaitingTime);
                     Player.Instance.isMagneting = false;
+                    ItemManager.inst.isItemTouch = false;
 
                     magnetScaleObj.transform.DOKill();
                     spriteRenderer.DOKill();
@@ -100,6 +102,7 @@ public class Item : MovingElement
                     Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
                     UIManager.Instance.coin += getCoin;
                     GameManager.Instance.haveCoin += getCoin;
+                    ItemManager.inst.isItemTouch = false;
 
                     //GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     //bankCoinPattern.transform.parent = gameObject.transform;
@@ -126,6 +129,8 @@ public class Item : MovingElement
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                     Player.Instance.IsBoosting = false;
+                    ItemManager.inst.isItemTouch = false;
+
                     yield return new WaitForSeconds(boosterSpeed);
 
                     Destroy(this.gameObject);
@@ -143,8 +148,10 @@ public class Item : MovingElement
                     // 장애물의 콜라이더를 꺼주기
 
                     yield return new WaitForSeconds(sizeWaitingTime);
-                    Destroy(this.gameObject);
                     Player.Instance.IsBig = false;
+                    ItemManager.inst.isItemTouch = false;
+
+                    Destroy(this.gameObject);
                     sizeTimer = 0;
 
                     collision.transform.DOScale(playerSize, sizeTime);

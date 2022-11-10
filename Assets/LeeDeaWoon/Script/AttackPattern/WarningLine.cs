@@ -15,7 +15,11 @@ public class WarningLine : MonoBehaviour
 
     void Update()
     {
-        
+        if (ItemManager.inst.isItemTouch == true)
+        {
+            warningLinePrefab.DOKill();
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator WarningLine_FadeOnOff()
@@ -25,6 +29,6 @@ public class WarningLine : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         warningLinePrefab.DOKill();
-        warningLinePrefab.DOFade(0, 0);
+        Destroy(warningLinePrefab);
     }
 }

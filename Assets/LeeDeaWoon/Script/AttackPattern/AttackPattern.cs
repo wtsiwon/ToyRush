@@ -33,11 +33,27 @@ public class AttackPattern : MonoBehaviour
     private void Start()
     {
         StartCoroutine("ATK_Start");
+
     }
 
     private void Update()
     {
+        if (ItemManager.inst.isItemTouch == true)
+        {
+            if (eAttackPattern == EAttackPattern.Bottom)
+            {
+                atk.transform.DOKill();
+                warningLineBottom.DOKill();
+                Camera.main.transform.DOKill();
+            }
 
+            else
+            {
+                enemy.transform.DOKill();
+            }
+
+            Destroy(gameObject);
+        }
     }
 
 
@@ -62,7 +78,7 @@ public class AttackPattern : MonoBehaviour
                 atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, moveWait).SetEase(ease);
 
                 yield return new WaitForSeconds(shakeWaitTime);
-                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(0.5f, 0.5f, 0f));
+                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1, 1, 0f));
                 yield return new WaitForSeconds(shakeWaitTime);
 
                 atk.transform.DOLocalMoveY(-8.5f, moveWait).SetEase(ease);
@@ -86,7 +102,8 @@ public class AttackPattern : MonoBehaviour
                     float warninTimeMax = 0.4f;
 
                     summonPos[i] = Random.Range(warninTimeMin, warninTimeMax);
-                    Instantiate(warningLineRight, new Vector2(0, warningSummon.transform.position.y), Quaternion.identity).transform.parent = gameObject.transform;
+                    Instantiate(warningLineRight, new Vector2(0, warningSummon.transform.position.y), Quaternion.identity)/*.transform.parent = gameObject.transform*/;
+
                     yield return new WaitForSeconds(summonPos[i]);
                 }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5289740923942969368}
   - component: {fileID: 5797405412317575132}
-  - component: {fileID: 8061656158625925314}
+  - component: {fileID: -1709860358211974642}
   m_Layer: 0
   m_Name: WarningLine
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8061656158625925314
+--- !u!114 &-1709860358211974642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

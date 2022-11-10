@@ -30,6 +30,7 @@ public class ItemManager : MonoBehaviour
     public Button booster500Btn;
     public Button booster1500Btn;
 
+    public bool isItemTouch;
     public bool isStartItemClick;
     public bool isStartItemSummon;
     public bool isStartItemCheck;
