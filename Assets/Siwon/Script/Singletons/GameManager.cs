@@ -104,12 +104,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < piecesList.Count; i++)
         {
             GameObject piece = new GameObject();
-            piece.transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
+            piece.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, 0);
             piece.AddComponent<SpriteRenderer>();
             piece.AddComponent<CircleCollider2D>();
             piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
             piece.GetComponent<SpriteRenderer>().sprite = piecesList[i];
-            piece.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+            piece.transform.localScale = new Vector3(0.1f, 0.1f, 1);
         }
     }
 
