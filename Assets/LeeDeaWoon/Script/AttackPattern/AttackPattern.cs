@@ -53,8 +53,9 @@ public class AttackPattern : MonoBehaviour
 
 
                 AttackPatternManager.inst.isAttackSummon = true;
+                transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
                 warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(warningWaitTime * 10);
+                yield return new WaitForSeconds(4);
 
                 warningLineBottom.DOKill();
                 warningLineBottom.DOFade(0, 0);
@@ -64,7 +65,7 @@ public class AttackPattern : MonoBehaviour
                 Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(0.5f, 0.5f, 0f));
                 yield return new WaitForSeconds(shakeWaitTime);
 
-                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y * 2, moveWait).SetEase(ease);
+                atk.transform.DOLocalMoveY(-8.5f, moveWait).SetEase(ease);
 
                 yield return new WaitForSeconds(0.5f);
 

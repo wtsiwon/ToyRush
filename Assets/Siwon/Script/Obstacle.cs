@@ -82,5 +82,16 @@ public class Obstacle : MovingElement
         StartCoroutine(CSpin());
     }
 
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && Player.Instance.IsBig == true)
+        {
+            gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+            Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
 
+            yield return new WaitForSeconds(1);
+
+            Destroy(gameObject);
+        }
+    }
 }
