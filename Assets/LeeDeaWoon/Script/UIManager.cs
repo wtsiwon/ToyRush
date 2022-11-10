@@ -332,6 +332,8 @@ public class UIManager : MonoBehaviour
             DOTween.PauseAll();
             Time.timeScale = 1;
 
+            GameManager.Instance.IsGameStart = false;
+
             SceneManager.LoadScene("Main");
         });
     }
@@ -357,7 +359,8 @@ public class UIManager : MonoBehaviour
         {
             DOTween.PauseAll();
             Time.timeScale = 1;
-            
+
+            GameManager.Instance.IsGameStart = false;
             SceneManager.LoadScene("Main");
         });
     }
