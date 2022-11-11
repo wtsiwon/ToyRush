@@ -7,15 +7,15 @@ public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
-    [Range(0f, 5f)]
-    [Tooltip("돌아가는 속도")]
-    public float spinSpd;
+    //[Range(0f, 5f)]
+    //[Tooltip("돌아가는 속도")]
+    //public float spinSpd;
 
-    [Tooltip("최대 각도")]
-    public float maxAngle;
+    //[Tooltip("최대 각도")]
+    //public float maxAngle;
 
-    [Tooltip("최소 각도")]
-    public float minAngle;
+    //[Tooltip("최소 각도")]
+    //public float minAngle;
 
     [Tooltip("SwingSpd")]
     private const float swingSpd = 100;
@@ -46,12 +46,12 @@ public class Obstacle : MovingElement
     {
         switch (obstacleType)
         {
-            case EObstacleType.Basic:
-                //없음
-                break;
-            case EObstacleType.Spin:
-                Spin();
-                break;
+            //case EObstacleType.Basic:
+            //    //없음
+            //    break;
+            //case EObstacleType.Spin:
+            //    Spin();
+            //    break;
         }
     }
 
@@ -77,7 +77,7 @@ public class Obstacle : MovingElement
 
     private IEnumerator CSpin()
     {
-        transform.Rotate(new Vector3(0, 0, spinSpd));
+        //transform.Rotate(new Vector3(0, 0, spinSpd));
         yield return new WaitForSeconds(0.02f);
         StartCoroutine(CSpin());
     }

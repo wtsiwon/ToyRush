@@ -75,8 +75,8 @@ public enum EBoosterType
 /// </summary>
 public enum EObstacleType
 {
-    Basic,
-    Spin,
+    Gear,
+    Drill,
     End,
 }
 

@@ -16,9 +16,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("장애물 Sprite를 enum타입에 따라 분류한 dictionary")]
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
-    [Tooltip("장애물 Sprite들List")]
+    [Tooltip("장애물 List")]
     [Space(15f)]
-    public List<Sprite> obstacleSpriteList = new List<Sprite>();
+    public List<Obstacle> obstacleList = new List<Obstacle>();
 
     [Tooltip("코인 패턴들")]
     public List<GameObject> coinPatterns = new List<GameObject>();
@@ -61,7 +61,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         for (int i = 0; i < (int)EObstacleType.End; i++)
         {
-            obstacleSpriteDic.Add((EObstacleType)i, obstacleSpriteList[i]);
+            //obstacleSpriteDic.Add((EObstacleType)i, obstacleSpriteList[i]);
         }
     }
 
@@ -92,11 +92,11 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     #region 장애물 패턴 함수들
     private IEnumerator CSpawnPattern1()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Up];
         yield return new WaitForSeconds(1.5f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(1.5f);
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
@@ -104,66 +104,66 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern2()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[2]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.2f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[2]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.2f);
 
-        Obstacle obstacle3 = GetBasicObstacle(spawnPoses[4]);
+        Obstacle obstacle3 = GetGearObstacle(spawnPoses[4]);
         obstacle3.transform.rotation = rotatesDic[EDir.Down];
         yield return new WaitForSeconds(1.5f);
     }
 
     private IEnumerator CSpawnPattern3()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[4]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[4]);
         transform.rotation = rotatesDic[EDir.Up];
         yield return new WaitForSeconds(2.5f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[1]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.5f);
     }
 
     private IEnumerator CSpawnPattern4()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[2]);
         obstacle1.transform.rotation = rotatesDic[EDir.Left];
         yield return new WaitForSeconds(1f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[1]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.5f);
 
     }
 
     private IEnumerator CSpawnPattern5()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[0]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[0]);
         yield return new WaitForSeconds(1.7f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
         yield return new WaitForSeconds(1.6f);
     }
 
     private IEnumerator CSpawnPattern6()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.8f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(1.7f);
     }
 
     private IEnumerator CSpawnPattern7()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[0]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[0]);
         yield return new WaitForSeconds(1.5f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
         yield return new WaitForSeconds(2f);
 
@@ -173,75 +173,75 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern8()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Right];
         yield return new WaitForSeconds(2f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[3]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[3]);
         yield return new WaitForSeconds(2f);
     }
 
     private IEnumerator CSpawnPattern9()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(2f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[1]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[1]);
         obstacle2.transform.rotation = rotatesDic[EDir.Down];
         yield return new WaitForSeconds(2f);
     }
 
     private IEnumerator CSpawnPattern10()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[3]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[3]);
         yield return new WaitForSeconds(2f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[1]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[1]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
         yield return new WaitForSeconds(2f);
     }
 
     private IEnumerator CSpawnPattern11()
     {
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Right];
         yield return new WaitForSeconds(2f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
 
-        Obstacle obstacle3 = GetSpinObstacle(spawnPoses[1]);
+        Obstacle obstacle3 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.6f);
     }
 
     private IEnumerator CSpawnPattern12()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[2]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.9f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(2.1f);
     }
 
     private IEnumerator CSpawnPattern13()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[3]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[3]);
         yield return new WaitForSeconds(1.7f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
 
-        Obstacle obstacle2 = GetBasicObstacle(spawnPoses[0]);
+        Obstacle obstacle2 = GetGearObstacle(spawnPoses[0]);
         yield return new WaitForSeconds(2.1f);
     }
 
     private IEnumerator CSpawnPattern14()
     {
-        Obstacle obstacle1 = GetBasicObstacle(spawnPoses[1]);
+        Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Left];
         yield return new WaitForSeconds(1.5f);
 
-        Obstacle obstacle2 = GetSpinObstacle(spawnPoses[4]);
+        Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
         yield return new WaitForSeconds(2f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
@@ -250,10 +250,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator CSpawnPattern15()
     {
-        Obstacle obstacle1 = GetSpinObstacle(spawnPoses[2]);
+        Obstacle obstacle1 = GetDrillObstacle(spawnPoses[2]);
         yield return new WaitForSeconds(1.5f);
 
-        Obstacle obstacle = GetBasicObstacle(spawnPoses[3]);
+        Obstacle obstacle = GetGearObstacle(spawnPoses[3]);
         yield return new WaitForSeconds(2.5f);
     }
 
@@ -261,25 +261,18 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     #endregion
 
     #region 장애물 불러오는 함수
-    private Obstacle GetBasicObstacle(Transform pos)
+    private Obstacle GetGearObstacle(Transform pos)
     {
         Obstacle obstacle = null;
-        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Basic, pos.position);
-        obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Basic];
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
+        obstacle.transform.position = pos.position;
+
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
             obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
-        else
-        {
-            Destroy(obstacle.GetComponent<PolygonCollider2D>());
-            obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
-        }
-        MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
     }
-
-
 
     //private Obstacle GetSpinObstacle(Transform pos)
     //{
@@ -290,22 +283,21 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     //    return obstacle;
     //}
 
-
     /// <summary>
     /// 
     /// </summary>
     /// <param name="pos"></param>
     /// <returns></returns>
-    private Obstacle GetSpinObstacle(Transform pos)
+    private Obstacle GetDrillObstacle(Transform pos)
     {
         Obstacle obstacle = null;
-        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Spin, pos.position);
-        obstacle.GetComponent<SpriteRenderer>().sprite = obstacleSpriteDic[EObstacleType.Spin];
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.Drill]);
+        obstacle.transform.position = pos.position;
+
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
             obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
-        MovingElementManager.Instance.movingElementList.Add(obstacle);
         return obstacle;
     }
     #endregion

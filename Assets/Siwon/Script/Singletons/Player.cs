@@ -28,7 +28,19 @@ public class Player : Singleton<Player>
             }
         }
     }
-    public bool isMagneting;
+    private bool isMagneting;
+    public bool IsMagneting
+    {
+        get => isMagneting;
+        set
+        {
+            isMagneting = value;
+            if(value == true)
+            {
+
+            }
+        }
+    }
     public bool IsBig { get; set; }
     private bool shouldObstacleBreak;
 
@@ -36,7 +48,7 @@ public class Player : Singleton<Player>
     #endregion
 
     public bool isUseItem =>
-     isMagneting || IsBig || isBoosting;
+     IsMagneting || IsBig || isBoosting;
 
     private bool isDie;
     public bool IsDie
@@ -66,6 +78,7 @@ public class Player : Singleton<Player>
     #region GetComponent한 Component
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
+    //private CircleCollider2D 
     #endregion
 
     [Tooltip("눌렀음?")]
@@ -75,6 +88,7 @@ public class Player : Singleton<Player>
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+        
         IsDie = false;
     }
 
