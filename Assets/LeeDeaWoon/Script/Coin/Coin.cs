@@ -61,7 +61,7 @@ public class Coin : MovingElement
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("MagnetRange") && Player.Instance.isMagneting == true)
+        if (collision.CompareTag("MagnetRange") && Player.Instance.IsMagneting == true)
             transform.DOMove(Player.Instance.transform.position, flySpeed);
     }
 }

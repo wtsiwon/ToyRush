@@ -25,6 +25,6 @@ public class PoolingObj : BaseAll
 
     public virtual void Return()
     {
-        ObjPool.Instance.Return(poolType, this);
+        //ObjPool.Instance.Return(poolType, this);
     }
 }
