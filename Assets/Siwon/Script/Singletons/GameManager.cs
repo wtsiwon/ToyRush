@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < piecesList.Count; i++)
         {
             GameObject piece = new GameObject();
-            piece.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, 0);
+            piece.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             piece.AddComponent<SpriteRenderer>();
             piece.AddComponent<CircleCollider2D>();
             piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
