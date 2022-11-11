@@ -24,7 +24,7 @@ public class Player : Singleton<Player>
             }
             else
             {
-                BackGroundSpawner.Instance.backgroundSpd = GameManager.STARTSPD;
+                //BackGroundSpawner.Instance.backgroundSpd = GameManager.Instance.spd;
             }
         }
     }
@@ -101,7 +101,7 @@ public class Player : Singleton<Player>
     private IEnumerator CWaitChangeBoosterSpd()
     {
         yield return new WaitForSeconds(2f);
-        BackGroundSpawner.Instance.backgroundSpd = 5000f;
+        BackGroundSpawner.Instance.backgroundSpd = 4000f;
     }
 
 
