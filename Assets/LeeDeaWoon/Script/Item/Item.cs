@@ -56,7 +56,7 @@ public class Item : MovingElement
         if (sizeTimer < sizeWaitingTime && Player.Instance.IsBig == true)
             sizeTimer += Time.deltaTime;
 
-        if (magnetTimer < magnetWaitingTime && Player.Instance.isMagneting == true)
+        if (magnetTimer < magnetWaitingTime && Player.Instance.IsMagneting == true)
             magnetTimer += Time.deltaTime;
     }
 
@@ -77,7 +77,7 @@ public class Item : MovingElement
 
                 case EItemType.Magnet: // 자석
 
-                    Player.Instance.isMagneting = true;
+                    Player.Instance.IsMagneting = true;
                     GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
                     magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
@@ -86,7 +86,7 @@ public class Item : MovingElement
                     spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
 
                     yield return new WaitForSeconds(magnetWaitingTime);
-                    Player.Instance.isMagneting = false;
+                    Player.Instance.IsMagneting = false;
 
                     magnetScaleObj.transform.DOKill();
                     spriteRenderer.DOKill();
