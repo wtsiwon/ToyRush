@@ -56,7 +56,7 @@ public class Item : MovingElement
         if (sizeTimer < sizeWaitingTime && Player.Instance.IsBig == true)
             sizeTimer += Time.deltaTime;
 
-        if (magnetTimer < magnetWaitingTime && Player.Instance.IsMagneting == true)
+        if (magnetTimer < magnetWaitingTime && Player.Instance.isMagneting == true)
             magnetTimer += Time.deltaTime;
     }
 
@@ -77,7 +77,7 @@ public class Item : MovingElement
 
                 case EItemType.Magnet: // 자석
 
-                    Player.Instance.IsMagneting = true;
+                    Player.Instance.isMagneting = true;
                     GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
                     magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
@@ -86,8 +86,7 @@ public class Item : MovingElement
                     spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
 
                     yield return new WaitForSeconds(magnetWaitingTime);
-                    Player.Instance.IsMagneting = false;
-                    ItemManager.inst.isItemTouch = false;
+                    Player.Instance.isMagneting = false;
 
                     magnetScaleObj.transform.DOKill();
                     spriteRenderer.DOKill();
@@ -102,7 +101,6 @@ public class Item : MovingElement
                     Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
                     UIManager.Instance.coin += getCoin;
                     GameManager.Instance.haveCoin += getCoin;
-                    ItemManager.inst.isItemTouch = false;
 
                     //GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
                     //bankCoinPattern.transform.parent = gameObject.transform;
@@ -149,7 +147,6 @@ public class Item : MovingElement
 
                     yield return new WaitForSeconds(sizeWaitingTime);
                     Player.Instance.IsBig = false;
-                    ItemManager.inst.isItemTouch = false;
 
                     Destroy(this.gameObject);
                     sizeTimer = 0;
