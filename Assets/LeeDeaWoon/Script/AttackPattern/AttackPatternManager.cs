@@ -10,6 +10,7 @@ public class AttackPatternManager : MonoBehaviour
     public List<GameObject> attackList = new List<GameObject>();
     public bool isAttackSummon;
     public int coolTime;
+    public int attackDel;
 
     void Start()
     {
@@ -28,7 +29,12 @@ public class AttackPatternManager : MonoBehaviour
             if (GameManager.Instance.IsGameStart == true)
             {
                 yield return new WaitForSeconds(coolTime);
+                ObstacleSpawner.Instance.canSpawn = false;
+
+                yield return new WaitForSeconds(attackDel);
                 Instantiate(attackList[Random.Range(0, attackList.Count)], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+                yield return new WaitForSeconds(3);
+                ObstacleSpawner.Instance.canSpawn = true;
             }
 
             else

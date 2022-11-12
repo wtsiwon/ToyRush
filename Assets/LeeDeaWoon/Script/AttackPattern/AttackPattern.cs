@@ -71,7 +71,7 @@ public class AttackPattern : MonoBehaviour
                 AttackPatternManager.inst.isAttackSummon = true;
                 transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
                 warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(3);
 
                 warningLineBottom.DOKill();
                 warningLineBottom.DOFade(0, 0);

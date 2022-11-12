@@ -13022,7 +13022,7 @@ MonoBehaviour:
   touchToStart: {fileID: 3493952218339067149}
   haveCoin: {fileID: 6779909252430537639}
   firstBackGround: {fileID: 921638293435785001}
-  brokenBackGround: {fileID: 21300000, guid: d0d2ba6426043904bb969451fadb3042, type: 3}
+  brokenBackGround: {fileID: 21300000, guid: 046c94f291a870e47947e26902c9561b, type: 3}
   coin: 0
   coinText: {fileID: 2695611189431266611}
   distanceText: {fileID: 3493952218361883668}
@@ -13176,7 +13176,8 @@ MonoBehaviour:
   - {fileID: 8378623113366748379, guid: da326201a4c87d241a7dc709925d7930, type: 3}
   - {fileID: 2516807147838901548, guid: 4278d63f4e96c8f478691973fd893bc0, type: 3}
   isAttackSummon: 1
-  coolTime: 20
+  coolTime: 15
+  attackDel: 5
 --- !u!1 &3493952218206639810
 GameObject:
   m_ObjectHideFlags: 0
@@ -21133,7 +21134,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c8604aedcf0c60a4e9efec3ff09c66f2, type: 3}
+      objectReference: {fileID: 21300000, guid: 80295c6acac651f499c3207e6b52afdd, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: standardObj
       value: 
@@ -21215,7 +21216,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c8604aedcf0c60a4e9efec3ff09c66f2, type: 3}
+      objectReference: {fileID: 21300000, guid: 80295c6acac651f499c3207e6b52afdd, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: standardObj
       value: 
@@ -21301,7 +21302,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e19d4ddb86cea744983e9c55f15d2c49, type: 3}
+      objectReference: {fileID: 21300000, guid: dbe140ff680b0274caf8851cf64e59c8, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: isfirstBack
       value: 1
@@ -21384,7 +21385,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e601a79e1755adf4b85a502757ab89ea, type: 3}
+      objectReference: {fileID: 21300000, guid: 4eb9146d079f97a44b8b97a1e4bc183e, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: standardObj
       value: 
@@ -21466,7 +21467,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4dcde917a8c39a746a9cbe3652f32459, type: 3}
+      objectReference: {fileID: 21300000, guid: fcbb9161ecd78804eb42e18e36faa8c0, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: standardObj
       value: 
@@ -21548,7 +21549,7 @@ PrefabInstance:
     - target: {fileID: 4375055872220011211, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c9d314aa65aee6e45b91c156d720c52f, type: 3}
+      objectReference: {fileID: 21300000, guid: 9e35e220c1a6c6540a59da7096d858e5, type: 3}
     - target: {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
       propertyPath: standardObj
       value: 
