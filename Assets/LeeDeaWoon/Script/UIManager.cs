@@ -305,8 +305,8 @@ public class UIManager : MonoBehaviour
         // 돌아가기 버튼을 눌렀을 때
         backBtn.onClick.AddListener(() =>
         {
-            int stopMovePos = 1450;
-            int settingMovePos = 1570;
+            int stopMovePos = 1800;
+            int settingMovePos = 1800;
 
             Time.timeScale = 1;
 
@@ -342,7 +342,7 @@ public class UIManager : MonoBehaviour
     #region 게임오버 창
     public void GameOver()
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0f;
 
         blackScreen.SetActive(true);
 

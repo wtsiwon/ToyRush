@@ -75,9 +75,6 @@ public class Player : Singleton<Player>
     [Range(100, 5000)]
     public float force;
 
-    [Tooltip("죽을 때 나오는 조각들의 Sprite")]
-    public List<Sprite> piecesList = new List<Sprite>();
-
     #region GetComponent한 Component
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;

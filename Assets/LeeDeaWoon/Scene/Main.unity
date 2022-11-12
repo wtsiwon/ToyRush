@@ -784,7 +784,6 @@ MonoBehaviour:
   boosterType: 0
   vehicleType: 0
   force: 2000
-  piecesList: []
   magnetRange: {fileID: 1723154080566402426}
   isPressing: 0
 --- !u!50 &8262276508141446412
