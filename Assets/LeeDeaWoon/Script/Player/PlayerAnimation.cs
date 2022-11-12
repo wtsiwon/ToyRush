@@ -32,20 +32,8 @@ public class PlayerAnimation : MonoBehaviour
             yield return new WaitForSeconds(2);
             animator.SetBool("Booster_Wait", true);
 
-            switch (boosterType)
-            {
-                case EBoosterType.Booster500:
-                    animator.SetInteger("Booster_Number", 1);
-                    break;
+            animator.SetInteger("Booster_Number", ItemManager.inst.boosterNumber);
 
-                case EBoosterType.Booster1500:
-                    animator.SetInteger("Booster_Number", 2);
-                    break;
-
-                case EBoosterType.BoosterItem:
-                    animator.SetInteger("Booster_Number", 3);
-                    break;
-            }
             yield return new WaitForSeconds(3);
             Check = false;
             animator.SetBool("Booster_Wait", false);

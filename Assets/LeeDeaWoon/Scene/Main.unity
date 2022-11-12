@@ -362,10 +362,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 921638294671741780, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8604aedcf0c60a4e9efec3ff09c66f2, type: 3}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -418,10 +414,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8262276508141446414}
-    - target: {fileID: 8411961547840824261, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e601a79e1755adf4b85a502757ab89ea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
 --- !u!1 &5761565212668004789
@@ -610,6 +602,7 @@ MonoBehaviour:
   isStartItemClick: 0
   isStartItemSummon: 0
   isStartItemCheck: 0
+  boosterNumber: 0
 --- !u!4 &8262276507091075579
 Transform:
   m_ObjectHideFlags: 0
