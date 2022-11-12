@@ -602,6 +602,7 @@ MonoBehaviour:
   isStartItemClick: 0
   isStartItemSummon: 0
   isStartItemCheck: 0
+  boosterNumber: 0
 --- !u!4 &8262276507091075579
 Transform:
   m_ObjectHideFlags: 0

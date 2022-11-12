@@ -119,7 +119,8 @@ public class Item : MovingElement
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
-                                  Player.Instance.boosterType = EBoosterType.BoosterItem;
+                                  //Player.Instance.boosterType = EBoosterType.BoosterItem;
+                                  ItemManager.inst.boosterNumber = 3;
 
                                   Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
                                   collision.transform.DOLocalMoveX(-11, boosterSpeed);

@@ -35,6 +35,7 @@ public class ItemManager : MonoBehaviour
     public bool isStartItemSummon;
     public bool isStartItemCheck;
 
+    public int boosterNumber;
     void Start()
     {
         StartItem_Btn();
@@ -75,17 +76,17 @@ public class ItemManager : MonoBehaviour
             //{
 
             //}
-                isStartItemClick = true;
+            isStartItemClick = true;
 
-                StartItem_DoKill();
-                boosterRayCast500.raycastTarget = false;
-                boosterRayCast1500.raycastTarget = false;
+            StartItem_DoKill();
+            boosterRayCast500.raycastTarget = false;
+            boosterRayCast1500.raycastTarget = false;
 
-                booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
-                booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
+            booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
+            booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
-                Player.Instance.boosterType = EBoosterType.Booster500;
-                StartCoroutine(Start_Booster());
+            boosterNumber = 1;
+            StartCoroutine(Start_Booster());
         });
 
         // 1500원 부스터 버튼을 눌렀을 때
@@ -95,7 +96,6 @@ public class ItemManager : MonoBehaviour
             //{
 
             //}
-
             isStartItemClick = true;
 
             StartItem_DoKill();
@@ -105,7 +105,7 @@ public class ItemManager : MonoBehaviour
             booster500Btn.transform.DOLocalMoveY(movePos, waitTime);
             booster1500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
-            Player.Instance.boosterType = EBoosterType.Booster1500;
+            boosterNumber = 2;
             StartCoroutine(Start_Booster());
         });
     }
@@ -177,8 +177,15 @@ public class ItemManager : MonoBehaviour
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
         Player.Instance.IsBoosting = false;
 
-        yield return new WaitForSeconds(0.5f);
+        Player.Instance.tag = "Invincibility";
+        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
+        yield return new WaitForSeconds(2);
+
+        Player.Instance.tag = "Player";
+        Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+
+        yield return new WaitForSeconds(0.5f);
     }
 
     #endregion
