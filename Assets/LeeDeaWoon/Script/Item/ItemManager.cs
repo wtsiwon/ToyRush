@@ -169,7 +169,7 @@ public class ItemManager : MonoBehaviour
                   .OnComplete(() =>
                   {
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
-                      player.transform.DOLocalMoveX(-11, 0.5f);
+                      player.transform.DOLocalMoveX(-3.5f, 0.5f);
                   });
 
         yield return new WaitForSeconds(5); // 지속시간
