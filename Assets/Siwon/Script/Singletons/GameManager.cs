@@ -133,8 +133,6 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            print(BackGroundSpawner.Instance.backgroundSpd + "Back");
-            print(distance + "dis");
             if (IsGameStart == true && distance <= 5000 && Player.Instance.IsBoosting == false)
             {
                 BackGroundSpawner.Instance.backgroundSpd = STARTSPD + distance / 100;

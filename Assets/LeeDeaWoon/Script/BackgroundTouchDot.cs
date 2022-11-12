@@ -64,7 +64,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
     {
         if (isStartClick == false)
         {
-            int titleDistance = 1250;
+            int titleDistance = 1500;
             int mainBtnDistance = -1100;
 
             Vector2 settingPos = settingBtn.transform.localPosition;
