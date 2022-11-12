@@ -39,7 +39,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator SpawnObstacle()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         while (true)
         {
             if (canSpawn && GameManager.Instance.IsGameStart == true)
@@ -119,7 +119,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[4]);
         transform.rotation = rotatesDic[EDir.Up];
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.5f);

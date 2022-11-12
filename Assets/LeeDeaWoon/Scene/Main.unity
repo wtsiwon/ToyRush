@@ -156,36 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1314169875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1314169876}
-  m_Layer: 7
-  m_Name: Player1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1314169876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314169875}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.34, y: -3.16, z: 0}
-  m_LocalScale: {x: 0.14, y: 0.14, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1318929371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
@@ -251,13 +221,27 @@ GameObject:
   m_Component:
   - component: {fileID: 2435313487606829737}
   - component: {fileID: 8684588123460906025}
-  m_Layer: 7
+  - component: {fileID: 1723154080566402426}
+  m_Layer: 0
   m_Name: Range
   m_TagString: MagnetRange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
+--- !u!114 &1723154080566402426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723154080566402425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2a53b4c79a8544ac8c591e9c0093e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spd: 0.2
 --- !u!95 &1820527302397471263
 Animator:
   serializedVersion: 3
@@ -285,11 +269,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723154080566402425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.34, y: -3.16, z: 0}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 1}
   m_Children: []
-  m_Father: {fileID: 8262276508141446409}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2983073258330922981
 MonoBehaviour:
@@ -426,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main
       objectReference: {fileID: 0}
+    - target: {fileID: 3493952218228836983, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952218734983768, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: player
       value: 
@@ -498,7 +486,7 @@ MonoBehaviour:
   - {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}
   - {fileID: 7484336930525869784, guid: 09b54fbabb474ea4584eaa9efa91fa90, type: 3}
   obstacleSpawnInterval: 1
-  obstacleSpawnDelay: 6
+  obstacleSpawnDelay: 7
   canSpawn: 0
 --- !u!4 &8262276506503919222
 Transform:
@@ -728,8 +716,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13.34, y: -3.16, z: 0}
   m_LocalScale: {x: 0.14, y: 0.14, z: 1}
-  m_Children:
-  - {fileID: 2435313487606829737}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -801,6 +788,7 @@ MonoBehaviour:
   vehicleType: 0
   force: 2000
   piecesList: []
+  magnetRange: {fileID: 1723154080566402426}
   isPressing: 0
 --- !u!50 &8262276508141446412
 Rigidbody2D:

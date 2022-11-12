@@ -93,13 +93,13 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.GameOver();
     }
 
-    public void OnDie()
+    public void OnDie(Transform pos)
     {
-        ToDropPieces();
+        ToDropPieces(pos);
         StartCoroutine(CToDropOnePieces());
     }
 
-    private void ToDropPieces()
+    private void ToDropPieces(Transform pos)
     {
         Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
         Player.Instance.gameObject.SetActive(false);
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < piecesList.Count; i++)
         {
             GameObject piece = new GameObject();
-            piece.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            piece.transform.position = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y, 0);
             piece.AddComponent<SpriteRenderer>();
             piece.AddComponent<CircleCollider2D>();
             piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
@@ -133,8 +133,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            print(BackGroundSpawner.Instance.backgroundSpd);
-            print(distance);
+            print(BackGroundSpawner.Instance.backgroundSpd + "Back");
+            print(distance + "dis");
             if (IsGameStart == true && distance <= 5000 && Player.Instance.IsBoosting == false)
             {
                 BackGroundSpawner.Instance.backgroundSpd = STARTSPD + distance / 100;
