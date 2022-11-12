@@ -7,7 +7,6 @@ using DG.Tweening;
 public class Player : Singleton<Player>
 {
     #region Condition
-
     private bool isBoosting;
     public bool IsBoosting
     {
@@ -37,7 +36,11 @@ public class Player : Singleton<Player>
             isMagneting = value;
             if(value == true)
             {
-
+                magnetRange.gameObject.SetActive(true);
+            }
+            else
+            {
+                magnetRange.gameObject.SetActive(false);
             }
         }
     }
@@ -60,7 +63,7 @@ public class Player : Singleton<Player>
             isDie = value;
             if(isDie == true)
             {
-                GameManager.Instance.OnDie();
+                GameManager.Instance.OnDie(transform);
             }
         }
     }
@@ -78,7 +81,10 @@ public class Player : Singleton<Player>
     #region GetComponent한 Component
     private Rigidbody2D rb;
     private SpriteRenderer spriterenderer;
-    //private CircleCollider2D 
+
+    [SerializeField]
+    private MagnetRange magnetRange;
+
     #endregion
 
     [Tooltip("눌렀음?")]

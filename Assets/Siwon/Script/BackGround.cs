@@ -26,7 +26,7 @@ public class BackGround : MovingElement
         {
             if(transform.position.x <= -20.7f)
             {
-                Return();
+                Destroy(gameObject);
             }
         }
         //BackGroundSpawner.Instance.SpawnBackGround();
