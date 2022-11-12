@@ -66,7 +66,6 @@ public class Item : MovingElement
         {
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);
-            ItemManager.inst.isItemTouch = true;
 
             switch (itemType)
             {
@@ -115,6 +114,8 @@ public class Item : MovingElement
                     float playerXValue = collision.transform.position.x;
 
                     Player.Instance.IsBoosting = true;
+                    ItemManager.inst.isItemTouch = true;
+
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
