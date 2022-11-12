@@ -129,6 +129,14 @@ public class Item : MovingElement
                     Player.Instance.IsBoosting = false;
                     ItemManager.inst.isItemTouch = false;
 
+                    Player.Instance.tag = "Invincibility";
+                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+
+                    yield return new WaitForSeconds(2);
+
+                    Player.Instance.tag = "Player";
+                    Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+
                     yield return new WaitForSeconds(boosterSpeed);
 
                     Destroy(this.gameObject);
@@ -143,16 +151,23 @@ public class Item : MovingElement
 
                     Player.Instance.IsBig = true;
                     collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime);
-                    // 장애물의 콜라이더를 꺼주기
 
                     yield return new WaitForSeconds(sizeWaitingTime);
+                    collision.transform.DOScale(playerSize, sizeTime);
+
+                    Player.Instance.tag = "Invincibility";
+                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+
+                    yield return new WaitForSeconds(2);
+
+                    Player.Instance.tag = "Player";
+                    Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+
                     Player.Instance.IsBig = false;
 
                     Destroy(this.gameObject);
                     sizeTimer = 0;
 
-                    collision.transform.DOScale(playerSize, sizeTime);
-                    // 장애물의 콜라이더를 켜주기
                     break;
             }
 
