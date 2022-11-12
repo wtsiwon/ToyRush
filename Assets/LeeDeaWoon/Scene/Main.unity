@@ -801,6 +801,7 @@ MonoBehaviour:
   vehicleType: 0
   force: 2000
   piecesList: []
+  magnetRange: {fileID: 0}
   isPressing: 0
 --- !u!50 &8262276508141446412
 Rigidbody2D:
