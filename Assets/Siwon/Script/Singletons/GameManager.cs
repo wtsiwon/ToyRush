@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 10);
+            
         }
     }
 
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             if (value == false)
             {
                 distance = 0;
+                SoundManager.instance.StopSoundClip(SoundType.BGM);
             }
             else
             {
@@ -122,7 +123,10 @@ public class GameManager : MonoBehaviour
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
-                
+                if(Player.Instance.IsBoosting == false)
+                {
+                    BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
+                }
             }
         }
     }
@@ -150,6 +154,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ObstacleSpawner.Instance.canSpawn = true;
         StartCoroutine(CAddDistance());
+        SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
         //StartCoroutine(CAddSpd());
     }
 }
