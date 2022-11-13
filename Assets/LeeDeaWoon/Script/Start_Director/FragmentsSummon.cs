@@ -22,6 +22,7 @@ public class FragmentsSummon : MonoBehaviour
 
     void Fragments_Summon()
     {
+        SoundManager.instance.StopSoundClip(SoundType.BGM);
         SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
 
         for (int i = 0; i < fragmentList.Count; i++)

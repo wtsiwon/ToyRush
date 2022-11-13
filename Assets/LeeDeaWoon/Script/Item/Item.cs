@@ -62,7 +62,7 @@ public class Item : MovingElement
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Invincibility"))
         {
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);

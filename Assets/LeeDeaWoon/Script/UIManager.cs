@@ -219,7 +219,7 @@ public class UIManager : MonoBehaviour
             {
                 SoundManager.instance.isBGMCheck = false;
 
-                SoundManager.instance.audioSourceClasses[SoundType.BGM].audioSource.volume = 0;
+                SoundManager.instance.StopSoundClip(SoundType.BGM);
                 bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
                 Debug.Log("BGM이 꺼졌습니다");
             }
@@ -241,7 +241,7 @@ public class UIManager : MonoBehaviour
             {
                 SoundManager.instance.isEffectCheck = false;
 
-                SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 0;
+                SoundManager.instance.StopSoundClip(SoundType.BGM);
                 effectColor.DOColor(Color.gray, 0).SetUpdate(true);
                 Debug.Log("Effect가 꺼졌습니다");
             }
@@ -389,7 +389,7 @@ public class UIManager : MonoBehaviour
         gameOverDistance.text = $"거리 : {GameManager.Instance.Distance.ToString("F0")}m";
 
         gameOverWindow.transform.DOLocalMoveY(0, waitTime).SetUpdate(true);
-        GameManager.Instance.IsGameStart = false;
+        SoundManager.instance.StopSoundClip(SoundType.BGM);
     }
 
     void GameOver_Btn()

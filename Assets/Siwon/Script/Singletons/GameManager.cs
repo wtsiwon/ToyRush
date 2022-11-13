@@ -53,8 +53,7 @@ public class GameManager : MonoBehaviour
             if (value == false)
             {
                 distance = 0;
-                SoundManager.instance.StopSoundClip(SoundType.BGM);
-                SoundManager.instance.PlaySoundClip("MainScene",SoundType.BGM);
+                SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
             }
             else
             {
@@ -67,6 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(UpDate());
+        SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
     }
 
     private void Update()
