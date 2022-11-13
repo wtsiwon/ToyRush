@@ -89,7 +89,9 @@ public class UIManager : MonoBehaviour
         GameOver_Btn();
 
         if (SoundManager.instance.isBGMCheck == false)
+        {
             bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
+        }
         else
             bgmColor.DOColor(Color.white, 0).SetUpdate(true);
 
