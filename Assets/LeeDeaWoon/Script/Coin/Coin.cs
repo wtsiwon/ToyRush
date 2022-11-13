@@ -5,12 +5,12 @@ using DG.Tweening;
 
 public class Coin : MovingElement
 {
-    SpriteRenderer SpriteRenderer;
+    SpriteRenderer spriteRenderer;
 
     protected override void Start()
     {
         base.Start();
-        SpriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected override void Update()
@@ -23,7 +23,7 @@ public class Coin : MovingElement
         base.FixedUpdate();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Invincibility"))
         {
@@ -31,6 +31,8 @@ public class Coin : MovingElement
             director.transform.SetParent(gameObject.transform, false);
             director.transform.position = new Vector3(director.transform.position.x,
                 director.transform.position.y, 0);
+
+            spriteRenderer.DOFade(0, 0);
 
             if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
             {
@@ -42,6 +44,8 @@ public class Coin : MovingElement
                 UIManager.Instance.coin += 1;
                 GameManager.Instance.haveCoin += 1;
             }
+
+            yield return new WaitForSeconds(1f);
 
             transform.DOKill();
             Destroy(gameObject);

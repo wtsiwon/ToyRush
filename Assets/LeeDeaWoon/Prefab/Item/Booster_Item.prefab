@@ -102,6 +102,7 @@ MonoBehaviour:
   spriterenderer: {fileID: 0}
   itemType: 3
   collider2D: {fileID: 0}
+  boosterDirector: {fileID: 2924771046986219665, guid: 216a1eb957679d845819fff2296d5a47, type: 3}
   boosterDuration: 5
   boosterSpeed: 0.5
   ease: 26
