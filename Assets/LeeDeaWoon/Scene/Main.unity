@@ -405,6 +405,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -452,6 +460,22 @@ PrefabInstance:
     - target: {fileID: 3493952217606925705, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_Name
       value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218361883668, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218361883668, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218361883669, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218361883669, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3493952218734983768, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: player

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            //BackGroundSpawner.Instance.backgroundSpd = distance / 10 + STARTSPD;
+            BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 10);
         }
     }
 
