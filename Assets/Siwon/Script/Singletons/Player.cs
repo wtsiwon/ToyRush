@@ -51,7 +51,7 @@ public class Player : Singleton<Player>
     #endregion
 
     public bool isUseItem =>
-     IsMagneting || IsBig || isBoosting;
+     IsBig || isBoosting;
 
     private bool isDie;
     public bool IsDie
