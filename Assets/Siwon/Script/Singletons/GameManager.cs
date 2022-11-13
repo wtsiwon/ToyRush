@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
             {
                 distance = 0;
                 SoundManager.instance.StopSoundClip(SoundType.BGM);
+                SoundManager.instance.PlaySoundClip("MainScene",SoundType.BGM);
             }
             else
             {
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CAddDistance());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
+        SoundManager.instance.StopSoundClip(SoundType.BGM);
         SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
         yield return new WaitForSeconds(1f);
     }
