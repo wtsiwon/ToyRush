@@ -122,8 +122,14 @@ public class GameManager : MonoBehaviour
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
+                
             }
         }
+    }
+
+    private void SetbackGroundSpd(float distance)
+    {
+        BackGroundSpawner.Instance.backgroundSpd = distance / 10;
     }
 
     private IEnumerator CAddSpd()
@@ -144,6 +150,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ObstacleSpawner.Instance.canSpawn = true;
         StartCoroutine(CAddDistance());
-        StartCoroutine(CAddSpd());
+        //StartCoroutine(CAddSpd());
     }
 }
