@@ -196,6 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8777c6f4c63dfa442a063f2584eff5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBGMCheck: 1
+  isEffectCheck: 1
 --- !u!4 &1654702612
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +414,10 @@ PrefabInstance:
     - target: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_fontSizeBase
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952216706670518, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder

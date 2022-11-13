@@ -27,6 +27,8 @@ public class Coin : MovingElement
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Invincibility"))
         {
+            SoundManager.instance.PlaySoundClip("Coin", SoundType.SFX, 0.2f);
+
             GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             director.transform.SetParent(gameObject.transform, false);
             director.transform.position = new Vector3(director.transform.position.x,
