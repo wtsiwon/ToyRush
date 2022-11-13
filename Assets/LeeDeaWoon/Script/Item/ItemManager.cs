@@ -23,6 +23,8 @@ public class ItemManager : MonoBehaviour
     public GameObject whiteScreen;
     public GameObject startItem;
     public GameObject piggybankDirector;
+    public GameObject bigDirector;
+    public GameObject smallDirector;
 
     public Image boosterRayCast500;
     public Image boosterRayCast1500;
@@ -165,9 +167,26 @@ public class ItemManager : MonoBehaviour
         float playerXValue = player.transform.position.x;
 
         Player.Instance.IsBoosting = true;
+
+        #region 연출
+        Instantiate(smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
+        GameObject director = Instantiate(inst.bigDirector, Vector2.zero, Quaternion.identity);
+        director.transform.SetParent(Player.Instance.transform, false);
+
+        director.transform.DOScale(Vector2.zero, 1.5f);
+
+        SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
+        boosterSprite.DOFade(0, 1.5f);
+        #endregion
+
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
                   .OnComplete(() =>
                   {
+                      director.transform.DOKill();
+                      boosterSprite.DOKill();
+
+                      Destroy(director);
+
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(-3.5f, 0.5f);
                   });
@@ -177,6 +196,7 @@ public class ItemManager : MonoBehaviour
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
         Player.Instance.IsBoosting = false;
 
+        #region 무적시간
         Player.Instance.tag = "Invincibility";
         Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
@@ -184,6 +204,7 @@ public class ItemManager : MonoBehaviour
 
         Player.Instance.tag = "Player";
         Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+        #endregion
 
         yield return new WaitForSeconds(0.5f);
     }
