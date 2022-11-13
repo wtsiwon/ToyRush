@@ -67,6 +67,8 @@ public class Item : MovingElement
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);
 
+            SoundManager.instance.PlaySoundClip("Item", SoundType.SFX, 1f);
+
             switch (itemType)
             {
                 case EItemType.Transformation:

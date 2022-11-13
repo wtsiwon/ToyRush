@@ -14,6 +14,15 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         StartCoroutine(Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType));
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SoundManager.instance.PlaySoundClip("Coin", SoundType.BGM, 0.2f);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SoundManager.instance.PlaySoundClip("PlayerRun", SoundType.BGM, 1);
+        }
     }
 
     void Awake()
@@ -53,6 +62,9 @@ public class PlayerAnimation : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Ground") && animator.GetBool("Booster_Wait") == false)
+        {
             animator.SetBool("fly", false);
+
+        }
     }
 }
