@@ -193,7 +193,8 @@ public class Player : Singleton<Player>
         {
             if (IsBig == true)
             {
-                Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f));
+                Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f)).OnComplete(() 
+                    => Camera.main.transform.DOMove(new Vector3(0,0,-10), 0.1f));
             }
         }
     }

@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
     private void Start()
     {
         //StartCoroutine(UpDate());
@@ -112,7 +110,7 @@ public class GameManager : MonoBehaviour
             piece.AddComponent<CircleCollider2D>();
             piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
             piece.GetComponent<SpriteRenderer>().sprite = piecesList[i];
-            piece.transform.localScale = new Vector3(0.1f, 0.1f, 1);
+            piece.transform.localScale = new Vector3(0.15f, 0.15f, 1);
         }
     }
 
