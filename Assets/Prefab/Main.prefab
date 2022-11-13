@@ -12649,8 +12649,6 @@ MonoBehaviour:
   effectBtn: {fileID: 3493952218206639812}
   gameruleBtn: {fileID: 3493952217101591334}
   creditBtn: {fileID: 3493952217476725190}
-  isBGMCheck: 1
-  isEffectCheck: 1
   isRuleCheck: 0
   isCreditCheck: 0
   stopWindow: {fileID: 3493952218397619698}
@@ -12780,8 +12778,8 @@ MonoBehaviour:
   - {fileID: 8378623113366748379, guid: da326201a4c87d241a7dc709925d7930, type: 3}
   - {fileID: 2516807147838901548, guid: 4278d63f4e96c8f478691973fd893bc0, type: 3}
   isAttackSummon: 1
-  coolTime: 15
-  attackDel: 5
+  coolTime: 17
+  attackDel: 2
 --- !u!1 &3493952218206639810
 GameObject:
   m_ObjectHideFlags: 0
@@ -13398,7 +13396,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1343.6, y: 633}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3493952218361883671
 CanvasRenderer:
@@ -13455,8 +13453,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14022,7 +14020,7 @@ MonoBehaviour:
   coinDistance: {fileID: 8655468456458332000}
   smokeBoomb: {fileID: 3493952218259137047}
   player: {fileID: 0}
-  playerDistance: -5
+  playerDistance: -4.5
   playerWaitTime: 2
 --- !u!50 &3493952218734983769
 Rigidbody2D:
@@ -18985,8 +18983,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

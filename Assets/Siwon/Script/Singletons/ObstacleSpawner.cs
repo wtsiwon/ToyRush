@@ -94,10 +94,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Up];
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
     }
@@ -112,17 +112,17 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         Obstacle obstacle3 = GetGearObstacle(spawnPoses[4]);
         obstacle3.transform.rotation = rotatesDic[EDir.Down];
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.1f);
     }
 
     private IEnumerator CSpawnPattern3()
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[4]);
         transform.rotation = rotatesDic[EDir.Up];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.3f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
     }
 
     private IEnumerator CSpawnPattern4()
@@ -132,40 +132,40 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(1f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
     }
 
     private IEnumerator CSpawnPattern5()
     {
         Obstacle obstacle1 = GetDrillObstacle(spawnPoses[0]);
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.2f);
 
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.3f);
     }
 
     private IEnumerator CSpawnPattern6()
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[2]);
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1.2f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.2f);
     }
 
     private IEnumerator CSpawnPattern7()
     {
         Obstacle obstacle1 = GetDrillObstacle(spawnPoses[0]);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.4f);
 
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.1f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
@@ -175,74 +175,77 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Right];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.3f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.2f);
     }
 
     private IEnumerator CSpawnPattern9()
     {
         Obstacle obstacle1 = GetDrillObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[1]);
         obstacle2.transform.rotation = rotatesDic[EDir.Down];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.4f);
     }
 
     private IEnumerator CSpawnPattern10()
     {
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.8f);
+
         Obstacle obstacle1 = GetDrillObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.3f);
 
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[1]);
         obstacle2.transform.rotation = rotatesDic[EDir.Left];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.4f);
     }
 
     private IEnumerator CSpawnPattern11()
     {
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[4]);
         obstacle2.transform.rotation = rotatesDic[EDir.Right];
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.2f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
 
         Obstacle obstacle3 = GetDrillObstacle(spawnPoses[1]);
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.3f);
     }
 
     private IEnumerator CSpawnPattern12()
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[2]);
-        yield return new WaitForSeconds(1.9f);
+        yield return new WaitForSeconds(1.2f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(1.5f);
     }
 
     private IEnumerator CSpawnPattern13()
     {
         Obstacle obstacle1 = GetDrillObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.5f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
 
         Obstacle obstacle2 = GetGearObstacle(spawnPoses[0]);
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(1.2f);
     }
 
     private IEnumerator CSpawnPattern14()
     {
         Obstacle obstacle1 = GetGearObstacle(spawnPoses[1]);
         obstacle1.transform.rotation = rotatesDic[EDir.Left];
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[4]);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.1f);
 
         CoinSpawner.Instance.SpawnCoinPattern();
         yield return new WaitForSeconds(0.5f);
@@ -254,7 +257,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         yield return new WaitForSeconds(1.5f);
 
         Obstacle obstacle = GetGearObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.3f);
+
+        CoinSpawner.Instance.SpawnCoinPattern();
+        yield return new WaitForSeconds(0.8f);
     }
 
     //20까지
