@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     private IEnumerator CSetGame()
     {
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;

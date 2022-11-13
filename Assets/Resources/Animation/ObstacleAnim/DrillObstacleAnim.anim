@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DrillObstacle
+  m_Name: DrillObstacleAnim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b71674f31e5816e4ea77f5cbf09fc23d, type: 3}
+      value: {fileID: 21300000, guid: 0256999015f81f6488710d1206bea17e, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 50bdfac38cba1d64dbbe25e703993267, type: 3}
+      value: {fileID: 21300000, guid: 54a90c23051ab88418513ce338051deb, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: b1445d13c3b553c4cbd1281340289523, type: 3}
+      value: {fileID: 21300000, guid: 98bb0ccccf0d2734e85373b70daf209e, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: a341dbf0d71820445b7ea09e70cfc48e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,15 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: b71674f31e5816e4ea77f5cbf09fc23d, type: 3}
-    - {fileID: 21300000, guid: 50bdfac38cba1d64dbbe25e703993267, type: 3}
-    - {fileID: 21300000, guid: b1445d13c3b553c4cbd1281340289523, type: 3}
+    - {fileID: 21300000, guid: 0256999015f81f6488710d1206bea17e, type: 3}
+    - {fileID: 21300000, guid: 54a90c23051ab88418513ce338051deb, type: 3}
+    - {fileID: 21300000, guid: 98bb0ccccf0d2734e85373b70daf209e, type: 3}
+    - {fileID: 21300000, guid: a341dbf0d71820445b7ea09e70cfc48e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
