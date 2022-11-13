@@ -380,8 +380,7 @@ public class UIManager : MonoBehaviour
     #region 게임오버 창
     public void GameOver()
     {
-        SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
-
+        SoundManager.instance.PlaySoundClip("GameOver", SoundType.SFX, 1.5f);
         Time.timeScale = 0f;
 
         blackScreen.SetActive(true);

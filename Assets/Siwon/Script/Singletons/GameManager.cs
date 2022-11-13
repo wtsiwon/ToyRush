@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
+
         ToDropPieces(pos);
         StartCoroutine(CToDropOnePieces());
     }

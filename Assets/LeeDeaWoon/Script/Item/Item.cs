@@ -132,7 +132,7 @@ public class Item : MovingElement
                     boosterSprite.DOFade(0, 2f);
                     #endregion
 
-                    mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
+                    mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
                               .OnComplete(() =>
                               {
                                   director.transform.DOKill();

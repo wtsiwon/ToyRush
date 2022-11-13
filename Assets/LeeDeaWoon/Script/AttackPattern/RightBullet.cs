@@ -24,7 +24,7 @@ public class RightBullet : MonoBehaviour
 
     void BulletMove()
     {
-        rb2D.velocity = Vector2.left * speed;
+        rb2D.velocity = Vector2.left * speed * Time.deltaTime;
 
         if (transform.position.x < -11)
             Destroy(this.gameObject);
