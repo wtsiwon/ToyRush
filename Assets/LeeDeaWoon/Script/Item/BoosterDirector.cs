@@ -16,7 +16,7 @@ public class BoosterDirector : MonoBehaviour
 
     void Move()
     {
-        transform.DOMove(Player.Instance.transform.position, 1);
+        transform.DOMove(Player.Instance.transform.position, 2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

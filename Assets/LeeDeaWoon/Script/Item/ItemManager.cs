@@ -168,15 +168,15 @@ public class ItemManager : MonoBehaviour
 
         Player.Instance.IsBoosting = true;
 
-        #region 연출
+        #region 연출시간
         Instantiate(smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
         GameObject director = Instantiate(inst.bigDirector, Vector2.zero, Quaternion.identity);
         director.transform.SetParent(Player.Instance.transform, false);
 
-        director.transform.DOScale(Vector2.zero, 1.5f);
+        director.transform.DOScale(Vector2.zero, 2f);
 
         SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
-        boosterSprite.DOFade(0, 1.5f);
+        boosterSprite.DOFade(0, 2f);
         #endregion
 
         mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
