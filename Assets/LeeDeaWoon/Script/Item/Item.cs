@@ -119,9 +119,25 @@ public class Item : MovingElement
                     Player.Instance.IsBoosting = true;
                     ItemManager.inst.isItemTouch = true;
 
+                    #region 연출
+                    Instantiate(ItemManager.inst.smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
+                    GameObject director = Instantiate(ItemManager.inst.bigDirector, Vector2.zero, Quaternion.identity);
+                    director.transform.SetParent(Player.Instance.transform, false);
+
+                    director.transform.DOScale(Vector2.zero, 1.5f);
+
+                    SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
+                    boosterSprite.DOFade(0, 1.5f);
+                    #endregion
+
                     mySequence.Append(collision.transform.DOLocalMoveX(-8, 2f))
                               .OnComplete(() =>
                               {
+                                  director.transform.DOKill();
+                                  boosterSprite.DOKill();
+
+                                  Destroy(director);
+
                                   ItemManager.inst.boosterNumber = 3;
 
                                   Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);

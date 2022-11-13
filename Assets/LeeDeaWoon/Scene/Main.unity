@@ -637,6 +637,8 @@ MonoBehaviour:
   whiteScreen: {fileID: 8720617552238912954, guid: a5e1a01c2ea4ccc41b799d55e1b6caad, type: 3}
   startItem: {fileID: 3890023020495159763}
   piggybankDirector: {fileID: 1582093471560866857, guid: 59fb534b8d29efa459731789c0556556, type: 3}
+  bigDirector: {fileID: 714207502482135431, guid: 9a75c4a773d87824bac806f2571ca279, type: 3}
+  smallDirector: {fileID: 2325390266283589320, guid: cd3a5ac0e3ed4d44d8b24887e8858243, type: 3}
   boosterRayCast500: {fileID: 3890023021223222108}
   boosterRayCast1500: {fileID: 3890023021772988625}
   booster500Btn: {fileID: 3890023021223222109}
