@@ -204,6 +204,7 @@ public class ItemManager : MonoBehaviour
 
         Player.Instance.tag = "Player";
         Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+        Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
         #endregion
 
         yield return new WaitForSeconds(0.5f);

@@ -157,6 +157,7 @@ public class Item : MovingElement
 
                     Player.Instance.tag = "Player";
                     Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
                     #endregion
 
                     yield return new WaitForSeconds(boosterSpeed);
@@ -185,6 +186,7 @@ public class Item : MovingElement
 
                     Player.Instance.tag = "Player";
                     Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
                     #endregion
 
                     Player.Instance.IsBig = false;

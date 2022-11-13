@@ -20,6 +20,9 @@ public class SoundManager : MonoBehaviour
 
     public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
     public Dictionary<SoundType, AudioSourceClass> audioSourceClasses = new Dictionary<SoundType, AudioSourceClass>();
+
+    public bool isBGMCheck;
+    public bool isEffectCheck;
     private void Awake()
     {
         if (instance == null)

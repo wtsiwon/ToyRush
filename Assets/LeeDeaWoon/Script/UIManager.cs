@@ -54,8 +54,6 @@ public class UIManager : MonoBehaviour
     public Button gameruleBtn;
     public Button creditBtn;
 
-    public bool isBGMCheck;
-    public bool isEffectCheck;
     public bool isRuleCheck;
     public bool isCreditCheck;
     #endregion
@@ -84,14 +82,21 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        isBGMCheck = true;
-        isEffectCheck = true;
-
         UI_Dot();
         Stop_Btns();
         Main_Btns();
         Setting_Btns();
         GameOver_Btn();
+
+        if (SoundManager.instance.isBGMCheck == false)
+            bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
+        else
+            bgmColor.DOColor(Color.white, 0).SetUpdate(true);
+
+        if (SoundManager.instance.isEffectCheck == false)
+            effectColor.DOColor(Color.gray, 0).SetUpdate(true);
+        else
+            effectColor.DOColor(Color.white, 0).SetUpdate(true);
     }
 
     void Update()
@@ -209,9 +214,9 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
 
-            if (isBGMCheck == true)
+            if (SoundManager.instance.isBGMCheck == true)
             {
-                isBGMCheck = false;
+                SoundManager.instance.isBGMCheck = false;
 
                 SoundManager.instance.audioSourceClasses[SoundType.BGM].audioSource.volume = 0;
                 bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
@@ -219,7 +224,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                isBGMCheck = true;
+                SoundManager.instance.isBGMCheck = true;
 
                 SoundManager.instance.audioSourceClasses[SoundType.BGM].audioSource.volume = 1;
                 bgmColor.DOColor(Color.white, 0).SetUpdate(true);
@@ -231,9 +236,9 @@ public class UIManager : MonoBehaviour
         effectBtn.onClick.AddListener(() =>
         {
 
-            if (isEffectCheck == true)
+            if (SoundManager.instance.isEffectCheck == true)
             {
-                isEffectCheck = false;
+                SoundManager.instance.isEffectCheck = false;
 
                 SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 0;
                 effectColor.DOColor(Color.gray, 0).SetUpdate(true);
@@ -241,7 +246,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                isEffectCheck = true;
+                SoundManager.instance.isEffectCheck = true;
 
                 SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 1;
                 SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
