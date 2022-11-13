@@ -13,6 +13,8 @@ public class RightBullet : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
     }
 
     void Update()
@@ -34,6 +36,8 @@ public class RightBullet : MonoBehaviour
         {
             if (Player.Instance.IsBig == true)
             {
+                SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+
                 GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
                 director.transform.SetParent(gameObject.transform, false);
                 spriteRenderer.DOFade(0, 0);

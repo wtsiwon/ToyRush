@@ -89,9 +89,7 @@ public class UIManager : MonoBehaviour
         GameOver_Btn();
 
         if (SoundManager.instance.isBGMCheck == false)
-        {
             bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
-        }
         else
             bgmColor.DOColor(Color.white, 0).SetUpdate(true);
 
@@ -107,6 +105,7 @@ public class UIManager : MonoBehaviour
 
         coinText.text = coin.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
+
     }
 
     public void UI_Dot()

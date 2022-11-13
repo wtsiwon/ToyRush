@@ -179,7 +179,7 @@ public class ItemManager : MonoBehaviour
         boosterSprite.DOFade(0, 2f);
         #endregion
 
-        mySequence.Append(player.transform.DOLocalMoveX(-8, 2f))
+        mySequence.Append(player.transform.DOLocalMoveX(-7, 2f))
                   .OnComplete(() =>
                   {
                       director.transform.DOKill();
