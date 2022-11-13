@@ -24,6 +24,8 @@ public class WarningLine : MonoBehaviour
 
     IEnumerator WarningLine_FadeOnOff()
     {
+        SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+
         AttackPatternManager.inst.isAttackSummon = true;
         warningLinePrefab.DOFade(0, 0.5f).SetLoops(-1, LoopType.Yoyo);
         yield return new WaitForSeconds(3);

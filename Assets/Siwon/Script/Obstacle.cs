@@ -86,6 +86,8 @@ public class Obstacle : MovingElement
     {
         if (collision.CompareTag("Player") && Player.Instance.IsBig == true)
         {
+            SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+
             gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
             GameObject piggybankDirector =  Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             piggybankDirector.transform.SetParent(gameObject.transform, false);

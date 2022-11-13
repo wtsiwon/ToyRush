@@ -67,7 +67,7 @@ public class AttackPattern : MonoBehaviour
                 float warningWaitTime = 0.5f;
                 float shakeWaitTime = 0.2f;
 
-
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
                 AttackPatternManager.inst.isAttackSummon = true;
                 transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
                 warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
@@ -76,6 +76,7 @@ public class AttackPattern : MonoBehaviour
                 warningLineBottom.DOKill();
                 warningLineBottom.DOFade(0, 0);
                 atk.transform.DOLocalMoveY(0, moveWait).SetEase(ease);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
 
                 yield return new WaitForSeconds(shakeWaitTime);
                 Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1, 1, 0f));
