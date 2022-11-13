@@ -25,7 +25,7 @@ public class Coin : MovingElement
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Invincibility"))
         {
             GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             director.transform.SetParent(gameObject.transform, false);

@@ -77,12 +77,15 @@ public class Item : MovingElement
                 case EItemType.Magnet: // 자석
 
                     Player.Instance.IsMagneting = true;
+
+                    #region 자석 연출
                     GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
                     magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
                     SpriteRenderer spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
                     magnetScaleObj.transform.DOScale(new Vector2(10,10), 0.8f).SetLoops(-1, LoopType.Restart);
                     spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
+                    #endregion
 
                     yield return new WaitForSeconds(magnetWaitingTime);
                     Player.Instance.IsMagneting = false;
@@ -90,9 +93,9 @@ public class Item : MovingElement
                     magnetScaleObj.transform.DOKill();
                     spriteRenderer.DOKill();
 
-                    Destroy(magnetScaleObj);
-
                     magnetTimer = 0;
+
+                    Destroy(magnetScaleObj);
                     break;
 
 
@@ -130,6 +133,7 @@ public class Item : MovingElement
                     Player.Instance.IsBoosting = false;
                     ItemManager.inst.isItemTouch = false;
 
+                    #region 무적시간
                     Player.Instance.tag = "Invincibility";
                     Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
@@ -137,6 +141,7 @@ public class Item : MovingElement
 
                     Player.Instance.tag = "Player";
                     Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+                    #endregion
 
                     yield return new WaitForSeconds(boosterSpeed);
 
@@ -156,6 +161,7 @@ public class Item : MovingElement
                     yield return new WaitForSeconds(sizeWaitingTime);
                     collision.transform.DOScale(playerSize, sizeTime);
 
+                    #region 무적시간
                     Player.Instance.tag = "Invincibility";
                     Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
@@ -163,6 +169,7 @@ public class Item : MovingElement
 
                     Player.Instance.tag = "Player";
                     Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+                    #endregion
 
                     Player.Instance.IsBig = false;
 

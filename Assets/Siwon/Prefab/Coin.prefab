@@ -115,8 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 1
   spriterenderer: {fileID: 0}
-  flySpeed: 1
-  coinRange: 5
 --- !u!50 &1453205873398879332
 Rigidbody2D:
   serializedVersion: 4

@@ -118,6 +118,7 @@ public class UIManager : MonoBehaviour
         // 상점 버튼을 눌렀을 때
         shopBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 0.5f);
             shopWindow.SetActive(true);
             content.transform.GetChild(0).gameObject.SetActive(true);
         });
@@ -125,6 +126,7 @@ public class UIManager : MonoBehaviour
         // 캐릭터 버튼을 눌렀을 때
         characterBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
             shopWindow.SetActive(true);
             content.transform.GetChild(1).gameObject.SetActive(true);
         });
@@ -132,6 +134,7 @@ public class UIManager : MonoBehaviour
         // 가젯 버튼을 눌렀을 때
         gadgetBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
             shopWindow.SetActive(true);
             content.transform.GetChild(2).gameObject.SetActive(true);
         });
@@ -139,6 +142,7 @@ public class UIManager : MonoBehaviour
         // 탈것 버튼을 눌렀을 때
         vehicleBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
             shopWindow.SetActive(true);
             content.transform.GetChild(3).gameObject.SetActive(true);
         });
@@ -146,9 +150,10 @@ public class UIManager : MonoBehaviour
         //상점취소 버튼을 눌렀을 때
         shopsCancelBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
             shopWindow.SetActive(false);
 
-            for(int i = 0; i<4; i++)
+            for (int i = 0; i < 4; i++)
                 content.transform.GetChild(i).gameObject.SetActive(false);
 
         });
@@ -163,6 +168,7 @@ public class UIManager : MonoBehaviour
         // 설정 버튼을 눌렀을 때
         settingBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
             blackScreen.SetActive(true);
 
             settingWindow.transform.DOLocalMoveY(0, 0.5f).SetUpdate(true);
@@ -171,6 +177,8 @@ public class UIManager : MonoBehaviour
         // 취소 버튼을 눌렀을 때
         settingCancelBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int settingMovePos = 1570;
             int rightMovePos = 1723;
 
@@ -199,15 +207,21 @@ public class UIManager : MonoBehaviour
         // BGM 버튼을 눌렀을 때
         bgmBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             if (isBGMCheck == true)
             {
                 isBGMCheck = false;
+
+                SoundManager.instance.audioSourceClasses[SoundType.BGM].audioSource.volume = 0;
                 bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
                 Debug.Log("BGM이 꺼졌습니다");
             }
             else
             {
                 isBGMCheck = true;
+
+                SoundManager.instance.audioSourceClasses[SoundType.BGM].audioSource.volume = 1;
                 bgmColor.DOColor(Color.white, 0).SetUpdate(true);
                 Debug.Log("BGM이 켜졌습니다.");
             }
@@ -216,15 +230,21 @@ public class UIManager : MonoBehaviour
         // 효과음 버튼을 눌렀을 때
         effectBtn.onClick.AddListener(() =>
         {
+
             if (isEffectCheck == true)
             {
                 isEffectCheck = false;
+
+                SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 0;
                 effectColor.DOColor(Color.gray, 0).SetUpdate(true);
                 Debug.Log("Effect가 꺼졌습니다");
             }
             else
             {
                 isEffectCheck = true;
+
+                SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 1;
+                SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
                 effectColor.DOColor(Color.white, 0).SetUpdate(true);
                 Debug.Log("Effect가 켜졌습니다.");
             }
@@ -233,6 +253,8 @@ public class UIManager : MonoBehaviour
         // 게임규칙 버튼을 눌렀을 때
         gameruleBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int gameRuleMovePos = 1723;
             int settingMovePos = -720;
 
@@ -256,6 +278,8 @@ public class UIManager : MonoBehaviour
         // 크레딧 버튼을 눌렀을 때
         creditBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int creditMovePos = 1723;
             int settingMovePos = -720;
 
@@ -284,6 +308,8 @@ public class UIManager : MonoBehaviour
         // 일시정지 버튼을 눌렀을 때
         stopBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int stopMovePos = 0;
             int settingMovePos = -720;
             int MusicMovePos = -45;
@@ -305,6 +331,8 @@ public class UIManager : MonoBehaviour
         // 돌아가기 버튼을 눌렀을 때
         backBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int stopMovePos = 1800;
             int settingMovePos = 1800;
 
@@ -319,6 +347,8 @@ public class UIManager : MonoBehaviour
         // 설정 버튼을 눌렀을 때
         stopSettingBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             int stopMovePos = 450;
             int settingMovePos = 0;
 
@@ -329,6 +359,8 @@ public class UIManager : MonoBehaviour
         // 메뉴로 버튼을 눌렀을 때
         reGameBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             DOTween.PauseAll();
             Time.timeScale = 1;
 
@@ -342,6 +374,8 @@ public class UIManager : MonoBehaviour
     #region 게임오버 창
     public void GameOver()
     {
+        SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
         Time.timeScale = 0f;
 
         blackScreen.SetActive(true);
@@ -357,6 +391,8 @@ public class UIManager : MonoBehaviour
     {
         gameOverMenuBtn.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, 1);
+
             DOTween.PauseAll();
             Time.timeScale = 1;
 
