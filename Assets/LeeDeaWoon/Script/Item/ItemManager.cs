@@ -193,6 +193,8 @@ public class ItemManager : MonoBehaviour
 
         yield return new WaitForSeconds(5); // 지속시간
 
+        player.transform.DOLocalMoveX(5.5f, 0);
+
         player.transform.DOLocalMoveX(playerXValue, 0.5f);
         Player.Instance.IsBoosting = false;
 

@@ -144,6 +144,8 @@ public class Item : MovingElement
                                   collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
                               });
                     yield return new WaitForSeconds(boosterDuration); // 지속시간
+
+                    Player.Instance.transform.DOLocalMoveX(5.5f, 0);
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                     Player.Instance.IsBoosting = false;
