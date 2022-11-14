@@ -145,7 +145,10 @@ public class Item : MovingElement
                                       boosterSprite.DOKill();
 
                                       Destroy(director);
-                                      Camera.main.transform.DOMoveX(0, 0.5f);
+                                      Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
+                                      {
+                                          Camera.main.transform.DOShakePosition(4, new Vector2(0.2f, 0.2f));
+                                      });
 
                                       ItemManager.inst.boosterNumber = 3;
 
@@ -154,7 +157,7 @@ public class Item : MovingElement
                                   });
                         yield return new WaitForSeconds(boosterDuration); // 지속시간
 
-                        Player.Instance.transform.DOLocalMoveX(5.5f, 0);
+                        //Player.Instance.transform.DOLocalMoveX(5.5f, 0);
                         collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                         ItemManager.inst.isItemTouch = false;
@@ -199,7 +202,7 @@ public class Item : MovingElement
                         Player.Instance.tag = "Invincibility";
                         Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-                        yield return new WaitForSeconds(2);
+                        yield return new WaitForSeconds(5);
 
                         Player.Instance.tag = "Player";
                         Player.Instance.GetComponent<SpriteRenderer>().DOKill();

@@ -181,15 +181,17 @@ public class ItemManager : MonoBehaviour
         boosterSprite.DOFade(0, 2f);
         #endregion
 
-        Camera.main.transform.DOMoveX(-5, 2);
-        mySequence.Append(player.transform.DOLocalMoveX(-7, 2f))
+        Camera.main.transform.DOMoveX(-5, 2)
                   .OnComplete(() =>
                   {
                       director.transform.DOKill();
                       boosterSprite.DOKill();
 
                       Destroy(director);
-                      Camera.main.transform.DOMoveX(0, 0.5f);
+                      Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
+                      {
+                          Camera.main.transform.DOShakePosition(4, new Vector2(0.2f, 0.2f));
+                      });
 
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(-3.5f, 0.5f);
