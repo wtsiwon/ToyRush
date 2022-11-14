@@ -13,7 +13,9 @@ public class AttackPattern : MonoBehaviour
     }
     public EAttackPattern eAttackPattern;
 
-    [Header("아랫 공격")]
+    private float waitTime = 0.5f;
+
+    [Header("악어 공격")]
     public Ease ease;
     public GameObject atk;
     public SpriteRenderer warningLineBottom;
@@ -60,9 +62,9 @@ public class AttackPattern : MonoBehaviour
 
     IEnumerator ATK_Start()
     {
-        float moveWait = 0.5f;
-        float warningWaitTime = 0.5f;
-        float shakeWaitTime = 0.2f;
+        float crocodileWarning = 3;
+
+        float shakeWaitTime = 0.4f;
 
         switch (eAttackPattern)
         {
@@ -71,27 +73,25 @@ public class AttackPattern : MonoBehaviour
                 AttackPatternManager.inst.isAttackSummon = true;
                 SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
-                warningLineBottom.transform.DOLocalMove(Player.Instance.transform.position, 0);
-                warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(3);
+                warningLineBottom.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
+                warningLineBottom.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                yield return new WaitForSeconds(crocodileWarning);
 
                 warningLineBottom.DOKill();
                 warningLineBottom.DOFade(0, 0);
-                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, moveWait).SetEase(ease);
 
-                yield return new WaitForSeconds(0.5f);
+                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, waitTime).SetEase(ease);
 
-                atk.transform.DOLocalMoveX(-13, moveWait * 2).SetEase(ease);
+                yield return new WaitForSeconds(waitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                atk.transform.DOLocalMoveX(-13, waitTime * 2).SetEase(ease);
+
 
                 yield return new WaitForSeconds(shakeWaitTime);
-                Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1, 1, 0f));
-                yield return new WaitForSeconds(shakeWaitTime);
+                Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(2, 0f));
 
-                //atk.transform.DOLocalMoveY(-8.5f, moveWait).SetEase(ease);
-
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1);
 
                 AttackPatternManager.inst.isAttackSummon = false;
                 atk.transform.DOKill();
@@ -99,42 +99,36 @@ public class AttackPattern : MonoBehaviour
                 break;
             #endregion
 
-            //#region 악어 공격 2
-            //case EAttackPattern.Crocodile2:
-            //    AttackPatternManager.inst.isAttackSummon = true;
-            //    SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+            #region 악어 공격 2
+            case EAttackPattern.Crocodile2:
+                AttackPatternManager.inst.isAttackSummon = true;
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
-            //    warningLineBottom.transform.DOLocalMove(Player.Instance.transform.position, 0);
-            //    warningLineBottom.DOFade(0, warningWaitTime).SetLoops(-1, LoopType.Yoyo);
-            //    yield return new WaitForSeconds(3);
+                atk.transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
+                warningLineBottom.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, -1.5f), 0);
+                warningLineBottom.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                yield return new WaitForSeconds(crocodileWarning);
 
-            //    warningLineBottom.DOKill();
-            //    warningLineBottom.DOFade(0, 0);
-            //    atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, moveWait).SetEase(ease);
+                warningLineBottom.DOKill();
+                warningLineBottom.DOFade(0, 0);
 
-            //    yield return new WaitForSeconds(0.5f);
+                atk.transform.DOLocalMoveY(0.5f, waitTime).SetEase(ease);
+                yield return new WaitForSeconds(waitTime);
 
-            //    atk.transform.DOLocalMoveX(-13, moveWait * 2).SetEase(ease);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
 
-            //    SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                atk.transform.DOLocalMoveY(-7, waitTime).SetEase(ease);
+                Camera.main.transform.DOShakePosition(0.4f, new Vector2(0, 1));
 
-            //    yield return new WaitForSeconds(shakeWaitTime);
-            //    Camera.main.transform.DOShakeRotation(shakeWaitTime, new Vector3(1, 1, 0f));
-            //    yield return new WaitForSeconds(shakeWaitTime);
+                yield return new WaitForSeconds(waitTime);
+                AttackPatternManager.inst.isAttackSummon = false;
+                atk.transform.DOKill();
+                Destroy(this.gameObject);
+                break;
+            #endregion
 
-            //    //atk.transform.DOLocalMoveY(-8.5f, moveWait).SetEase(ease);
-
-            //    yield return new WaitForSeconds(0.5f);
-
-            //    AttackPatternManager.inst.isAttackSummon = false;
-            //    atk.transform.DOKill();
-            //    Destroy(this.gameObject);
-            //    break;
-            //#endregion
-
-            #region 오른쪽 공격
+            #region 군인장난감 공격
             case EAttackPattern.Soldier:
-                int waitTime = 3;
 
                 warningSummon.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
                 for (int i = 0; i < bulletNumber; i++)
@@ -148,7 +142,7 @@ public class AttackPattern : MonoBehaviour
                     yield return new WaitForSeconds(summonPos[i]);
                 }
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(3);
 
                 enemy.transform.DOLocalMoveY(enemeyMovePos, enemyMoveSpeed);
                 for (int i = 0; i < bulletNumber; i++)
@@ -157,7 +151,7 @@ public class AttackPattern : MonoBehaviour
                     yield return new WaitForSeconds(summonPos[i]);
                 }
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(3);
                 AttackPatternManager.inst.isAttackSummon = false;
                 enemy.transform.DOKill();
                 bulletPrefab.transform.DOKill();
