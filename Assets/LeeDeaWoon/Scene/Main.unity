@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8262276508141446414}
+    - target: {fileID: 3493952218734983768, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: playerDistance
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9083876674873798525, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}

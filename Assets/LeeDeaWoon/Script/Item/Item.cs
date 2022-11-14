@@ -149,7 +149,6 @@ public class Item : MovingElement
                     Player.Instance.transform.DOLocalMoveX(5.5f, 0);
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
-                    Player.Instance.IsBoosting = false;
                     ItemManager.inst.isItemTouch = false;
 
                     #region 무적시간
@@ -162,6 +161,8 @@ public class Item : MovingElement
                     Player.Instance.GetComponent<SpriteRenderer>().DOKill();
                     Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
                     #endregion
+
+                    Player.Instance.IsBoosting = false;
 
                     yield return new WaitForSeconds(boosterSpeed);
 
