@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI coinText;
 
-    public const float STARTSPD = 200f;
+    public const float STARTSPD = 300f;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
     public List<Sprite> piecesList = new List<Sprite>();
@@ -97,11 +97,11 @@ public class GameManager : MonoBehaviour
     public void OnDie(Transform pos)
     {
 
-        ToDropPieces(pos);
+        ToDropPieces();
         StartCoroutine(CToDropOnePieces());
     }
 
-    private void ToDropPieces(Transform pos)
+    private void ToDropPieces()
     {
         Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
         Player.Instance.gameObject.SetActive(false);

@@ -7,9 +7,9 @@ public class Obstacle : MovingElement
 {
     public EObstacleType obstacleType;
 
-    //[Range(0f, 5f)]
-    //[Tooltip("돌아가는 속도")]
-    //public float spinSpd;
+    [Range(0f, 5f)]
+    [Tooltip("돌아가는 속도")]
+    public float spinSpd;
 
     //[Tooltip("최대 각도")]
     //public float maxAngle;
@@ -46,12 +46,7 @@ public class Obstacle : MovingElement
     {
         switch (obstacleType)
         {
-            //case EObstacleType.Basic:
-            //    //없음
-            //    break;
-            //case EObstacleType.Spin:
-            //    Spin();
-            //    break;
+            
         }
     }
 
