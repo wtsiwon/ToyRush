@@ -14,15 +14,6 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         StartCoroutine(Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType));
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SoundManager.instance.PlaySoundClip("Coin", SoundType.BGM, 0.2f);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SoundManager.instance.PlaySoundClip("PlayerRun", SoundType.BGM, 1);
-        }
     }
 
     void Awake()
