@@ -138,7 +138,6 @@ public class GameManager : MonoBehaviour
 
     private void SetBackGroundSpd(float spd)
     {
-        
     }
     
     private IEnumerator CSetGame()
