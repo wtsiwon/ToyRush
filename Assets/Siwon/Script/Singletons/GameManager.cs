@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            
+
         }
     }
 
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI coinText;
 
-    public const float STARTSPD = 200f;
+    public const float STARTSPD = 300f;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
     public List<Sprite> piecesList = new List<Sprite>();
@@ -97,11 +97,11 @@ public class GameManager : MonoBehaviour
     public void OnDie(Transform pos)
     {
 
-        ToDropPieces(pos);
+        ToDropPieces();
         StartCoroutine(CToDropOnePieces());
     }
 
-    private void ToDropPieces(Transform pos)
+    private void ToDropPieces()
     {
         Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
         Player.Instance.gameObject.SetActive(false);
@@ -126,26 +126,78 @@ public class GameManager : MonoBehaviour
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
-                if(Player.Instance.IsBoosting == false && distance <= 3500)
+                print("backGroundSpd" + BackGroundSpawner.Instance.backgroundSpd);
+                if (Player.Instance.IsBoosting == false && distance <= 3500)
                 {
-                    BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
-                    Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
+                    //BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
+                    //Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
+                    
+                    SetBackGroundSpd(distance);
                 }
             }
         }
     }
-    
+
+    private void SetBackGroundSpd(float distance)
+    {
+        float backSpd = BackGroundSpawner.Instance.backgroundSpd;
+        if (distance <= 100)
+        {
+            backSpd = STARTSPD;
+        }
+        else if (distance <= 200)
+        {
+            backSpd = STARTSPD + 50f;
+        }
+        else if (distance <= 500)
+        {
+            backSpd = STARTSPD + 100f;
+        }
+        else if (distance <= 1000)
+        {
+            backSpd = STARTSPD + 150f;
+        }
+        else if (distance <= 1500)
+        {
+            backSpd = STARTSPD + 200f;
+        }
+        else if (distance <= 2500)
+        {
+            backSpd = STARTSPD + 300f;
+        }
+        else if (distance <= 3500)
+        {
+            backSpd = STARTSPD + 400f;
+        }
+        else if (distance <= 5000)
+        {
+            backSpd = STARTSPD + 500f;
+        }
+        BackGroundSpawner.Instance.backgroundSpd = backSpd;
+    }
+
     private IEnumerator CSetGame()
     {
-        distance = 0;
+        StopCoroutine(nameof(CAddDistance));
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
+        distance = 0;
+        yield return new WaitForSeconds(0.1f);
         ObstacleSpawner.Instance.canSpawn = true;
-        StopCoroutine(CAddDistance());
-        StartCoroutine(CAddDistance());
+        StartCoroutine(nameof(CAddDistance));
+        StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
         SoundManager.instance.StopSoundClip(SoundType.BGM);
         SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
         yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator CCheckCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            print("확인");
+        }
     }
 }

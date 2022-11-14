@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraReSolution : MonoBehaviour
+public class CameraResolute : MonoBehaviour
 {
     private void Awake()
     {
@@ -12,7 +12,7 @@ public class CameraReSolution : MonoBehaviour
         float scaleheight = ((float)Screen.width / Screen.height) / (18.5f / 9);
         float scalewidth = 1f / scaleheight;
 
-        if(scaleheight < 1)
+        if (scaleheight < 1)
         {
             rect.height = scaleheight;
             rect.y = (1f - scaleheight) / 2f;

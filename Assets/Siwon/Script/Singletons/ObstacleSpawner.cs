@@ -39,7 +39,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator SpawnObstacle()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         while (true)
         {
             if (canSpawn && GameManager.Instance.IsGameStart == true)
@@ -50,7 +50,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                 yield return new WaitForSeconds(obstacleSpawnDelay
                     + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -279,15 +279,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         }
         return obstacle;
     }
-
-    //private Obstacle GetSpinObstacle(Transform pos)
-    //{
-    //    Obstacle obstacle = null;
-    //    obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Swing, pos.position);
-    //    print(obstacle.obstacleType);
-    //    //obstacle.spriterenderer.sprite = obstacleSpriteDic[EObstacleType.Swing];
-    //    return obstacle;
-    //}
 
     /// <summary>
     /// 
