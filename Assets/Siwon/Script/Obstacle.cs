@@ -83,6 +83,7 @@ public class Obstacle : MovingElement
         {
             SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
 
+            Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
             gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
             GameObject piggybankDirector =  Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             piggybankDirector.transform.SetParent(gameObject.transform, false);

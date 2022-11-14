@@ -152,22 +152,22 @@ public class Item : MovingElement
 
                                       ItemManager.inst.boosterNumber = 3;
 
+                                      Player.Instance.tag = "Invincibility";
                                       Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
                                       collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
                                   });
                         yield return new WaitForSeconds(boosterDuration); // 지속시간
 
-                        //Player.Instance.transform.DOLocalMoveX(5.5f, 0);
+                        Player.Instance.transform.DOLocalMoveX(5.5f, 0);
                         collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                         ItemManager.inst.isItemTouch = false;
                         Player.Instance.IsBoosting = false;
 
                         #region 무적시간
-                        Player.Instance.tag = "Invincibility";
                         Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-                        yield return new WaitForSeconds(2);
+                        yield return new WaitForSeconds(ItemManager.inst.invincibilityTimer);
 
                         Player.Instance.tag = "Player";
                         Player.Instance.GetComponent<SpriteRenderer>().DOKill();
@@ -202,7 +202,7 @@ public class Item : MovingElement
                         Player.Instance.tag = "Invincibility";
                         Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-                        yield return new WaitForSeconds(5);
+                        yield return new WaitForSeconds(ItemManager.inst.invincibilityTimer);
 
                         Player.Instance.tag = "Player";
                         Player.Instance.GetComponent<SpriteRenderer>().DOKill();

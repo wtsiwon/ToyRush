@@ -37,6 +37,7 @@ public class ItemManager : MonoBehaviour
     public bool isStartItemSummon;
     public bool isStartItemCheck;
 
+    public int invincibilityTimer;
     public int boosterNumber;
     public int boosterDuration;
 
@@ -207,6 +208,7 @@ public class ItemManager : MonoBehaviour
                 yield return new WaitForSeconds(boosterDuration + 1); // 지속시간
                 break;
         }
+        Player.Instance.tag = "Invincibility";
 
         player.transform.DOLocalMoveX(5.5f, 0);
 
@@ -214,10 +216,9 @@ public class ItemManager : MonoBehaviour
         Player.Instance.IsBoosting = false;
 
         #region 무적시간
-        Player.Instance.tag = "Invincibility";
         Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(invincibilityTimer);
 
         Player.Instance.tag = "Player";
         Player.Instance.GetComponent<SpriteRenderer>().DOKill();
