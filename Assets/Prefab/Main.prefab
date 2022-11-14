@@ -13885,7 +13885,7 @@ MonoBehaviour:
   coinDistance: {fileID: 8655468456458332000}
   smokeBoomb: {fileID: 3493952218259137047}
   player: {fileID: 0}
-  playerDistance: -4.5
+  playerDistance: -5
   playerWaitTime: 2
 --- !u!50 &3493952218734983769
 Rigidbody2D:
