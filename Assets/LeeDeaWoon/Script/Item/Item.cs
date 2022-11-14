@@ -150,6 +150,7 @@ public class Item : MovingElement
                     collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
                     ItemManager.inst.isItemTouch = false;
+                    Player.Instance.IsBoosting = false;
 
                     #region 무적시간
                     Player.Instance.tag = "Invincibility";
@@ -162,7 +163,6 @@ public class Item : MovingElement
                     Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
                     #endregion
 
-                    Player.Instance.IsBoosting = false;
 
                     yield return new WaitForSeconds(boosterSpeed);
 
