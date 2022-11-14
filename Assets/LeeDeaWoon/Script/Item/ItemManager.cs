@@ -38,6 +38,8 @@ public class ItemManager : MonoBehaviour
     public bool isStartItemCheck;
 
     public int boosterNumber;
+    public int boosterDuration;
+
     void Start()
     {
         StartItem_Btn();
@@ -179,6 +181,7 @@ public class ItemManager : MonoBehaviour
         boosterSprite.DOFade(0, 2f);
         #endregion
 
+        Camera.main.transform.DOMoveX(-5, 2);
         mySequence.Append(player.transform.DOLocalMoveX(-7, 2f))
                   .OnComplete(() =>
                   {
@@ -186,12 +189,22 @@ public class ItemManager : MonoBehaviour
                       boosterSprite.DOKill();
 
                       Destroy(director);
+                      Camera.main.transform.DOMoveX(0, 0.5f);
 
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(-3.5f, 0.5f);
                   });
 
-        yield return new WaitForSeconds(5); // 지속시간
+        switch (boosterNumber)
+        {
+            case 1:
+                yield return new WaitForSeconds(boosterDuration - 1); // 지속시간
+                break;
+
+            case 2:
+                yield return new WaitForSeconds(boosterDuration + 1); // 지속시간
+                break;
+        }
 
         player.transform.DOLocalMoveX(5.5f, 0);
 
