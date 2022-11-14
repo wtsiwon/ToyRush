@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         set
         {
             distance = value;
-            
+
         }
     }
 
@@ -126,31 +126,76 @@ public class GameManager : MonoBehaviour
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
-                if(Player.Instance.IsBoosting == false && distance <= 3500)
+                if (Player.Instance.IsBoosting == false && distance <= 3500)
                 {
                     //BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
                     //Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
-
+                    SetBackGroundSpd(distance);
                 }
             }
         }
     }
 
-    private void SetBackGroundSpd(float spd)
+    private void SetBackGroundSpd(float distance)
     {
+        float backSpd = BackGroundSpawner.Instance.backgroundSpd;
+        if (distance <= 100)
+        {
+            backSpd = STARTSPD;
+        }
+        else if (distance <= 200)
+        {
+            backSpd = STARTSPD + 50f;
+        }
+        else if (distance <= 500)
+        {
+            backSpd = STARTSPD + 100f;
+        }
+        else if (distance <= 1000)
+        {
+            backSpd = STARTSPD + 150f;
+        }
+        else if (distance <= 1500)
+        {
+            backSpd = STARTSPD + 200f;
+        }
+        else if (distance <= 2500)
+        {
+            backSpd = STARTSPD + 300f;
+        }
+        else if (distance <= 3500)
+        {
+            backSpd = STARTSPD + 400f;
+        }
+        else if (distance <= 5000)
+        {
+            backSpd = STARTSPD + 500f;
+        }
+        BackGroundSpawner.Instance.backgroundSpd = backSpd;
     }
-    
+
     private IEnumerator CSetGame()
     {
-        distance = 0;
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
-        ObstacleSpawner.Instance.canSpawn = true;
+        distance = 0;
         StopCoroutine(CAddDistance());
+        yield return new WaitForSeconds(0.1f);
+        ObstacleSpawner.Instance.canSpawn = true;
         StartCoroutine(CAddDistance());
+        StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
         SoundManager.instance.StopSoundClip(SoundType.BGM);
         SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
         yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator CCheckCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            print("확인");
+        }
     }
 }

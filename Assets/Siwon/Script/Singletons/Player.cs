@@ -23,7 +23,7 @@ public class Player : Singleton<Player>
             }
             else
             {
-                BackGroundSpawner.Instance.backgroundSpd = GameManager.STARTSPD + (GameManager.Instance.Distance / 10);
+
             }
         }
     }
