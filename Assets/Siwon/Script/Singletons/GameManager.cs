@@ -126,10 +126,12 @@ public class GameManager : MonoBehaviour
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
+                print("backGroundSpd" + BackGroundSpawner.Instance.backgroundSpd);
                 if (Player.Instance.IsBoosting == false && distance <= 3500)
                 {
                     //BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
                     //Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
+                    
                     SetBackGroundSpd(distance);
                 }
             }
@@ -176,12 +178,12 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CSetGame()
     {
+        StopCoroutine(nameof(CAddDistance));
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
         distance = 0;
-        StopCoroutine(CAddDistance());
         yield return new WaitForSeconds(0.1f);
         ObstacleSpawner.Instance.canSpawn = true;
-        StartCoroutine(CAddDistance());
+        StartCoroutine(nameof(CAddDistance));
         StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
