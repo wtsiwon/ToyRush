@@ -77,26 +77,30 @@ public class Item : MovingElement
 
 
                 case EItemType.Magnet: // 자석
-                    Player.Instance.IsMagneting = true;
+                    if (Player.Instance.IsBoosting == false)
+                    {
+                        Player.Instance.IsMagneting = true;
 
-                    #region 자석 연출
-                    GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
-                    magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
+                        #region 자석 연출
+                        GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
+                        magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
-                    SpriteRenderer spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
-                    magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
-                    spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
-                    #endregion
+                        SpriteRenderer spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
+                        magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
+                        spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
+                        #endregion
 
-                    yield return new WaitForSeconds(magnetWaitingTime);
-                    Player.Instance.IsMagneting = false;
+                        yield return new WaitForSeconds(magnetWaitingTime);
+                        Player.Instance.IsMagneting = false;
 
-                    magnetScaleObj.transform.DOKill();
-                    spriteRenderer.DOKill();
+                        magnetScaleObj.transform.DOKill();
+                        spriteRenderer.DOKill();
 
-                    magnetTimer = 0;
+                        magnetTimer = 0;
 
-                    Destroy(magnetScaleObj);
+                        Destroy(magnetScaleObj);
+                    }
+
                     break;
 
 
@@ -114,59 +118,65 @@ public class Item : MovingElement
 
 
                 case EItemType.Booster: // 부스터
-                    Sequence mySequence = DOTween.Sequence();
-                    float playerXValue = collision.transform.position.x;
+                    if (Player.Instance.IsBoosting == false)
+                    {
+                        Sequence mySequence = DOTween.Sequence();
+                        float playerXValue = collision.transform.position.x;
 
-                    Player.Instance.IsBoosting = true;
-                    ItemManager.inst.isItemTouch = true;
+                        Player.Instance.IsBoosting = true;
+                        ItemManager.inst.isItemTouch = true;
 
-                    #region 연출시간
-                    Instantiate(ItemManager.inst.smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
-                    GameObject director = Instantiate(ItemManager.inst.bigDirector, Vector2.zero, Quaternion.identity);
-                    director.transform.SetParent(Player.Instance.transform, false);
+                        #region 연출시간
+                        Instantiate(ItemManager.inst.smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
+                        GameObject director = Instantiate(ItemManager.inst.bigDirector, Vector2.zero, Quaternion.identity);
+                        director.transform.SetParent(Player.Instance.transform, false);
 
-                    director.transform.DOScale(Vector2.zero, 2f);
+                        director.transform.DOScale(Vector2.zero, 2f);
 
-                    SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
-                    boosterSprite.DOFade(0, 2f);
-                    #endregion
+                        SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
+                        boosterSprite.DOFade(0, 2f);
+                        #endregion
 
-                    mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
-                              .OnComplete(() =>
-                              {
-                                  director.transform.DOKill();
-                                  boosterSprite.DOKill();
+                        Camera.main.transform.DOMoveX(-5, 2);
+                        mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
+                                  .OnComplete(() =>
+                                  {
+                                      director.transform.DOKill();
+                                      boosterSprite.DOKill();
 
-                                  Destroy(director);
+                                      Destroy(director);
+                                      Camera.main.transform.DOMoveX(0, 0.5f);
 
-                                  ItemManager.inst.boosterNumber = 3;
+                                      ItemManager.inst.boosterNumber = 3;
 
-                                  Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
-                                  collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
-                              });
-                    yield return new WaitForSeconds(boosterDuration); // 지속시간
+                                      Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
+                                      collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
+                                  });
+                        yield return new WaitForSeconds(boosterDuration); // 지속시간
 
-                    Player.Instance.transform.DOLocalMoveX(5.5f, 0);
-                    collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
+                        Player.Instance.transform.DOLocalMoveX(5.5f, 0);
+                        collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
 
-                    ItemManager.inst.isItemTouch = false;
-                    Player.Instance.IsBoosting = false;
+                        ItemManager.inst.isItemTouch = false;
+                        Player.Instance.IsBoosting = false;
 
-                    #region 무적시간
-                    Player.Instance.tag = "Invincibility";
-                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                        #region 무적시간
+                        Player.Instance.tag = "Invincibility";
+                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-                    yield return new WaitForSeconds(2);
+                        yield return new WaitForSeconds(2);
 
-                    Player.Instance.tag = "Player";
-                    Player.Instance.GetComponent<SpriteRenderer>().DOKill();
-                    Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
-                    #endregion
+                        Player.Instance.tag = "Player";
+                        Player.Instance.GetComponent<SpriteRenderer>().DOKill();
+                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
+                        #endregion
 
 
-                    yield return new WaitForSeconds(boosterSpeed);
+                        yield return new WaitForSeconds(boosterSpeed);
 
-                    Destroy(this.gameObject);
+                        Destroy(this.gameObject);
+                    }
+
                     break;
 
 
