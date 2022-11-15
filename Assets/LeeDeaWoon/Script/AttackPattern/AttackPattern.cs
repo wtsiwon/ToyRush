@@ -11,15 +11,19 @@ public class AttackPattern : MonoBehaviour
         Crocodile2,
         Soldier,
         Drill,
+        Gloves,
     }
     public EAttackPattern eAttackPattern;
 
-    private float waitTime = 0.5f;
+    float waitTime = 0.5f;
+    float warning = 3;
+
+
+    public SpriteRenderer warningLine;
 
     [Header("악어 공격")]
     public Ease ease;
-    public GameObject atk;
-    public SpriteRenderer warningLineBottom;
+    public GameObject crocodile;
     public float shakeWaitTime;
 
     [Header("군인장난감 공격")]
@@ -35,8 +39,10 @@ public class AttackPattern : MonoBehaviour
     float[] summonPos = new float[4];
 
     [Header("드릴")]
-    public SpriteRenderer drillWarningLine;
     public GameObject drill;
+
+    [Header("글러브")]
+    public GameObject glove;
 
     private void Start()
     {
@@ -49,38 +55,9 @@ public class AttackPattern : MonoBehaviour
         AttackDoKill();
     }
 
-    void AttackDoKill()
-    {
-        if (ItemManager.inst.isItemTouch == true)
-        {
-            switch (eAttackPattern)
-            {
-                case EAttackPattern.Crocodile1:
-                    atk.transform.DOKill();
-                    warningLineBottom.DOKill();
-                    Camera.main.transform.DOKill();
-                    break;
-
-                case EAttackPattern.Soldier:
-                    enemy.transform.DOKill();
-                    break;
-
-                case EAttackPattern.Drill:
-                    drill.transform.DOKill();
-                    drillWarningLine.DOKill();
-                    Camera.main.transform.DOKill();
-                    break;
-            }
-
-
-            Destroy(gameObject);
-        }
-    }
-
 
     IEnumerator ATK_Start()
     {
-        float Warning = 3;
         float shakeWaitTime = 0.4f;
 
 
@@ -91,22 +68,23 @@ public class AttackPattern : MonoBehaviour
                 AttackPatternManager.inst.isAttackSummon = true;
                 SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
-                warningLineBottom.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
-                warningLineBottom.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(Warning);
+                warningLine.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
 
-                warningLineBottom.DOKill();
-                warningLineBottom.DOFade(0, 0);
+                warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                yield return new WaitForSeconds(warning);
 
-                atk.transform.DOLocalMoveY(warningLineBottom.transform.position.y, waitTime).SetEase(ease).OnComplete(() =>
+                warningLine.DOKill();
+                warningLine.DOFade(0, 0);
+
+                crocodile.transform.DOLocalMoveY(warningLine.transform.position.y, waitTime).SetEase(ease).OnComplete(() =>
                 {
-                    atk.transform.DORotate(new Vector3(0, 0, 30), waitTime);
+                    crocodile.transform.DORotate(new Vector3(0, 0, 30), waitTime);
                 });
 
                 yield return new WaitForSeconds(waitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
-                atk.transform.DOLocalMoveX(-13, waitTime * 2).SetEase(ease);
+                crocodile.transform.DOLocalMoveX(-13, waitTime * 2).SetEase(ease);
 
 
                 yield return new WaitForSeconds(shakeWaitTime);
@@ -115,7 +93,7 @@ public class AttackPattern : MonoBehaviour
                 yield return new WaitForSeconds(1);
 
                 AttackPatternManager.inst.isAttackSummon = false;
-                atk.transform.DOKill();
+                crocodile.transform.DOKill();
                 Destroy(this.gameObject);
                 break;
             #endregion
@@ -125,25 +103,26 @@ public class AttackPattern : MonoBehaviour
                 AttackPatternManager.inst.isAttackSummon = true;
                 SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
-                atk.transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
-                warningLineBottom.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, -1.5f), 0);
-                warningLineBottom.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(Warning);
+                crocodile.transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
+                warningLine.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, -1.5f), 0);
 
-                warningLineBottom.DOKill();
-                warningLineBottom.DOFade(0, 0);
+                warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                yield return new WaitForSeconds(warning);
 
-                atk.transform.DOLocalMoveY(0.5f, waitTime).SetEase(ease);
+                warningLine.DOKill();
+                warningLine.DOFade(0, 0);
+
+                crocodile.transform.DOLocalMoveY(0.5f, waitTime).SetEase(ease);
                 yield return new WaitForSeconds(waitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
 
-                atk.transform.DOLocalMoveY(-7, waitTime).SetEase(ease);
+                crocodile.transform.DOLocalMoveY(-7, waitTime).SetEase(ease);
                 Camera.main.transform.DOShakePosition(0.4f, new Vector2(0, 1));
 
                 yield return new WaitForSeconds(waitTime);
                 AttackPatternManager.inst.isAttackSummon = false;
-                atk.transform.DOKill();
+                crocodile.transform.DOKill();
                 Destroy(this.gameObject);
                 break;
             #endregion
@@ -182,28 +161,96 @@ public class AttackPattern : MonoBehaviour
 
             #region 드릴 공격
             case EAttackPattern.Drill:
-                AttackPatternManager.inst.isAttackSummon = true;
-                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+                for (int i = 0; i <= 2; i++)
+                {
+                    AttackPatternManager.inst.isAttackSummon = true;
+                    SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
-                transform.DORotate(new Vector3(0, 0, Random.Range(-50, 0)), 0);
-                drillWarningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
-                yield return new WaitForSeconds(Warning);
+                    warningLine.DOFade(0.5f, 0);
+                    transform.DORotate(new Vector3(0, 0, Random.Range(-50, 50)), 0);
 
-                drillWarningLine.DOKill();
-                drillWarningLine.DOFade(0, 0);
+                    warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                    yield return new WaitForSeconds(warning);
 
-                drill.transform.DOLocalMoveX(-15f, 1).SetEase(ease);
-                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
-                Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(1, 1));
+                    warningLine.DOKill();
+                    warningLine.DOFade(0, 0);
+                    drill.transform.DOLocalMoveX(16, 0);
+                    drill.transform.DOLocalMoveX(-15f, 1).SetEase(ease);
+                    SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                    Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(1, 1));
 
+                    yield return new WaitForSeconds(0.7f);
+                }
                 yield return new WaitForSeconds(1);
                 AttackPatternManager.inst.isAttackSummon = false;
                 drill.transform.DOKill();
                 Destroy(this.gameObject);
+
                 break;
-                #endregion
+            #endregion
+
+            case EAttackPattern.Gloves:
+                AttackPatternManager.inst.isAttackSummon = true;
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+
+                transform.DOMoveY(0, 0);
+
+                for (int i = 0; i <= 2; i++)
+                    transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+
+                yield return new WaitForSeconds(3);
+
+                for (int i = 0; i <= 2; i++)
+                {
+                    transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOKill();
+                    transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, 0);
+                }
+
+                int random = Random.Range(-18, 18);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                for (int i = 0; i <= 2; i++)
+                    transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), waitTime);
+
+                yield return new WaitForSeconds(waitTime);
+
+                for (int i = 0; i <= 2; i++)
+                    transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, waitTime);
+
+                yield return new WaitForSeconds(1);
+                AttackPatternManager.inst.isAttackSummon = false;
+                glove.transform.DOKill();
+                Destroy(this.gameObject);
+                break;
         }
+    }
+
+    void AttackDoKill()
+    {
+        if (ItemManager.inst.isItemTouch == true)
+        {
+            warningLine.DOKill();
+
+            switch (eAttackPattern)
+            {
+                case EAttackPattern.Crocodile1:
+                    crocodile.transform.DOKill();
+                    //warningLineBottom.DOKill();
+                    Camera.main.transform.DOKill();
+                    break;
+
+                case EAttackPattern.Soldier:
+                    enemy.transform.DOKill();
+                    break;
+
+                case EAttackPattern.Drill:
+                    drill.transform.DOKill();
+                    //drillWarningLine.DOKill();
+                    Camera.main.transform.DOKill();
+                    break;
+            }
 
 
+            Destroy(gameObject);
+        }
     }
 }

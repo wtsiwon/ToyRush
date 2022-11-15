@@ -58,6 +58,9 @@ TagManager:
   - name: Warning_Line
     uniqueID: 15744157
     locked: 0
+  - name: Attack
+    uniqueID: 1159968623
+    locked: 0
   - name: Player
     uniqueID: 983346869
     locked: 0

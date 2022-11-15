@@ -12657,6 +12657,7 @@ MonoBehaviour:
   - {fileID: 6434489378002102500, guid: c396cd5556c6090408d06d0e359e1348, type: 3}
   - {fileID: 2516807147838901548, guid: 4278d63f4e96c8f478691973fd893bc0, type: 3}
   - {fileID: 2896692392590149409, guid: c970fbb2ba220204d93f7dcef25006e0, type: 3}
+  - {fileID: 4912063879106261774, guid: 86796bcb1e43672428465b6fdee5bc4e, type: 3}
   isAttackSummon: 1
   coolTime: 12
   attackDel: 2

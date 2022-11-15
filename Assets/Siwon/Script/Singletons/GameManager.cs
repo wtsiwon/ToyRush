@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     private void ToDropPieces()
     {
+        UIManager.Instance.stopBtn.transform.DOMoveY(500, 0);
         Instantiate(ItemManager.inst.whiteScreen, transform.position, Quaternion.identity);
         Player.Instance.gameObject.SetActive(false);
 

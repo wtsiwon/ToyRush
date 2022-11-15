@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1930412283027923144}
   - component: {fileID: 545190035778739547}
   m_Layer: 0
-  m_Name: ATK
+  m_Name: Drill
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930412283027923143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.86, y: -0.03, z: 1.1716479}
+  m_LocalPosition: {x: 16, y: 0, z: 1}
   m_LocalScale: {x: 0.79275, y: 0.79275, z: 1.5855}
   m_Children: []
   m_Father: {fileID: 2896692392590149411}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 2896692392590149411}
   - component: {fileID: 2896692392590149408}
   m_Layer: 0
-  m_Name: Drill
+  m_Name: Drill_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,9 +389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eAttackPattern: 3
+  warningLine: {fileID: 2896692392076462899}
   ease: 0
-  atk: {fileID: 0}
-  warningLineBottom: {fileID: 0}
+  crocodile: {fileID: 0}
   shakeWaitTime: 0
   enemy: {fileID: 0}
   bulletPrefab: {fileID: 0}
@@ -399,5 +399,5 @@ MonoBehaviour:
   warningLineRight: {fileID: 0}
   bulletNumber: 0
   enemyMoveSpeed: 0
-  drillWarningLine: {fileID: 2896692392076462899}
   drill: {fileID: 1930412283027923143}
+  laser: {fileID: 0}
