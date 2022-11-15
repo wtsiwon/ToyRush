@@ -190,13 +190,17 @@ public class AttackPattern : MonoBehaviour
             #endregion
 
             case EAttackPattern.Gloves:
+                int random = Random.Range(-18, 18);
                 AttackPatternManager.inst.isAttackSummon = true;
                 SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
 
                 transform.DOMoveY(0, 0);
 
                 for (int i = 0; i <= 2; i++)
+                {
+                    transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), waitTime);
                     transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                }
 
                 yield return new WaitForSeconds(3);
 
@@ -206,13 +210,9 @@ public class AttackPattern : MonoBehaviour
                     transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, 0);
                 }
 
-                int random = Random.Range(-18, 18);
+                yield return new WaitForSeconds(waitTime);
+
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
-                for (int i = 0; i <= 2; i++)
-                    transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), waitTime);
-
-                yield return new WaitForSeconds(1);
-
                 for (int i = 0; i <= 2; i++)
                     transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, waitTime);
 
@@ -234,7 +234,6 @@ public class AttackPattern : MonoBehaviour
             {
                 case EAttackPattern.Crocodile1:
                     crocodile.transform.DOKill();
-                    //warningLineBottom.DOKill();
                     Camera.main.transform.DOKill();
                     break;
 
@@ -244,8 +243,16 @@ public class AttackPattern : MonoBehaviour
 
                 case EAttackPattern.Drill:
                     drill.transform.DOKill();
-                    //drillWarningLine.DOKill();
                     Camera.main.transform.DOKill();
+                    break;
+
+                case EAttackPattern.Gloves:
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        transform.GetChild(i).DOKill();
+                        transform.GetChild(i).GetChild(0).DOKill();
+                        transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOKill();
+                    }
                     break;
             }
 

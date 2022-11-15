@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public const float STARTSPD = 300f;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
-    public List<Sprite> piecesList = new List<Sprite>();
+    public List<GameObject> piecesList = new List<GameObject>();
 
     [Tooltip("시작확인")]
     [SerializeField]
@@ -110,13 +110,8 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < piecesList.Count; i++)
         {
-            GameObject piece = new GameObject();
-            piece.transform.position = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y, 0);
-            piece.AddComponent<SpriteRenderer>();
-            piece.AddComponent<CircleCollider2D>();
-            piece.AddComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
-            piece.GetComponent<SpriteRenderer>().sprite = piecesList[i];
-            piece.transform.localScale = new Vector3(0.15f, 0.15f, 1);
+            Instantiate(piecesList[i], Player.Instance.transform.position, Quaternion.identity);
+            piecesList[i].transform.DOLocalMoveX(transform.position.x + Random.Range(0, 3), 0.5f);
         }
     }
 
