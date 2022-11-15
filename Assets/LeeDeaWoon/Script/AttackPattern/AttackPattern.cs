@@ -211,7 +211,7 @@ public class AttackPattern : MonoBehaviour
                 for (int i = 0; i <= 2; i++)
                     transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), waitTime);
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(1);
 
                 for (int i = 0; i <= 2; i++)
                     transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, waitTime);
