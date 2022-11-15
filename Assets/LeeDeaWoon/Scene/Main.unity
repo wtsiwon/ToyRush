@@ -832,7 +832,7 @@ MonoBehaviour:
   dontdestroy: 0
   boosterType: 0
   vehicleType: 0
-  force: 2000
+  force: 2772
   magnetRange: {fileID: 1723154080566402426}
   isPressing: 0
 --- !u!50 &8262276508141446412
@@ -850,7 +850,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.6
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
