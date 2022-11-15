@@ -11,14 +11,8 @@ public class Obstacle : MovingElement
     [Tooltip("돌아가는 속도")]
     public float spinSpd;
 
-    //[Tooltip("최대 각도")]
-    //public float maxAngle;
-
-    //[Tooltip("최소 각도")]
-    //public float minAngle;
-
-    [Tooltip("SwingSpd")]
-    private const float swingSpd = 100;
+    [Tooltip("회전하는 가")]
+    public bool isSpin;
 
     private Vector3 spawnPoint;
 
