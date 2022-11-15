@@ -23,6 +23,9 @@ public class SoundManager : MonoBehaviour
 
     public bool isBGMCheck;
     public bool isEffectCheck;
+
+    public int soundSFX;
+
     private void Awake()
     {
         if (instance == null)

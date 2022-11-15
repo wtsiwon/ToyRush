@@ -23,7 +23,7 @@ public class FragmentsSummon : MonoBehaviour
     void Fragments_Summon()
     {
         SoundManager.instance.StopSoundClip(SoundType.BGM);
-        SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, SoundManager.instance.soundSFX);
 
         for (int i = 0; i < fragmentList.Count; i++)
             Instantiate(fragmentList[i], new Vector3(-10, Random.Range(posYMin, posYMax), 0), Quaternion.identity).transform.parent = gameObject.transform;

@@ -181,7 +181,7 @@ public class ItemManager : MonoBehaviour
         SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
         boosterSprite.DOFade(0, 2f);
         #endregion
-        SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, 1);
+        SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, SoundManager.instance.soundSFX);
         Camera.main.transform.DOMoveX(3, 2)
                   .OnComplete(() =>
                   {
@@ -190,7 +190,7 @@ public class ItemManager : MonoBehaviour
 
                       Destroy(director);
 
-                      SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, 1);
+                      SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, SoundManager.instance.soundSFX);
                       Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
                       {
                           switch (boosterNumber)

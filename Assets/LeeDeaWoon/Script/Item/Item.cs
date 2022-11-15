@@ -67,7 +67,7 @@ public class Item : MovingElement
             collider2D.enabled = false;
             spriterenderer.DOFade(0, 0);
 
-            SoundManager.instance.PlaySoundClip("Item", SoundType.SFX, 1f);
+            SoundManager.instance.PlaySoundClip("Item", SoundType.SFX, SoundManager.instance.soundSFX);
 
             switch (itemType)
             {
@@ -138,7 +138,7 @@ public class Item : MovingElement
                         #endregion
 
                         Camera.main.transform.DOMoveX(3, 2);
-                        SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, 1);
+                        SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, SoundManager.instance.soundSFX);
                         mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
                                   .OnComplete(() =>
                                   {
@@ -147,7 +147,7 @@ public class Item : MovingElement
 
                                       Destroy(director);
 
-                                      SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, 1);
+                                      SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, SoundManager.instance.soundSFX);
                                       Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
                                       {
                                           Camera.main.transform.DOShakePosition(3, new Vector2(0.3f, 0.3f));

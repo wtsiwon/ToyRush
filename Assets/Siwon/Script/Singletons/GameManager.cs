@@ -54,7 +54,11 @@ public class GameManager : MonoBehaviour
             if (value == false)
             {
                 distance = 0;
-                SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+
+                if (SoundManager.instance.isBGMCheck == true)
+                    SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+                else
+                    SoundManager.instance.StopSoundClip(SoundType.BGM);
             }
             else
             {
@@ -67,7 +71,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(UpDate());
-        SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+        if (SoundManager.instance.isBGMCheck == true)
+            SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+        else
+            SoundManager.instance.StopSoundClip(SoundType.BGM);
     }
 
     private void Update()
@@ -128,7 +135,7 @@ public class GameManager : MonoBehaviour
                 {
                     //BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
                     //Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
-                    
+
                     SetBackGroundSpd(distance);
                 }
             }
@@ -184,8 +191,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
-        SoundManager.instance.StopSoundClip(SoundType.BGM);
-        SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
+
+        if (SoundManager.instance.isBGMCheck == true)
+        {
+            SoundManager.instance.StopSoundClip(SoundType.BGM);
+            SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
+        }
         yield return new WaitForSeconds(1f);
     }
 

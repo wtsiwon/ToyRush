@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBGMCheck: 1
   isEffectCheck: 1
+  soundSFX: 1
 --- !u!4 &1654702612
 Transform:
   m_ObjectHideFlags: 0
