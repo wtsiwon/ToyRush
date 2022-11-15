@@ -78,7 +78,19 @@ public enum EObstacleType
     Gear,
     Drill,
     BlowFish,
+    Fist,
     End,
+}
+
+/// <summary>
+/// Àå¾Ö¹° 
+/// </summary>
+public enum EObstacleColorType
+{
+    Yellow,
+    LightGreen,
+    Green,
+    Red,
 }
 
 /// <summary>
@@ -120,6 +132,11 @@ public enum EDir
     Cross1 = 45,
     Cross2 = 135,
     End = 7,
+}
+
+public struct Array<T>
+{
+    List<T> arr;
 }
 
 public class Defines : MonoBehaviour

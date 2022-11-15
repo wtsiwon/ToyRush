@@ -8,7 +8,7 @@ public class Obstacle : MovingElement
     public EObstacleType obstacleType;
 
     [Range(0f, 5f)]
-    [Tooltip("돌아가는 속도")]
+    [Tooltip("주먹 장애물 돌아가는 속도")]
     public float spinSpd;
 
     [Tooltip("회전하는 가")]
@@ -30,6 +30,8 @@ public class Obstacle : MovingElement
     private Vector3 spawnPoint;
 
     private const float DISTANCE = 50f;
+
+    private DOTween domove;
 
     protected override void Start()
     {
@@ -78,9 +80,9 @@ public class Obstacle : MovingElement
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            transform.DOScale(0.4f, 0.4f);
+            transform.DOScale(0.35f, 0.35f).SetEase(Ease.InCubic);
             yield return new WaitForSeconds(0.5f);
-            transform.DOScale(0.2f, 0.2f);
+            transform.DOScale(0.25f, 0.25f).SetEase(Ease.OutCubic);
         }
     }
 
@@ -110,8 +112,10 @@ public class Obstacle : MovingElement
             piggybankDirector.transform.SetParent(gameObject.transform, false);
             piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
 
+
             yield return new WaitForSeconds(1);
 
+            transform.DOKill();
             Destroy(gameObject);
         }
     }

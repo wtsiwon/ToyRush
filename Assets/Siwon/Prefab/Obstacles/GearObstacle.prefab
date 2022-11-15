@@ -101,6 +101,7 @@ MonoBehaviour:
   poolType: 3
   spriterenderer: {fileID: 0}
   obstacleType: 0
+  spinSpd: 0
 --- !u!95 &6138759489996818613
 Animator:
   serializedVersion: 3
@@ -111,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 6138759489996818602}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e26cd9cf46840974a93dc0f0f0d8889c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2957e4ddd44286742b1fcd3cba98bf3f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

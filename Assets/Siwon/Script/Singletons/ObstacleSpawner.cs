@@ -14,6 +14,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("장애물 Sprite를 enum타입에 따라 분류한 dictionary")]
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
+    //public List<Array<Sprite>> obstacle = new List<Array<Sprite>>();
+
     [Tooltip("장애물 List")]
     [Space(15f)]
     public List<Obstacle> obstacleList = new List<Obstacle>();
@@ -268,11 +270,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="pos"></param>
-    /// <returns></returns>
     private Obstacle GetDrillObstacle(Transform pos)
     {
         Obstacle obstacle = null;
@@ -283,6 +280,33 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         {
             obstacle.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
         }
+        return obstacle;
+    }
+
+    private Obstacle GetBlowFishObstacle(Transform pos)
+    {
+        Obstacle obstacle = null;
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.BlowFish]);
+        obstacle.transform.position = pos.position;
+        
+        return obstacle;
+    }
+
+    private Obstacle GetFistObstacle(Transform pos)
+    {
+        Obstacle obstacle = null;
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
+
+        obstacle.IsSpin = Random.Range(0, 2) == 1;
+        if(obstacle.IsSpin == false)
+        {
+            int randRotate = Random.Range(0, (int)EDir.End);
+            obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
+        }
+
+
+
+        obstacle.transform.position = pos.position;
         return obstacle;
     }
     #endregion

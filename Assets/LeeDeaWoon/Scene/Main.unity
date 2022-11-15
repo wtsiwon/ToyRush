@@ -522,12 +522,14 @@ MonoBehaviour:
   obstacleList:
   - {fileID: 1711660857068376590, guid: eb08be82db9f36549a3dc80561735f9b, type: 3}
   - {fileID: -8748533160282153284, guid: 30e0f262e1a8c96468c22866b2a45a0b, type: 3}
+  - {fileID: 7620446580954078830, guid: e36c786e0def9e14a9f9bc946ed6a635, type: 3}
   coinPatterns:
   - {fileID: 282082266851877188, guid: 5d431c0440313af478a33dff585072c0, type: 3}
   - {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}
   - {fileID: 7484336930525869784, guid: 09b54fbabb474ea4584eaa9efa91fa90, type: 3}
+  - {fileID: 2429847750684184441, guid: fdd59a4deb03ca04d9a15460174dfa59, type: 3}
   obstacleSpawnInterval: 0.5
-  obstacleSpawnDelay: 5
+  obstacleSpawnDelay: 4
   canSpawn: 0
 --- !u!4 &8262276506503919222
 Transform:
