@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         {
             backSpd = STARTSPD + 500f;
         }
-        else if (distance <= 5000)
+        else
         {
             backSpd = STARTSPD + 600f;
         }
