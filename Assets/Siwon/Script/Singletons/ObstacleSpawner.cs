@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-using System;
-
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
 {
     [Tooltip("장애물을 소환할 위치들")]
@@ -33,7 +31,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private void Start()
     {
         AddRotates();
-        AddObstacleSprite();
         StartCoroutine(SpawnObstacle());
     }
 
@@ -51,17 +48,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
                     + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
             }
             yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    /// <summary>
-    /// 장애물 SpriteDictionary에 추가
-    /// </summary>
-    private void AddObstacleSprite()
-    {
-        for (int i = 0; i < (int)EObstacleType.End; i++)
-        {
-            //obstacleSpriteDic.Add((EObstacleType)i, obstacleSpriteList[i]);
         }
     }
 
@@ -272,6 +258,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
         obstacle.transform.position = pos.position;
+
+        obstacle.IsSpin = true;
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
