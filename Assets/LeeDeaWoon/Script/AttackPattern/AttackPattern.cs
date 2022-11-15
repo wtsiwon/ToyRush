@@ -234,7 +234,6 @@ public class AttackPattern : MonoBehaviour
             {
                 case EAttackPattern.Crocodile1:
                     crocodile.transform.DOKill();
-                    //warningLineBottom.DOKill();
                     Camera.main.transform.DOKill();
                     break;
 
@@ -244,8 +243,16 @@ public class AttackPattern : MonoBehaviour
 
                 case EAttackPattern.Drill:
                     drill.transform.DOKill();
-                    //drillWarningLine.DOKill();
                     Camera.main.transform.DOKill();
+                    break;
+
+                case EAttackPattern.Gloves:
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        transform.GetChild(i).DOKill();
+                        transform.GetChild(i).GetChild(0).DOKill();
+                        transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOKill();
+                    }
                     break;
             }
 

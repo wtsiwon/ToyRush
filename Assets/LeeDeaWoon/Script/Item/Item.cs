@@ -137,7 +137,7 @@ public class Item : MovingElement
                         boosterSprite.DOFade(0, 2f);
                         #endregion
 
-                        Camera.main.transform.DOMoveX(-5, 2);
+                        Camera.main.transform.DOMoveX(-4, 2);
                         mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
                                   .OnComplete(() =>
                                   {
