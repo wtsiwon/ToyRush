@@ -12,7 +12,20 @@ public class Obstacle : MovingElement
     public float spinSpd;
 
     [Tooltip("회전하는 가")]
-    public bool isSpin;
+    private bool isSpin;
+
+    public bool IsSpin
+    {
+        get => isSpin;
+        set
+        {
+            isSpin = value;
+            if (value == true)
+            {
+                Spin();
+            }
+        }
+    }
 
     private Vector3 spawnPoint;
 
@@ -29,19 +42,6 @@ public class Obstacle : MovingElement
         spawnPoint = Player.Instance.transform.position;
 
         base.OnEnable();
-        TypeofDefine();
-    }
-
-    /// <summary>
-    /// enum타입의 따른 정의
-    /// obstacleType에 따라 장애물 
-    /// </summary>
-    private void TypeofDefine()
-    {
-        switch (obstacleType)
-        {
-            
-        }
     }
 
     protected override void Update()
@@ -61,14 +61,16 @@ public class Obstacle : MovingElement
 
     private void Spin()
     {
-        StartCoroutine(CSpin());
+        StartCoroutine(nameof(CSpin));
     }
 
     private IEnumerator CSpin()
     {
-        //transform.Rotate(new Vector3(0, 0, spinSpd));
-        yield return new WaitForSeconds(0.02f);
-        StartCoroutine(CSpin());
+        while (true)
+        {
+            transform.Rotate(new Vector3(0, 0, spinSpd));
+            yield return new WaitForSeconds(0.02f);
+        }
     }
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -79,9 +81,9 @@ public class Obstacle : MovingElement
 
             Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
             gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-            GameObject piggybankDirector =  Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+            GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
             piggybankDirector.transform.SetParent(gameObject.transform, false);
-            piggybankDirector.transform.DOScale(new Vector2(2,2), 0);
+            piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
 
             yield return new WaitForSeconds(1);
 
