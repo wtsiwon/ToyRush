@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
@@ -157,23 +157,23 @@ public class GameManager : MonoBehaviour
         }
         else if (distance <= 1000)
         {
-            backSpd = STARTSPD + 150f;
+            backSpd = STARTSPD + 200f;
         }
         else if (distance <= 1500)
         {
-            backSpd = STARTSPD + 200f;
+            backSpd = STARTSPD + 300f;
         }
         else if (distance <= 2500)
         {
-            backSpd = STARTSPD + 300f;
+            backSpd = STARTSPD + 400f;
         }
         else if (distance <= 3500)
         {
-            backSpd = STARTSPD + 400f;
+            backSpd = STARTSPD + 500f;
         }
         else if (distance <= 5000)
         {
-            backSpd = STARTSPD + 500f;
+            backSpd = STARTSPD + 600f;
         }
         BackGroundSpawner.Instance.backgroundSpd = backSpd;
     }
