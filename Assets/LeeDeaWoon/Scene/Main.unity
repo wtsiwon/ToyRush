@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBGMCheck: 1
   isEffectCheck: 1
+  soundSFX: 1
 --- !u!4 &1654702612
 Transform:
   m_ObjectHideFlags: 0
@@ -407,6 +408,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3493952216695361154, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0

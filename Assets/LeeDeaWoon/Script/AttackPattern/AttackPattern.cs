@@ -66,7 +66,7 @@ public class AttackPattern : MonoBehaviour
             #region 學橫 奢問 1
             case EAttackPattern.Crocodile1:
                 AttackPatternManager.inst.isAttackSummon = true;
-                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, SoundManager.instance.soundSFX - 0.5f);
 
                 warningLine.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
 
@@ -83,7 +83,7 @@ public class AttackPattern : MonoBehaviour
 
                 yield return new WaitForSeconds(waitTime);
 
-                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
                 crocodile.transform.DOLocalMoveX(-13, waitTime * 2).SetEase(ease);
 
 
@@ -101,7 +101,7 @@ public class AttackPattern : MonoBehaviour
             #region 學橫 奢問 2
             case EAttackPattern.Crocodile2:
                 AttackPatternManager.inst.isAttackSummon = true;
-                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, SoundManager.instance.soundSFX - 0.5f);
 
                 crocodile.transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
                 warningLine.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, -1.5f), 0);
@@ -115,7 +115,7 @@ public class AttackPattern : MonoBehaviour
                 crocodile.transform.DOLocalMoveY(0.5f, waitTime).SetEase(ease);
                 yield return new WaitForSeconds(waitTime);
 
-                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
 
                 crocodile.transform.DOLocalMoveY(-7, waitTime).SetEase(ease);
                 Camera.main.transform.DOShakePosition(0.4f, new Vector2(0, 1));
@@ -164,7 +164,7 @@ public class AttackPattern : MonoBehaviour
                 for (int i = 0; i <= 2; i++)
                 {
                     AttackPatternManager.inst.isAttackSummon = true;
-                    SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+                    SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, SoundManager.instance.soundSFX - 0.5f);
 
                     warningLine.DOFade(0.5f, 0);
                     transform.DORotate(new Vector3(0, 0, Random.Range(-50, 50)), 0);
@@ -176,7 +176,7 @@ public class AttackPattern : MonoBehaviour
                     warningLine.DOFade(0, 0);
                     drill.transform.DOLocalMoveX(16, 0);
                     drill.transform.DOLocalMoveX(-15f, 1).SetEase(ease);
-                    SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                    SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
                     Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(1, 1));
 
                     yield return new WaitForSeconds(0.7f);
@@ -189,10 +189,11 @@ public class AttackPattern : MonoBehaviour
                 break;
             #endregion
 
+            #region 掏癱濰骨 奢問
             case EAttackPattern.Gloves:
                 int random = Random.Range(-18, 18);
                 AttackPatternManager.inst.isAttackSummon = true;
-                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, 0.5f);
+                SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, SoundManager.instance.soundSFX - 0.5f);
 
                 transform.DOMoveY(0, 0);
 
@@ -212,7 +213,7 @@ public class AttackPattern : MonoBehaviour
 
                 yield return new WaitForSeconds(waitTime);
 
-                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, 1f);
+                SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
                 for (int i = 0; i <= 2; i++)
                     transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, waitTime);
 
@@ -221,6 +222,7 @@ public class AttackPattern : MonoBehaviour
                 glove.transform.DOKill();
                 Destroy(this.gameObject);
                 break;
+                #endregion
         }
     }
 
