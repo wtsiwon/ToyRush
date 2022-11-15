@@ -77,6 +77,7 @@ public enum EObstacleType
 {
     Gear,
     Drill,
+    BlowFish,
     End,
 }
 

@@ -53,12 +53,12 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private void AddRotates()
     {
-        rotatesDic.Add(EDir.Up, new Quaternion(0, 0, (float)EDir.Up, 0));
-        rotatesDic.Add(EDir.Down, new Quaternion(0, 0, (float)EDir.Down, 0));
-        rotatesDic.Add(EDir.Left, new Quaternion(0, 0, (float)EDir.Left, 0));
-        rotatesDic.Add(EDir.Right, new Quaternion(0, 0, (float)EDir.Right, 0));
-        rotatesDic.Add(EDir.Cross1, new Quaternion(0, 0, (float)EDir.Cross1, 0));
-        rotatesDic.Add(EDir.Cross2, new Quaternion(0, 0, (float)EDir.Cross2, 0));
+        rotatesDic.Add(EDir.Up, new Quaternion(0, 0, 0, 0));
+        rotatesDic.Add(EDir.Down, new Quaternion(0, 0, 180, 0));
+        rotatesDic.Add(EDir.Left, new Quaternion(0, 0, 90, 0));
+        rotatesDic.Add(EDir.Right, new Quaternion(0, 0,270, 0));
+        rotatesDic.Add(EDir.Cross1, new Quaternion(0, 0,45, 0));
+        rotatesDic.Add(EDir.Cross2, new Quaternion(0, 0, 135, 0));
     }
 
     /// <summary>

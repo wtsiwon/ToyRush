@@ -34,6 +34,20 @@ public class Obstacle : MovingElement
     protected override void Start()
     {
         base.Start();
+        TypeDefine();
+    }
+
+    private void TypeDefine()
+    {
+        switch (obstacleType)
+        {
+            case EObstacleType.BlowFish:
+                StartCoroutine(nameof(CBlowFishAnim));
+                break;
+            default:
+
+                break;
+        }
     }
 
     //나중에 좀 더 생각해서 해보자
@@ -57,6 +71,17 @@ public class Obstacle : MovingElement
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+    }
+
+    private IEnumerator CBlowFishAnim()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            transform.DOScale(0.4f, 0.4f);
+            yield return new WaitForSeconds(0.5f);
+            transform.DOScale(0.2f, 0.2f);
+        }
     }
 
     private void Spin()
