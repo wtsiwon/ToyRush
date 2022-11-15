@@ -189,6 +189,7 @@ public class AttackPattern : MonoBehaviour
                 break;
             #endregion
 
+            #region 권투장갑 공격
             case EAttackPattern.Gloves:
                 int random = Random.Range(-18, 18);
                 AttackPatternManager.inst.isAttackSummon = true;
@@ -221,6 +222,7 @@ public class AttackPattern : MonoBehaviour
                 glove.transform.DOKill();
                 Destroy(this.gameObject);
                 break;
+                #endregion
         }
     }
 

@@ -137,7 +137,7 @@ public class Item : MovingElement
                         boosterSprite.DOFade(0, 2f);
                         #endregion
 
-                        Camera.main.transform.DOMoveX(-4, 2);
+                        Camera.main.transform.DOMoveX(3, 2);
                         SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, 1);
                         mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
                                   .OnComplete(() =>
