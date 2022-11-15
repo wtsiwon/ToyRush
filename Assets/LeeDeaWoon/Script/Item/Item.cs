@@ -138,6 +138,7 @@ public class Item : MovingElement
                         #endregion
 
                         Camera.main.transform.DOMoveX(-4, 2);
+                        SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, 1);
                         mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
                                   .OnComplete(() =>
                                   {
@@ -145,6 +146,8 @@ public class Item : MovingElement
                                       boosterSprite.DOKill();
 
                                       Destroy(director);
+
+                                      SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, 1);
                                       Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
                                       {
                                           Camera.main.transform.DOShakePosition(3, new Vector2(0.3f, 0.3f));

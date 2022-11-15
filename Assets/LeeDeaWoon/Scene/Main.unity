@@ -705,11 +705,11 @@ MonoBehaviour:
   distanceText: {fileID: 81399147}
   coinText: {fileID: 1318929371}
   piecesList:
-  - {fileID: 21300000, guid: b08b38c5008dff6479eed52eaf5882a6, type: 3}
-  - {fileID: 21300000, guid: 50bf98fa5bc79a34ba11d4dd86c9ba64, type: 3}
-  - {fileID: 21300000, guid: 85f7856c439d64b41b7fc579c2061f40, type: 3}
-  - {fileID: 21300000, guid: 6b6cfab24f2bc2d4ab29e8bc321481dd, type: 3}
-  - {fileID: 21300000, guid: 33797c8567dc5dc488c817d29b51e418, type: 3}
+  - {fileID: 6265476512858450356, guid: d78bde85c348a6742b8d30e0220945be, type: 3}
+  - {fileID: 8438882411311247458, guid: e0fef28e674c6b14eb409b53f1e66982, type: 3}
+  - {fileID: 7955794894560215054, guid: f056e43272b768d4c95fee55ad54b685, type: 3}
+  - {fileID: 3766059458984880851, guid: c652d4b9f6372284f89e08b463274ae9, type: 3}
+  - {fileID: 2543098710399312488, guid: 0c95eb855324b8148b1eff1decb63e78, type: 3}
   isGameStart: 0
 --- !u!4 &8262276507760920034
 Transform:
