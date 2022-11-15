@@ -147,7 +147,7 @@ public class Item : MovingElement
                                       Destroy(director);
                                       Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
                                       {
-                                          Camera.main.transform.DOShakePosition(4, new Vector2(0.2f, 0.2f));
+                                          Camera.main.transform.DOShakePosition(3, new Vector2(0.3f, 0.3f));
                                       });
 
                                       ItemManager.inst.boosterNumber = 3;

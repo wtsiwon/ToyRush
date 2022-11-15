@@ -191,7 +191,17 @@ public class ItemManager : MonoBehaviour
                       Destroy(director);
                       Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
                       {
-                          Camera.main.transform.DOShakePosition(4, new Vector2(0.2f, 0.2f));
+                          switch (boosterNumber)
+                          {
+                              case 1:
+                                  Camera.main.transform.DOShakePosition(boosterDuration -1.5f, new Vector2(0.3f, 0.3f));
+                                  break;
+
+                              case 2:
+                                  Camera.main.transform.DOShakePosition(boosterDuration +1.5f, new Vector2(0.3f, 0.3f));
+                                  break;
+                          }
+
                       });
 
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
