@@ -14,7 +14,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("장애물 Sprite를 enum타입에 따라 분류한 dictionary")]
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
-    //public List<Array<Sprite>> obstacle = new List<Array<Sprite>>();
+    [Tooltip("장애물 Frames")]
+    public List<Array<Sprite>> obstacleFrames = new List<Array<Sprite>>();
 
     [Tooltip("장애물 List")]
     [Space(15f)]
@@ -111,6 +112,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.2f);
+
+        Obstacle obstacle3 = GetBlowFishObstacle(spawnPoses[3]);
+        yield return new WaitForSeconds(0.5f);
+
     }
 
     private IEnumerator CSpawnPattern4()
@@ -121,6 +126,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.2f);
+
+        Obstacle obstacle3 = GetFistObstacle(spawnPoses[4]);
 
     }
 
@@ -259,9 +266,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
-        obstacle.transform.position = pos.position;
+        
 
-        obstacle.IsSpin = true;
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
@@ -303,8 +309,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
             int randRotate = Random.Range(0, (int)EDir.End);
             obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
         }
-
-
 
         obstacle.transform.position = pos.position;
         return obstacle;
