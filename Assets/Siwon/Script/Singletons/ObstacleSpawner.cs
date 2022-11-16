@@ -14,8 +14,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("장애물 Sprite를 enum타입에 따라 분류한 dictionary")]
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
-    [Tooltip("장애물 Frames")]
-    public List<Array<Sprite>> obstacleFrames = new List<Array<Sprite>>();
+    [SerializeField]
+    private List<Array<Sprite>> obstacleColorSprites = new List<Array<Sprite>>();
 
     [Tooltip("장애물 List")]
     [Space(15f)]
@@ -301,7 +301,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private Obstacle GetFistObstacle(Transform pos)
     {
         Obstacle obstacle = null;
-        obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
 
         obstacle.IsSpin = Random.Range(0, 2) == 1;
         if(obstacle.IsSpin == false)
@@ -309,8 +308,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
             int randRotate = Random.Range(0, (int)EDir.End);
             obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
         }
+        
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
+        
 
-        obstacle.transform.position = pos.position;
         return obstacle;
     }
     #endregion

@@ -91,6 +91,7 @@ public enum EObstacleColorType
     LightGreen,
     Green,
     Red,
+    End,
 }
 
 /// <summary>
@@ -134,9 +135,10 @@ public enum EDir
     End = 7,
 }
 
+[System.Serializable]
 public struct Array<T>
 {
-    List<T> arr;
+    public List<T> list;
 }
 
 public class Defines : MonoBehaviour

@@ -14,6 +14,10 @@ public class Obstacle : MovingElement
     [Tooltip("회전하는 가")]
     private bool isSpin;
 
+    Animator animator;
+    Avatar avatar;
+
+    
     public bool IsSpin
     {
         get => isSpin;
@@ -37,6 +41,8 @@ public class Obstacle : MovingElement
     {
         base.Start();
         TypeDefine();
+        animator = GetComponent<Animator>();
+        animator.avatar = avatar;
     }
 
     private void TypeDefine()
