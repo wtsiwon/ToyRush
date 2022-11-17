@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7620446580954078830}
   m_Layer: 0
   m_Name: BlowFish
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,4 +292,5 @@ MonoBehaviour:
   poolType: 0
   spriterenderer: {fileID: 0}
   obstacleType: 2
-  spinSpd: 0
+  spinSpd: 1.33
+  isSpin: 0

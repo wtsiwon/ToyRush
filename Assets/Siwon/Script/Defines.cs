@@ -88,8 +88,8 @@ public enum EObstacleType
 public enum EObstacleColorType
 {
     Yellow,
-    LightGreen,
     Green,
+    LightGreen,
     Red,
     End,
 }
@@ -126,13 +126,13 @@ public enum EMovingElementType
 
 public enum EDir
 {
-    Up = 0,
-    Down = 180,
-    Left = 90,
-    Right = 270,
-    Cross1 = 45,
-    Cross2 = 135,
-    End = 7,
+    Up,
+    Down,
+    Left,
+    Right,
+    Cross1,
+    Cross2,
+    End,
 }
 
 [System.Serializable]

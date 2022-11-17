@@ -524,12 +524,17 @@ MonoBehaviour:
   - {fileID: 8262276507910443981}
   - {fileID: 8262276507806497182}
   - {fileID: 8262276506709014949}
-  obstacleColorSprites:
-  - list: []
+  obstacleColorAnimator:
+  - list:
+    - {fileID: 9100000, guid: e8a4607f1e56d324b92c10538b4ef782, type: 2}
+    - {fileID: 9100000, guid: 75c33fbab9d20f447988b681181b5791, type: 2}
+    - {fileID: 9100000, guid: 374e037e36cc3d6428527b1fc64543bf, type: 2}
+    - {fileID: 9100000, guid: 53cea1d499e6adb48b5cf2126798db84, type: 2}
   obstacleList:
   - {fileID: 1711660857068376590, guid: eb08be82db9f36549a3dc80561735f9b, type: 3}
   - {fileID: -8748533160282153284, guid: 30e0f262e1a8c96468c22866b2a45a0b, type: 3}
   - {fileID: 7620446580954078830, guid: e36c786e0def9e14a9f9bc946ed6a635, type: 3}
+  - {fileID: 8991690449321569085, guid: 50787b93e53d058458e82fdf475db103, type: 3}
   coinPatterns:
   - {fileID: 282082266851877188, guid: 5d431c0440313af478a33dff585072c0, type: 3}
   - {fileID: 2679051748771255806, guid: 19c45eaaa33f40249aa78f575f9caa33, type: 3}

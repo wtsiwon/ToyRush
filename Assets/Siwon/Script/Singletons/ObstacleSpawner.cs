@@ -15,7 +15,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
 
     [SerializeField]
-    private List<Array<Sprite>> obstacleColorSprites = new List<Array<Sprite>>();
+    [Tooltip("장애물들 색깔 애니매이션들")]
+    private List<Array<RuntimeAnimatorController>> obstacleColorAnimator = new List<Array<RuntimeAnimatorController>>();
 
     [Tooltip("장애물 List")]
     [Space(15f)]
@@ -262,12 +263,24 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     #endregion
 
     #region 장애물 불러오는 함수
+    /// <summary>
+    /// 기어 장애물 불러오는 함수
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private Obstacle GetGearObstacle(Transform pos)
     {
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
-        
 
+        //스핀 할것인가
+        obstacle.IsSpin = Random.Range(0, 2) == 1;
+
+        if (obstacle.IsSpin == false)//안한다면 랜덤 Rotate
+        {
+            int randRotate = Random.Range(0, (int)EDir.End);
+            obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
+        }
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
@@ -281,6 +294,10 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Drill]);
         obstacle.transform.position = pos.position;
+
+        //int randRotate = Random.Range(0, (int)EDir.End);
+
+        //obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
@@ -301,15 +318,15 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     private Obstacle GetFistObstacle(Transform pos)
     {
         Obstacle obstacle = null;
+        obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
 
         obstacle.IsSpin = Random.Range(0, 2) == 1;
+
         if(obstacle.IsSpin == false)
         {
             int randRotate = Random.Range(0, (int)EDir.End);
             obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
         }
-        
-        obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
         
 
         return obstacle;

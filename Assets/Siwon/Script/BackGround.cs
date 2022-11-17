@@ -29,8 +29,6 @@ public class BackGround : MovingElement
                 Destroy(gameObject);
             }
         }
-        //BackGroundSpawner.Instance.SpawnBackGround();
-        //}
     }
 
     private IEnumerator CWait()
