@@ -204,6 +204,7 @@ public class ItemManager : MonoBehaviour
                                   break;
                           }
                       });
+                      Player.Instance.tag = "Invincibility";
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(-3.5f, 0.5f);
                   });
@@ -218,7 +219,6 @@ public class ItemManager : MonoBehaviour
                 yield return new WaitForSeconds(boosterDuration + 1); // 지속시간
                 break;
         }
-        Player.Instance.tag = "Invincibility";
 
         player.transform.DOLocalMoveX(5.5f, 0);
 
