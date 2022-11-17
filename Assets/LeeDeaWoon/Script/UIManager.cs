@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
     [Header("설정")]
     public GameObject settingWindow;
     public GameObject blackScreen;
-    public GameObject gameruleWindow;
     public GameObject creditWindow;
 
     public Image bgmColor;
@@ -54,7 +53,6 @@ public class UIManager : MonoBehaviour
     public Button gameruleBtn;
     public Button creditBtn;
 
-    public bool isRuleCheck;
     public bool isCreditCheck;
     #endregion
 
@@ -192,7 +190,6 @@ public class UIManager : MonoBehaviour
 
             if (isStopCheck == false)
             {
-                gameruleWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
                 creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
 
                 sequence.Append(settingWindow.transform.DOLocalMoveY(settingMovePos, waitTime).SetUpdate(true))
@@ -263,26 +260,10 @@ public class UIManager : MonoBehaviour
         // 게임규칙 버튼을 눌렀을 때
         gameruleBtn.onClick.AddListener(() =>
         {
+
+            Time.timeScale = 0;
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-
-            int gameRuleMovePos = 1723;
-            int settingMovePos = -720;
-
-            if (isRuleCheck == true)
-            {
-                if (isCreditCheck == false)
-                    settingWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
-
-                isRuleCheck = false;
-                gameruleWindow.transform.DOLocalMoveX(gameRuleMovePos, waitTime).SetUpdate(true);
-            }
-
-            else
-            {
-                settingWindow.transform.DOLocalMoveX(settingMovePos, waitTime).SetUpdate(true);
-                gameruleWindow.transform.DOLocalMoveX(-gameRuleMovePos, waitTime).SetUpdate(true);
-                isRuleCheck = true;
-            }
+            SceneManager.LoadScene("Tutorial");
         });
 
         // 크레딧 버튼을 눌렀을 때
@@ -295,11 +276,9 @@ public class UIManager : MonoBehaviour
 
             if (isCreditCheck == true)
             {
-                if (isRuleCheck == false)
-                    settingWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
-
                 isCreditCheck = false;
                 creditWindow.transform.DOLocalMoveX(creditMovePos, waitTime).SetUpdate(true);
+                settingWindow.transform.DOLocalMoveX(0, waitTime).SetUpdate(true);
             }
 
             else

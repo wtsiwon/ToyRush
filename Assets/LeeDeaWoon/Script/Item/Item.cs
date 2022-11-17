@@ -120,7 +120,6 @@ public class Item : MovingElement
                 case EItemType.Booster: // 부스터
                     if (Player.Instance.IsBoosting == false)
                     {
-                        Sequence mySequence = DOTween.Sequence();
                         float playerXValue = collision.transform.position.x;
 
                         Player.Instance.IsBoosting = true;
@@ -137,9 +136,8 @@ public class Item : MovingElement
                         boosterSprite.DOFade(0, 2f);
                         #endregion
 
-                        Camera.main.transform.DOMoveX(3, 2);
                         SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, SoundManager.instance.soundSFX);
-                        mySequence.Append(collision.transform.DOLocalMoveX(-7, 2f))
+                        Camera.main.transform.DOMoveX(3, 2)
                                   .OnComplete(() =>
                                   {
                                       director.transform.DOKill();
