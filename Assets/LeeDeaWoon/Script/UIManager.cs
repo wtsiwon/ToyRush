@@ -80,6 +80,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+
         UI_Dot();
         Stop_Btns();
         Main_Btns();
