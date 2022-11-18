@@ -134,17 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &81399147 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3493952218361883668, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 4815618705780800758}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &230907968 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9218151209275044208, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
@@ -154,17 +143,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1318929371 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2695611189431266611, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 4815618705780800758}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1654702610
@@ -460,6 +438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main
       objectReference: {fileID: 0}
+    - target: {fileID: 3493952218034657292, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952218734983768, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: player
       value: 
@@ -716,8 +698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   haveCoin: 0
-  distanceText: {fileID: 81399147}
-  coinText: {fileID: 1318929371}
   piecesList:
   - {fileID: 6265476512858450356, guid: d78bde85c348a6742b8d30e0220945be, type: 3}
   - {fileID: 8438882411311247458, guid: e0fef28e674c6b14eb409b53f1e66982, type: 3}

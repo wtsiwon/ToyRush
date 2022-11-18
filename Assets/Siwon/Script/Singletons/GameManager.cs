@@ -27,13 +27,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    [Tooltip("거리 Text")]
-    private TextMeshProUGUI distanceText;
-
-    [SerializeField]
-    private TextMeshProUGUI coinText;
-
     public const float STARTSPD = 300f;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]

@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        DOTween.PauseAll();
         Time.timeScale = 1;
 
         UI_Dot();
