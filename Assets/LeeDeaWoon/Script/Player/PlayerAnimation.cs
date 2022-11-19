@@ -13,7 +13,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(Animator_Controller(Player.Instance.vehicleType, Player.Instance.boosterType));
+        StartCoroutine(Animator_Controller(Player.Instance.vehicleType));
     }
 
     void Awake()
@@ -21,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    IEnumerator Animator_Controller(EVehicleType vehicleType, EBoosterType boosterType)
+    IEnumerator Animator_Controller(EVehicleType vehicleType)
     {
         animator.SetBool("Booster", Player.Instance.IsBoosting);
 

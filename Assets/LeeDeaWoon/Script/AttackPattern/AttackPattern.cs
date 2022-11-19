@@ -236,7 +236,6 @@ public class AttackPattern : MonoBehaviour
             {
                 case EAttackPattern.Crocodile1:
                     crocodile.transform.DOKill();
-                    Camera.main.transform.DOKill();
                     break;
 
                 case EAttackPattern.Soldier:
@@ -257,8 +256,6 @@ public class AttackPattern : MonoBehaviour
                     }
                     break;
             }
-
-
             Destroy(gameObject);
         }
     }

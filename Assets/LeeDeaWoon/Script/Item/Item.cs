@@ -124,6 +124,7 @@ public class Item : MovingElement
 
                         Player.Instance.IsBoosting = true;
                         ItemManager.inst.isItemTouch = true;
+                        Player.Instance.tag = "Invincibility";
 
                         #region 연출시간
                         Instantiate(ItemManager.inst.smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
@@ -153,7 +154,6 @@ public class Item : MovingElement
 
                                       ItemManager.inst.boosterNumber = 3;
 
-                                      Player.Instance.tag = "Invincibility";
                                       Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
                                       collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
                                   });
