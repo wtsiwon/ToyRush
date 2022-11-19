@@ -114,8 +114,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle2 = GetDrillObstacle(spawnPoses[1]);
         yield return new WaitForSeconds(1.2f);
 
-        Obstacle obstacle3 = GetBlowFishObstacle(spawnPoses[3]);
-        yield return new WaitForSeconds(0.5f);
+        //Obstacle obstacle3 = GetBlowFishObstacle(spawnPoses[3]);
+        //yield return new WaitForSeconds(0.5f);
 
     }
 
@@ -319,6 +319,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Fist]);
+        obstacle.transform.position = pos.position;
 
         obstacle.IsSpin = Random.Range(0, 2) == 1;
 
