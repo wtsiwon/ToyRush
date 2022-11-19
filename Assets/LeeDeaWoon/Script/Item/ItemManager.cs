@@ -170,6 +170,7 @@ public class ItemManager : MonoBehaviour
         float playerXValue = player.transform.position.x;
 
         Player.Instance.IsBoosting = true;
+        Player.Instance.tag = "Invincibility";
 
         #region 연출시간
         Instantiate(smallDirector, Vector2.zero, Quaternion.identity).transform.SetParent(Player.Instance.transform, false);
@@ -204,7 +205,6 @@ public class ItemManager : MonoBehaviour
                                   break;
                           }
                       });
-                      Player.Instance.tag = "Invincibility";
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
                       player.transform.DOLocalMoveX(-3.5f, 0.5f);
                   });
