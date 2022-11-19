@@ -12411,7 +12411,7 @@ MonoBehaviour:
   - {fileID: 2896692392590149409, guid: c970fbb2ba220204d93f7dcef25006e0, type: 3}
   - {fileID: 4912063879106261774, guid: 86796bcb1e43672428465b6fdee5bc4e, type: 3}
   isAttackSummon: 1
-  coolTime: 12
+  coolTime: 10
   attackDel: 2
 --- !u!1 &3493952218206639810
 GameObject:
