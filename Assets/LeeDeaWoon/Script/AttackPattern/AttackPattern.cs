@@ -244,7 +244,6 @@ public class AttackPattern : MonoBehaviour
 
                 case EAttackPattern.Drill:
                     drill.transform.DOKill();
-                    Camera.main.transform.DOKill();
                     break;
 
                 case EAttackPattern.Gloves:
