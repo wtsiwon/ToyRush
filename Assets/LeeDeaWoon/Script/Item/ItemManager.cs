@@ -45,7 +45,6 @@ public class ItemManager : MonoBehaviour
     {
         StartItem_Btn();
         StartCoroutine(Item_Spawn());
-
     }
 
     void Update()
@@ -66,7 +65,6 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
-
 
     #region 시작 아이템
     public void StartItem_Btn()

@@ -152,23 +152,23 @@ public class GameManager : MonoBehaviour
         }
         else if (distance <= 1000)
         {
-            backSpd = STARTSPD + 200f;
+            backSpd = STARTSPD + 150f;
         }
         else if (distance <= 1500)
         {
-            backSpd = STARTSPD + 300f;
+            backSpd = STARTSPD + 200f;
         }
         else if (distance <= 2500)
         {
-            backSpd = STARTSPD + 400f;
+            backSpd = STARTSPD + 300f;
         }
         else if (distance <= 3500)
         {
-            backSpd = STARTSPD + 500f;
+            backSpd = STARTSPD + 400f;
         }
         else
         {
-            backSpd = STARTSPD + 600f;
+            backSpd = STARTSPD + 500f;
         }
         BackGroundSpawner.Instance.backgroundSpd = backSpd;
     }
