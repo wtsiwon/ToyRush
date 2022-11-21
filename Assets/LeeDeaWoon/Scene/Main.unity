@@ -508,10 +508,15 @@ MonoBehaviour:
   - {fileID: 8262276506709014949}
   obstacleColorAnimator:
   - list:
+    - {fileID: 9100000, guid: 8265a03ede75322498fb3ad3b901b8cf, type: 2}
+    - {fileID: 9100000, guid: c5664fe449af6784eb7e9568321afd8c, type: 2}
+    - {fileID: 9100000, guid: 2957e4ddd44286742b1fcd3cba98bf3f, type: 2}
+    - {fileID: 9100000, guid: 30d3541d3bfa1574c83052580c0d267a, type: 2}
+  - list:
     - {fileID: 9100000, guid: e8a4607f1e56d324b92c10538b4ef782, type: 2}
-    - {fileID: 9100000, guid: 75c33fbab9d20f447988b681181b5791, type: 2}
-    - {fileID: 9100000, guid: 374e037e36cc3d6428527b1fc64543bf, type: 2}
     - {fileID: 9100000, guid: 53cea1d499e6adb48b5cf2126798db84, type: 2}
+    - {fileID: 9100000, guid: 374e037e36cc3d6428527b1fc64543bf, type: 2}
+    - {fileID: 9100000, guid: 75c33fbab9d20f447988b681181b5791, type: 2}
   obstacleList:
   - {fileID: 1711660857068376590, guid: eb08be82db9f36549a3dc80561735f9b, type: 3}
   - {fileID: -8748533160282153284, guid: 30e0f262e1a8c96468c22866b2a45a0b, type: 3}

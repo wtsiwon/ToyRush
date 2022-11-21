@@ -34,7 +34,7 @@ public class Player : Singleton<Player>
         set
         {
             isMagneting = value;
-            if(value == true)
+            if (value == true)
             {
                 magnetRange.gameObject.SetActive(true);
             }
@@ -61,7 +61,7 @@ public class Player : Singleton<Player>
         set
         {
             isDie = value;
-            if(isDie == true)
+            if (isDie == true)
             {
                 GameManager.Instance.OnDie(transform);
             }
@@ -91,7 +91,9 @@ public class Player : Singleton<Player>
     {
         rb = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
-        
+
+        StartCoroutine(nameof(CUpdate));
+
         IsDie = false;
     }
 
@@ -99,6 +101,16 @@ public class Player : Singleton<Player>
     {
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
+
+    }
+
+    private IEnumerator CUpdate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            print(isPressing);
+        }
     }
 
     private IEnumerator CWaitChangeBoosterSpd()
@@ -193,13 +205,13 @@ public class Player : Singleton<Player>
         {
             if (IsBig == true)
             {
-                Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f)).OnComplete(() 
-                    => Camera.main.transform.DOMove(new Vector3(0,0,-10), 0.1f));
+                Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f)).OnComplete(()
+                    => Camera.main.transform.DOMove(new Vector3(0, 0, -10), 0.1f));
             }
         }
     }
 
-    
+
 
     #region 탈것
 

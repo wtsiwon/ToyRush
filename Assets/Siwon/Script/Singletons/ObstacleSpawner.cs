@@ -293,11 +293,16 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     {
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Drill]);
+
+        //int randColor = Random.Range(0, obstacleColorAnimator[(int)EObstacleType.Drill])
+
+        //obstacle.GetComponent<Animator>().runtimeAnimatorController = obstacleColorAnimator[(int)EObstacleType.Drill]
+
         obstacle.transform.position = pos.position;
 
         //int randRotate = Random.Range(0, (int)EDir.End);
-
         //obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
+
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)
         {
