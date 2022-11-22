@@ -8,4 +8,29 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     public ObstacleData obstacleData;
 
+    private void Start()
+    {
+
+    }
+
+    /// <summary>
+    /// ½ºÆ÷³Ê
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CUpdate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.01f);
+
+        }
+
+    }
+
+    
+    
+
+
+
+
 }

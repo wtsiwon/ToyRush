@@ -5,7 +5,26 @@ using DG.Tweening;
 
 public class Obstacle : MovingElement
 {
-    public EObstacleType obstacleType;
+    [SerializeField]
+    private EObstacleType obstacleType;
+    public EObstacleType ObstacleType
+    {
+        get
+        {
+            return obstacleType;
+        }
+        set
+        {
+            obstacleType = value;
+            switch (value)
+            {
+                case EObstacleType.Gear:
+
+                    break;
+            }
+            
+        }
+    }
 
     [Range(0f, 5f)]
     [Tooltip("주먹 장애물 돌아가는 속도")]
@@ -14,7 +33,6 @@ public class Obstacle : MovingElement
     [SerializeField]
     [Tooltip("회전하는 가")]
     private bool isSpin;
-
     
     public bool IsSpin
     {

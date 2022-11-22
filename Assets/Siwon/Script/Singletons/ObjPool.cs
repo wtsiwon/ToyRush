@@ -92,7 +92,7 @@ public class ObjPool : Singleton<ObjPool>
     {
         Obstacle obstacle = null;
         obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
-        obstacle.obstacleType = type;
+        obstacle.ObstacleType = type;
         return obstacle;
 
     }

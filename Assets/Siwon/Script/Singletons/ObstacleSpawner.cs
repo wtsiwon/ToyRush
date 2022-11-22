@@ -273,6 +273,9 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
 
+        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Gear, pos.position);
+        
+
         //스핀 할것인가
         obstacle.IsSpin = Random.Range(0, 2) == 1;
 
