@@ -36,14 +36,18 @@ public class Obstacle : MovingElement
     
     public bool IsSpin
     {
-        get => isSpin;
+        get
+        {
+            if (isSpin == true)
+            {
+                StartCoroutine(nameof(CSpin));
+            }
+            return isSpin;
+        }
         set
         {
             isSpin = value;
-            if (value == true)
-            {
-                Spin();
-            }
+            
         }
     }
 
@@ -104,11 +108,6 @@ public class Obstacle : MovingElement
             yield return new WaitForSeconds(0.5f);
             transform.DOScale(0.25f, 0.25f).SetEase(Ease.OutCubic);
         }
-    }
-
-    private void Spin()
-    {
-        StartCoroutine(nameof(CSpin));
     }
 
     private IEnumerator CSpin()

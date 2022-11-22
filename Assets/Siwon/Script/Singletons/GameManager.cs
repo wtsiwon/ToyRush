@@ -124,12 +124,12 @@ public class GameManager : MonoBehaviour
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
                 print("backGroundSpd" + BackGroundSpawner.Instance.backgroundSpd);
-                if (Player.Instance.IsBoosting == false)
+                if (Player.Instance.IsBoosting == false && distance <= 3500f)
                 {
-                    //BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
-                    //Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200, 800);
+                    BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
+                    Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200f, 700f);
 
-                    SetBackGroundSpd(distance);
+                    //SetBackGroundSpd(distance);
                 }
             }
         }
