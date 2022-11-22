@@ -8,6 +8,8 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     public ObstacleData obstacleData;
 
+    public GameObject[] coinPatterns;
+
     private void Start()
     {
 
@@ -22,12 +24,11 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-
+            //스폰 함수호출등
         }
 
     }
 
-    
     
 
 

@@ -273,10 +273,15 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Gear]);
 
-        obstacle = ObjPool.Instance.GetObstacle(EObstacleType.Gear, pos.position);
-        
+        int randColor = Random.Range(0, obstacleColorAnimator[(int)EObstacleType.Gear].list.Count);
+
+        //AnimatorController바꾸기
+
+        obstacle.GetComponent<Animator>().runtimeAnimatorController
+            = obstacleColorAnimator[(int)EObstacleType.Gear].list[randColor];
 
         //스핀 할것인가
+
         obstacle.IsSpin = Random.Range(0, 2) == 1;
 
         if (obstacle.IsSpin == false)//안한다면 랜덤 Rotate
@@ -292,14 +297,20 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
 
+    /// <summary>
+    /// 드릴 장애물 불러오는 함수
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private Obstacle GetDrillObstacle(Transform pos)
     {
         Obstacle obstacle = null;
         obstacle = Instantiate(obstacleList[(int)EObstacleType.Drill]);
 
-        //int randColor = Random.Range(0, obstacleColorAnimator[(int)EObstacleType.Drill])
+        int randColor = Random.Range(0, obstacleColorAnimator[(int)EObstacleType.Drill].list.Count);
 
-        //obstacle.GetComponent<Animator>().runtimeAnimatorController = obstacleColorAnimator[(int)EObstacleType.Drill]
+        obstacle.GetComponent<Animator>().runtimeAnimatorController 
+            = obstacleColorAnimator[(int)EObstacleType.Drill].list[randColor];
 
         obstacle.transform.position = pos.position;
 
@@ -314,6 +325,11 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
 
+    /// <summary>
+    /// 복어 장애물 불러오는 함수이지만 수정이 필요함
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private Obstacle GetBlowFishObstacle(Transform pos)
     {
         Obstacle obstacle = null;
@@ -323,6 +339,11 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         return obstacle;
     }
 
+    /// <summary>
+    /// 주먹 장애물 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private Obstacle GetFistObstacle(Transform pos)
     {
         Obstacle obstacle = null;
