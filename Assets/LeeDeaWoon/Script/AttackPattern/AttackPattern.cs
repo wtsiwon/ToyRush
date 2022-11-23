@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class AttackPattern : MonoBehaviour
 {
@@ -52,7 +53,8 @@ public class AttackPattern : MonoBehaviour
 
     private void Update()
     {
-        AttackDoKill();
+        if (SceneManager.GetActiveScene().name == "Main")
+            AttackDoKill();
     }
 
 
@@ -65,7 +67,9 @@ public class AttackPattern : MonoBehaviour
         {
             #region ¾Ç¾î °ø°Ý 1
             case EAttackPattern.Crocodile1:
-                AttackPatternManager.inst.isAttackSummon = true;
+                if (SceneManager.GetActiveScene().name == "Main")
+                    AttackPatternManager.inst.isAttackSummon = true;
+
                 SoundManager.instance.PlaySoundClip("WarningSFX", SoundType.SFX, SoundManager.instance.soundSFX - 0.5f);
 
                 warningLine.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
@@ -92,7 +96,9 @@ public class AttackPattern : MonoBehaviour
 
                 yield return new WaitForSeconds(1);
 
-                AttackPatternManager.inst.isAttackSummon = false;
+                if (SceneManager.GetActiveScene().name == "Main")
+                    AttackPatternManager.inst.isAttackSummon = false;
+
                 crocodile.transform.DOKill();
                 Destroy(this.gameObject);
                 break;

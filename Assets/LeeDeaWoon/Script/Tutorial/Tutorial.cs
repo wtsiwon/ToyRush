@@ -9,6 +9,7 @@ using TMPro;
 public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] GameObject obstacle;
+    [SerializeField] GameObject enemyAttack;
 
     [SerializeField] GameObject descriptionBar;
     [SerializeField] bool isNextCheck;
@@ -50,7 +51,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 break;
 
             case 3:
-                EnemyAttack();
+                StartCoroutine(EnemyAttack());
                 break;
         }
 
@@ -78,9 +79,32 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         });
     }
 
-    void EnemyAttack()
+    IEnumerator EnemyAttack()
     {
+        Player.Instance.IsDie = false;
 
+        if (Player.Instance.IsDie == true)
+        {
+            descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "다시 한 번 해봅시다.";
+            Instantiate(enemyAttack, transform.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(1);
+
+            DOTween.KillAll();
+            Destroy(enemyAttack);
+
+            StartCoroutine(EnemyAttack());
+        }
+
+        else
+        {
+            yield return new WaitForSeconds(1);
+
+            DOTween.KillAll();
+            Destroy(enemyAttack);
+
+            StartCoroutine(NextDescription());
+        }
     }
 
     #region 플레이어 이동
