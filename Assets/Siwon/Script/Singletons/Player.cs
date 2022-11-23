@@ -65,7 +65,11 @@ public class Player : Singleton<Player>
             isDie = value;
             if (isDie == true)
             {
-                GameManager.Instance.OnDie(transform);
+                if (SceneManager.GetActiveScene().name == "Main")
+                    GameManager.Instance.OnDie(transform);
+
+                else
+                    Camera.main.transform.DOShakePosition(2.5f, new Vector2(0.3f, 0.3f));
             }
         }
     }

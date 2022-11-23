@@ -8,9 +8,11 @@ using TMPro;
 
 public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject descriptionBar;
-    public bool isNextCheck;
-    public int nextNum;
+    [SerializeField] GameObject obstacle;
+
+    [SerializeField] GameObject descriptionBar;
+    [SerializeField] bool isNextCheck;
+    [SerializeField] int nextNum;
 
     void Start()
     {
@@ -32,14 +34,53 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    public IEnumerator NextDescription()
+    IEnumerator NextDescription()
     {
-        descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "잘하셨습니다";
+        descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "잘하셨습니다.";
 
         yield return new WaitForSeconds(2);
 
         nextNum += 1;
         isNextCheck = true;
+
+        switch (nextNum)
+        {
+            case 2:
+                Obstacle();
+                break;
+
+            case 3:
+                EnemyAttack();
+                break;
+        }
+
+    }
+
+    void Obstacle()
+    {
+        obstacle.SetActive(true);
+        obstacle.transform.DOMoveX(20, 0);
+        Player.Instance.IsDie = false;
+
+        obstacle.transform.DOMoveX(-14, 5).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            if (Player.Instance.IsDie == true)
+            {
+                descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "다시 한 번 해봅시다.";
+                Obstacle();
+            }
+
+            else
+            {
+                Destroy(obstacle);
+                StartCoroutine(NextDescription());
+            }
+        });
+    }
+
+    void EnemyAttack()
+    {
+
     }
 
     #region 플레이어 이동
