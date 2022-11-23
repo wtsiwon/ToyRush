@@ -13,10 +13,8 @@ public class ItemSpawner : Singleton<ItemSpawner>
         switch (type)
         {
             case EItemType.Sizecontrol:
-                ObjPool.Instance.GetItem(EItemType.Sizecontrol, spawnPos.position);
                 break;
             case EItemType.Magnet:
-                ObjPool.Instance.GetItem(EItemType.Magnet, spawnPos.position);
                 break;
             
         }
