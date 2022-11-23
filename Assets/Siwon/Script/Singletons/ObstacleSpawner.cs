@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : Singleton<ObstacleSpawner>
@@ -40,18 +41,21 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator SpawnObstacle()
     {
-        yield return new WaitForSeconds(0.1f);
-        while (true)
+        if (SceneManager.GetActiveScene().name == "Main")
         {
-            if (canSpawn && GameManager.Instance.IsGameStart == true)
+            yield return new WaitForSeconds(0.1f);
+            while (true)
             {
-                int obstacleRand = Random.Range(1, 16);
-                SpawnObstaclePattern(obstacleRand);
+                if (canSpawn && GameManager.Instance.IsGameStart == true)
+                {
+                    int obstacleRand = Random.Range(1, 16);
+                    SpawnObstaclePattern(obstacleRand);
 
-                yield return new WaitForSeconds(obstacleSpawnDelay
-                    + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
+                    yield return new WaitForSeconds(obstacleSpawnDelay
+                        + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
+                }
+                yield return new WaitForSeconds(0.05f);
             }
-            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -64,7 +68,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         rotatesDic.Add(EDir.Cross1, new Vector3(0, 0, 45));
         rotatesDic.Add(EDir.Cross2, new Vector3(0, 0, 135));
 
-        
+
     }
 
     /// <summary>
@@ -281,8 +285,8 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         {
             int randRotate = Random.Range(0, (int)EDir.End);
             //obstacle.transform.rotation = rotatesDic[(EDir)randRotate];
-            obstacle.transform.rotation = Quaternion.Euler(new Vector3(0,0,45));
-            
+            obstacle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 45));
+
         }
 
         if (obstacle.GetComponent<PolygonCollider2D>() == null)

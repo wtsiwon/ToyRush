@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using TMPro;
 
-public class Tutorial : MonoBehaviour, IPointerClickHandler
+public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject canvas;
-    public int nextNum;
+    public TextMeshProUGUI descriptionText;
+
 
     void Start()
     {
-
+        GameManager.Instance.IsGameStart = true;
     }
 
     void Update()
@@ -19,21 +21,14 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void OnPointerClick(PointerEventData eventData) => TutorialNext();
-
-    void TutorialNext()
+    void Description_Box()
     {
-        if (nextNum < 4)
-        {
-            nextNum += 1;
 
-            canvas.transform.GetChild(nextNum-1).gameObject.SetActive(false);
-            canvas.transform.GetChild(nextNum).gameObject.SetActive(true);
-        }
-
-        else
-            SceneManager.LoadScene("Main");
     }
 
+    #region 플레이어 이동
+    public void OnPointerDown(PointerEventData eventData) => Player.Instance.isPressing = true;
 
+    public void OnPointerUp(PointerEventData eventData) => Player.Instance.isPressing = false;
+    #endregion
 }
