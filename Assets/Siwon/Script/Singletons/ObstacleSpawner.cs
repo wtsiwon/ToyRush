@@ -41,22 +41,22 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
 
     private IEnumerator SpawnObstacle()
     {
-        if (SceneManager.GetActiveScene().name == "Main")
+        //if (SceneManager.GetActiveScene().name == "Main")
+        //{
+        yield return new WaitForSeconds(0.1f);
+        while (true)
         {
-            yield return new WaitForSeconds(0.1f);
-            while (true)
+            if (canSpawn && GameManager.Instance.IsGameStart == true)
             {
-                if (canSpawn && GameManager.Instance.IsGameStart == true)
-                {
-                    int obstacleRand = Random.Range(1, 16);
-                    SpawnObstaclePattern(obstacleRand);
+                int obstacleRand = Random.Range(1, 16);
+                SpawnObstaclePattern(obstacleRand);
 
-                    yield return new WaitForSeconds(obstacleSpawnDelay
-                        + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
-                }
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(obstacleSpawnDelay
+                    + Random.Range(-obstacleSpawnInterval, obstacleSpawnInterval));
             }
+            yield return new WaitForSeconds(0.05f);
         }
+        //}
     }
 
     private void AddRotates()

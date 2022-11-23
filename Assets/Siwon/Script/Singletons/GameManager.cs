@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -97,9 +98,13 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
-
-        ToDropPieces();
-        StartCoroutine(CToDropOnePieces());
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            ToDropPieces();
+            StartCoroutine(CToDropOnePieces());
+        }
+        else
+            Camera.main.transform.DOShakePosition(2.5f, new Vector2(0.3f, 0.3f));
     }
 
     private void ToDropPieces()
