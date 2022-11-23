@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 public class Player : Singleton<Player>
 {
     #region Condition
@@ -161,30 +163,35 @@ public class Player : Singleton<Player>
     /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)
     {
-        if (GameManager.Instance.IsGameStart == true)
+        if (SceneManager.GetActiveScene().name == "Main")
         {
-            switch (type)
+            if (GameManager.Instance.IsGameStart == true)
             {
-                case EVehicleType.None:
-                    Flying();
-                    break;
-                case EVehicleType.GravitySuit:
-                    ChangeGravity();
-                    break;
-                case EVehicleType.Wyvern:
-                    FlyingWyvern();
-                    break;
-                case EVehicleType.ProfitUFO:
-                    MoveUFO();
-                    break;
-                case EVehicleType.BusterMachine:
+                switch (type)
+                {
+                    case EVehicleType.None:
+                        Flying();
+                        break;
+                    case EVehicleType.GravitySuit:
+                        ChangeGravity();
+                        break;
+                    case EVehicleType.Wyvern:
+                        FlyingWyvern();
+                        break;
+                    case EVehicleType.ProfitUFO:
+                        MoveUFO();
+                        break;
+                    case EVehicleType.BusterMachine:
 
-                    break;
-                case EVehicleType.Frog:
+                        break;
+                    case EVehicleType.Frog:
 
-                    break;
+                        break;
+                }
             }
         }
+        else
+            Flying();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

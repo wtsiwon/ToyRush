@@ -98,13 +98,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
-        if (SceneManager.GetActiveScene().name == "Main")
-        {
-            ToDropPieces();
-            StartCoroutine(CToDropOnePieces());
-        }
-        else
-            Camera.main.transform.DOShakePosition(2.5f, new Vector2(0.3f, 0.3f));
+        ToDropPieces();
+        StartCoroutine(CToDropOnePieces());
     }
 
     private void ToDropPieces()

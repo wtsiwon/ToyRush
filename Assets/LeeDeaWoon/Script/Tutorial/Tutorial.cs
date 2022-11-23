@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public GameObject descriptionBar;
     public bool isNextCheck;
     public int nextNum;
-    public GameObject descriptionBar;
 
     void Start()
     {
-        Time.timeScale = 0;
-        GameManager.Instance.IsGameStart = true;
+
     }
 
     void Update()
@@ -34,16 +34,12 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public IEnumerator NextDescription()
     {
-        Time.timeScale = 1;
+        descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "잘하셨습니다";
 
-        yield return new WaitForSeconds(0.5f);
-
-        if (nextNum == 0)
-            Time.timeScale = 0;
+        yield return new WaitForSeconds(2);
 
         nextNum += 1;
         isNextCheck = true;
-
     }
 
     #region 플레이어 이동

@@ -23,7 +23,7 @@ public class BackGroundScroll : MonoBehaviour
     {
         if (GameManager.Instance.IsGameStart == true)
         {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
+            rb.velocity = Vector3.left * 300;
         }
     }
 }
