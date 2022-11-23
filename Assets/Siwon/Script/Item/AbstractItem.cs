@@ -8,7 +8,7 @@ public abstract class AbstractItem : MonoBehaviour
     {
         if(collision is Player)
         {
-            
+            OnDelete();
         }
     }
 
@@ -16,6 +16,7 @@ public abstract class AbstractItem : MonoBehaviour
     {
         Destroy(gameObject);
         //¿Ã∆Â∆Æ
+
     }
 
 

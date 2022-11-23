@@ -12,9 +12,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
     [Tooltip("방향 값을 담는 Dictionary")]
     private Dictionary<EDir, Vector3> rotatesDic = new Dictionary<EDir, Vector3>();
 
-    [Tooltip("장애물 Sprite를 enum타입에 따라 분류한 dictionary")]
-    private Dictionary<EObstacleType, Sprite> obstacleSpriteDic = new Dictionary<EObstacleType, Sprite>();
-
     [SerializeField]
     [Tooltip("장애물들 색깔 애니매이션들")]
     private List<Array<RuntimeAnimatorController>> obstacleColorAnimator = new List<Array<RuntimeAnimatorController>>();
@@ -67,8 +64,6 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         rotatesDic.Add(EDir.Right, new Vector3(0, 0, -90));
         rotatesDic.Add(EDir.Cross1, new Vector3(0, 0, 45));
         rotatesDic.Add(EDir.Cross2, new Vector3(0, 0, 135));
-
-
     }
 
     /// <summary>
@@ -374,8 +369,7 @@ public class ObstacleSpawner : Singleton<ObstacleSpawner>
         Instantiate(coinPatterns[1], spawnPoses[1].position, Quaternion.identity);
         coinPatterns[1].GetComponent<Rigidbody2D>().velocity
             = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+
         yield return new WaitForSeconds(1f);
     }
-
-
 }

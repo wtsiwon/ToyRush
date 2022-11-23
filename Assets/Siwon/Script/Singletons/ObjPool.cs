@@ -52,7 +52,6 @@ public class ObjPool : Singleton<ObjPool>
     }
     public void InitializeKey()
     {
-        pool.Add(EPoolType.BackGround, new Queue<PoolingObj>());
         pool.Add(EPoolType.Coin, new Queue<PoolingObj>());
     }
 
@@ -64,7 +63,7 @@ public class ObjPool : Singleton<ObjPool>
     public Obstacle GetObstacle(Vector3 pos)
     {
         Obstacle obstacle = null;
-        obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
+        //obstacle = Get(EPoolType.Obstacle, pos).GetComponent<Obstacle>();
         return obstacle;
 
     }
@@ -78,8 +77,6 @@ public class ObjPool : Singleton<ObjPool>
     {
         GameObject effect = null;
         effect = Get(EPoolType.Effect, pos).GetComponent<GameObject>();
-
-        //이펙트 List에서 가져와서 EffectType에 따라 변경해주기
         return effect;
     }
 

@@ -34,7 +34,6 @@ public class BackGround : MovingElement
     private IEnumerator CWait()
     {
         yield return new WaitForSeconds(5f);
-        Return();
     }
 
     protected override void FixedUpdate()
@@ -55,7 +54,6 @@ public class BackGround : MovingElement
     {
 
         base.OnEnable();
-        //StartCoroutine(CUpdate());
     }
 
     private IEnumerator CUpdate()
@@ -66,11 +64,4 @@ public class BackGround : MovingElement
             print(rb.velocity);
         }
     }
-
-
-    public override void Return()
-    {
-        base.Return();
-    }
-
 }

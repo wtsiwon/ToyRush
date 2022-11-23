@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //인게임 움직이는 요소들
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovingElement : PoolingObj
+public class MovingElement : BaseAll
 {
     protected Rigidbody2D rb;
 
@@ -16,7 +16,6 @@ public class MovingElement : PoolingObj
         rb = GetComponent<Rigidbody2D>();
 
 
-        MovingElementManager.Instance.movingElementList.Add(this);
     }
 
     protected virtual void Update()
@@ -44,11 +43,5 @@ public class MovingElement : PoolingObj
     protected virtual void Start()
     {
         spriterenderer = GetComponent<SpriteRenderer>();
-    }
-
-    public override void Return()
-    {
-        base.Return();
-        MovingElementManager.Instance.movingElementList.Remove(this);
     }
 }

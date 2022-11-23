@@ -22,7 +22,7 @@ public class Obstacle : MovingElement
 
                     break;
             }
-            
+
         }
     }
 
@@ -33,7 +33,7 @@ public class Obstacle : MovingElement
     [SerializeField]
     [Tooltip("회전하는 가")]
     private bool isSpin;
-    
+
     public bool IsSpin
     {
         get
@@ -47,15 +47,13 @@ public class Obstacle : MovingElement
         set
         {
             isSpin = value;
-            
+
         }
     }
 
     private Vector3 spawnPoint;
 
     private const float DISTANCE = 50f;
-
-    private DOTween domove;
 
     protected override void Start()
     {
@@ -69,6 +67,9 @@ public class Obstacle : MovingElement
         {
             case EObstacleType.BlowFish:
                 StartCoroutine(nameof(CBlowFishAnim));
+                break;
+            case EObstacleType.Gear:
+
                 break;
             default:
 
@@ -89,7 +90,6 @@ public class Obstacle : MovingElement
         base.Update();
         if (spawnPoint.x - transform.position.x > DISTANCE)
         {
-            base.Return();
         }
 
 
@@ -121,21 +121,33 @@ public class Obstacle : MovingElement
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && Player.Instance.IsBig == true)
+        if (collision is Player)
         {
-            SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+            if(Player.Instance.IsBoosting == true)
+            {
+                SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+                gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
 
-            Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
-            gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
-            GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
-            piggybankDirector.transform.SetParent(gameObject.transform, false);
-            piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
+                GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+                piggybankDirector.transform.SetParent(gameObject.transform, false);
+                piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
+            }
+            else if (Player.Instance.IsBig == true)
+            {
+                SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+
+                Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
+                gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+                GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+                piggybankDirector.transform.SetParent(gameObject.transform, false);
+                piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
 
 
-            yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(1);
 
-            transform.DOKill();
-            Destroy(gameObject);
+                transform.DOKill();
+                Destroy(gameObject);
+            }
         }
     }
 }

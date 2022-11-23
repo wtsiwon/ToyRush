@@ -20,21 +20,5 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
         //SpawnBackGround();
     }
 
-    public void SpawnBackGround()
-    {
-        if (currentBackgroundIndex == 3)
-        {
-            BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
-            back.GetComponent<SpriteRenderer>().sprite = backgroundSprites[currentBackgroundIndex];
-            currentBackgroundIndex = 0;
-        }
-        else
-        {
-            BackGround back = (BackGround)ObjPool.Instance.Get(EPoolType.BackGround, transform.position);
-            back.GetComponent<SpriteRenderer>().sprite = backgroundSprites[currentBackgroundIndex];
-        }
-
-        currentBackgroundIndex++;
-        print(currentBackgroundIndex);
-    }
+    
 }

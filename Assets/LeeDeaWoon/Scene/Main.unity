@@ -123,28 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &69009739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9218151208093515020, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 4815618705780800758}
+--- !u!1 &1483551336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &230907968 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9218151209275044208, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-  m_PrefabInstance: {fileID: 4815618705780800758}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1483551337}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1483551337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6a039031bff3a4b913ea76a99efb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_GameObject: {fileID: 1483551336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08292605, y: 1.4546121, z: -13.155664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654702610
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,9 +320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontdestroy: 0
-  movingElementList:
-  - {fileID: 230907968}
-  - {fileID: 69009739}
   firstBoostingSpd: 0
 --- !u!4 &3201064550423563494
 Transform:
@@ -587,11 +592,11 @@ MonoBehaviour:
   dontdestroy: 0
   poolType: 0
   originObjs:
-  - {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
-  - {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
-  - {fileID: 1066409702374638991, guid: ae011ac7ab694ac4b8d1c6f9832db79f, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 6987003392076574129, guid: cdf4166752f00bc418f7949cc6515050, type: 3}
-  - {fileID: 5733206195851393263, guid: 0f311f4ec6029ba46b7a9873f6e72417, type: 3}
+  - {fileID: 0}
 --- !u!1 &8262276506933306183
 GameObject:
   m_ObjectHideFlags: 0

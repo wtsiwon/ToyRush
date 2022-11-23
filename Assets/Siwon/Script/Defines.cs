@@ -7,15 +7,8 @@ using UnityEngine;
 /// </summary>
 public enum EPoolType
 {
-    BackGround,
     Coin,
-    Item,
-    Obstacle,
-    Rocket,
-    Press,
     Effect,
-    Sound,
-
 }
 
 public enum EGadgetType
@@ -133,6 +126,13 @@ public enum EDir
     Cross1,
     Cross2,
     End,
+}
+
+public enum ECurrentSpawnType
+{
+    Obstacle,
+    AttackPattern,
+    Stop,
 }
 
 [System.Serializable]

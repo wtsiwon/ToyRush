@@ -52,7 +52,6 @@ public class Coin : MovingElement
             transform.DOKill();
             Destroy(gameObject);
 
-            Return();
         }
 
     }
