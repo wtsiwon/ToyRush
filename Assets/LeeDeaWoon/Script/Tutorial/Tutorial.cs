@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 
-public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
     [SerializeField] GameObject obstacle;
     [SerializeField] GameObject enemyAttack;
 
     [SerializeField] GameObject descriptionBar;
-    [SerializeField] bool isNextCheck;
     [SerializeField] int nextNum;
+
+    [SerializeField] bool isNextCheck;
+    [SerializeField] bool isNumberCheck;
 
     void Start()
     {
@@ -37,24 +39,29 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     IEnumerator NextDescription()
     {
-        descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "잘하셨습니다.";
-
-        yield return new WaitForSeconds(2);
-
-        nextNum += 1;
-        isNextCheck = true;
-
-        switch (nextNum)
+        if (isNumberCheck == false)
         {
-            case 2:
-                Obstacle();
-                break;
+            isNumberCheck = true;
 
-            case 3:
-                StartCoroutine(EnemyAttack());
-                break;
+            descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "잘하셨습니다.";
+
+            yield return new WaitForSeconds(2);
+
+            nextNum += 1;
+            isNextCheck = true;
+            isNumberCheck = false;
+
+            switch (nextNum)
+            {
+                case 2:
+                    Obstacle();
+                    break;
+
+                case 3:
+                    StartCoroutine(EnemyAttack());
+                    break;
+            }
         }
-
     }
 
     void Obstacle()
@@ -83,28 +90,37 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         Player.Instance.IsDie = false;
 
+        GameObject attack = Instantiate(enemyAttack, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(7);
+
         if (Player.Instance.IsDie == true)
         {
             descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "다시 한 번 해봅시다.";
-            Instantiate(enemyAttack, transform.position, Quaternion.identity);
-
-            yield return new WaitForSeconds(1);
 
             DOTween.KillAll();
-            Destroy(enemyAttack);
+            Destroy(attack);
+            yield return new WaitForSeconds(1);
 
             StartCoroutine(EnemyAttack());
         }
 
         else
         {
-            yield return new WaitForSeconds(1);
-
             DOTween.KillAll();
-            Destroy(enemyAttack);
+            Destroy(attack);
+
+            yield return new WaitForSeconds(1);
 
             StartCoroutine(NextDescription());
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (nextNum == 4)
+            SceneManager.LoadScene("Main");
+
     }
 
     #region 플레이어 이동

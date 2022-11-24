@@ -26,6 +26,12 @@ public class SoundManager : MonoBehaviour
 
     public int soundSFX;
 
+    private void Start()
+    {
+        isBGMCheck = true;
+        isEffectCheck = true;
+    }
+
     private void Awake()
     {
         if (instance == null)
