@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractItem : MonoBehaviour
+public abstract class AbstractItem : MovingElement
 {
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    public EItemType itemType;
+    protected virtual IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if(collision is Player)
         {
             OnDelete();
         }
+
+        yield return null;
     }
 
     protected virtual void OnDelete()
     {
         Destroy(gameObject);
-        //¿Ã∆Â∆Æ
 
     }
+
+    
 
 
 }

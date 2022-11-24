@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Item : MovingElement
+public class Item : AbstractItem
 {
-    public EItemType itemType;
-
     public new Collider2D collider2D;
 
     [Header("아이템 : 부스터")]
