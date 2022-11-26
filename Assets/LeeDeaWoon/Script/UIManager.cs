@@ -260,11 +260,11 @@ public class UIManager : MonoBehaviour
             }
         });
 
-        // 게임규칙 버튼을 눌렀을 때
+        // 튜토리얼 버튼을 눌렀을 때
         gameruleBtn.onClick.AddListener(() =>
         {
+            DOTween.KillAll();
 
-            Time.timeScale = 0;
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             SceneManager.LoadScene("Tutorial");
         });

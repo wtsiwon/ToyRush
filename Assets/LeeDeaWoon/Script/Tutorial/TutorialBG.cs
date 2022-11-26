@@ -14,8 +14,7 @@ public class TutorialBG : MovingElement
     protected override void Update()
     {
         base.Update();
-        //if (transform.position.x <= -82.8f)
-        //{
+
         if (isfirstBack == false)
             transform.position = new Vector3(standardObj.transform.position.x + (20.7f * backgroundNum), 0, 0);
 
@@ -24,11 +23,6 @@ public class TutorialBG : MovingElement
             if (transform.position.x <= -20.7f)
                 Destroy(gameObject);
         }
-    }
-
-    private IEnumerator CWait()
-    {
-        yield return new WaitForSeconds(5f);
     }
 
     protected override void FixedUpdate()
@@ -40,14 +34,5 @@ public class TutorialBG : MovingElement
     protected override void OnEnable()
     {
         base.OnEnable();
-    }
-
-    private IEnumerator CUpdate()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            print(rb.velocity);
-        }
     }
 }
