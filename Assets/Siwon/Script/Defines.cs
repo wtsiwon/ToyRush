@@ -101,7 +101,7 @@ public enum ECoinPatternType
 
 public enum EEffectType
 {
-
+    piggybank,
 }
 
 public enum ESoundType

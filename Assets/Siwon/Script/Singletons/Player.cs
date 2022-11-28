@@ -83,7 +83,9 @@ public class Player : Singleton<Player>
 
     #region GetComponent한 Component
     private Rigidbody2D rb;
-    private SpriteRenderer spriterenderer;
+
+    [HideInInspector]
+    public SpriteRenderer spriterenderer;
 
     [SerializeField]
     private MagnetRange magnetRange;
@@ -107,7 +109,6 @@ public class Player : Singleton<Player>
     {
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
-
     }
 
     private IEnumerator CUpdate()
@@ -127,8 +128,9 @@ public class Player : Singleton<Player>
 
 
     /// <summary>
-    /// ���ư��� Ű �Է�(PC)
+    /// 키입력
     /// </summary>
+    /// <param name="type"></param>
     private void InputKey(EVehicleType type)
     {
         switch (type)
@@ -162,7 +164,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// ���� Ż�Ϳ� ���� Input
+    /// Input
     /// </summary>
     /// <param name="type"></param>
     private void CurrentVehicle(EVehicleType type)

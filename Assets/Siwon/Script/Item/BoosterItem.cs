@@ -61,13 +61,13 @@ public class BoosterItem : AbstractItem
             Player.Instance.IsBoosting = false;
 
             #region 무적시간
-            Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            Player.Instance.spriterenderer.DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
             yield return new WaitForSeconds(ItemManager.inst.invincibilityTimer);
 
             Player.Instance.tag = "Player";
-            Player.Instance.GetComponent<SpriteRenderer>().DOKill();
-            Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
+            Player.Instance.spriterenderer.DOKill();
+            Player.Instance.spriterenderer.DOFade(1, 0);
             #endregion
 
 
