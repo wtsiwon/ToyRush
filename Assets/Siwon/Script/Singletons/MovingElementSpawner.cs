@@ -6,11 +6,10 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 {
     public Item[] items;
 
+    [Tooltip("ObstacleCoinPattern Prefab")]
     public GameObject[] obstaclePatterns;
 
     public ObstacleData obstacleData;
-
-    public GameObject[] coinPatterns;
 
     public bool isSpawn;
 
