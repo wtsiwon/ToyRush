@@ -73,7 +73,7 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public GameObject GetEffect(EEffectType type, Vector3 pos)
+    public GameObject GetEffect(Vector3 pos)
     {
         GameObject effect = null;
         effect = Get(EPoolType.Effect, pos).GetComponent<GameObject>();
