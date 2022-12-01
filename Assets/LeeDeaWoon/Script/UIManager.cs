@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
 
     [Header("타이틀")]
     public GameObject title;
+    public GameObject firstBackGround;
     public TextMeshProUGUI touchToStart;
     public TextMeshProUGUI haveCoin;
-    public GameObject firstBackGround;
     public Sprite brokenBackGround;
 
     [Header("인게임")]
@@ -27,55 +27,73 @@ public class UIManager : MonoBehaviour
 
     #region 상점
     [Header("상점")]
-    public GameObject shopWindow;
-    public GameObject content;
+    public List<Shop> itemShop = new List<Shop>();
+    [SerializeField] GameObject shopWindow;
+    [SerializeField] GameObject content;
 
-    public Button shopBtn;
-    public Button characterBtn;
-    public Button gadgetBtn;
-    public Button vehicleBtn;
-    public Button shopsCancelBtn;
+    [SerializeField] Button shopBtn;
+    [SerializeField] Button characterBtn;
+    [SerializeField] Button gadgetBtn;
+    [SerializeField] Button vehicleBtn;
+    [SerializeField] Button shopsCancelBtn;
+
+    [Space(10)]
+    [SerializeField] GameObject purchaseWindow;
+    [SerializeField] Image purchaseItemIcon;
+
+    [SerializeField] Button reductionBtn;
+    [SerializeField] Button increaseBtn;
+    [SerializeField] Button purchaseCancelBtn;
+    [SerializeField] Button purchaseBtn;
+
+    [SerializeField] TextMeshProUGUI quantityText;
+    [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] TextMeshProUGUI totalPriceText;
+
+    int shopQuantity;
+    int shopPrice;
+    int shopItemNumber;
     #endregion
 
     #region 설정
     [Header("설정")]
-    public GameObject settingWindow;
-    public GameObject blackScreen;
-    public GameObject creditWindow;
+    [SerializeField] GameObject settingWindow;
+    [SerializeField] GameObject blackScreen;
+    [SerializeField] GameObject creditWindow;
 
-    public Image bgmColor;
-    public Image effectColor;
+    [SerializeField] Image bgmColor;
+    [SerializeField] Image effectColor;
 
-    public Button settingBtn;
-    public Button settingCancelBtn;
-    public Button bgmBtn;
-    public Button effectBtn;
-    public Button gameruleBtn;
-    public Button creditBtn;
+    [SerializeField] Button settingBtn;
+    [SerializeField] Button settingCancelBtn;
+    [SerializeField] Button bgmBtn;
+    [SerializeField] Button effectBtn;
+    [SerializeField] Button gameruleBtn;
+    [SerializeField] Button creditBtn;
 
     public bool isCreditCheck;
     #endregion
 
     #region 일시정지
     [Header("일시정지")]
-    public GameObject stopWindow;
+    [SerializeField] GameObject stopWindow;
 
     public Button stopBtn;
-    public Button backBtn;
-    public Button stopSettingBtn;
-    public Button reGameBtn;
+    [SerializeField] Button backBtn;
+    [SerializeField] Button stopSettingBtn;
+    [SerializeField] Button reGameBtn;
 
     public bool isStopCheck;
     #endregion
 
     #region 게임오버
     [Header("게임오버")]
-    public GameObject gameOverWindow;
+    [SerializeField] GameObject gameOverWindow;
 
-    public Button gameOverMenuBtn;
+    [SerializeField] Button gameOverMenuBtn;
 
-    public TextMeshProUGUI gameOverCoin;
-    public TextMeshProUGUI gameOverDistance;
+    [SerializeField] TextMeshProUGUI gameOverCoin;
+    [SerializeField] TextMeshProUGUI gameOverDistance;
     #endregion
 
     void Start()
@@ -86,6 +104,7 @@ public class UIManager : MonoBehaviour
         UI_Dot();
         Stop_Btns();
         Main_Btns();
+        Shop_Btns();
         Setting_Btns();
         GameOver_Btn();
 
@@ -106,6 +125,11 @@ public class UIManager : MonoBehaviour
 
         coinText.text = coin.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
+
+        quantityText.text = shopQuantity.ToString();
+        priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
+        totalPriceText.text = (itemShop[shopItemNumber].itemPirce * shopQuantity).ToString();
+        purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon.sprite;
 
     }
 
@@ -152,17 +176,6 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(3).gameObject.SetActive(true);
-        });
-
-        //상점취소 버튼을 눌렀을 때
-        shopsCancelBtn.onClick.AddListener(() =>
-        {
-            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            shopWindow.SetActive(false);
-
-            for (int i = 0; i < 4; i++)
-                content.transform.GetChild(i).gameObject.SetActive(false);
-
         });
     }
 
@@ -360,6 +373,70 @@ public class UIManager : MonoBehaviour
 
             SceneManager.LoadScene("Main");
         });
+    }
+    #endregion
+
+    #region 상점 버튼
+    public void Shop_Btns()
+    {
+        //구매창 취소버튼을 눌렀을 때
+        purchaseCancelBtn.onClick.AddListener(() =>
+        {
+
+            purchaseWindow.SetActive(false);
+        });
+
+        purchaseBtn.onClick.AddListener(() =>
+        {
+            if (shopQuantity > 0)
+            {
+                Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
+                purchaseWindow.SetActive(false);
+            }
+            else
+                Debug.Log("수량을 선택해주세요.");
+        });
+
+        //감소 버튼을 눌렀을 때
+        reductionBtn.onClick.AddListener(() =>
+        {
+            int min = 0;
+
+            if (shopQuantity > min)
+                --shopQuantity;
+            else
+                Debug.Log("최소 수량입니다.");
+        });
+
+        //증가 버튼을 눌렀을 때
+        increaseBtn.onClick.AddListener(() =>
+        {
+            int max = 99;
+            if (shopQuantity < max)
+                ++shopQuantity;
+            else
+                Debug.Log("최대 수량입니다.");
+        });
+
+        //상점취소 버튼을 눌렀을 때
+        shopsCancelBtn.onClick.AddListener(() =>
+        {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            shopWindow.SetActive(false);
+
+            for (int i = 0; i < 4; i++)
+                content.transform.GetChild(i).gameObject.SetActive(false);
+
+        });
+    }
+
+    public void PurchaseBtn(int number)
+    {
+        shopPrice = 0;
+        shopQuantity = 0;
+
+        shopItemNumber = number;
+        purchaseWindow.SetActive(true);
     }
     #endregion
 
