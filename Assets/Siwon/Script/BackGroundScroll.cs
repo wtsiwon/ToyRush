@@ -13,9 +13,9 @@ public class BackGroundScroll : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.x <= -103.5f)
+        if(transform.position.x <= -41.4f)
         {
-            transform.position = new Vector3(-20.7f, 0, 0);
+            transform.position = new Vector3(41.4f, 0, 0);
         }
     }
 
@@ -23,7 +23,7 @@ public class BackGroundScroll : MonoBehaviour
     {
         if (GameManager.Instance.IsGameStart == true)
         {
-            rb.velocity = Vector3.left * 300;
+            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
         }
     }
 }

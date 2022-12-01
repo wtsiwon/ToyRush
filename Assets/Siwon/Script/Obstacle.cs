@@ -16,13 +16,6 @@ public class Obstacle : MovingElement
         set
         {
             obstacleType = value;
-            switch (value)
-            {
-                case EObstacleType.Gear:
-
-                    break;
-            }
-
         }
     }
 
