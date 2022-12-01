@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class MovingElementSpawner : Singleton<MovingElementSpawner>
 {
+    [Header("ItemInfos")]
+    [Tooltip("Items")]
     public Item[] items;
 
+    [Header("ObstaclePattern prefabs")]
     [Tooltip("ObstacleCoinPattern Prefab")]
     public GameObject[] obstaclePatterns;
 
-    public ObstacleData obstacleData;
+
+    [Header("obstacleAnimationInfos")]
+    [Tooltip("장애물 Animation Infos")]
+    public List<Array<RuntimeAnimatorController>> obstacleAnimation = new List<Array<RuntimeAnimatorController>>();
 
     public bool isSpawn;
 
     public ECurrentSpawnType spawnType;
 
     [Tooltip("전에 소환된 패턴")]
-    private GameObject beforeSpawnPattern;
+    public GameObject beforeSpawnPattern;
 
+    private Vector3 defaultPos = Vector3.zero;
 
     private void Start()
     {
@@ -37,7 +44,12 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
             
             if(isSpawn == true)
             {
+                if(beforeSpawnPattern.transform.position.x <= defaultPos.x)
+                {
+                    if (beforeSpawnPattern == null) yield return null;
 
+                    GetRandomObstaclePattern();
+                }
             }
             //스폰 함수호출등
         }
@@ -48,6 +60,8 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
         int randPattern = Random.Range(0, obstaclePatterns.Length);
         GameObject obj = Instantiate(obstaclePatterns[randPattern]);
         obj.transform.position = transform.position;
+
+        beforeSpawnPattern = obj;
     }
 
     private void GetRandomItem()
