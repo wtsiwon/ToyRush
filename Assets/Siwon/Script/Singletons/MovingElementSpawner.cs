@@ -37,12 +37,7 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
             
             if(isSpawn == true)
             {
-                switch (spawnType)
-                {
-                    case ECurrentSpawnType.Obstacle:
 
-                        break;
-                }
             }
             //스폰 함수호출등
         }
@@ -51,15 +46,16 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     private void GetRandomObstaclePattern()
     {
         int randPattern = Random.Range(0, obstaclePatterns.Length);
-
-
+        GameObject obj = Instantiate(obstaclePatterns[randPattern]);
+        obj.transform.position = transform.position;
     }
 
+    private void GetRandomItem()
+    {
+        int randPattern = Random.Range(0, items.Length);
 
-
+        Item item = Instantiate(items[randPattern]);
+        item.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+    }
     
-
-
-
-
 }

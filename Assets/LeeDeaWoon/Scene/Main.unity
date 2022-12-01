@@ -123,6 +123,44 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1136685920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 601870929, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+  m_PrefabInstance: {fileID: 4815618705780800758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1136685922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136685920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9590b9448e3dd04d888a1ef681adf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1136685923
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136685920}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1483551336
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,9 +497,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8262276508141446414}
     - target: {fileID: 6243692099424807553, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_Size.x
+      value: 148.01103
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243692099424807553, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_Size.y
+      value: 14.400001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243692099424807553, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: fde68d6d0f8093b47b797741389d537d, type: 3}
+    - target: {fileID: 6243692099424807553, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243692099424807553, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
 --- !u!1 &5761565212668004789
