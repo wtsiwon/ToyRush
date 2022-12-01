@@ -12,6 +12,8 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     [Tooltip("ObstacleCoinPattern Prefab")]
     public GameObject[] obstaclePatterns;
 
+    [Tooltip("장애물 회전방향 값을 담는 Dictionary")]
+    public Dictionary<EDir, Vector3> rotatesDic = new Dictionary<EDir, Vector3>();
 
     [Header("obstacleAnimationInfos")]
     [Tooltip("장애물 Animation Infos")]
@@ -30,6 +32,16 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     {
         StartCoroutine(nameof(CUpdate));
         
+    }
+
+    private void AddRotates()
+    {
+        rotatesDic.Add(EDir.Up, new Vector3(0, 0, 0));
+        rotatesDic.Add(EDir.Down, new Vector3(0, 0, 180));
+        rotatesDic.Add(EDir.Left, new Vector3(0, 0, 90));
+        rotatesDic.Add(EDir.Right, new Vector3(0, 0, -90));
+        rotatesDic.Add(EDir.Cross1, new Vector3(0, 0, 45));
+        rotatesDic.Add(EDir.Cross2, new Vector3(0, 0, 135));
     }
 
     /// <summary>

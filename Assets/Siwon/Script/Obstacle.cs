@@ -44,13 +44,18 @@ public class Obstacle : MovingElement
         }
     }
 
-    private Vector3 spawnPoint;
+    private Animator animator;
+
+    [Tooltip("장애물이 파괴될 X좌표")]
+    public float destroyPointx;
 
     private const float DISTANCE = 50f;
 
     protected override void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
+
         TypeDefine();
     }
 
@@ -62,30 +67,76 @@ public class Obstacle : MovingElement
                 StartCoroutine(nameof(CBlowFishAnim));
                 break;
             case EObstacleType.Gear:
+                SetGearObstacle();
+                RandColor(obstacleType);
+                break;
+            case EObstacleType.Drill:
+                SetDrillObstacle();
+                RandColor(obstacleType);
+                break;
+            case EObstacleType.Fist:
 
                 break;
             default:
-
+                Debug.Assert(false, "없는 Type입니다");
                 break;
         }
+    }
+
+    /// <summary>
+    /// SetGearObstacle
+    /// </summary>
+    private void SetGearObstacle()
+    {
+        IsSpin = Random.Range(0, 2) == 1;
+
+        if (IsSpin == false)
+        {
+            RandRotate();
+        }
+    }
+
+    /// <summary>
+    /// SetDrillObstacle
+    /// </summary>
+    private void SetDrillObstacle()
+    {
+        RandRotate();
+    }
+
+    /// <summary>
+    /// 현재 장애물에 랜덤 Rotation적용
+    /// </summary>
+    private void RandRotate()
+    {
+        int randRotate = Random.Range(0, (int)EDir.End);
+        Vector3 rotate = MovingElementSpawner.Instance.rotatesDic[(EDir)randRotate];
+
+        transform.rotation = Quaternion.Euler(rotate);
+    }
+
+    /// <summary>
+    /// 장애물 랜덤Color
+    /// </summary>
+    /// <param name="type"></param>
+    private void RandColor(EObstacleType type)
+    {
+        int randColor = Random.Range(0, (int)EObstacleColorType.End);
+        RuntimeAnimatorController animatorController 
+            = MovingElementSpawner.Instance.obstacleAnimation[(int)type].list[randColor];
+
+        animator.runtimeAnimatorController = animatorController;
     }
 
     //나중에 좀 더 생각해서 해보자
     protected override void OnEnable()
     {
-        spawnPoint = Player.Instance.transform.position;
-
         base.OnEnable();
     }
 
     protected override void Update()
     {
         base.Update();
-        if (spawnPoint.x - transform.position.x > DISTANCE)
-        {
-        }
-
-
     }
     protected override void FixedUpdate()
     {
@@ -116,7 +167,7 @@ public class Obstacle : MovingElement
     {
         if (collision is Player)
         {
-            if(Player.Instance.IsBoosting == true)
+            if (Player.Instance.IsBoosting == true)
             {
                 SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
                 gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
