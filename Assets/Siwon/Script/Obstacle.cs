@@ -56,6 +56,12 @@ public class Obstacle : MovingElement
         base.Start();
         animator = GetComponent<Animator>();
 
+        StartCoroutine(nameof(Wait));
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.05f);
         TypeDefine();
     }
 

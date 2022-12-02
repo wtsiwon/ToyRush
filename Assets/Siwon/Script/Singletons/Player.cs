@@ -29,6 +29,7 @@ public class Player : Singleton<Player>
             }
         }
     }
+    [SerializeField]
     private bool isMagneting;
     public bool IsMagneting
     {

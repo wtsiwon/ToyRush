@@ -35,7 +35,6 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     {
         AddRotates();
         StartCoroutine(nameof(CUpdate));
-
     }
 
     private void AddRotates()
@@ -60,9 +59,11 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
             if (isSpawn == true)
             {
+                yield return new WaitForSeconds(3f);
+                GetRandomObstaclePattern();
+
                 if (beforeSpawnPattern.transform.position.x <= defaultPos.x)
                 {
-
                     GetRandomObstaclePattern();
                 }
             }
