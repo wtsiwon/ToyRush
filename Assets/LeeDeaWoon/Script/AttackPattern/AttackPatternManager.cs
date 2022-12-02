@@ -41,13 +41,13 @@ public class AttackPatternManager : MonoBehaviour
                 }
                 int attckRandom = Random.Range(0, attackList.Count);
                 yield return new WaitForSeconds(coolTime);
-                ObstacleSpawner.Instance.canSpawn = false;
+                MovingElementSpawner.Instance.isSpawn = false;
 
                 yield return new WaitForSeconds(attackDel);
                 Instantiate(attackList[attckRandom], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
                 attackList.RemoveAt(attckRandom);
                 yield return new WaitForSeconds(3);
-                ObstacleSpawner.Instance.canSpawn = true;
+                MovingElementSpawner.Instance.isSpawn = true;
             }
 
             else

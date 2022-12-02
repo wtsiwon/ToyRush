@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackGroundScroll : MonoBehaviour
+public class BackGroundScroll : MovingElement
 {
     private Rigidbody2D rb;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -19,11 +20,8 @@ public class BackGroundScroll : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        if (GameManager.Instance.IsGameStart == true)
-        {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
-        }
+        base.FixedUpdate();
     }
 }

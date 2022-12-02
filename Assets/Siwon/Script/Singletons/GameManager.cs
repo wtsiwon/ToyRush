@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
         distance = 0;
         yield return new WaitForSeconds(0.1f);
-        ObstacleSpawner.Instance.canSpawn = true;
+        MovingElementSpawner.Instance.isSpawn = true;
         StartCoroutine(nameof(CAddDistance));
         StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);

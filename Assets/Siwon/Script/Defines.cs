@@ -82,7 +82,7 @@ public enum EObstacleColorType
 {
     Yellow,
     Green,
-    LightGreen,
+    //LightGreen,
     Red,
     End,
 }

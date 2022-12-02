@@ -10,6 +10,7 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     [Header("ObstaclePattern prefabs")]
     [Tooltip("ObstacleCoinPattern Prefab")]
+    [Space(15f)]
     public GameObject[] obstaclePatterns;
 
     [Tooltip("장애물 회전방향 값을 담는 Dictionary")]
@@ -17,21 +18,24 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     [Header("obstacleAnimationInfos")]
     [Tooltip("장애물 Animation Infos")]
+    [Space(15f)]
     public List<Array<RuntimeAnimatorController>> obstacleAnimation = new List<Array<RuntimeAnimatorController>>();
 
     public bool isSpawn;
-
+    
     public ECurrentSpawnType spawnType;
 
     [Tooltip("전에 소환된 패턴")]
+    [Space(15f)]
     public GameObject beforeSpawnPattern;
 
     private Vector3 defaultPos = Vector3.zero;
 
     private void Start()
     {
+        AddRotates();
         StartCoroutine(nameof(CUpdate));
-        
+
     }
 
     private void AddRotates()
@@ -53,12 +57,11 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            
-            if(isSpawn == true)
+
+            if (isSpawn == true)
             {
-                if(beforeSpawnPattern.transform.position.x <= defaultPos.x)
+                if (beforeSpawnPattern.transform.position.x <= defaultPos.x)
                 {
-                    if (beforeSpawnPattern == null) yield return null;
 
                     GetRandomObstaclePattern();
                 }
@@ -83,5 +86,5 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
         Item item = Instantiate(items[randPattern]);
         item.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
     }
-    
+
 }
