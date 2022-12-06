@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //distanceText.text = $"{distance.ToString("F0")}m";
 
     }
 
@@ -98,8 +97,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
-            ToDropPieces();
-            StartCoroutine(CToDropOnePieces());
+        ToDropPieces();
+        StartCoroutine(CToDropOnePieces());
     }
 
     private void ToDropPieces()
@@ -128,48 +127,9 @@ public class GameManager : MonoBehaviour
                     BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
                     Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200f, 700f);
 
-                    //SetBackGroundSpd(distance);
                 }
             }
         }
-    }
-
-    private void SetBackGroundSpd(float distance)
-    {
-        float backSpd = BackGroundSpawner.Instance.backgroundSpd;
-        if (distance <= 100)
-        {
-            backSpd = STARTSPD;
-        }
-        else if (distance <= 200)
-        {
-            backSpd = STARTSPD + 50f;
-        }
-        else if (distance <= 500)
-        {
-            backSpd = STARTSPD + 100f;
-        }
-        else if (distance <= 1000)
-        {
-            backSpd = STARTSPD + 150f;
-        }
-        else if (distance <= 1500)
-        {
-            backSpd = STARTSPD + 200f;
-        }
-        else if (distance <= 2500)
-        {
-            backSpd = STARTSPD + 300f;
-        }
-        else if (distance <= 3500)
-        {
-            backSpd = STARTSPD + 400f;
-        }
-        else
-        {
-            backSpd = STARTSPD + 500f;
-        }
-        BackGroundSpawner.Instance.backgroundSpd = backSpd;
     }
 
     private IEnumerator CSetGame()

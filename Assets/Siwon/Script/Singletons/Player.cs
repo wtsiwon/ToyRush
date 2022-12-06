@@ -53,6 +53,12 @@ public class Player : Singleton<Player>
     public EBoosterType boosterType;
     #endregion
 
+    [Tooltip("현재 장착하고 있는 GadgetData")]
+    public List<GadgetData> gadgetData = new List<GadgetData>();
+
+    [Tooltip("")]
+    public List<Item> items = new List<Item>();
+
     public bool isUseItem =>
      IsBig || isBoosting;
 
