@@ -53,13 +53,4 @@ public class BackGround : MovingElement
 
         base.OnEnable();
     }
-
-    private IEnumerator CUpdate()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            print(rb.velocity);
-        }
-    }
 }

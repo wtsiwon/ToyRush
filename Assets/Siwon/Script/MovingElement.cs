@@ -28,6 +28,7 @@ public class MovingElement : BaseAll
         if (GameManager.Instance.IsGameStart == true)
         {
             rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
+
         }
     }
 
