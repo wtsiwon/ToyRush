@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BackGroundScroll : MovingElement
 {
-    private Rigidbody2D rb;
 
     protected override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
