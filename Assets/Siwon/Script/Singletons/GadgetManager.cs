@@ -7,10 +7,8 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("gadgetDatas")]
     public List<GadgetData> gadgetDatas = new List<GadgetData>();
 
-    public void SetGadget()
-    {
-
-    }
-
-    public List<EGadgetType> gad = new List<EGadgetType>();
+    [Tooltip("장착하기 전 버튼 UI")]
+    public Sprite selectBtnSprite;
+    [Tooltip("장착된 버튼 UI")]
+    public Sprite selectedBtnSprite;
 }
