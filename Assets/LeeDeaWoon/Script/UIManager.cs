@@ -126,8 +126,9 @@ public class UIManager : MonoBehaviour
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
         coinText.text = coin.ToString();
-        haveCoin.text = GameManager.Instance.haveCoin.ToString();
-        haveShopCoin.text = GameManager.Instance.haveCoin.ToString();
+
+        haveCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
+        haveShopCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
 
         quantityText.text = shopQuantity.ToString();
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
