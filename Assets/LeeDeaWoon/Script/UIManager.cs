@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button gadgetBtn;
     [SerializeField] Button vehicleBtn;
     [SerializeField] Button shopsCancelBtn;
+    [SerializeField] TextMeshProUGUI haveShopCoin;
+
 
     [Space(10)]
     [SerializeField] GameObject purchaseWindow;
@@ -124,7 +126,9 @@ public class UIManager : MonoBehaviour
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
         coinText.text = coin.ToString();
-        haveCoin.text = GameManager.Instance.haveCoin.ToString();
+
+        haveCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
+        haveShopCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
 
         quantityText.text = shopQuantity.ToString();
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
