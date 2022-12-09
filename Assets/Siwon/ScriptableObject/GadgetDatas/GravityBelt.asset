@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gedgetType: 0
   icon: {fileID: 0}
-  inGameAdditionalSprite: {fileID: 0}
-  name: 
+  name: "\uC559"
+  explain: "\uC544\uC544\uC789"
   cost: 0
   isBought: 0
