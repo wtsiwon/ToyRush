@@ -84,6 +84,7 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
+        Debug.Assert(selectBtn != null, "SelectBtn is null");
         buyBtn.onClick.AddListener(() =>
         {
             if (GameManager.Instance.haveCoin >= data.cost)
@@ -92,6 +93,7 @@ public class Gadget : MonoBehaviour
             }
         });
 
+        Debug.Assert(selectBtn != null, "SelectBtn is null");
         selectBtn.onClick.AddListener(() =>
         {
             if (IsBought == true)
