@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button gadgetBtn;
     [SerializeField] Button vehicleBtn;
     [SerializeField] Button shopsCancelBtn;
+    [SerializeField] TextMeshProUGUI haveShopCoin;
+
 
     [Space(10)]
     [SerializeField] GameObject purchaseWindow;
@@ -125,6 +127,7 @@ public class UIManager : MonoBehaviour
 
         coinText.text = coin.ToString();
         haveCoin.text = GameManager.Instance.haveCoin.ToString();
+        haveShopCoin.text = GameManager.Instance.haveCoin.ToString();
 
         quantityText.text = shopQuantity.ToString();
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
