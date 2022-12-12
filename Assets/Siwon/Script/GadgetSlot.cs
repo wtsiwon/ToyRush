@@ -8,7 +8,10 @@ public class GadgetSlot : MonoBehaviour
     private GadgetData data;
     public GadgetData Data
     {
-        get => data;
+        get
+        {
+            return data;
+        } 
         set
         {
             data = value;
@@ -18,5 +21,10 @@ public class GadgetSlot : MonoBehaviour
 
     [SerializeField]
     private Image gadgetIcon;
+
+    public void ApplyCheck()
+    {
+        gadgetIcon.sprite = data.icon;
+    }
 
 }

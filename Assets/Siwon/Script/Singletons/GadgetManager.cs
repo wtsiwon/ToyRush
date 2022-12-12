@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GadgetManager : Singleton<GadgetManager>
 {
-    [Tooltip("gadgetDatas")]
-    public List<Gadget> gadgetDataList = new List<Gadget>();
+    [Tooltip("gadgets")]
+    public List<Gadget> gadgetList = new List<Gadget>();
 
     [Tooltip("Slot(2Ä­)")]
-    public List<GadgetSlot> gedgetSlotList = new List<GadgetSlot>();
+    public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>();
+
+    [Tooltip("gadgetDatas")]
+    public List<GadgetData> gadgetDataList = new List<GadgetData>();
 
     [Tooltip("ÀåÂøÇÏ±â Àü ¹öÆ° UI")]
     public Sprite selectBtnSprite;
@@ -21,5 +24,8 @@ public class GadgetManager : Singleton<GadgetManager>
     public void ApplyGadget(Gadget gadget)
     {
         //gadgetSlotList
+        gadgetSlotList[0].Data = gadget.Data;
+        gadgetSlotList[0].ApplyCheck();
     }
+
 }

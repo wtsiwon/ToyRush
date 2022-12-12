@@ -49,7 +49,7 @@ public class Gadget : MonoBehaviour
                 selectBtn.GetComponent<Image>().sprite
                     = GadgetManager.Instance.selectedBtnSprite;
 
-                //GadgetManager.Instance.gedgetSlotList
+                GadgetManager.Instance.ApplyGadget(this);
             }
             else
             {
@@ -66,8 +66,10 @@ public class Gadget : MonoBehaviour
         set
         {
             data.isBought = value;
+            print(data.isBought);
             buyBtn.gameObject.SetActive(false);
             selectBtn.gameObject.SetActive(true);
+            GadgetManager.Instance.ApplyGadget(this);
         }
     }
 
@@ -89,6 +91,8 @@ public class Gadget : MonoBehaviour
         Debug.Assert(selectBtn != null, "SelectBtn is null");
         buyBtn.onClick.AddListener(() =>
         {
+            IsBought = true;
+            print("buyBtn");
             if (GameManager.Instance.haveCoin >= data.cost)
             {
                 IsBought = true;
@@ -98,6 +102,7 @@ public class Gadget : MonoBehaviour
         Debug.Assert(selectBtn != null, "SelectBtn is null");
         selectBtn.onClick.AddListener(() =>
         {
+            print("selctcBtn");
             if (IsBought == true)
             {
                 if (IsSelected == false)

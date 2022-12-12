@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GravityBelt
   m_EditorClassIdentifier: 
   gedgetType: 0
-  icon: {fileID: 0}
-  name: "\uC559"
-  explain: "\uC544\uC544\uC789"
-  cost: 0
+  icon: {fileID: 21300000, guid: 75eb0b1d1ccefee4db6646ad364dd7cf, type: 3}
+  name: "\uC911\uB825 \uBCA8\uD2B8"
+  explain: "\uD50C\uB808\uC774\uC5B4\uC758 \uC911\uB825\uC774 \uC99D\uAC00\uD574\uC544\uC789"
+  cost: 18181889
   isBought: 0
