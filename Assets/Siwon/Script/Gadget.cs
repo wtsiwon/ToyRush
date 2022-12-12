@@ -48,6 +48,8 @@ public class Gadget : MonoBehaviour
                 //장착되었다면 선택완료 Sprite로 변경
                 selectBtn.GetComponent<Image>().sprite
                     = GadgetManager.Instance.selectedBtnSprite;
+
+                //GadgetManager.Instance.gedgetSlotList
             }
             else
             {
