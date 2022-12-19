@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GadgetManager : Singleton<GadgetManager>
 {
@@ -17,6 +18,9 @@ public class GadgetManager : Singleton<GadgetManager>
     public Sprite selectBtnSprite;
     [Tooltip("장착된 버튼 UI")]
     public Sprite selectedBtnSprite;
+
+    [SerializeField]
+    private Image pauseBackimg;
 
     public void ApplyGadgetAbility(EGadgetType type)
     {
@@ -69,6 +73,7 @@ public class GadgetManager : Singleton<GadgetManager>
 
     private IEnumerator SelectGadgetSlot()
     {
+        
         yield return null;
     }
 }
