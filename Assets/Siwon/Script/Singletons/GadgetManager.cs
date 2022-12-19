@@ -18,9 +18,27 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("장착된 버튼 UI")]
     public Sprite selectedBtnSprite;
 
-    public void ApplyGadgetAbility()
+    public void ApplyGadgetAbility(EGadgetType type)
     {
+        switch (type)
+        {
+            case EGadgetType.None:
 
+                break;
+            case EGadgetType.GravityBelt:
+
+                //중력 증가
+                break;
+            case EGadgetType.SlowRocket:
+                //공격패턴 속도 감소
+                break;
+            case EGadgetType.Magnet:
+                //자석 활성화
+                break;
+            case EGadgetType.XrayGoggles:
+                //...
+                break;
+        }
     }
 
     /// <summary>
@@ -28,12 +46,11 @@ public class GadgetManager : Singleton<GadgetManager>
     /// </summary>
     public void ApplyGadget(Gadget gadget)
     {
-
         //gadgetSlotList
-
-        if (TryApplyGadget(gadget.Data))
+        if (TryApplyGadget(gadget.Data)) return;
+        else
         {
-
+            StartCoroutine(nameof(SelectGadgetSlot));
         }
     }
 
@@ -48,5 +65,10 @@ public class GadgetManager : Singleton<GadgetManager>
             }
         }
         return false;
+    }
+
+    private IEnumerator SelectGadgetSlot()
+    {
+        yield return null;
     }
 }

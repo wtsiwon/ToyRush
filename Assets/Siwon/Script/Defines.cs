@@ -13,8 +13,11 @@ public enum EPoolType
 
 public enum EGadgetType
 {
+    None,
     GravityBelt,
-
+    Magnet,
+    SlowRocket,
+    XrayGoggles,
 }
 
 /// <summary>
