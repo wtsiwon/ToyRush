@@ -15,16 +15,33 @@ public class GadgetSlot : MonoBehaviour
         set
         {
             data = value;
-            gadgetIcon.sprite = data.icon;
+            if (data == null)
+            {
+                gadgetIcon = null;
+            }
+            ApplyIcon();
         }
+    }
+
+    private void OnEnable()
+    {
+
     }
 
     [SerializeField]
     private Image gadgetIcon;
 
-    public void ApplyCheck()
+    public void ApplyIcon()
     {
         gadgetIcon.sprite = data.icon;
+    }
+
+    private void SetSlot()
+    {
+        if(Data == null)
+        {
+            gadgetIcon = null;
+        }
     }
 
 }

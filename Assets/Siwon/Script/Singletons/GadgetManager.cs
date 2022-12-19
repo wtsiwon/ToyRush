@@ -18,14 +18,35 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("ÀåÂøµÈ ¹öÆ° UI")]
     public Sprite selectedBtnSprite;
 
+    public void ApplyGadgetAbility()
+    {
+
+    }
+
     /// <summary>
     /// °¡Á¬ ÀåÂøÇÔ¼ö
     /// </summary>
     public void ApplyGadget(Gadget gadget)
     {
+
         //gadgetSlotList
-        gadgetSlotList[0].Data = gadget.Data;
-        gadgetSlotList[0].ApplyCheck();
+
+        if (TryApplyGadget(gadget.Data))
+        {
+
+        }
     }
 
+    private bool TryApplyGadget(GadgetData data)
+    {
+        for (int i = 0; i < gadgetSlotList.Count; i++)
+        {
+            if (gadgetSlotList[i].Data == null)
+            {
+                gadgetSlotList[i].Data = data;
+                return true;
+            }
+        }
+        return false;
+    }
 }
