@@ -60,7 +60,7 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
             if (isSpawn == true)
             {
                 yield return new WaitForSeconds(3f);
-                GetRandomObstaclePattern();
+                //GetRandomObstaclePattern();
 
                 if (beforeSpawnPattern.transform.position.x <= defaultPos.x)
                 {
