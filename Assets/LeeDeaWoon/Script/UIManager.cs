@@ -156,6 +156,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(0).gameObject.SetActive(true);
+            GadgetManager.Instance.IsShopActive = true;
         });
 
         // 캐릭터 버튼을 눌렀을 때
@@ -164,6 +165,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(1).gameObject.SetActive(true);
+            GadgetManager.Instance.IsShopActive = true;
         });
 
         // 가젯 버튼을 눌렀을 때
@@ -172,6 +174,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(2).gameObject.SetActive(true);
+            GadgetManager.Instance.IsShopActive = true;
         });
 
         // 탈것 버튼을 눌렀을 때
@@ -180,6 +183,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(3).gameObject.SetActive(true);
+            GadgetManager.Instance.IsShopActive = true;
         });
     }
 

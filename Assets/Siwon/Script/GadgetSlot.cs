@@ -23,12 +23,19 @@ public class GadgetSlot : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
-
+        
     }
 
+    [Header("GadgetSlot UI")]
+    [Space(15f)]
     [SerializeField]
+    [Tooltip("장착 버튼")]
+    private Button putOnbtn;
+
+    [SerializeField]
+    [Tooltip("가젯 아이콘")]
     private Image gadgetIcon;
 
     public void ApplyIcon()

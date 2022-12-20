@@ -5,22 +5,76 @@ using UnityEngine.UI;
 
 public class GadgetManager : Singleton<GadgetManager>
 {
+    #region GadgetLists
+    [Space(10f)]
     [Tooltip("gadgets")]
     public List<Gadget> gadgetList = new List<Gadget>();
 
+    [Space(10f)]
     [Tooltip("Slot(2칸)")]
     public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>();
 
+    [Space(10f)]
     [Tooltip("gadgetDatas")]
     public List<GadgetData> gadgetDataList = new List<GadgetData>();
-
-    [Tooltip("장착하기 전 버튼 UI")]
+    #endregion
+    #region UIs
+    [Header("UI Sprite")]
+    [Space(15f)]
+    [Tooltip("장착하기 전 버튼 UISprite")]
     public Sprite selectBtnSprite;
-    [Tooltip("장착된 버튼 UI")]
+    [Tooltip("장착된 버튼 UISprite")]
     public Sprite selectedBtnSprite;
 
     [SerializeField]
-    private Image pauseBackimg;
+    [Space(10f)]
+    [Tooltip("가젯 장착 시 반투명 배경")]
+    private Button pauseBackBtn;//배경을 클릭할시 장착모드 해제해야함
+
+    [SerializeField]
+    [Tooltip("가젯 슬롯2개를 가지고 있는 GameObject")]
+    private GameObject slot;
+    #endregion
+
+    [Space(10f)]
+    [Tooltip("현재 선택된 있는 가젯")]
+    public Gadget currentSelectGadget;
+
+    [SerializeField]
+    [Tooltip("상점 UI가 켜져 있을 때 SlotPos")]
+    private Vector3 truePos;
+    [SerializeField]
+    [Tooltip("상점 UI가 꺼져 있을 때 SlotPos")]
+    private Vector3 falsePos;
+
+    private IEnumerator CselectGadgetSlot => CSelectGadgetSlot();
+
+    private bool isPutOnMode;
+    public bool IsPutOnMode 
+    {
+        get => isPutOnMode;
+        set
+        {
+            pauseBackBtn.gameObject.SetActive(isPutOnMode);
+        }
+    }
+
+    private bool isShopActive;
+    public bool IsShopActive
+    {
+        get => isShopActive;
+        set
+        {
+            if (value == true)
+            {
+                slot.transform.position = truePos;
+            }
+            else
+            {
+                slot.transform.position = falsePos;
+            }
+        }
+    }
 
     public void ApplyGadgetAbility(EGadgetType type)
     {
@@ -54,10 +108,15 @@ public class GadgetManager : Singleton<GadgetManager>
         if (TryApplyGadget(gadget.Data)) return;
         else
         {
-            StartCoroutine(nameof(SelectGadgetSlot));
+            StartCoroutine(CselectGadgetSlot);
         }
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
     private bool TryApplyGadget(GadgetData data)
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
@@ -71,9 +130,9 @@ public class GadgetManager : Singleton<GadgetManager>
         return false;
     }
 
-    private IEnumerator SelectGadgetSlot()
+    private IEnumerator CSelectGadgetSlot()
     {
-        
+        IsPutOnMode = true;
         yield return null;
     }
 }
