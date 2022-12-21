@@ -80,24 +80,31 @@ public class GadgetManager : Singleton<GadgetManager>
         }
     }
 
+    /// <summary>
+    /// 가젯 능력치 적용함수
+    /// </summary>
+    /// <param name="type"></param>
     public void ApplyGadgetAbility(EGadgetType type)
     {
         switch (type)
         {
             case EGadgetType.None:
                 //null
-                
+
             case EGadgetType.GravityBelt:
 
                 //중력 증가
                 break;
             case EGadgetType.SlowRocket:
                 //공격패턴 속도 감소
+
                 break;
             case EGadgetType.Magnet:
                 //자석 활성화
+                Player.Instance.IsMagneting = true;
                 break;
             case EGadgetType.XrayGoggles:
+                Player.Instance.isUseXray = true;
                 //...
                 break;
         }

@@ -59,6 +59,8 @@ public class Player : Singleton<Player>
     public bool isUseItem =>
      IsBig || isBoosting;
 
+    public bool isUseXray;
+
     private bool isDie;
     public bool IsDie
     {
