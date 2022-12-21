@@ -47,10 +47,10 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("상점 UI가 꺼져 있을 때 SlotPos")]
     private Vector3 falsePos;
 
-    private IEnumerator CselectGadgetSlot => CSelectGadgetSlot();
+    private Coroutine CselectGadgetSlot;
 
     private bool isPutOnMode;
-    public bool IsPutOnMode 
+    public bool IsPutOnMode
     {
         get => isPutOnMode;
         set
@@ -81,8 +81,8 @@ public class GadgetManager : Singleton<GadgetManager>
         switch (type)
         {
             case EGadgetType.None:
-
-                break;
+                //null
+                goto case EGadgetType.Magnet;
             case EGadgetType.GravityBelt:
 
                 //중력 증가
@@ -106,14 +106,12 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         //gadgetSlotList
         if (TryApplyGadget(gadget.Data)) return;
-        else
-        {
-            StartCoroutine(CselectGadgetSlot);
-        }
+
+        CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot());
     }
 
     /// <summary>
-    ///
+    /// 이거 뭔가 함수 이름이 어색함
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>

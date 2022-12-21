@@ -53,7 +53,7 @@ public class AttackPattern : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Main")
+        if (SceneManager.GetActiveScene().name.Equals("Main"))
             AttackDoKill();
     }
 

@@ -23,7 +23,7 @@ public class GadgetSlot : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         
     }

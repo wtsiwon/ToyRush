@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
             {
                 distance = 0;
 
-                if (SoundManager.instance.isBGMCheck == true)
-                    SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+                if (SoundManager.isBGMCheck == true)
+                    SoundManager.PlaySoundClip("MainScene", SoundType.BGM);
                 else
-                    SoundManager.instance.StopSoundClip(SoundType.BGM);
+                    SoundManager.StopSoundClip(SoundType.BGM);
             }
             else
             {
@@ -62,13 +62,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private SoundManager SoundManager;
+
     private void Start()
     {
+        SoundManager = SoundManager.instance;
+
         //StartCoroutine(UpDate());
-        if (SoundManager.instance.isBGMCheck == true)
-            SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+        if (SoundManager.isBGMCheck == true)
+            SoundManager.PlaySoundClip("MainScene", SoundType.BGM);
         else
-            SoundManager.instance.StopSoundClip(SoundType.BGM);
+            SoundManager.StopSoundClip(SoundType.BGM);
     }
 
     private void Update()
@@ -116,9 +120,12 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CAddDistance()
     {
+        var wait = new WaitForSeconds(0.01f);
+
         while (true)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return wait;
+
             if (isGameStart == true)
             {
                 distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
@@ -138,16 +145,17 @@ public class GameManager : MonoBehaviour
         BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
         distance = 0;
         yield return new WaitForSeconds(0.1f);
+
         MovingElementSpawner.Instance.isSpawn = true;
         StartCoroutine(nameof(CAddDistance));
         StartCoroutine(CCheckCoroutine());
         print(BackGroundSpawner.Instance.backgroundSpd);
         print(distance);
 
-        if (SoundManager.instance.isBGMCheck == true)
+        if (SoundManager.isBGMCheck == true)
         {
-            SoundManager.instance.StopSoundClip(SoundType.BGM);
-            SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
+            SoundManager.StopSoundClip(SoundType.BGM);
+            SoundManager.PlaySoundClip("DiamondRush", SoundType.BGM);
         }
         yield return new WaitForSeconds(1f);
     }
