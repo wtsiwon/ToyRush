@@ -14,6 +14,10 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("Slot(2칸)")]
     public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>();
 
+    [SerializeField]
+    [Tooltip("가젯슬롯에 있는 버튼")]//이 버튼으로 
+    private List<Button> gadgetBtns = new List<Button>();
+
     [Space(10f)]
     [Tooltip("gadgetDatas")]
     public List<GadgetData> gadgetDataList = new List<GadgetData>();
@@ -82,7 +86,7 @@ public class GadgetManager : Singleton<GadgetManager>
         {
             case EGadgetType.None:
                 //null
-                goto case EGadgetType.Magnet;
+                
             case EGadgetType.GravityBelt:
 
                 //중력 증가
@@ -111,7 +115,7 @@ public class GadgetManager : Singleton<GadgetManager>
     }
 
     /// <summary>
-    /// 이거 뭔가 함수 이름이 어색함
+    /// 가젯 적용 시도 함수
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
@@ -119,13 +123,30 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
-            if (gadgetSlotList[i].Data == null)
-            {
-                gadgetSlotList[i].Data = data;
-                return true;
-            }
+            //if (gadgetSlotList[i].Data == null)
+            //{
+            //    gadgetSlotList[i].Data = data;
+            //    return true;
+            //}
         }
         return false;
+    }
+
+    /// <summary>
+    /// 가젯 슬롯에 있는 Data를 바꾸는 함수
+    /// </summary>
+    /// <param name="data"></param>
+    private void ChangeGadgetData(GadgetSlot slot)
+    {
+
+    }
+
+    /// <summary>
+    /// 가젯 슬롯에 데이터가 있는지 확인
+    /// </summary>
+    private void CheckSlot()
+    {
+        
     }
 
     private IEnumerator CSelectGadgetSlot()

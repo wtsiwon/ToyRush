@@ -38,6 +38,16 @@ public class GadgetSlot : MonoBehaviour
     [Tooltip("°¡Á¬ ¾ÆÀÌÄÜ")]
     private Image gadgetIcon;
 
+    private void Start()
+    {
+        putOnbtn.onClick.AddListener(() =>
+        {
+            if(GadgetManager.Instance.IsPutOnMode == true)
+            {
+                Data = GadgetManager.Instance.currentSelectGadget.Data; 
+            }
+        });
+    }
     public void ApplyIcon()
     {
         gadgetIcon.sprite = data.icon;
