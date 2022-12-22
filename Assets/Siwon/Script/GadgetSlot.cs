@@ -34,9 +34,8 @@ public class GadgetSlot : MonoBehaviour
     [Tooltip("장착 버튼")]
     private Button putOnbtn;
 
-    [SerializeField]
     [Tooltip("가젯 아이콘")]
-    private Image gadgetIcon;
+    public Image gadgetIcon;
 
     private void Start()
     {

@@ -130,11 +130,11 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
-            //if (gadgetSlotList[i].Data == null)
-            //{
-            //    gadgetSlotList[i].Data = data;
-            //    return true;
-            //}
+            if (gadgetSlotList[i].Data == null)
+            {
+                gadgetSlotList[i].gadgetIcon.sprite = data.icon;
+                return true;
+            }
         }
         return false;
     }
