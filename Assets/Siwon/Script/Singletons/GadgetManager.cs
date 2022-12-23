@@ -54,6 +54,7 @@ public class GadgetManager : Singleton<GadgetManager>
     private Coroutine CselectGadgetSlot;
 
     private bool isPutOnMode;
+    //°¡Á¬ ÀåÂø ¸ðµå
     public bool IsPutOnMode
     {
         get => isPutOnMode;
@@ -137,15 +138,6 @@ public class GadgetManager : Singleton<GadgetManager>
             }
         }
         return false;
-    }
-
-    /// <summary>
-    /// °¡Á¬ ½½·Ô¿¡ ÀÖ´Â Data¸¦ ¹Ù²Ù´Â ÇÔ¼ö
-    /// </summary>
-    /// <param name="data"></param>
-    private void ChangeGadgetData(GadgetSlot slot)
-    {
-
     }
 
     /// <summary>
