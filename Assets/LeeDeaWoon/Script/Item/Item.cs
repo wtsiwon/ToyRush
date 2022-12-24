@@ -58,7 +58,7 @@ public class Item : AbstractItem
             magnetTimer += Time.deltaTime;
     }
           
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Invincibility"))
         {

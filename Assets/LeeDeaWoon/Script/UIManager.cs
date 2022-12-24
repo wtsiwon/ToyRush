@@ -16,15 +16,20 @@ public class UIManager : MonoBehaviour
     [Header("타이틀")]
     public GameObject title;
     public GameObject firstBackGround;
-    public TextMeshProUGUI touchToStart;
-    public TextMeshProUGUI haveCoin;
     public Sprite brokenBackGround;
+    public TextMeshProUGUI touchToStart;
+    [SerializeField] TextMeshProUGUI haveCoin;
 
     [Header("인게임")]
     public int coin;
-    public Slider hpSlider;
-    public TextMeshProUGUI coinText;
-    public TextMeshProUGUI distanceText;
+    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI distanceText;
+
+    [Header("체력")]
+    public float maxHp;
+    public float currentHp;
+    public float hpReductionSpeed;
+    [SerializeField] Slider hpSlider;
 
     #region 상점
     [Header("상점")]
@@ -101,6 +106,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        currentHp = maxHp;
+
         DOTween.PauseAll();
         Time.timeScale = 1;
 
@@ -111,18 +118,26 @@ public class UIManager : MonoBehaviour
         Setting_Btns();
         GameOver_Btn();
 
-        if (SoundManager.instance.isBGMCheck == false)
-            bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
-        else
-            bgmColor.DOColor(Color.white, 0).SetUpdate(true);
-
-        if (SoundManager.instance.isEffectCheck == false)
-            effectColor.DOColor(Color.gray, 0).SetUpdate(true);
-        else
-            effectColor.DOColor(Color.white, 0).SetUpdate(true);
+        SoundSetting();
     }
 
     void Update()
+    {
+        UI_setting();
+        hpBar();
+    }
+
+    void UI_Dot()
+    {
+        int move = 310;
+        int touchWaitTime = 1;
+        float titleWaitTime = 0.5f;
+
+        touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
+        title.transform.DOLocalMoveY(move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    void UI_setting()
     {
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
@@ -135,21 +150,19 @@ public class UIManager : MonoBehaviour
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
         totalPriceText.text = (itemShop[shopItemNumber].itemPirce * shopQuantity).ToString();
         purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon.sprite;
-
     }
 
-    public void UI_Dot()
+    void hpBar()
     {
-        int move = 310;
-        int touchWaitTime = 1;
-        float titleWaitTime = 0.5f;
-
-        touchToStart.DOFade(0, touchWaitTime).SetLoops(-1, LoopType.Yoyo);
-        title.transform.DOLocalMoveY(move, titleWaitTime).SetEase(Ease.OutQuad).SetLoops(-1, LoopType.Yoyo);
+        if (GameManager.Instance.IsGameStart == true)
+        {
+            hpSlider.value = currentHp / maxHp;
+            currentHp -= Time.deltaTime * hpReductionSpeed;
+        }
     }
 
     #region 메인버튼
-    public void Main_Btns()
+    void Main_Btns()
     {
         // 상점 버튼을 눌렀을 때
         shopBtn.onClick.AddListener(() =>
@@ -192,7 +205,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region 설정 창
-    public void Setting_Btns()
+    void Setting_Btns()
     {
         // 설정 버튼을 눌렀을 때
         settingBtn.onClick.AddListener(() =>
@@ -314,10 +327,23 @@ public class UIManager : MonoBehaviour
             }
         });
     }
+
+    void SoundSetting()
+    {
+        if (SoundManager.instance.isBGMCheck == false)
+            bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
+        else
+            bgmColor.DOColor(Color.white, 0).SetUpdate(true);
+
+        if (SoundManager.instance.isEffectCheck == false)
+            effectColor.DOColor(Color.gray, 0).SetUpdate(true);
+        else
+            effectColor.DOColor(Color.white, 0).SetUpdate(true);
+    }
     #endregion
 
     #region 일시정지 창
-    public void Stop_Btns()
+    void Stop_Btns()
     {
         // 일시정지 버튼을 눌렀을 때
         stopBtn.onClick.AddListener(() =>
@@ -386,7 +412,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region 상점 버튼
-    public void Shop_Btns()
+    void Shop_Btns()
     {
         //구매창 취소버튼을 눌렀을 때
         purchaseCancelBtn.onClick.AddListener(() =>
