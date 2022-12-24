@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     [Header("¿Œ∞‘¿”")]
     public int coin;
+    public Slider hpSlider;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI distanceText;
 

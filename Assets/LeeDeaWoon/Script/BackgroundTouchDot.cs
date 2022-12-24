@@ -21,7 +21,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
     public GameObject settingBtn;
 
     [Header("인게임")]
-    public GameObject coinDistance;
+    public GameObject ingame;
 
     [Header("시작 연출")]
     public GameObject smokeBoomb;
@@ -97,7 +97,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
 
                     case 4:
                         stopBtn.transform.DOLocalMove(settingPos, time).SetEase(easeType);
-                        coinDistance.transform.DOLocalMoveY(0, time).SetEase(easeType);
+                        ingame.transform.DOLocalMoveY(-170, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }
