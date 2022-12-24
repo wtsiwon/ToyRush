@@ -417,7 +417,6 @@ public class UIManager : MonoBehaviour
         //구매창 취소버튼을 눌렀을 때
         purchaseCancelBtn.onClick.AddListener(() =>
         {
-
             purchaseWindow.SetActive(false);
         });
 
@@ -426,6 +425,7 @@ public class UIManager : MonoBehaviour
             if (shopQuantity > 0)
             {
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
+                itemShop[shopItemNumber].itemNum += shopQuantity;
                 purchaseWindow.SetActive(false);
             }
             else
