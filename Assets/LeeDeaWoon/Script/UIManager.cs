@@ -424,8 +424,12 @@ public class UIManager : MonoBehaviour
         {
             if (shopQuantity > 0)
             {
+                var shopObj = GameObject.Find("Shop_Content ");
+                var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<TextMeshProUGUI>();
+
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
                 itemShop[shopItemNumber].itemNum += shopQuantity;
+                itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
                 purchaseWindow.SetActive(false);
             }
             else
