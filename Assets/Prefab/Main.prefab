@@ -18307,23 +18307,28 @@ MonoBehaviour:
   hpSlider: {fileID: 425248664}
   itemShop:
   - itemName: "\uC544\uC774\uD15C 1"
-    itemIcon: {fileID: 2155589965844775923}
+    itemDescription: "\uC544\uC774\uD15C 1\uC5D0 \uB300\uD55C \uC124\uBA85\uC785\uB2C8\uB2E4."
+    itemIcon: {fileID: 21300000, guid: 526fb37c4dca64f459a81753f8d6662b, type: 3}
     itemPirce: 1000
     itemNum: 0
   - itemName: "\uC544\uC774\uD15C 2"
-    itemIcon: {fileID: 468766632666876916}
+    itemDescription: "\uC544\uC774\uD15C 2\uC5D0 \uB300\uD55C \uC124\uBA85\uC785\uB2C8\uB2E4."
+    itemIcon: {fileID: 21300000, guid: 74d76900755dbc74ebc58f2632eabba9, type: 3}
     itemPirce: 2000
     itemNum: 0
   - itemName: "\uC544\uC774\uD15C 3"
-    itemIcon: {fileID: 8977664910280093080}
+    itemDescription: "\uC544\uC774\uD15C 3\uC5D0 \uB300\uD55C \uC124\uBA85\uC785\uB2C8\uB2E4."
+    itemIcon: {fileID: 21300000, guid: 29a998e5c91adda439c4e293a40343ac, type: 3}
     itemPirce: 3000
     itemNum: 0
   - itemName: "\uC544\uC774\uD15C 4"
-    itemIcon: {fileID: 6974001914397672099}
+    itemDescription: "\uC544\uC774\uD15C 4\uC5D0 \uB300\uD55C \uC124\uBA85\uC785\uB2C8\uB2E4."
+    itemIcon: {fileID: 21300000, guid: 4ae0b5512399de54d9083f2c1ead42a2, type: 3}
     itemPirce: 4000
     itemNum: 0
   - itemName: "\uC544\uC774\uD15C 5"
-    itemIcon: {fileID: 2872984471146032766}
+    itemDescription: "\uC544\uC774\uD15C 5\uC5D0 \uB300\uD55C \uC124\uBA85\uC785\uB2C8\uB2E4."
+    itemIcon: {fileID: 21300000, guid: 75eb0b1d1ccefee4db6646ad364dd7cf, type: 3}
     itemPirce: 5000
     itemNum: 0
   shopWindow: {fileID: 3493952218374339959}

@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class Shop
 {
     public string itemName;
-    public Image itemIcon;
+    public string itemDescription;
+    public Sprite itemIcon;
     public int itemPirce;
     public int itemNum;
 
     public Shop(Shop shop)
     {
         itemName = shop.itemName;
+        itemDescription = shop.itemDescription;
         itemIcon = shop.itemIcon;
         itemPirce = shop.itemPirce;
         itemNum = shop.itemNum;

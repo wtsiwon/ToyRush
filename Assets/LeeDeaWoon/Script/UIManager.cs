@@ -149,7 +149,7 @@ public class UIManager : MonoBehaviour
         quantityText.text = shopQuantity.ToString();
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
         totalPriceText.text = (itemShop[shopItemNumber].itemPirce * shopQuantity).ToString();
-        purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon.sprite;
+        purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon;
     }
 
     void hpBar()
@@ -411,9 +411,24 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    #region 상점 버튼
+    #region 상점 창
     void Shop_Btns()
     {
+        var shopObj = GameObject.Find("Shop_Content ");
+
+        for (int i = 0; i < shopObj.transform.childCount; i++)
+        {
+            var shopChild = shopObj.transform.GetChild(i).GetChild(3);
+
+            var itemName = shopChild.GetChild(0).GetComponent<TextMeshProUGUI>();
+            var itemDescription = shopChild.GetChild(1).GetComponent<TextMeshProUGUI>();
+            var itemIcon = shopChild.GetChild(2).GetComponent<Image>();
+
+            itemName.text = itemShop[i].itemName.ToString();
+            itemDescription.text = itemShop[i].itemDescription.ToString();
+            itemIcon.sprite = itemShop[i].itemIcon;
+        }
+
         //구매창 취소버튼을 눌렀을 때
         purchaseCancelBtn.onClick.AddListener(() =>
         {
@@ -424,7 +439,6 @@ public class UIManager : MonoBehaviour
         {
             if (shopQuantity > 0)
             {
-                var shopObj = GameObject.Find("Shop_Content ");
                 var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<TextMeshProUGUI>();
 
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
