@@ -60,6 +60,7 @@ public class GadgetManager : Singleton<GadgetManager>
         get => isPutOnMode;
         set
         {
+            //다른건 선택X
             pauseBackBtn.gameObject.SetActive(isPutOnMode);
         }
     }
@@ -141,15 +142,6 @@ public class GadgetManager : Singleton<GadgetManager>
         }
         return false;
     }
-
-    /// <summary>
-    /// 가젯 슬롯에 데이터가 있는지 확인
-    /// </summary>
-    private void CheckSlot()
-    {
-
-    }
-
     private IEnumerator CSelectGadgetSlot()
     {
         IsPutOnMode = true;

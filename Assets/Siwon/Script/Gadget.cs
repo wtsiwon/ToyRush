@@ -89,6 +89,7 @@ public class Gadget : MonoBehaviour
     private void Start()
     {
         Debug.Assert(selectBtn != null, "SelectBtn is null");
+        print(buyBtn);
         buyBtn.onClick.AddListener(() =>
         {
             IsBought = true;
@@ -100,6 +101,7 @@ public class Gadget : MonoBehaviour
         });
 
         Debug.Assert(selectBtn != null, "SelectBtn is null");
+        print(selectBtn);
         selectBtn.onClick.AddListener(() =>
         {
             print("selctcBtn");
