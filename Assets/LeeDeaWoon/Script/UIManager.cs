@@ -62,6 +62,8 @@ public class UIManager : MonoBehaviour
     int shopQuantity;
     int shopPrice;
     int shopItemNumber;
+
+    bool isShopItemCheck = false;
     #endregion
 
     #region ¼³Á¤
@@ -113,12 +115,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
 
         UI_Dot();
-        Stop_Btns();
-        Main_Btns();
-        Shop_Btns();
-        Setting_Btns();
-        GameOver_Btn();
-
+        UI_Btns();
         SoundSetting();
     }
 
@@ -127,6 +124,15 @@ public class UIManager : MonoBehaviour
         UI_setting();
         ItemShop();
         hpBar();
+    }
+
+    void UI_Btns()
+    {
+        Stop_Btns();
+        Main_Btns();
+        Shop_Btns();
+        Setting_Btns();
+        GameOver_Btn();
     }
 
     void UI_Dot()
@@ -483,8 +489,10 @@ public class UIManager : MonoBehaviour
 
     public void ItemShop()
     {
-        if (content.transform.GetChild(0).gameObject.activeSelf == true)
+        if (content.transform.GetChild(0).gameObject.activeSelf == true && isShopItemCheck == false)
         {
+            isShopItemCheck = true;
+
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
                 var shopChild = shopObj.transform.GetChild(i).GetChild(3);
