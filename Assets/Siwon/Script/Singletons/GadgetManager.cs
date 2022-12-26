@@ -90,7 +90,7 @@ public class GadgetManager : Singleton<GadgetManager>
         switch (type)
         {
             case EGadgetType.None:
-                //null
+            //null
 
             case EGadgetType.GravityBelt:
 
@@ -118,8 +118,10 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         //gadgetSlotList
         if (TryApplyGadget(gadget.Data)) return;
-
-        CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot());
+        else
+        {
+            CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot());//실행 될까
+        }
     }
 
     /// <summary>
@@ -145,7 +147,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// </summary>
     private void CheckSlot()
     {
-        
+
     }
 
     private IEnumerator CSelectGadgetSlot()
