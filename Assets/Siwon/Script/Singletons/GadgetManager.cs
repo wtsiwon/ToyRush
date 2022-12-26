@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +11,11 @@ public class GadgetManager : Singleton<GadgetManager>
     public List<Gadget> gadgetList = new List<Gadget>();
 
     [Space(10f)]
-    [Tooltip("Slot(2Ä­)")]
+    [Tooltip("Slot(2ì¹¸)")]
     public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>();
 
     [SerializeField]
-    [Tooltip("°¡Á¬½½·Ô¿¡ ÀÖ´Â ¹öÆ°")]//ÀÌ ¹öÆ°À¸·Î 
+    [Tooltip("ê°€ì ¯ìŠ¬ë¡¯ì— ìˆëŠ” ë²„íŠ¼")]//ì´ ë²„íŠ¼ìœ¼ë¡œ 
     private List<Button> gadgetBtns = new List<Button>();
 
     [Space(10f)]
@@ -25,42 +25,42 @@ public class GadgetManager : Singleton<GadgetManager>
     #region UIs
     [Header("UI Sprite")]
     [Space(15f)]
-    [Tooltip("ÀåÂøÇÏ±â Àü ¹öÆ° UISprite")]
+    [Tooltip("ì¥ì°©í•˜ê¸° ì „ ë²„íŠ¼ UISprite")]
     public Sprite selectBtnSprite;
-    [Tooltip("ÀåÂøµÈ ¹öÆ° UISprite")]
+    [Tooltip("ì¥ì°©ëœ ë²„íŠ¼ UISprite")]
     public Sprite selectedBtnSprite;
 
     [SerializeField]
     [Space(10f)]
-    [Tooltip("°¡Á¬ ÀåÂø ½Ã ¹İÅõ¸í ¹è°æ")]
-    private Button pauseBackBtn;//¹è°æÀ» Å¬¸¯ÇÒ½Ã ÀåÂø¸ğµå ÇØÁ¦ÇØ¾ßÇÔ
+    [Tooltip("ê°€ì ¯ ì¥ì°© ì‹œ ë°˜íˆ¬ëª… ë°°ê²½")]
+    private Button pauseBackBtn;//ë°°ê²½ì„ í´ë¦­í• ì‹œ ì¥ì°©ëª¨ë“œ í•´ì œí•´ì•¼í•¨
 
     [SerializeField]
-    [Tooltip("°¡Á¬ ½½·Ô2°³¸¦ °¡Áö°í ÀÖ´Â GameObject")]
+    [Tooltip("ê°€ì ¯ ìŠ¬ë¡¯2ê°œë¥¼ ê°€ì§€ê³  ìˆëŠ” GameObject")]
     private GameObject slot;
     #endregion
 
     [Space(10f)]
-    [Tooltip("ÇöÀç ¼±ÅÃµÈ ÀÖ´Â °¡Á¬")]
+    [Tooltip("í˜„ì¬ ì„ íƒëœ ìˆëŠ” ê°€ì ¯")]
     public Gadget currentSelectGadget;
 
     [SerializeField]
-    [Tooltip("»óÁ¡ UI°¡ ÄÑÁ® ÀÖÀ» ¶§ SlotPos")]
+    [Tooltip("ìƒì  UIê°€ ì¼œì ¸ ìˆì„ ë•Œ SlotPos")]
     private Vector3 truePos;
     [SerializeField]
-    [Tooltip("»óÁ¡ UI°¡ ²¨Á® ÀÖÀ» ¶§ SlotPos")]
+    [Tooltip("ìƒì  UIê°€ êº¼ì ¸ ìˆì„ ë•Œ SlotPos")]
     private Vector3 falsePos;
 
     private Coroutine CselectGadgetSlot;
 
     private bool isPutOnMode;
-    //°¡Á¬ ÀåÂø ¸ğµå
+    //ê°€ì ¯ ì¥ì°© ëª¨ë“œ
     public bool IsPutOnMode
     {
         get => isPutOnMode;
         set
         {
-            //´Ù¸¥°Ç ¼±ÅÃX
+            //ë‹¤ë¥¸ê±´ ì„ íƒX
             pauseBackBtn.gameObject.SetActive(isPutOnMode);
         }
     }
@@ -82,8 +82,16 @@ public class GadgetManager : Singleton<GadgetManager>
         }
     }
 
+    private void Start()
+    {
+        pauseBackBtn.onClick.AddListener(() =>
+        {
+            IsPutOnMode = false;
+        });
+    }
+
     /// <summary>
-    /// °¡Á¬ ´É·ÂÄ¡ Àû¿ëÇÔ¼ö
+    /// ê°€ì ¯ ëŠ¥ë ¥ì¹˜ ì ìš©í•¨ìˆ˜
     /// </summary>
     /// <param name="type"></param>
     public void ApplyGadgetAbility(EGadgetType type)
@@ -95,14 +103,14 @@ public class GadgetManager : Singleton<GadgetManager>
 
             case EGadgetType.GravityBelt:
 
-                //Áß·Â Áõ°¡
+                //ì¤‘ë ¥ ì¦ê°€
                 break;
             case EGadgetType.SlowRocket:
-                //°ø°İÆĞÅÏ ¼Óµµ °¨¼Ò
+                //ê³µê²©íŒ¨í„´ ì†ë„ ê°ì†Œ
 
                 break;
             case EGadgetType.Magnet:
-                //ÀÚ¼® È°¼ºÈ­
+                //ìì„ í™œì„±í™”
                 Player.Instance.IsMagneting = true;
                 break;
             case EGadgetType.XrayGoggles:
@@ -113,38 +121,47 @@ public class GadgetManager : Singleton<GadgetManager>
     }
 
     /// <summary>
-    /// °¡Á¬ ÀåÂøÇÔ¼ö
+    /// ê°€ì ¯ ì¥ì°©í•˜ëŠ”í•¨ìˆ˜
     /// </summary>
     public void ApplyGadget(Gadget gadget)
     {
         //gadgetSlotList
-        if (TryApplyGadget(gadget.Data)) return;
+        if (TryApplyGadget(gadget)) return;
         else
         {
-            CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot());//½ÇÇà µÉ±î
+            CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot(gadget));//ì‹¤í–‰ ë ê¹Œ
         }
     }
 
+    public void RemoveGadget(Gadget gadget) 
+    {
+        gadgetSlotList[gadget.slotIndex] = null;
+    }
+
+
     /// <summary>
-    /// °¡Á¬ Àû¿ë ½Ãµµ ÇÔ¼ö
+    /// ê°€ì ¯ ì ìš© ì‹œë„ í•¨ìˆ˜
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    private bool TryApplyGadget(GadgetData data)
+    private bool TryApplyGadget(Gadget gadget)
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
             if (gadgetSlotList[i].Data == null)
             {
-                gadgetSlotList[i].gadgetIcon.sprite = data.icon;
+                gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
+                gadget.slotIndex = i;
                 return true;
             }
         }
         return false;
     }
-    private IEnumerator CSelectGadgetSlot()
+
+    private IEnumerator CSelectGadgetSlot(Gadget gadget)
     {
         IsPutOnMode = true;
+        currentSelectGadget = gadget;
         yield return null;
     }
 }

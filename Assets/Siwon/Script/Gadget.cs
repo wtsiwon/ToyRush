@@ -34,6 +34,13 @@ public class Gadget : MonoBehaviour
     [Tooltip("가젯 선택하는 버튼Btn")]
     private Button selectBtn;
 
+    public int slotIndex;
+
+    public GadgetSlot Slot
+    {
+        get => GadgetManager.Instance.gadgetSlotList[slotIndex];
+    }
+
     [Tooltip("이 가젯이 장착되어 있는가")]
     [Space(10f)]
     private bool isSelected;
@@ -66,10 +73,9 @@ public class Gadget : MonoBehaviour
         set
         {
             data.isBought = value;
-            print(data.isBought);
-            buyBtn.gameObject.SetActive(false);
-            selectBtn.gameObject.SetActive(true);
-            GadgetManager.Instance.ApplyGadget(this);
+            print(IsBought);
+            buyBtn.gameObject.SetActive(!value);
+            selectBtn.gameObject.SetActive(value);
         }
     }
 
@@ -88,28 +94,25 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
-        Debug.Assert(selectBtn != null, "SelectBtn is null");
-        print(buyBtn);
+        Debug.Assert(buyBtn != null, "buyBtnBtn is null");
         buyBtn.onClick.AddListener(() =>
         {
-            IsBought = true;
-            print("buyBtn");
             if (GameManager.Instance.haveCoin >= data.cost)
             {
+                GameManager.Instance.haveCoin -= data.cost;
                 IsBought = true;
             }
         });
 
         Debug.Assert(selectBtn != null, "SelectBtn is null");
-        print(selectBtn);
         selectBtn.onClick.AddListener(() =>
         {
-            print("selctcBtn");
             if (IsBought == true)
             {
                 if (IsSelected == false)
                 {
                     IsSelected = true;
+                    GadgetManager.Instance.ApplyGadget(this);
                 }
                 else
                 {

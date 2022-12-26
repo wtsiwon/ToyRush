@@ -17,21 +17,16 @@ public class GadgetSlot : MonoBehaviour
             data = value;
             if (data == null)
             {
+                putOnbtn.gameObject.SetActive(false);
                 print("GadgetSlot" + isActiveAndEnabled);
-                gameObject.SetActive(false);
             }
             else
             {
+                putOnbtn.gameObject.SetActive(true);
                 print("GadgetSlot" + isActiveAndEnabled);
-                gameObject.SetActive(true);
                 ApplyIcon();
             }
         }
-    }
-
-    private void OnEnable()
-    {
-
     }
 
     [Header("GadgetSlot UI")]
@@ -47,28 +42,32 @@ public class GadgetSlot : MonoBehaviour
     {
         putOnbtn.onClick.AddListener(() =>
         {
+            if (GadgetManager.Instance.IsPutOnMode == false) return;
+
             if (GadgetManager.Instance.IsPutOnMode == true)
             {
                 Data = GadgetManager.Instance.currentSelectGadget.Data;
             }
         });
+        StartCoroutine(CCheck());
+    }
+
+    private IEnumerator CCheck()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            print(Data);
+        }
     }
 
     private void Update()
     {
-        
+
     }
+
     public void ApplyIcon()
     {
         gadgetIcon.sprite = data.icon;
     }
-
-    private void SetSlot()
-    {
-        if (Data == null)
-        {
-            gadgetIcon = null;
-        }
-    }
-
 }
