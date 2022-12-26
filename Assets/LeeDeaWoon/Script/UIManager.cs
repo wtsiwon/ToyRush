@@ -44,7 +44,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button shopsCancelBtn;
     [SerializeField] TextMeshProUGUI haveShopCoin;
 
-
     [Space(10)]
     [SerializeField] GameObject purchaseWindow;
     [SerializeField] Image purchaseItemIcon;
@@ -57,6 +56,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI quantityText;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] TextMeshProUGUI totalPriceText;
+
+    GameObject shopObj;
 
     int shopQuantity;
     int shopPrice;
@@ -124,6 +125,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UI_setting();
+        ItemShop();
         hpBar();
     }
 
@@ -139,6 +141,8 @@ public class UIManager : MonoBehaviour
 
     void UI_setting()
     {
+        shopObj = GameObject.Find("Shop_Content");
+
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
         coinText.text = coin.ToString();
@@ -170,7 +174,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(0).gameObject.SetActive(true);
-            GadgetManager.Instance.IsShopActive = true;
+            //GadgetManager.Instance.IsShopActive = true;
         });
 
         // 캐릭터 버튼을 눌렀을 때
@@ -179,7 +183,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(1).gameObject.SetActive(true);
-            GadgetManager.Instance.IsShopActive = true;
+            //GadgetManager.Instance.IsShopActive = true;
         });
 
         // 가젯 버튼을 눌렀을 때
@@ -188,7 +192,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(2).gameObject.SetActive(true);
-            GadgetManager.Instance.IsShopActive = true;
+            //GadgetManager.Instance.IsShopActive = true;
         });
 
         // 탈것 버튼을 눌렀을 때
@@ -197,7 +201,7 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(3).gameObject.SetActive(true);
-            GadgetManager.Instance.IsShopActive = true;
+            //GadgetManager.Instance.IsShopActive = true;
         });
     }
 
@@ -414,21 +418,6 @@ public class UIManager : MonoBehaviour
     #region 상점 창
     void Shop_Btns()
     {
-        var shopObj = GameObject.Find("Shop_Content ");
-
-        for (int i = 0; i < shopObj.transform.childCount; i++)
-        {
-            var shopChild = shopObj.transform.GetChild(i).GetChild(3);
-
-            var itemName = shopChild.GetChild(0).GetComponent<TextMeshProUGUI>();
-            var itemDescription = shopChild.GetChild(1).GetComponent<TextMeshProUGUI>();
-            var itemIcon = shopChild.GetChild(2).GetComponent<Image>();
-
-            itemName.text = itemShop[i].itemName.ToString();
-            itemDescription.text = itemShop[i].itemDescription.ToString();
-            itemIcon.sprite = itemShop[i].itemIcon;
-        }
-
         //구매창 취소버튼을 눌렀을 때
         purchaseCancelBtn.onClick.AddListener(() =>
         {
@@ -490,6 +479,25 @@ public class UIManager : MonoBehaviour
 
         shopItemNumber = number;
         purchaseWindow.SetActive(true);
+    }
+
+    public void ItemShop()
+    {
+        if (content.transform.GetChild(0).gameObject.activeSelf == true)
+        {
+            for (int i = 0; i < shopObj.transform.childCount; i++)
+            {
+                var shopChild = shopObj.transform.GetChild(i).GetChild(3);
+
+                var itemName = shopChild.GetChild(0).GetComponent<TextMeshProUGUI>();
+                var itemDescription = shopChild.GetChild(1).GetComponent<TextMeshProUGUI>();
+                var itemIcon = shopChild.GetChild(2).GetComponent<Image>();
+
+                itemName.text = itemShop[i].itemName.ToString();
+                itemDescription.text = itemShop[i].itemDescription.ToString();
+                itemIcon.sprite = itemShop[i].itemIcon;
+            }
+        }
     }
     #endregion
 
