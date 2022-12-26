@@ -38,6 +38,8 @@ public class GadgetSlot : MonoBehaviour
     [Tooltip("°¡Á¬ ¾ÆÀÌÄÜ")]
     public Image gadgetIcon;
 
+    
+
     private void Start()
     {
         putOnbtn.onClick.AddListener(() =>

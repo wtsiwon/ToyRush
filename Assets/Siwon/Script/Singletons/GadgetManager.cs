@@ -12,11 +12,11 @@ public class GadgetManager : Singleton<GadgetManager>
 
     [Space(10f)]
     [Tooltip("Slot(2칸)")]
-    public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>();
+    public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>(2);
 
     [SerializeField]
     [Tooltip("가젯슬롯에 있는 버튼")]//이 버튼으로 
-    private List<Button> gadgetBtns = new List<Button>();
+    private List<Button> gadgetSlotBtns = new List<Button>(2);
 
     [Space(10f)]
     [Tooltip("gadgetDatas")]
