@@ -430,6 +430,7 @@ public class UIManager : MonoBehaviour
             purchaseWindow.SetActive(false);
         });
 
+        //구매확정 버튼을 눌렀을 때
         purchaseBtn.onClick.AddListener(() =>
         {
             if (shopQuantity > 0)
@@ -478,6 +479,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    // 구매 버튼을 눌렀을 때
     public void PurchaseBtn(int number)
     {
         shopPrice = 0;

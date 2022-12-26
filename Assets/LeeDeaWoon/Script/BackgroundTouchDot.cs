@@ -10,27 +10,25 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
     public Ease easeType;
 
     [Header("화면 클릭")]
-    public Image screenClick;
-    public Image screenPrevent;
+    [SerializeField] Image screenClick;
+    [SerializeField] Image screenPrevent;
 
     [Header("타이틀")]
-    public GameObject title;
-    public GameObject haveCoin;
-    public GameObject stopBtn;
-    public GameObject mainBtn;
-    public GameObject settingBtn;
+    [SerializeField] GameObject title;
+    [SerializeField] GameObject haveCoin;
+    [SerializeField] GameObject stopBtn;
+    [SerializeField] GameObject mainBtn;
+    [SerializeField] GameObject settingBtn;
 
     [Header("인게임")]
-    public GameObject ingame;
+    [SerializeField] GameObject ingame;
+    [SerializeField] GameObject itemSlot;
 
     [Header("시작 연출")]
-    public GameObject smokeBoomb;
+    [SerializeField] GameObject smokeBoomb;
 
-    [Header("플레이어")]
-    public GameObject player;
-    public float playerDistance;
-    public float playerWaitTime;
-
+    const float playerDistance = 5;
+    const float playerWaitTime = 2;
     bool isStartClick = false;
 
     void Start()
@@ -97,7 +95,8 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
 
                     case 4:
                         stopBtn.transform.DOLocalMove(settingPos, time).SetEase(easeType);
-                        ingame.transform.DOLocalMoveY(-170, time).SetEase(easeType);
+                        ingame.transform.DOLocalMoveY(-100, time).SetEase(easeType);
+                        itemSlot.transform.DOLocalMoveY(-500, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
                         break;
                 }
@@ -107,7 +106,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
             smokeBoomb.SetActive(true);
             UIManager.Instance.firstBackGround.GetComponent<SpriteRenderer>().sprite
                 = UIManager.Instance.brokenBackGround;
-            player.transform.DOLocalMoveX(playerDistance, playerWaitTime);
+            Player.Instance.transform.DOLocalMoveX(-playerDistance, playerWaitTime);
             yield return new WaitForSeconds(playerWaitTime);
             screenPrevent.raycastTarget = false;
             screenClick.raycastTarget = true;
