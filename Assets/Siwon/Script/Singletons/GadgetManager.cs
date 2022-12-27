@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GadgetManager : Singleton<GadgetManager>
 {
@@ -44,12 +45,19 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("현재 선택된 있는 가젯")]
     public Gadget currentSelectGadget;
 
+    #region Positions
     [SerializeField]
     [Tooltip("상점 UI가 켜져 있을 때 SlotPos")]
     private Vector3 truePos;
+
     [SerializeField]
     [Tooltip("상점 UI가 꺼져 있을 때 SlotPos")]
     private Vector3 falsePos;
+
+    [SerializeField]
+    [Tooltip("게임 시작했을 때 SlotPos")]
+    private Vector3 gameStartPos;
+    #endregion
 
     private Coroutine CselectGadgetSlot;
 
@@ -71,13 +79,20 @@ public class GadgetManager : Singleton<GadgetManager>
         get => isShopActive;
         set
         {
-            if (value == true)
+            if (GameManager.Instance.IsGameStart == false)
             {
-                slot.transform.position = truePos;
+                if (value == true)
+                {
+                    slot.transform.position = truePos;
+                }
+                else
+                {
+                    slot.transform.position = falsePos;
+                }
             }
             else
             {
-                slot.transform.position = falsePos;
+                slot.transform.DOMove(gameStartPos, 0.5f).SetEase(Ease.InBack);
             }
         }
     }
@@ -133,7 +148,7 @@ public class GadgetManager : Singleton<GadgetManager>
         }
     }
 
-    public void RemoveGadget(Gadget gadget) 
+    public void RemoveGadget(Gadget gadget)
     {
         gadgetSlotList[gadget.slotIndex] = null;
     }
@@ -151,11 +166,32 @@ public class GadgetManager : Singleton<GadgetManager>
             if (gadgetSlotList[i].Data == null)
             {
                 gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
+                gadgetSlotList[i].Data = gadget.Data;
                 gadget.slotIndex = i;
                 return true;
             }
         }
         return false;
+    }
+
+
+    private bool[] CheckSlot()
+    {
+        bool[] checks = {false};
+
+        for (int i = 0; i < gadgetSlotList.Count; i++)
+        {
+            if(gadgetSlotList[i].Data != null)
+            {
+                checks[i] = true;
+            }
+            else
+            {
+                checks[i] = false;
+            }
+        }
+
+        return checks;
     }
 
     private IEnumerator CSelectGadgetSlot(Gadget gadget)

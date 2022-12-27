@@ -10,6 +10,15 @@ public class GadgetSlot : MonoBehaviour
     {
         get
         {
+            if (data != null)
+            {
+                gadgetIcon.gameObject.SetActive(true);
+                gadgetIcon.sprite = data.icon;
+            }
+            else
+            {
+                gadgetIcon.gameObject.SetActive(false);
+            }
             return data;
         }
         set
