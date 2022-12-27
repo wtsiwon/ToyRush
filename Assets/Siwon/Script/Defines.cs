@@ -90,18 +90,6 @@ public enum EObstacleColorType
     End,
 }
 
-/// <summary>
-/// 코인패턴들
-/// </summary>
-public enum ECoinPatternType
-{
-    CoinPattern1,
-    CoinPattern2,
-    CoinPattern3,
-    CoinPattern4,
-    CoinPattern5,
-}
-
 public enum EEffectType
 {
     piggybank,
@@ -110,14 +98,6 @@ public enum EEffectType
 public enum ESoundType
 {
 
-}
-
-public enum EMovingElementType
-{
-    Obstacle,
-    Item,
-    BackGround,
-    Coin,
 }
 
 public enum EDir
