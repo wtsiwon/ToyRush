@@ -18497,6 +18497,7 @@ MonoBehaviour:
   haveShopCoin: {fileID: 8206563587411683738}
   purchaseWindow: {fileID: 2337462229123126840}
   purchaseItemIcon: {fileID: 8712059154620160079}
+  buySprite: {fileID: 21300000, guid: aa3790be9c270cb45b65c2796a579bce, type: 3}
   reductionBtn: {fileID: 5138306060998016953}
   increaseBtn: {fileID: 3026579336341860983}
   purchaseCancelBtn: {fileID: 5552472758069986457}
@@ -19407,7 +19408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3493952218374339958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19973,7 +19974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3493952218754265501
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22203,7 +22204,7 @@ MonoBehaviour:
   gadgetSlotList:
   - {fileID: 1577730573493342567}
   - {fileID: 3801424549600009007}
-  gadgetBtns: []
+  gadgetSlotBtns: []
   gadgetDataList: []
   selectBtnSprite: {fileID: 0}
   selectedBtnSprite: {fileID: 0}
@@ -22338,6 +22339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   putOnbtn: {fileID: 7040779530178128565}
   gadgetIcon: {fileID: 8682324697708742710}
+  slotIndex: 0
 --- !u!1 &5169087300060397990
 GameObject:
   m_ObjectHideFlags: 0
@@ -26797,6 +26799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   putOnbtn: {fileID: 1435815794}
   gadgetIcon: {fileID: 8682324697708742710}
+  slotIndex: 0
 --- !u!1 &8346641564163141859
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,9 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [SerializeField] GameObject purchaseWindow;
     [SerializeField] Image purchaseItemIcon;
+    [SerializeField] Sprite buyBtn;
+    [SerializeField] Sprite choiceBtn;
+    [SerializeField] Sprite selecteBtn;
 
     [SerializeField] Button reductionBtn;
     [SerializeField] Button increaseBtn;
@@ -58,6 +61,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalPriceText;
 
     GameObject shopObj;
+    Image buy;
 
     int shopQuantity;
     int shopPrice;
@@ -180,6 +184,9 @@ public class UIManager : MonoBehaviour
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
             shopWindow.SetActive(true);
             content.transform.GetChild(0).gameObject.SetActive(true);
+            isShopItemCheck = false;
+
+
             //GadgetManager.Instance.IsShopActive = true;
         });
 
@@ -433,11 +440,24 @@ public class UIManager : MonoBehaviour
         //구매확정 버튼을 눌렀을 때
         purchaseBtn.onClick.AddListener(() =>
         {
+            var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<TextMeshProUGUI>();
+
             if (shopQuantity > 0)
             {
-                var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<TextMeshProUGUI>();
+                for (int i = 0; i < shopObj.transform.childCount; i++)
+                {
+                    var choice = shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>();
+
+                    if (choice.sprite == selecteBtn)
+                    {
+                        choice.sprite = choiceBtn;
+                        break;
+                    }
+                }
 
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
+
+                buy.sprite = selecteBtn;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
                 itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
                 purchaseWindow.SetActive(false);
@@ -486,7 +506,28 @@ public class UIManager : MonoBehaviour
         shopQuantity = 0;
 
         shopItemNumber = number;
-        purchaseWindow.SetActive(true);
+
+        buy = shopObj.transform.GetChild(shopItemNumber).GetChild(1).GetComponent<Image>();
+
+        // 선택 이나 선택완료 버튼이 아닐 때
+        if (buy.sprite != choiceBtn && buy.sprite != selecteBtn)
+            purchaseWindow.SetActive(true);
+
+        // 선텍 버튼을 눌렀을 경우 선택 완료 버튼으로 바꿔준다.
+        if (buy.sprite == choiceBtn)
+        {
+            for (int i = 0; i < shopObj.transform.childCount; i++)
+            {
+                var selecte = shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>();
+
+                if (selecte.sprite == selecteBtn)
+                {
+                    selecte.sprite = choiceBtn;
+                    break;
+                }
+            }
+            buy.sprite = selecteBtn;
+        }
     }
 
     public void ItemShop()
@@ -502,10 +543,15 @@ public class UIManager : MonoBehaviour
                 var itemName = shopChild.GetChild(0).GetComponent<TextMeshProUGUI>();
                 var itemDescription = shopChild.GetChild(1).GetComponent<TextMeshProUGUI>();
                 var itemIcon = shopChild.GetChild(2).GetComponent<Image>();
+                var itemNum = shopObj.transform.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>();
 
                 itemName.text = itemShop[i].itemName.ToString();
                 itemDescription.text = itemShop[i].itemDescription.ToString();
                 itemIcon.sprite = itemShop[i].itemIcon;
+                itemNum.text = itemShop[i].itemNum.ToString();
+
+                if (itemShop[i].itemNum == 0)
+                    shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = buyBtn;
             }
         }
     }
