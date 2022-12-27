@@ -38,7 +38,7 @@ public class GadgetSlot : MonoBehaviour
     [Tooltip("가젯 아이콘")]
     public Image gadgetIcon;
 
-    
+    public int slotIndex;
 
     private void Start()
     {
