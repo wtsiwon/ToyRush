@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 076fd4024f0ec9f4e99afd91c1d8a72e, type: 3}
-  m_Name: GravityBelt
+  m_Name: IceSlide
   m_EditorClassIdentifier: 
   gedgetType: 0
-  icon: {fileID: 21300000, guid: 9b8d17e65d48695449f208691f89fcf7, type: 3}
-  name: "\uC911\uB825 \uBCA8\uD2B8"
-  explain: "\uD50C\uB808\uC774\uC5B4\uC758 \uC911\uB825\uC774 \uC99D\uAC00\uD574\uC544\uC789"
-  cost: 18181889
+  icon: {fileID: 21300000, guid: fcf86a7af8677164798c7d0afde2a2ed, type: 3}
+  name: IceGround
+  explain: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC8FD\uC744 \uB54C \uBC14\uB2E5\uC744
+    \uC5BC\uC74C\uC73C\uB85C \uBC14\uAFD4 \uBBF8\uB044\uB7EC\uC9C8\uC218 \uC788\uC2B5\uB2C8\uB2E4"
+  cost: 10000
   isBought: 0
