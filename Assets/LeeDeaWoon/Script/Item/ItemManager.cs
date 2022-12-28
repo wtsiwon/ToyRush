@@ -10,12 +10,11 @@ public class ItemManager : MonoBehaviour
     private void Awake() => inst = this;
 
     public List<GameObject> itemList = new List<GameObject>();
-    public GameObject player;
 
     public float spawnInterval;
 
-    public const int spawnXValue = 11;
-    public const int spawnYValue = 2;
+    const int spawnXValue = 11;
+    const int spawnYValue = 2;
 
     public float spawnValue = 12.5f;
 
@@ -165,7 +164,7 @@ public class ItemManager : MonoBehaviour
     IEnumerator Start_Booster()
     {
         Sequence mySequence = DOTween.Sequence();
-        float playerXValue = player.transform.position.x;
+        Transform playerTransform = Player.Instance.transform;
 
         Player.Instance.IsBoosting = true;
         Player.Instance.tag = "Invincibility";
@@ -204,7 +203,7 @@ public class ItemManager : MonoBehaviour
                           }
                       });
                       Instantiate(whiteScreen, Vector2.zero, Quaternion.identity);
-                      player.transform.DOLocalMoveX(-3.5f, 0.5f);
+                      playerTransform.DOLocalMoveX(-3.5f, 0.5f);
                   });
 
         switch (boosterNumber)
@@ -218,9 +217,9 @@ public class ItemManager : MonoBehaviour
                 break;
         }
 
-        player.transform.DOLocalMoveX(5.5f, 0);
+        playerTransform.DOLocalMoveX(5.5f, 0);
 
-        player.transform.DOLocalMoveX(playerXValue, 0.5f);
+        playerTransform.DOLocalMoveX(playerTransform.position.x, 0.5f);
         Player.Instance.IsBoosting = false;
 
         #region 무적시간

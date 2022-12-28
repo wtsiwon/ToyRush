@@ -3979,9 +3979,9 @@ RectTransform:
   m_Father: {fileID: 7708296774968690057}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1381.5, y: -1236.866}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188931567
@@ -4388,9 +4388,9 @@ RectTransform:
   m_Father: {fileID: 7708296774968690057}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1381.5, y: -1592.488}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425988700
@@ -4572,9 +4572,9 @@ RectTransform:
   m_Father: {fileID: 7708296774968690057}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1381.5, y: -881.244}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461638113
@@ -4786,9 +4786,9 @@ RectTransform:
   m_Father: {fileID: 7708296774968690057}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1381.5, y: -525.622}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489376098
@@ -18457,33 +18457,40 @@ MonoBehaviour:
   coin: 0
   coinText: {fileID: 2695611189431266611}
   distanceText: {fileID: 3493952218361883668}
+  itemSloat: {fileID: 7627840592074232072}
   maxHp: 100
   currentHp: 0
   hpReductionSpeed: 5
   hpSlider: {fileID: 425248664}
   itemShop:
-  - itemName: "\uC7A5\uB09C\uAC10 \uBC29\uD328"
+  - eShopItem: 0
+    itemName: "\uC7A5\uB09C\uAC10 \uBC29\uD328"
     itemDescription: "\uC77C\uC815\uC2DC\uAC04 \uB3D9\uC548 \uCDA9\uB3CC\uC744 \uBB34\uC2DC\uD569\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 526fb37c4dca64f459a81753f8d6662b, type: 3}
     itemPirce: 1000
     itemNum: 0
-  - itemName: "\uC2AC\uB77C\uC784"
+  - eShopItem: 1
+    itemName: "\uC2AC\uB77C\uC784"
     itemDescription: "\uC774\uB85C\uC6B4 \uBB3C\uAC74\uB4E4\uC744 \uB04C\uC5B4\uC635\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 74d76900755dbc74ebc58f2632eabba9, type: 3}
     itemPirce: 2000
     itemNum: 0
-  - itemName: "\uB0A1\uC740 \uD0DC\uC5FD"
+  - eShopItem: 2
+    itemName: "\uB0A1\uC740 \uD0DC\uC5FD"
     itemDescription: "\uCCB4\uB825 20 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 29a998e5c91adda439c4e293a40343ac, type: 3}
     itemPirce: 3000
     itemNum: 0
-  - itemName: "\uD3C9\uBC94\uD55C \uD0DC\uC5FD"
-    itemDescription: "\uCCB4\uB825 50 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  - eShopItem: 3
+    itemName: "\uD574\uC801 \uB8F0\uB81B"
+    itemDescription: "\uB79C\uB364\uD55C \uC544\uC774\uD15C\uC774 \uC18C\uD658\uB429\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 4ae0b5512399de54d9083f2c1ead42a2, type: 3}
     itemPirce: 4000
     itemNum: 0
-  - itemName: "\uCD5C\uACE0\uAE09 \uD0DC\uC5FD"
-    itemDescription: "\uCCB4\uB825 80 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  - eShopItem: 4
+    itemName: "\uBCF4\uBB3C \uC0C1\uC790"
+    itemDescription: "\uB79C\uB364\uD55C \uB2A5\uB825\uCE58\uB97C \uC77C\uC815\uC2DC\uAC04
+      \uC62C\uB824\uC90D\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 75eb0b1d1ccefee4db6646ad364dd7cf, type: 3}
     itemPirce: 5000
     itemNum: 0
@@ -18497,7 +18504,9 @@ MonoBehaviour:
   haveShopCoin: {fileID: 8206563587411683738}
   purchaseWindow: {fileID: 2337462229123126840}
   purchaseItemIcon: {fileID: 8712059154620160079}
-  buySprite: {fileID: 21300000, guid: aa3790be9c270cb45b65c2796a579bce, type: 3}
+  buyBtn: {fileID: 21300000, guid: cea75c842e193f247a6486e3741a6d94, type: 3}
+  choiceBtn: {fileID: 21300000, guid: b1bb9c998b23d8240bca2fb430942126, type: 3}
+  selecteBtn: {fileID: 21300000, guid: aa3790be9c270cb45b65c2796a579bce, type: 3}
   reductionBtn: {fileID: 5138306060998016953}
   increaseBtn: {fileID: 3026579336341860983}
   purchaseCancelBtn: {fileID: 5552472758069986457}
@@ -22213,6 +22222,7 @@ MonoBehaviour:
   currentSelectGadget: {fileID: 0}
   truePos: {x: 0, y: 0, z: 0}
   falsePos: {x: 0, y: 0, z: 0}
+  gameStartPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5022188494901029261
 GameObject:
   m_ObjectHideFlags: 0
@@ -22685,7 +22695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.42986825, b: 0.42986825, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -26048,8 +26058,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 57
+  m_fontSizeBase: 57
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26438,9 +26448,9 @@ RectTransform:
   m_Father: {fileID: 7708296774968690057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1381.5, y: -170}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626650145
