@@ -18457,6 +18457,7 @@ MonoBehaviour:
   coin: 0
   coinText: {fileID: 2695611189431266611}
   distanceText: {fileID: 3493952218361883668}
+  itemSloat: {fileID: 7627840592074232072}
   maxHp: 100
   currentHp: 0
   hpReductionSpeed: 5
@@ -18477,8 +18478,8 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: 29a998e5c91adda439c4e293a40343ac, type: 3}
     itemPirce: 3000
     itemNum: 0
-  - itemName: "\uD3C9\uBC94\uD55C \uD0DC\uC5FD"
-    itemDescription: "\uCCB4\uB825 50 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  - itemName: "\uD574\uC801 \uB8F0\uB81B"
+    itemDescription: "\uB79C\uB364\uD55C \uC544\uC774\uD15C\uC774 \uC18C\uD658\uB429\uB2C8\uB2E4."
     itemIcon: {fileID: 21300000, guid: 4ae0b5512399de54d9083f2c1ead42a2, type: 3}
     itemPirce: 4000
     itemNum: 0
@@ -18497,7 +18498,9 @@ MonoBehaviour:
   haveShopCoin: {fileID: 8206563587411683738}
   purchaseWindow: {fileID: 2337462229123126840}
   purchaseItemIcon: {fileID: 8712059154620160079}
-  buySprite: {fileID: 21300000, guid: aa3790be9c270cb45b65c2796a579bce, type: 3}
+  buyBtn: {fileID: 21300000, guid: cea75c842e193f247a6486e3741a6d94, type: 3}
+  choiceBtn: {fileID: 21300000, guid: b1bb9c998b23d8240bca2fb430942126, type: 3}
+  selecteBtn: {fileID: 21300000, guid: aa3790be9c270cb45b65c2796a579bce, type: 3}
   reductionBtn: {fileID: 5138306060998016953}
   increaseBtn: {fileID: 3026579336341860983}
   purchaseCancelBtn: {fileID: 5552472758069986457}
@@ -19974,7 +19977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3493952218754265501
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22091,14 +22094,13 @@ GameObject:
   - component: {fileID: 5211674345188973224}
   - component: {fileID: 4803973303763734892}
   - component: {fileID: 4430073394933403994}
-  - component: {fileID: 7733268121837079296}
   m_Layer: 5
   m_Name: Gadget_Scroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7056500140085117212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22187,32 +22189,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7733268121837079296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963079037847906567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f00437781ac444c85cc21d31022c44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontdestroy: 0
-  gadgetList: []
-  gadgetSlotList:
-  - {fileID: 1577730573493342567}
-  - {fileID: 3801424549600009007}
-  gadgetSlotBtns: []
-  gadgetDataList: []
-  selectBtnSprite: {fileID: 0}
-  selectedBtnSprite: {fileID: 0}
-  pauseBackBtn: {fileID: 0}
-  slot: {fileID: 0}
-  currentSelectGadget: {fileID: 0}
-  truePos: {x: 0, y: 0, z: 0}
-  falsePos: {x: 0, y: 0, z: 0}
 --- !u!1 &5022188494901029261
 GameObject:
   m_ObjectHideFlags: 0
@@ -22685,7 +22661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.42986825, b: 0.42986825, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
