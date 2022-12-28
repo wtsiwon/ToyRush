@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     public int coin;
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI distanceText;
+    [SerializeField] Image itemSloat;
 
     [Header("체력")]
     public float maxHp;
@@ -459,6 +460,7 @@ public class UIManager : MonoBehaviour
 
                 buy.sprite = selecteBtn;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
+                itemSloat.sprite = itemShop[shopItemNumber].itemIcon;
                 itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
                 purchaseWindow.SetActive(false);
             }
@@ -508,6 +510,7 @@ public class UIManager : MonoBehaviour
         shopItemNumber = number;
 
         buy = shopObj.transform.GetChild(shopItemNumber).GetChild(1).GetComponent<Image>();
+        var selecteIcon = shopObj.transform.GetChild(shopItemNumber).GetChild(3).GetChild(2).GetComponent<Image>();
 
         // 선택 이나 선택완료 버튼이 아닐 때
         if (buy.sprite != choiceBtn && buy.sprite != selecteBtn)
@@ -516,6 +519,8 @@ public class UIManager : MonoBehaviour
         // 선텍 버튼을 눌렀을 경우 선택 완료 버튼으로 바꿔준다.
         if (buy.sprite == choiceBtn)
         {
+            itemSloat.sprite = selecteIcon.sprite;
+
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
                 var selecte = shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>();
