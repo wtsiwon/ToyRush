@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] TextMeshProUGUI totalPriceText;
 
+    ItemShop context;
     GameObject shopObj;
     Image buy;
 
@@ -131,6 +132,7 @@ public class UIManager : MonoBehaviour
         hpBar();
     }
 
+
     void UI_Btns()
     {
         Stop_Btns();
@@ -152,6 +154,8 @@ public class UIManager : MonoBehaviour
 
     void UI_setting()
     {
+        context = itemSloat.GetComponent<ItemShop>();
+
         shopObj = GameObject.Find("Shop_Content");
 
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
@@ -457,10 +461,11 @@ public class UIManager : MonoBehaviour
                 }
 
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
+                context.eShopItem = itemShop[shopItemNumber].eShopItem;
+                itemSloat.sprite = itemShop[shopItemNumber].itemIcon;
 
                 buy.sprite = selecteBtn;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
-                itemSloat.sprite = itemShop[shopItemNumber].itemIcon;
                 itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
                 purchaseWindow.SetActive(false);
             }
@@ -520,6 +525,7 @@ public class UIManager : MonoBehaviour
         if (buy.sprite == choiceBtn)
         {
             itemSloat.sprite = selecteIcon.sprite;
+            context.eShopItem = itemShop[shopItemNumber].eShopItem;
 
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
