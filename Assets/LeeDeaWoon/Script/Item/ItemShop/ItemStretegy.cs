@@ -5,7 +5,7 @@ using UnityEngine;
 class ItemStretegy 
 {
     ITEM thisITEM;
-    ItemShop context;
+    public ItemShop context;
 
     public ItemStretegy(ItemShop _itemShop)
     {
@@ -61,7 +61,7 @@ public class ShieldItem : ITEM
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("ShieldItme 사용");
     }
 }
 
@@ -76,7 +76,7 @@ public class SlimeItem : ITEM
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("SlimeItem 사용");
     }
 }
 
@@ -91,7 +91,7 @@ public class ClockworkItem : ITEM
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("ClockworkItem 사용");
     }
 }
 
@@ -106,7 +106,7 @@ public class PirateRouletteItem : ITEM
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("PirateRouletteItem 사용");
     }
 }
 
@@ -121,7 +121,7 @@ public class TreasureBoxItem : ITEM
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("TreasureBoxItem 사용");
     }
 }
 

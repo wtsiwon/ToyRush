@@ -19,14 +19,14 @@ public class ItemShop : MonoBehaviour
 
     void Update()
     {
-        
+        itemStretegy.StretegyInit(eShopItem);
     }
 
     void ItemBtn()
     {
         itemShopBtn.onClick.AddListener(() =>
         {
-            itemStretegy.StretegyInit(eShopItem);
+            itemStretegy.Attack();
         });
     }
 }

@@ -10,6 +10,7 @@ public enum EShopItem
     Clockwork,
     PirateRoulette,
     TreasureBox,
+    None,
 }
 
 [System.Serializable]
