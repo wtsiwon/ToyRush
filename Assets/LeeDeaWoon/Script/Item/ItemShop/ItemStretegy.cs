@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class ItemStretegy 
+class ItemStretegy
 {
     ITEM thisITEM;
     public ItemShop context;
@@ -94,7 +94,7 @@ public class ClockworkItem : ITEM
 
     public override void Attack()
     {
-        Debug.Log("ClockworkItem »ç¿ë");
+        UIManager.Instance.currentHp += 20;
     }
 }
 
