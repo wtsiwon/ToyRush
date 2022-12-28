@@ -22,15 +22,28 @@ public class UIManager : MonoBehaviour
 
     [Header("인게임")]
     public int coin;
+
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI distanceText;
-    [SerializeField] Image itemSloat;
 
     [Header("체력")]
     public float maxHp;
     public float currentHp;
     public float hpReductionSpeed;
     [SerializeField] Slider hpSlider;
+
+    [Header("상점 아이템")]
+    public int itemCount = 0;
+    public float currentCoolTime;
+    public float maxCoolTime;
+
+    [SerializeField] Image itemSlot;
+    [SerializeField] Image coolTimeSlot;
+    [SerializeField] TextMeshProUGUI itemCountText;
+
+    const int maxItemCount = 3;
+    bool isClickItemUse = false;
+
 
     #region 상점
     [Header("상점")]
@@ -116,6 +129,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
+        maxCoolTime = currentCoolTime;
 
         DOTween.PauseAll();
         Time.timeScale = 1;
@@ -130,6 +144,7 @@ public class UIManager : MonoBehaviour
         UI_setting();
         ItemShop();
         hpBar();
+        ClickItem();
     }
 
 
@@ -154,7 +169,7 @@ public class UIManager : MonoBehaviour
 
     void UI_setting()
     {
-        context = itemSloat.GetComponent<ItemShop>();
+        context = itemSlot.GetComponent<ItemShop>();
 
         shopObj = GameObject.Find("Shop_Content");
 
@@ -178,6 +193,56 @@ public class UIManager : MonoBehaviour
             hpSlider.value = currentHp / maxHp;
             currentHp -= Time.deltaTime * hpReductionSpeed;
         }
+    }
+
+    void ClickItem()
+    {
+        itemCountText.text = itemCount.ToString();
+
+        if (GameManager.Instance.IsGameStart == true)
+        {
+            if (itemCount < maxItemCount)
+            {
+                currentCoolTime -= Time.deltaTime * 0.1f;
+
+                if (isClickItemUse == false)
+                {
+                    isClickItemUse = true;
+                    coolTimeSlot.fillAmount = 1;
+                    currentCoolTime = maxCoolTime;
+
+                    StartCoroutine(CoolTime());
+                }
+
+                if (currentCoolTime <= 0)
+                {
+                    isClickItemUse = false;
+                    ++itemCount;
+                }
+            }
+        }
+
+    }
+    IEnumerator CoolTime()
+    {
+        while (coolTimeSlot.fillAmount > 0)
+        {
+            coolTimeSlot.fillAmount = currentCoolTime / maxCoolTime;
+
+            yield return null;
+        }
+        yield break;
+    }
+
+    IEnumerator CoolTimeCounter()
+    {
+        WaitForSeconds waitSec = new WaitForSeconds(1);
+        while (currentCoolTime > 0)
+        {
+            //yield return waitSec;
+            currentCoolTime -= Time.deltaTime * 2;
+        }
+        yield break;
     }
 
     #region 메인버튼
@@ -462,7 +527,7 @@ public class UIManager : MonoBehaviour
 
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
                 context.eShopItem = itemShop[shopItemNumber].eShopItem;
-                itemSloat.sprite = itemShop[shopItemNumber].itemIcon;
+                itemSlot.sprite = itemShop[shopItemNumber].itemIcon;
 
                 buy.sprite = selecteBtn;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
@@ -524,7 +589,7 @@ public class UIManager : MonoBehaviour
         // 선텍 버튼을 눌렀을 경우 선택 완료 버튼으로 바꿔준다.
         if (buy.sprite == choiceBtn)
         {
-            itemSloat.sprite = selecteIcon.sprite;
+            itemSlot.sprite = selecteIcon.sprite;
             context.eShopItem = itemShop[shopItemNumber].eShopItem;
 
             for (int i = 0; i < shopObj.transform.childCount; i++)

@@ -26,7 +26,11 @@ public class ItemShop : MonoBehaviour
     {
         itemShopBtn.onClick.AddListener(() =>
         {
-            itemStretegy.Attack();
+            if (UIManager.Instance.itemCount > 0)
+            {
+                --UIManager.Instance.itemCount;
+                itemStretegy.Attack();
+            }
         });
     }
 }

@@ -31,6 +31,9 @@ class ItemStretegy
             case EShopItem.TreasureBox:
                 thisITEM = new TreasureBoxItem(context);
                 break;
+            case EShopItem.None:
+                thisITEM = new None(context);
+                break;
         }
 
     }
@@ -122,6 +125,21 @@ public class TreasureBoxItem : ITEM
     public override void Attack()
     {
         Debug.Log("TreasureBoxItem 사용");
+    }
+}
+
+public class None : ITEM
+{
+    public None(ItemShop _context)
+    {
+        context = _context;
+        gameObject = _context.gameObject;
+        transform = _context.transform;
+    }
+
+    public override void Attack()
+    {
+        Debug.Log("아무것도 사용하지 않음");
     }
 }
 
