@@ -195,56 +195,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void ClickItem()
-    {
-        itemCountText.text = itemCount.ToString();
-
-        if (GameManager.Instance.IsGameStart == true)
-        {
-            if (itemCount < maxItemCount)
-            {
-                currentCoolTime -= Time.deltaTime * 0.1f;
-
-                if (isClickItemUse == false)
-                {
-                    isClickItemUse = true;
-                    coolTimeSlot.fillAmount = 1;
-                    currentCoolTime = maxCoolTime;
-
-                    StartCoroutine(CoolTime());
-                }
-
-                if (currentCoolTime <= 0)
-                {
-                    isClickItemUse = false;
-                    ++itemCount;
-                }
-            }
-        }
-
-    }
-    IEnumerator CoolTime()
-    {
-        while (coolTimeSlot.fillAmount > 0)
-        {
-            coolTimeSlot.fillAmount = currentCoolTime / maxCoolTime;
-
-            yield return null;
-        }
-        yield break;
-    }
-
-    IEnumerator CoolTimeCounter()
-    {
-        WaitForSeconds waitSec = new WaitForSeconds(1);
-        while (currentCoolTime > 0)
-        {
-            //yield return waitSec;
-            currentCoolTime -= Time.deltaTime * 2;
-        }
-        yield break;
-    }
-
     #region 메인버튼
     void Main_Btns()
     {
@@ -426,6 +376,48 @@ public class UIManager : MonoBehaviour
             effectColor.DOColor(Color.gray, 0).SetUpdate(true);
         else
             effectColor.DOColor(Color.white, 0).SetUpdate(true);
+    }
+    #endregion
+
+    #region 상점 아이템 쿨타임
+    void ClickItem()
+    {
+        itemCountText.text = itemCount.ToString();
+
+        if (GameManager.Instance.IsGameStart == true)
+        {
+            if (itemCount < maxItemCount)
+            {
+                currentCoolTime -= Time.deltaTime * 0.1f;
+
+                if (isClickItemUse == false)
+                {
+                    isClickItemUse = true;
+                    coolTimeSlot.fillAmount = 1;
+                    currentCoolTime = maxCoolTime;
+
+                    StartCoroutine(CoolTime());
+                }
+
+                if (currentCoolTime <= 0)
+                {
+                    isClickItemUse = false;
+                    ++itemCount;
+                }
+            }
+        }
+
+    }
+
+    IEnumerator CoolTime()
+    {
+        while (coolTimeSlot.fillAmount > 0)
+        {
+            coolTimeSlot.fillAmount = currentCoolTime / maxCoolTime;
+
+            yield return null;
+        }
+        yield break;
     }
     #endregion
 
