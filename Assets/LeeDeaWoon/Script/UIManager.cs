@@ -192,6 +192,9 @@ public class UIManager : MonoBehaviour
         {
             hpSlider.value = currentHp / maxHp;
             currentHp -= Time.deltaTime * hpReductionSpeed;
+
+            if (currentHp > maxHp)
+                currentHp = maxHp;
         }
     }
 
