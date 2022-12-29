@@ -10,7 +10,7 @@ public class BackGroundScroll : MovingElement
         base.Start();
     }
 
-    private void Update()
+    protected override void Update()
     {
         if(transform.position.x <= -41.4f)
         {

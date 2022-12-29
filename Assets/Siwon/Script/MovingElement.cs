@@ -27,11 +27,9 @@ public class MovingElement : BaseAll
     {
         if (GameManager.Instance.IsGameStart == true)
         {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
-
+            transform.position -= new Vector3(BackGroundSpawner.Instance.backgroundSpd,transform.position.y) * Time.fixedDeltaTime;
         }
     }
-
 
     /// <summary>
     /// Spd바꿔줌

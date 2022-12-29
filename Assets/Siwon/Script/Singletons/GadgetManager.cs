@@ -99,10 +99,10 @@ public class GadgetManager : Singleton<GadgetManager>
 
     private void Start()
     {
-        pauseBackBtn.onClick.AddListener(() =>
-        {
-            IsPutOnMode = false;
-        });
+        //pauseBackBtn.onClick.AddListener(() =>
+        //{
+        //    IsPutOnMode = false;
+        //});
     }
 
     /// <summary>

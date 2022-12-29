@@ -15,10 +15,4 @@ public class BackGroundSpawner : Singleton<BackGroundSpawner>
     [Tooltip("현재 배경 Index")]
     public int currentBackgroundIndex = 1;
 
-    private void Start()
-    {
-        //SpawnBackGround();
-    }
-
-    
 }

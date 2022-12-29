@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public const float STARTSPD = 300f;
+    public const float STARTSPD = 2f;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
     public List<GameObject> piecesList = new List<GameObject>();
@@ -128,11 +128,11 @@ public class GameManager : MonoBehaviour
 
             if (isGameStart == true)
             {
-                distance += BackGroundSpawner.Instance.backgroundSpd / 1000;
+                distance += BackGroundSpawner.Instance.backgroundSpd / 5;
                 if (Player.Instance.IsBoosting == false && distance <= 3500f)
                 {
                     BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 5);
-                    Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 200f, 700f);
+                    Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 2f, 50f);
 
                 }
             }
