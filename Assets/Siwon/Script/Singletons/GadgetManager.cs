@@ -117,7 +117,7 @@ public class GadgetManager : Singleton<GadgetManager>
             //null
 
             case EGadgetType.GravityBelt:
-
+                SetGadgetAbility(type);
                 //중력 증가
                 break;
             case EGadgetType.SlowRocket:
@@ -132,6 +132,30 @@ public class GadgetManager : Singleton<GadgetManager>
                 Player.Instance.isUseXray = true;
                 //...
                 break;
+        }
+    }
+
+    private void SetGadgetAbility(EGadgetType type)
+    {
+        switch (type)
+        {
+            case EGadgetType.None:
+                Player.Instance.IsMagneting = false;
+                Player.Instance.isUseXray = false;
+                break;
+            case EGadgetType.GravityBelt:
+
+                break;
+            case EGadgetType.SlowRocket:
+
+                break;
+            case EGadgetType.Magnet:
+                Player.Instance.IsMagneting = true;
+                break;
+            case EGadgetType.XrayGoggles:
+
+                break;
+
         }
     }
 
