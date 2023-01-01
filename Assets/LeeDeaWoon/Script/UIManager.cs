@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] GameObject purchaseWindow;
+    [SerializeField] GameObject addPurchas = null;
     [SerializeField] Image purchaseItemIcon;
     [SerializeField] Sprite buyBtn;
     [SerializeField] Sprite choiceBtn;
@@ -505,16 +506,18 @@ public class UIManager : MonoBehaviour
         //구매확정 버튼을 눌렀을 때
         purchaseBtn.onClick.AddListener(() =>
         {
-            var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<TextMeshProUGUI>();
+            var itemBar = shopObj.transform.GetChild(shopItemNumber).GetChild(3).GetComponent<TextMeshProUGUI>();
 
             if (shopQuantity > 0)
             {
                 for (int i = 0; i < shopObj.transform.childCount; i++)
                 {
-                    var choice = shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>();
+                    var choice = shopObj.transform.GetChild(i).GetChild(2).GetComponent<Image>();
 
                     if (choice.sprite == selecteBtn)
                     {
+                        addPurchas = shopObj.transform.GetChild(i).GetChild(0).gameObject;
+                        addPurchas.SetActive(false);
                         choice.sprite = choiceBtn;
                         break;
                     }
@@ -527,6 +530,10 @@ public class UIManager : MonoBehaviour
                 buy.sprite = selecteBtn;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
                 itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
+
+                addPurchas = shopObj.transform.GetChild(shopItemNumber).GetChild(0).gameObject;
+                addPurchas.SetActive(true);
+
                 purchaseWindow.SetActive(false);
             }
             else
@@ -574,8 +581,8 @@ public class UIManager : MonoBehaviour
 
         shopItemNumber = number;
 
-        buy = shopObj.transform.GetChild(shopItemNumber).GetChild(1).GetComponent<Image>();
-        var selecteIcon = shopObj.transform.GetChild(shopItemNumber).GetChild(3).GetChild(2).GetComponent<Image>();
+        buy = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<Image>();
+        var selecteIcon = shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<Image>();
 
         // 선택 이나 선택완료 버튼이 아닐 때
         if (buy.sprite != choiceBtn && buy.sprite != selecteBtn)
@@ -589,19 +596,29 @@ public class UIManager : MonoBehaviour
 
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
-                var selecte = shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>();
+                var selecte = shopObj.transform.GetChild(i).GetChild(2).GetComponent<Image>();
+                addPurchas = shopObj.transform.GetChild(i).GetChild(0).gameObject;
 
                 if (selecte.sprite == selecteBtn)
                 {
+                    addPurchas.SetActive(false);
                     selecte.sprite = choiceBtn;
                     break;
                 }
             }
+            addPurchas = shopObj.transform.GetChild(shopItemNumber).GetChild(0).gameObject;
+            addPurchas.SetActive(true);
+
             buy.sprite = selecteBtn;
         }
     }
 
-    public void ItemShop()
+    public void AddPurchaseBtn()
+    {
+        purchaseWindow.SetActive(true);
+    }
+
+    void ItemShop()
     {
         if (content.transform.GetChild(0).gameObject.activeSelf == true && isShopItemCheck == false)
         {
@@ -609,12 +626,12 @@ public class UIManager : MonoBehaviour
 
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
-                var shopChild = shopObj.transform.GetChild(i).GetChild(3);
+                var shopChild = shopObj.transform.GetChild(i).GetChild(4);
 
                 var itemName = shopChild.GetChild(0).GetComponent<TextMeshProUGUI>();
                 var itemDescription = shopChild.GetChild(1).GetComponent<TextMeshProUGUI>();
                 var itemIcon = shopChild.GetChild(2).GetComponent<Image>();
-                var itemNum = shopObj.transform.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>();
+                var itemNum = shopObj.transform.GetChild(i).GetChild(3).GetComponent<TextMeshProUGUI>();
 
                 itemName.text = itemShop[i].itemName.ToString();
                 itemDescription.text = itemShop[i].itemDescription.ToString();
@@ -622,7 +639,7 @@ public class UIManager : MonoBehaviour
                 itemNum.text = itemShop[i].itemNum.ToString();
 
                 if (itemShop[i].itemNum == 0)
-                    shopObj.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = buyBtn;
+                    shopObj.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = buyBtn;
             }
         }
     }

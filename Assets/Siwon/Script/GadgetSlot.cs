@@ -68,7 +68,7 @@ public class GadgetSlot : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            print(Data);
+            //print(Data);
         }
     }
 
