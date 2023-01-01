@@ -80,5 +80,6 @@ public class GadgetSlot : MonoBehaviour
     public void ApplyIcon()
     {
         gadgetIcon.sprite = data.icon;
+        gadgetIcon.gameObject.SetActive(true);
     }
 }

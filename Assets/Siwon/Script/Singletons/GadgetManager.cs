@@ -189,8 +189,8 @@ public class GadgetManager : Singleton<GadgetManager>
         {
             if (gadgetSlotList[i].Data == null)
             {
-                gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
                 gadgetSlotList[i].Data = gadget.Data;
+                gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
                 gadget.slotIndex = i;
                 return true;
             }

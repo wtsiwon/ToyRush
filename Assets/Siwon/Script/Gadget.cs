@@ -7,6 +7,7 @@ using TMPro;
 
 public class Gadget : MonoBehaviour
 {
+    #region UI
     [SerializeField]
     [Tooltip("가젯 아이콘")]
     private Image icon;
@@ -33,6 +34,11 @@ public class Gadget : MonoBehaviour
     [SerializeField]
     [Tooltip("가젯 선택하는 버튼Btn")]
     private Button selectBtn;
+
+    [SerializeField]
+    [Tooltip("가젯 선택 해제하는 버튼")]
+    private Button selectedBtn;
+    #endregion
 
     public int slotIndex;
 
@@ -94,6 +100,11 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
+        OnClickAddListener();
+    }
+
+    private void OnClickAddListener()
+    {
         Debug.Assert(buyBtn != null, "buyBtnBtn is null");
         buyBtn.onClick.AddListener(() =>
         {
@@ -112,13 +123,18 @@ public class Gadget : MonoBehaviour
                 if (IsSelected == false)
                 {
                     IsSelected = true;
-                    GadgetManager.Instance.ApplyGadget(this);
                 }
                 else
                 {
                     IsSelected = false;
                 }
             }
+        });
+
+        Debug.Assert(selectedBtn != null, "SelectedBtn is nul");
+        selectedBtn.onClick.AddListener(() =>
+        {
+            GadgetManager.Instance.RemoveGadget(this);
         });
     }
 
@@ -135,6 +151,7 @@ public class Gadget : MonoBehaviour
         costTxt.text = data.cost.ToString("F0");
         nameTxt.text = data.name;
         explainTxt.text = data.explain;
+        icon.sprite = data.icon;
     }
     //최초로 열 때UI스폰을 해야 할까
     //그냥 처음부터 있을까
