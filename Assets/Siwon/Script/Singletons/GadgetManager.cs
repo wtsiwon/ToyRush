@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 
 public class GadgetManager : Singleton<GadgetManager>
 {
@@ -204,19 +206,96 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <returns></returns>
     public bool[] CheckSlot()
     {
-        bool[] checks = {false};
+        bool[] checks = { false };
 
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
-            checks[i] = gadgetSlotList[i].Data != null;
+            if (gadgetSlotList[i].Data != null)
+            {
+                checks[i] = true;
+            }
+            else
+            {
+                checks[i] = false;
+            }
         }
         return checks;
     }
 
+    /// <summary>
+    /// Sprite크기를 ImageRect에 맞게 맞춰주는 함수
+    /// </summary>
+    /// <param name="rect"></param>
+    /// <param name="sprite"></param>
+    /// <returns></returns>
+    private Sprite SetGadgetSpriteSize(Rect rect, Sprite sprite)
+    {
+        Sprite temp = sprite;
+        var x = temp.bounds.size.x;
+        var y = temp.bounds.size.y;
+        //Texture Resizingccccccc
+
+        //Sprite의 X,Y가 모두 큰 경우
+        if (rect.x < x && rect.y < y)
+        {
+            if(x > y)
+            {
+                x = rect.x;
+                float changeValue = x - rect.x;
+            }
+            else
+            {
+                y = rect.y;
+                float changeValue = y - rect.y;
+            }
+
+        }
+        //Sprite의 X가 더 큰 경우
+        else if (rect.x < x && rect.y > y)
+        {
+
+        }
+        //Sprite의 Y가 더 큰 경우
+        else if (rect.x > x && rect.y < y)
+        {
+
+        }
+        //Sprite의 X,Y가 Rect의 X,Y보다 작은 경우
+        else if (rect.x > x && rect.y > y)
+        {
+            
+        }
+        
+        
+        return temp;
+    }
+
+    /// <summary>
+    /// Sprite를 이미지 크기에 맞게 적용시켜주는 함수
+    /// </summary>
+    /// <param name="img"></param>
+    /// <param name="sprite"></param>
+    public void SetImageSpriteSize(Image img, Sprite sprite)
+    {
+        Rect rect = img.GetComponent<RectTransform>().rect;
+        var x = rect.x;
+        var y = rect.y;
+
+
+
+    }
     private IEnumerator CSelectGadgetSlot(Gadget gadget)
     {
         IsPutOnMode = true;
         currentSelectGadget = gadget;
         yield return null;
+    }
+}
+
+public static class SpriteExtension
+{
+    public static void ReSize(this Sprite s, int a)
+    {
+
     }
 }
