@@ -61,8 +61,6 @@ public class Gadget : MonoBehaviour
                 //장착되었다면 선택완료 Sprite로 변경
                 selectBtn.GetComponent<Image>().sprite
                     = GadgetManager.Instance.selectedBtnSprite;
-
-                GadgetManager.Instance.ApplyGadget(this);
             }
             else
             {
@@ -122,6 +120,8 @@ public class Gadget : MonoBehaviour
             {
                 if (IsSelected == false)
                 {
+                    var temp = GadgetManager.Instance.CheckSlot();
+                    GadgetManager.Instance.ApplyGadget(this);
                     IsSelected = true;
                 }
                 else

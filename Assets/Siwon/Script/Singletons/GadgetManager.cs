@@ -198,23 +198,18 @@ public class GadgetManager : Singleton<GadgetManager>
         return false;
     }
 
-
-    private bool[] CheckSlot()
+    /// <summary>
+    /// 슬롯 Check
+    /// </summary>
+    /// <returns></returns>
+    public bool[] CheckSlot()
     {
         bool[] checks = {false};
 
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
-            if(gadgetSlotList[i].Data != null)
-            {
-                checks[i] = true;
-            }
-            else
-            {
-                checks[i] = false;
-            }
+            checks[i] = gadgetSlotList[i].Data != null;
         }
-
         return checks;
     }
 
