@@ -206,7 +206,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <returns></returns>
     public bool[] CheckSlot()
     {
-        bool[] checks = { false };
+        bool[] checks = new bool[2]{false, false};
 
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
@@ -225,49 +225,53 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <summary>
     /// Sprite크기를 ImageRect에 맞게 맞춰주는 함수
     /// </summary>
-    /// <param name="rect"></param>
-    /// <param name="sprite"></param>
+    /// <param name="sprite">Sprite</param>
+    /// <param name="img">Sprite</param>
     /// <returns></returns>
-    private Sprite SetGadgetSpriteSize(Rect rect, Sprite sprite)
+    private Texture2D SetGadgetSpriteSize(Sprite sprite, Image img)
     {
-        Sprite temp = sprite;
-        var x = temp.bounds.size.x;
-        var y = temp.bounds.size.y;
-        //Texture Resizingccccccc
+        Texture2D tex = sprite.texture;
+        Rect rect = img.rectTransform.rect;
 
-        //Sprite의 X,Y가 모두 큰 경우
-        if (rect.x < x && rect.y < y)
+        var width = tex.width;
+        var height = tex.height;
+
+        var x = (int)rect.x;
+        var y = (int)rect.y;
+
+        //SpriteTexture의 width,height가 ImageRect의 X,Y가 모두 큰 경우
+        if (width > x && height > y)
         {
-            if(x > y)
+            if (x > y)
             {
-                x = rect.x;
-                float changeValue = x - rect.x;
+                float changeValue = width - x;
+                x = width;
             }
             else
             {
-                y = rect.y;
+                y = height;
                 float changeValue = y - rect.y;
             }
 
         }
-        //Sprite의 X가 더 큰 경우
+        //SpriteTexture의 width가 ImageRect의 X보다 더 큰 경우
         else if (rect.x < x && rect.y > y)
         {
 
         }
-        //Sprite의 Y가 더 큰 경우
+        //SpriteTexture의 height가 ImageRect의 Y보다 더 큰 경우
         else if (rect.x > x && rect.y < y)
         {
 
         }
-        //Sprite의 X,Y가 Rect의 X,Y보다 작은 경우
+        //SpriteTexture의 width,height가 ImageRect의 X,Y보다 작은 경우
         else if (rect.x > x && rect.y > y)
         {
-            
+
         }
-        
-        
-        return temp;
+
+
+        return tex;
     }
 
     /// <summary>
@@ -277,10 +281,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <param name="sprite"></param>
     public void SetImageSpriteSize(Image img, Sprite sprite)
     {
-        Rect rect = img.GetComponent<RectTransform>().rect;
-        var x = rect.x;
-        var y = rect.y;
-
+        
 
 
     }
