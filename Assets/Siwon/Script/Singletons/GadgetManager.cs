@@ -206,7 +206,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <returns></returns>
     public bool[] CheckSlot()
     {
-        bool[] checks = new bool[2]{false, false};
+        bool[] checks = new bool[2] { false, false };
 
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
@@ -244,13 +244,17 @@ public class GadgetManager : Singleton<GadgetManager>
         {
             if (x > y)
             {
-                float changeValue = width - x;
-                x = width;
+                float changeValuex = width - x;
+                int Intratio = (int)(width / changeValuex) * 100;
+                float ratio = Intratio / 100;
+                width = x;
             }
             else
             {
+                float changeValuey = height - y;
+                int Intratio = (int)(width / changeValuey) * 100;
+                float ratio = Intratio / 100;
                 y = height;
-                float changeValue = y - rect.y;
             }
 
         }
@@ -274,6 +278,21 @@ public class GadgetManager : Singleton<GadgetManager>
         return tex;
     }
 
+    private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
+    {
+        Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, true);
+        Color[] rpixels = result.GetPixels(0);
+        float incX = (1.0f / (float)targetWidth);
+        float incY = (1.0f / (float)targetHeight);
+        for (int px = 0; px < rpixels.Length; px++)
+        {
+            rpixels[px] = source.GetPixelBilinear(incX * ((float)px % targetWidth), incY * ((float)Mathf.Floor(px / targetWidth)));
+        }
+        result.SetPixels(rpixels, 0);
+        result.Apply();
+        return result;
+    }
+
     /// <summary>
     /// Sprite를 이미지 크기에 맞게 적용시켜주는 함수
     /// </summary>
@@ -281,7 +300,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <param name="sprite"></param>
     public void SetImageSpriteSize(Image img, Sprite sprite)
     {
-        
+
 
 
     }
