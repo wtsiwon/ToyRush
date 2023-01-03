@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 class ItemStretegy
 {
@@ -64,7 +65,12 @@ public class ShieldItem : ITEM
 
     public override void Attack()
     {
-        Debug.Log("ShieldItme »ç¿ë");
+        SpriteRenderer playerSprite = Player.Instance.GetComponent<SpriteRenderer>();
+        Player.Instance.tag = "Invincibility";
+        playerSprite.DOFade(0.3f, 0.5f).SetEase(Ease.Linear).SetLoops(4, LoopType.Yoyo).OnComplete(() =>
+        {
+            Player.Instance.tag = "Player";
+        });
     }
 }
 
