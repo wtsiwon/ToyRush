@@ -61,6 +61,7 @@ public class GadgetManager : Singleton<GadgetManager>
     private Vector3 gameStartPos;
     #endregion
 
+    [Tooltip("임나ㅓㅇ")]
     private Coroutine CselectGadgetSlot;
 
     private bool isPutOnMode;
@@ -183,7 +184,7 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <summary>
     /// 가젯 적용 시도 함수
     /// </summary>
-    /// <param name="data"></param>
+    /// <param name="gadget">적용할 가젯</param>
     /// <returns></returns>
     private bool TryApplyGadget(Gadget gadget)
     {
@@ -192,6 +193,7 @@ public class GadgetManager : Singleton<GadgetManager>
             if (gadgetSlotList[i].Data == null)
             {
                 gadgetSlotList[i].Data = gadget.Data;
+                SetGadgetSpriteSize(gadget.Data.icon, gadgetSlotList[i].gadgetIcon);
                 gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
                 gadget.slotIndex = i;
                 return true;
@@ -225,55 +227,114 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <summary>
     /// Sprite크기를 ImageRect에 맞게 맞춰주는 함수
     /// </summary>
-    /// <param name="sprite">Sprite</param>
-    /// <param name="img">Sprite</param>
+    /// <param name="sprite">Image Component에 넣을 Sprite</param>
+    /// <param name="img">Sprite를 넣을 Image Component</param>
     /// <returns></returns>
     private Texture2D SetGadgetSpriteSize(Sprite sprite, Image img)
     {
         Texture2D tex = sprite.texture;
+
         Rect rect = img.rectTransform.rect;
 
-        var width = tex.width;
-        var height = tex.height;
+        var texWidth = tex.width;//Sprite
+        var texHeight = tex.height;
 
-        var x = (int)rect.x;
-        var y = (int)rect.y;
+        /// <summary>
+        /// Image width
+        /// </summary>
+        var rectWidth = (int)rect.width;
 
-        //SpriteTexture의 width,height가 ImageRect의 X,Y가 모두 큰 경우
-        if (width > x && height > y)
+        var rectHeight = (int)rect.height;
+
+        #region 수정전
+        //SpriteTexture의 width,height가 ImageRect의 width,height가 모두 큰 경우
+        if (texWidth > rectWidth && texHeight > rectHeight)
         {
-            if (x > y)
+            if (rectWidth > rectHeight)
             {
-                float changeValuex = width - x;
-                int Intratio = (int)(width / changeValuex) * 100;
-                float ratio = Intratio / 100;
-                width = x;
+                //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+                int heightRatioInt = texHeight / texWidth * 100;
+                float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+                texWidth = rectWidth;
+
+                texHeight = (int)(texWidth * heightRatioFloat);
             }
             else
             {
-                float changeValuey = height - y;
-                int Intratio = (int)(width / changeValuey) * 100;
-                float ratio = Intratio / 100;
-                y = height;
+                //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+                int widthRatioInt = texWidth / texHeight * 100;
+                float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+                texHeight = rectHeight;
+
+                texWidth = (int)(texHeight * widthRatioFloat);
             }
-
         }
-        //SpriteTexture의 width가 ImageRect의 X보다 더 큰 경우
-        else if (rect.x < x && rect.y > y)
+        //SpriteTexture의 width가 ImageRect의 width보다 더 큰 경우
+        else if (rectWidth < texWidth && rectHeight > texHeight)
         {
+            int heightRatioInt = texHeight / texWidth * 100;
+            float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+            texWidth = rectWidth;
 
+            texHeight = (int)(texWidth * heightRatioFloat);
         }
-        //SpriteTexture의 height가 ImageRect의 Y보다 더 큰 경우
-        else if (rect.x > x && rect.y < y)
+        //SpriteTexture의 height가 ImageRect의 height보다 더 큰 경우
+        else if (rectWidth > texWidth && rectHeight < texHeight)
         {
+            //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+            int widthRatioInt = texWidth / texHeight * 100;
+            float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+            texHeight = rectHeight;
 
+            texWidth = (int)(texHeight * widthRatioFloat);
         }
-        //SpriteTexture의 width,height가 ImageRect의 X,Y보다 작은 경우
-        else if (rect.x > x && rect.y > y)
+        //SpriteTexture의 width,height가 ImageRect의 width,height보다 작은 경우
+        else if (rectWidth > texWidth && rectHeight > texHeight)
         {
+            if (rectWidth > rectHeight)
+            {
+                //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+                int heightRatioInt = texHeight / texWidth * 100;
+                float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+                texWidth = rectWidth;
 
+                texHeight = (int)(texWidth * heightRatioFloat);
+            }
+            else
+            {
+                //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+                int widthRatioInt = texWidth / texHeight * 100;
+                float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+                texHeight = rectHeight;
+
+                texWidth = (int)(texHeight * widthRatioFloat);
+            }
         }
+        #endregion
 
+        //if (tex.width >= tex.height)
+        //{
+        //    //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+        //    int heightRatioInt = texHeight / texWidth * 100;
+        //    float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+        //    texWidth = rectWidth;
+
+        //    texHeight = (int)(texWidth * heightRatioFloat);
+        //}
+        //else
+        //{
+        //    //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+        //    int widthRatioInt = texWidth / texHeight * 100;
+        //    float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+        //    texHeight = rectHeight;
+
+        //    texWidth = (int)(texHeight * widthRatioFloat);
+        //}
+
+        tex.width = texWidth;
+        tex.height = texHeight;
+
+        img.sprite = sprite;
 
         return tex;
     }
