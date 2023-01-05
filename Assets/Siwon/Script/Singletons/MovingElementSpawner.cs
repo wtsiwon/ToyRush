@@ -10,7 +10,7 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     [Header("ObstaclePattern prefabs")]
     [Tooltip("ObstacleCoinPattern Prefab")]
-    [Space(15f)]
+    [Space(10f)]
     public GameObject[] obstaclePatterns;
 
     [Tooltip("장애물 회전방향 값을 담는 Dictionary")]
@@ -18,10 +18,12 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
     [Header("obstacleAnimationInfos")]
     [Tooltip("장애물 Animation Infos")]
-    [Space(15f)]
+    [Space(10f)]
     public List<Array<RuntimeAnimatorController>> obstacleAnimation = new List<Array<RuntimeAnimatorController>>();
 
     public bool isSpawn;
+
+    public float spawnDelay;
     
     public ECurrentSpawnType spawnType;
 
@@ -59,13 +61,8 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
             if (isSpawn == true)
             {
-                yield return new WaitForSeconds(3f);
-                //GetRandomObstaclePattern();
-
-                if (beforeSpawnPattern.transform.position.x <= defaultPos.x)
-                {
-                    GetRandomObstaclePattern();
-                }
+                yield return new WaitForSeconds(spawnDelay);
+                GetRandomObstaclePattern();
             }
             //스폰 함수호출등
         }

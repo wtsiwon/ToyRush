@@ -899,6 +899,7 @@ MonoBehaviour:
     - {fileID: 9100000, guid: 75c33fbab9d20f447988b681181b5791, type: 2}
     - {fileID: 9100000, guid: 53cea1d499e6adb48b5cf2126798db84, type: 2}
   isSpawn: 0
+  spawnDelay: 0
   spawnType: 0
   beforeSpawnPattern: {fileID: 620736078}
 --- !u!4 &8262276506933306181
@@ -1152,6 +1153,7 @@ MonoBehaviour:
   boosterType: 0
   items: []
   isUseXray: 0
+  boostingSpd: 250
   vehicleType: 0
   force: 3100
   spriterenderer: {fileID: 0}

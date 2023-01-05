@@ -21,7 +21,7 @@ public class Player : Singleton<Player>
             isBoosting = value;
             if (value == true)
             {
-                StartCoroutine(CWaitChangeBoosterSpd());
+                StartCoroutine(nameof(CWaitChangeBoosterSpd));
             }
             else
             {
@@ -60,6 +60,8 @@ public class Player : Singleton<Player>
      IsBig || isBoosting;
 
     public bool isUseXray;
+
+    public float boostingSpd;
 
     private bool isDie;
     public bool IsDie
@@ -122,14 +124,14 @@ public class Player : Singleton<Player>
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            print(isPressing);
+            //print(isPressing);
         }
     }
 
     private IEnumerator CWaitChangeBoosterSpd()
     {
         yield return new WaitForSeconds(2f);
-        BackGroundSpawner.Instance.backgroundSpd = 4000f;
+        BackGroundSpawner.Instance.backgroundSpd = boostingSpd;
     }
 
 
