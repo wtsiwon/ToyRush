@@ -232,7 +232,9 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <returns></returns>
     private Texture2D SetGadgetSpriteSize(Sprite sprite, Image img)
     {
-        Texture2D tex = sprite.texture;
+        Texture2D tex = new Texture2D(sprite.texture.width, sprite.texture.height);
+        
+
 
         Rect rect = img.rectTransform.rect;
 
@@ -247,81 +249,39 @@ public class GadgetManager : Singleton<GadgetManager>
         var rectHeight = (int)rect.height;
 
         #region 수정전
-        //SpriteTexture의 width,height가 ImageRect의 width,height가 모두 큰 경우
-        if (texWidth > rectWidth && texHeight > rectHeight)
-        {
-            if (rectWidth > rectHeight)
-            {
-                //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
-                int heightRatioInt = texHeight / texWidth * 100;
-                float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
-                texWidth = rectWidth;
-
-                texHeight = (int)(texWidth * heightRatioFloat);
-            }
-            else
-            {
-                //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
-                int widthRatioInt = texWidth / texHeight * 100;
-                float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
-                texHeight = rectHeight;
-
-                texWidth = (int)(texHeight * widthRatioFloat);
-            }
-        }
-        //SpriteTexture의 width가 ImageRect의 width보다 더 큰 경우
-        else if (rectWidth < texWidth && rectHeight > texHeight)
-        {
-            int heightRatioInt = texHeight / texWidth * 100;
-            float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
-            texWidth = rectWidth;
-
-            texHeight = (int)(texWidth * heightRatioFloat);
-        }
-        //SpriteTexture의 height가 ImageRect의 height보다 더 큰 경우
-        else if (rectWidth > texWidth && rectHeight < texHeight)
-        {
-            //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
-            int widthRatioInt = texWidth / texHeight * 100;
-            float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
-            texHeight = rectHeight;
-
-            texWidth = (int)(texHeight * widthRatioFloat);
-        }
-        //SpriteTexture의 width,height가 ImageRect의 width,height보다 작은 경우
-        else if (rectWidth > texWidth && rectHeight > texHeight)
-        {
-            if (rectWidth > rectHeight)
-            {
-                //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
-                int heightRatioInt = texHeight / texWidth * 100;
-                float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
-                texWidth = rectWidth;
-
-                texHeight = (int)(texWidth * heightRatioFloat);
-            }
-            else
-            {
-                //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
-                int widthRatioInt = texWidth / texHeight * 100;
-                float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
-                texHeight = rectHeight;
-
-                texWidth = (int)(texHeight * widthRatioFloat);
-            }
-        }
-        #endregion
-
-        //if (tex.width >= tex.height)
+        ////SpriteTexture의 width,height가 ImageRect의 width,height가 모두 큰 경우
+        //if (texWidth > rectWidth && texHeight > rectHeight)
         //{
-        //    //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+        //    if (rectWidth > rectHeight)
+        //    {
+        //        //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+        //        int heightRatioInt = texHeight / texWidth * 100;
+        //        float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+        //        texWidth = rectWidth;
+
+        //        texHeight = (int)(texWidth * heightRatioFloat);
+        //    }
+        //    else
+        //    {
+        //        //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+        //        int widthRatioInt = texWidth / texHeight * 100;
+        //        float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+        //        texHeight = rectHeight;
+
+        //        texWidth = (int)(texHeight * widthRatioFloat);
+        //    }
+        //}
+        ////SpriteTexture의 width가 ImageRect의 width보다 더 큰 경우
+        //else if (rectWidth < texWidth && rectHeight > texHeight)
+        //{
         //    int heightRatioInt = texHeight / texWidth * 100;
         //    float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
         //    texWidth = rectWidth;
 
         //    texHeight = (int)(texWidth * heightRatioFloat);
         //}
-        //else
+        ////SpriteTexture의 height가 ImageRect의 height보다 더 큰 경우
+        //else if (rectWidth > texWidth && rectHeight < texHeight)
         //{
         //    //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
         //    int widthRatioInt = texWidth / texHeight * 100;
@@ -330,6 +290,52 @@ public class GadgetManager : Singleton<GadgetManager>
 
         //    texWidth = (int)(texHeight * widthRatioFloat);
         //}
+        ////SpriteTexture의 width,height가 ImageRect의 width,height보다 작은 경우
+        //else if (rectWidth > texWidth && rectHeight > texHeight)
+        //{
+        //    if (rectWidth > rectHeight)
+        //    {
+        //        //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+        //        int heightRatioInt = texHeight / texWidth * 100;
+        //        float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+        //        texWidth = rectWidth;
+
+        //        texHeight = (int)(texWidth * heightRatioFloat);
+        //    }
+        //    else
+        //    {
+        //        //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+        //        int widthRatioInt = texWidth / texHeight * 100;
+        //        float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+        //        texHeight = rectHeight;
+
+        //        texWidth = (int)(texHeight * widthRatioFloat);
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.Assert(false,"여기 오면 안돼는데..ㅠ");
+        //}
+        #endregion
+
+        if (tex.width >= tex.height)
+        {
+            //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
+            int heightRatioInt = texHeight / texWidth * 100;
+            float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
+            texWidth = rectWidth;
+
+            texHeight = (int)(texWidth * heightRatioFloat);
+        }
+        else
+        {
+            //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
+            int widthRatioInt = texWidth / texHeight * 100;
+            float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
+            texHeight = rectHeight;
+
+            texWidth = (int)(texHeight * widthRatioFloat);
+        }
 
         tex.width = texWidth;
         tex.height = texHeight;

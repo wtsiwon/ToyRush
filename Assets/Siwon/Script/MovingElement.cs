@@ -27,7 +27,7 @@ public class MovingElement : BaseAll
     {
         if (GameManager.Instance.IsGameStart == true)
         {
-            transform.position -= new Vector3(BackGroundSpawner.Instance.backgroundSpd,transform.position.y) * Time.fixedDeltaTime;
+            transform.position = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
         }
     }
 
