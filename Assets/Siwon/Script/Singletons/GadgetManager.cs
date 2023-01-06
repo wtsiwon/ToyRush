@@ -177,7 +177,7 @@ public class GadgetManager : Singleton<GadgetManager>
 
     public void RemoveGadget(Gadget gadget)
     {
-        gadgetSlotList[gadget.slotIndex] = null;
+        gadgetSlotList[gadget.slotIndex].Data = null;
     }
 
 
@@ -201,6 +201,19 @@ public class GadgetManager : Singleton<GadgetManager>
             }
         }
         return false;
+    }
+
+    /// <summary>
+    /// 가젯 슬롯에 해당하는 가젯이 있는지 확인하는 함수
+    /// </summary>
+    /// <param name="gadget"></param>
+    public bool CheckGadgetSlot(Gadget gadget)
+    {
+        for (int i = 0; i < gadgetSlotList.Count; i++)
+        {
+            
+        }
+        return true;
     }
 
     /// <summary>

@@ -10,6 +10,13 @@ public class GadgetSlot : MonoBehaviour
     {
         get
         {
+            
+            return data;
+        }
+        set
+        {
+            data = value;
+
             if (data != null)
             {
                 gadgetIcon.gameObject.SetActive(true);
@@ -18,22 +25,7 @@ public class GadgetSlot : MonoBehaviour
             else
             {
                 gadgetIcon.gameObject.SetActive(false);
-            }
-            return data;
-        }
-        set
-        {
-            data = value;
-            if (data == null)
-            {
-                putOnbtn.gameObject.SetActive(false);
-                print("GadgetSlot" + isActiveAndEnabled);
-            }
-            else
-            {
-                putOnbtn.gameObject.SetActive(true);
-                print("GadgetSlot" + isActiveAndEnabled);
-                ApplyIcon();
+                gadgetIcon.sprite = null;
             }
         }
     }

@@ -13,21 +13,23 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     [Space(10f)]
     public GameObject[] obstaclePatterns;
 
-    [Tooltip("Àå¾Ö¹° È¸Àü¹æÇâ °ªÀ» ´ã´Â Dictionary")]
+    [Tooltip("ì¥ì• ë¬¼ íšŒì „ë°©í–¥ ê°’ì„ ë‹´ëŠ” Dictionary")]
     public Dictionary<EDir, Vector3> rotatesDic = new Dictionary<EDir, Vector3>();
 
     [Header("obstacleAnimationInfos")]
-    [Tooltip("Àå¾Ö¹° Animation Infos")]
+    [Tooltip("ì¥ì• ë¬¼ Animation Infos")]
     [Space(10f)]
     public List<Array<RuntimeAnimatorController>> obstacleAnimation = new List<Array<RuntimeAnimatorController>>();
 
     public bool isSpawn;
 
     public float spawnDelay;
-    
+
+    public float minSpawnDelay;
+
     public ECurrentSpawnType spawnType;
 
-    [Tooltip("Àü¿¡ ¼ÒÈ¯µÈ ÆĞÅÏ")]
+    [Tooltip("ì „ì— ì†Œí™˜ëœ íŒ¨í„´")]
     [Space(15f)]
     public GameObject beforeSpawnPattern;
 
@@ -50,7 +52,7 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
     }
 
     /// <summary>
-    /// ½ºÆ÷³Ê
+    /// ìŠ¤í¬ë„ˆ
     /// </summary>
     /// <returns></returns>
     private IEnumerator CUpdate()
@@ -61,10 +63,12 @@ public class MovingElementSpawner : Singleton<MovingElementSpawner>
 
             if (isSpawn == true)
             {
+                //if(spawnDelay - BackGroundSpawner.Instance.backgroundSpd / 10 < )
+
                 yield return new WaitForSeconds(spawnDelay);
                 GetRandomObstaclePattern();
             }
-            //½ºÆù ÇÔ¼öÈ£Ãâµî
+            //ìŠ¤í° í•¨ìˆ˜í˜¸ì¶œë“±
         }
     }
 

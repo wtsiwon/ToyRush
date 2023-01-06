@@ -120,8 +120,12 @@ public class Gadget : MonoBehaviour
             {
                 if (IsSelected == false)
                 {
-                    var temp = GadgetManager.Instance.CheckSlot();
-                    GadgetManager.Instance.ApplyGadget(this);
+                    var checks = GadgetManager.Instance.CheckSlot();
+                    if (checks[0] == false || checks[1] == false)
+                    {
+                        GadgetManager.Instance.ApplyGadget(this);
+                    }
+
                     IsSelected = true;
                 }
                 else
@@ -135,6 +139,7 @@ public class Gadget : MonoBehaviour
         selectedBtn.onClick.AddListener(() =>
         {
             GadgetManager.Instance.RemoveGadget(this);
+            IsSelected = false;
         });
     }
 
