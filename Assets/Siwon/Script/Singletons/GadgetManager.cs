@@ -193,8 +193,9 @@ public class GadgetManager : Singleton<GadgetManager>
             if (gadgetSlotList[i].Data == null)
             {
                 gadgetSlotList[i].Data = gadget.Data;
-                SetGadgetSpriteSize(gadget.Data.icon, gadgetSlotList[i].gadgetIcon);
+                RatioXY ratioXY = SetGadgetSpriteSize(gadget.Data.icon, gadgetSlotList[i].gadgetIcon);
                 gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
+                gadgetSlotList[i].gadgetIcon.rectTransform.localScale = new Vector3(ratioXY.x, ratioXY.y, 0);
                 gadget.slotIndex = i;
                 return true;
             }
@@ -230,16 +231,16 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <param name="sprite">Image Component에 넣을 Sprite</param>
     /// <param name="img">Sprite를 넣을 Image Component</param>
     /// <returns></returns>
-    private Texture2D SetGadgetSpriteSize(Sprite sprite, Image img)
+    private RatioXY SetGadgetSpriteSize(Sprite sprite, Image img)
     {
-        Texture2D tex = new Texture2D(sprite.texture.width, sprite.texture.height);
-        
+        RatioXY xy = new RatioXY();
 
+        Texture2D tex = new Texture2D(sprite.texture.width, sprite.texture.height);
 
         Rect rect = img.rectTransform.rect;
 
-        var texWidth = tex.width;//Sprite
-        var texHeight = tex.height;
+        float texWidth = tex.width;//Sprite
+        float texHeight = tex.height;
 
         /// <summary>
         /// Image width
@@ -321,28 +322,24 @@ public class GadgetManager : Singleton<GadgetManager>
         if (tex.width >= tex.height)
         {
             //width가 더 크기 때문에 width의 비율을 1으로 생각하고 계산
-            int heightRatioInt = texHeight / texWidth * 100;
-            float heightRatioFloat = heightRatioInt / 100;//width에 대한 height비율
-            texWidth = rectWidth;
+            float heightRatio = texHeight / texWidth;
 
-            texHeight = (int)(texWidth * heightRatioFloat);
+            texWidth = 1;
+            texHeight = heightRatio;
         }
         else
         {
             //height가 더 크기 때문에 height의 비율을 1으로 생각하고 계산
-            int widthRatioInt = texWidth / texHeight * 100;
-            float widthRatioFloat = widthRatioInt / 100;//width에 대한 height비율
-            texHeight = rectHeight;
+            float widthRatio = texWidth / texHeight;
 
-            texWidth = (int)(texHeight * widthRatioFloat);
+            texHeight = 1;
+            texWidth = widthRatio;
         }
 
-        tex.width = texWidth;
-        tex.height = texHeight;
+        xy.x = texWidth;
+        xy.y = texHeight;
 
-        img.sprite = sprite;
-
-        return tex;
+        return xy;
     }
 
     private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
@@ -377,6 +374,12 @@ public class GadgetManager : Singleton<GadgetManager>
         currentSelectGadget = gadget;
         yield return null;
     }
+}
+
+public struct RatioXY
+{
+    public float x;
+    public float y;
 }
 
 public static class SpriteExtension
