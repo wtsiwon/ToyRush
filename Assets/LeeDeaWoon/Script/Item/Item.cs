@@ -70,44 +70,15 @@ public class Item : AbstractItem
             switch (itemType)
             {
                 case EItemType.Transformation:
-
                     break;
-
 
                 case EItemType.Magnet: // 자석
-                    if (Player.Instance.IsBoosting == false)
-                    {
-                        Player.Instance.IsMagneting = true;
-
-                        #region 자석 연출
-                        var magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
-                        magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
-
-                        var spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
-                        magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
-                        spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
-                        #endregion
-
-                        yield return new WaitForSeconds(magnetWaitingTime);
-                        Player.Instance.IsMagneting = false;
-
-                        magnetScaleObj.transform.DOKill();
-                        spriteRenderer.DOKill();
-
-                        magnetTimer = 0;
-
-                        Destroy(magnetScaleObj);
-                    }
-
+                    StartCoroutine(Magnet());
                     break;
-
 
                 case EItemType.Piggybank: // 저금통
-                    Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
-                    UIManager.Instance.coin += getCoin;
-                    GameManager.Instance.haveCoin += getCoin;
+                    Piggybank();
                     break;
-
 
                 case EItemType.Booster: // 부스터
                     if (Player.Instance.IsBoosting == false)
@@ -174,13 +145,10 @@ public class Item : AbstractItem
                     }
                     break;
 
-
                 case EItemType.Coinconverter:
                     break;
 
-
                 case EItemType.Sizecontrol: // 크기 조절
-
                     if (Player.Instance.IsBoosting == false)
                     {
                         Player.Instance.IsBig = true;
@@ -206,11 +174,42 @@ public class Item : AbstractItem
                         Destroy(this.gameObject);
                         sizeTimer = 0;
                     }
-
                     break;
             }
-
         }
     }
 
+    IEnumerator Magnet()
+    {
+        if (!Player.Instance.IsBoosting)
+        {
+            Player.Instance.IsMagneting = true;
+
+            #region 자석 연출
+            var magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
+            magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
+
+            var spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
+            magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
+            spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
+            #endregion
+
+            yield return new WaitForSeconds(magnetWaitingTime);
+            Player.Instance.IsMagneting = false;
+
+            magnetScaleObj.transform.DOKill();
+            spriteRenderer.DOKill();
+
+            magnetTimer = 0;
+
+            Destroy(magnetScaleObj);
+        }
+    }
+
+    void Piggybank()
+    {
+        Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
+        UIManager.Instance.coin += getCoin;
+        GameManager.Instance.haveCoin += getCoin;
+    }
 }
