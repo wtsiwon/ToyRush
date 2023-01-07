@@ -28,9 +28,9 @@ public class GadgetManager : Singleton<GadgetManager>
     #region UIs
     [Header("UI Sprite")]
     [Space(15f)]
-    [Tooltip("장착하기 전 버튼 UISprite")]
+    [Tooltip("선택 Sprite")]
     public Sprite selectBtnSprite;
-    [Tooltip("장착된 버튼 UISprite")]
+    [Tooltip("선택 해제 Sprtie")]
     public Sprite selectedBtnSprite;
 
     [SerializeField]
@@ -64,7 +64,7 @@ public class GadgetManager : Singleton<GadgetManager>
     [Tooltip("임나ㅓㅇ")]
     private Coroutine CselectGadgetSlot;
 
-    private bool isPutOnMode;
+    private bool isPutOnMode = false;
     //가젯 장착 모드
     public bool IsPutOnMode
     {
@@ -177,6 +177,7 @@ public class GadgetManager : Singleton<GadgetManager>
 
     public void RemoveGadget(Gadget gadget)
     {
+        gadget.IsSelected = false;
         gadgetSlotList[gadget.slotIndex].Data = null;
     }
 
@@ -377,9 +378,13 @@ public class GadgetManager : Singleton<GadgetManager>
     /// <param name="sprite"></param>
     public void SetImageSpriteSize(Image img, Sprite sprite)
     {
+        if (img == null || sprite == null) return;
 
+        RatioXY ratio = SetGadgetSpriteSize(sprite, img);
 
+        img.rectTransform.localScale = new Vector3(ratio.x, ratio.y, 0);
 
+        img.sprite = sprite;
     }
     private IEnumerator CSelectGadgetSlot(Gadget gadget)
     {

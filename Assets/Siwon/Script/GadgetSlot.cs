@@ -5,18 +5,17 @@ using UnityEngine.UI;
 
 public class GadgetSlot : MonoBehaviour
 {
+    [SerializeField]
     private GadgetData data;
     public GadgetData Data
     {
         get
         {
-            
             return data;
         }
         set
         {
             data = value;
-
             if (data != null)
             {
                 gadgetIcon.gameObject.SetActive(true);
