@@ -80,10 +80,10 @@ public class Item : AbstractItem
                         Player.Instance.IsMagneting = true;
 
                         #region 자석 연출
-                        GameObject magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
+                        var magnetScaleObj = Instantiate(magnetScale.gameObject, Vector2.zero, Quaternion.identity);
                         magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
-                        SpriteRenderer spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
+                        var spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
                         magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
                         spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
                         #endregion
@@ -106,12 +106,6 @@ public class Item : AbstractItem
                     Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity).transform.SetParent(gameObject.transform, false);
                     UIManager.Instance.coin += getCoin;
                     GameManager.Instance.haveCoin += getCoin;
-
-                    //GameObject bankCoinPattern = Instantiate(piggybankCoin, new Vector2(transform.position.x + Random.Range(posMinX, posMaxX), transform.position.y + Random.Range(posMinY, posMaxY)), Quaternion.identity);
-                    //bankCoinPattern.transform.parent = gameObject.transform;
-                    //bankCoinPattern.GetComponent<Rigidbody2D>().velocity = Vector3.left *
-                    //    BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
-
                     break;
 
 
@@ -178,7 +172,6 @@ public class Item : AbstractItem
 
                         Destroy(this.gameObject);
                     }
-
                     break;
 
 

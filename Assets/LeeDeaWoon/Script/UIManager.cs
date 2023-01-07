@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image coolTimeSlot;
     [SerializeField] TextMeshProUGUI itemCountText;
 
-    const int maxItemCount = 3;
+    int maxItemCount;
     bool isClickItemUse = false;
 
 
@@ -147,7 +147,6 @@ public class UIManager : MonoBehaviour
         hpBar();
         ClickItem();
     }
-
 
     void UI_Btns()
     {
@@ -524,10 +523,12 @@ public class UIManager : MonoBehaviour
                 }
 
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
+
                 context.eShopItem = itemShop[shopItemNumber].eShopItem;
                 itemSlot.sprite = itemShop[shopItemNumber].itemIcon;
 
                 buy.sprite = selecteBtn;
+                maxItemCount += shopQuantity;
                 itemShop[shopItemNumber].itemNum += shopQuantity;
                 itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
 
