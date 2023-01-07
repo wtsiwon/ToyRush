@@ -37,7 +37,7 @@ public class Gadget : MonoBehaviour
 
     [SerializeField]
     [Tooltip("가젯 선택 해제하는 버튼")]
-    private Button selectedBtn;
+    private Button deSelectBtn;
     #endregion
 
     public int slotIndex;
@@ -80,6 +80,10 @@ public class Gadget : MonoBehaviour
             print(IsBought);
             buyBtn.gameObject.SetActive(!value);
             selectBtn.gameObject.SetActive(value);
+            if(value == true)
+            {
+                //selectBtn.GetComponent<Image>().sprite = 
+            }
         }
     }
 
@@ -121,25 +125,23 @@ public class Gadget : MonoBehaviour
                 if (IsSelected == false)
                 {
                     var checks = GadgetManager.Instance.CheckSlot();
-                    if (checks[0] == false || checks[1] == false)
-                    {
-                        GadgetManager.Instance.ApplyGadget(this);
-                    }
+                    if (checks[0] == true || checks[1] == true) return;
 
+                    GadgetManager.Instance.ApplyGadget(this);
                     IsSelected = true;
                 }
                 else
                 {
                     IsSelected = false;
+                    GadgetManager.Instance.RemoveGadget(this);
                 }
             }
         });
 
-        Debug.Assert(selectedBtn != null, "SelectedBtn is nul");
-        selectedBtn.onClick.AddListener(() =>
+        Debug.Assert(deSelectBtn != null, "DeSelectBtn is null");
+        deSelectBtn.onClick.AddListener(() =>
         {
             GadgetManager.Instance.RemoveGadget(this);
-            IsSelected = false;
         });
     }
 
@@ -156,7 +158,7 @@ public class Gadget : MonoBehaviour
         costTxt.text = data.cost.ToString("F0");
         nameTxt.text = data.name;
         explainTxt.text = data.explain;
-        icon.sprite = data.icon;
+        GadgetManager.Instance.SetImageSpriteSize(icon, data.icon);
     }
     //최초로 열 때UI스폰을 해야 할까
     //그냥 처음부터 있을까
