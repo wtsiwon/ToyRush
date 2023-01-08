@@ -49,6 +49,7 @@ public class ItemShop : MonoBehaviour
                         break;
 
                     case EShopItem.TreasureBox:
+                        TreasureBox();
                         break;
 
                     case EShopItem.PirateRoulette:
@@ -99,7 +100,8 @@ public class ItemShop : MonoBehaviour
 
     void TreasureBox()
     {
-
+        Instantiate(ItemManager.inst.itemList[Random.Range(0, ItemManager.inst.itemList.Count)], new Vector2(11, 2),
+        Quaternion.identity).transform.parent = gameObject.transform;
     }
 
     void PirateRoulette()
