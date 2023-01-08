@@ -44,7 +44,6 @@ public class UIManager : MonoBehaviour
     int maxItemCount;
     bool isClickItemUse = false;
 
-
     #region 상점
     [Header("상점")]
     public List<Shop> itemShop = new List<Shop>();

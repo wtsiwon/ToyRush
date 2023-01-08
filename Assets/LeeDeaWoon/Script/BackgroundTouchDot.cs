@@ -43,7 +43,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine("BtnMove");
+        StartCoroutine(BtnMove());
     }
 
     public void OnPointerDown(PointerEventData eventData)

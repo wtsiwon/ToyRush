@@ -68,8 +68,8 @@ public class ItemManager : MonoBehaviour
     #region 시작 아이템
     public void StartItem_Btn()
     {
-        int movePos = 1250;
-        float waitTime = 0.5f;
+        const int movePos = 1250;
+        const float waitTime = 0.5f;
 
         // 500원 부스터 버튼을 눌렀을 때
         booster500Btn.onClick.AddListener(() =>
@@ -219,7 +219,7 @@ public class ItemManager : MonoBehaviour
 
         playerTransform.DOLocalMoveX(5.5f, 0);
 
-        playerTransform.DOLocalMoveX(playerTransform.position.x, 0.5f);
+        playerTransform.DOLocalMoveX(-5, 0.5f);
         Player.Instance.IsBoosting = false;
 
         #region 무적시간
