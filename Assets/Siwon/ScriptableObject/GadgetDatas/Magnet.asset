@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076fd4024f0ec9f4e99afd91c1d8a72e, type: 3}
   m_Name: Magnet
   m_EditorClassIdentifier: 
-  gedgetType: 2
+  gadgetType: 2
   icon: {fileID: 21300000, guid: 51bb7f5751186864187caf907f5c0049, type: 3}
   name: "\uC790\uC11D"
   explain: "\uAC8C\uC784 \uD50C\uB808\uC774\uD558\uB294 \uC911 \uC791\uC740 \uC790\uC11D\uC774
     \uC601\uAD6C\uD788 \uBC1C\uB3D9\uB429\uB2C8\uB2E4"
   cost: 40000
-  isBought: 0
+  isBought: 1

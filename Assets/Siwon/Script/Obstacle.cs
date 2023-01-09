@@ -168,10 +168,10 @@ public class Obstacle : MovingElement
             yield return new WaitForSeconds(0.02f);
         }
     }
-
+    
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision is Player)
+        if (collision.CompareTag("Player"))
         {
             if (Player.Instance.IsBoosting == true)
             {

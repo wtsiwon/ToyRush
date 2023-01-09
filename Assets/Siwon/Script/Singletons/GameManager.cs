@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
             if (isGameStart == true)
             {
-                distance += spd / 50;
+                distance += spd / 20;
                 if (Player.Instance.IsBoosting == false && distance <= 3500f)
                 {
                     spd = STARTSPD + (distance / 500);

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076fd4024f0ec9f4e99afd91c1d8a72e, type: 3}
   m_Name: SlowRocket
   m_EditorClassIdentifier: 
-  gedgetType: 3
+  gadgetType: 3
   icon: {fileID: 21300000, guid: a3fc0f73f684f754a8b5efe868f7458f, type: 3}
   name: "\uC2AC\uB85C\uC6B0 \uB85C\uCF13"
   explain: "\uACF5\uACA9\uB4E4\uC758 \uC18D\uB3C4\uAC00 20% \uAC10\uC18C\uD569\uB2C8\uB2E4"
   cost: 300000
-  isBought: 0
+  isBought: 1

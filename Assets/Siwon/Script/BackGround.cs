@@ -40,7 +40,7 @@ public class BackGround : MovingElement
         //{
         //    rb.velocity = Vector3.left * GameManager.Instance.pd * Time.fixedDeltaTime;
         //}
-        //base.FixedUpdate();
+        base.FixedUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
