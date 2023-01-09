@@ -56,18 +56,8 @@ public class Gadget : MonoBehaviour
         set
         {
             isSelected = value;
-            if (value == true)
-            {
-                //장착되었다면 선택완료 Sprite로 변경
-                selectBtn.gameObject.SetActive(!value);
-                deSelectBtn.gameObject.SetActive(value);
-            }
-            else
-            {
-                //장착 해제가 되었으면 선택 Sprite로 변경
-                selectBtn.gameObject.SetActive(value);
-                deSelectBtn.gameObject.SetActive(!value);
-            }
+            selectBtn.gameObject.SetActive(!value);
+            deSelectBtn.gameObject.SetActive(value);
         }
     }
 
@@ -77,13 +67,9 @@ public class Gadget : MonoBehaviour
         set
         {
             data.isBought = value;
-            print(IsBought);
+
             buyBtn.gameObject.SetActive(!value);
             selectBtn.gameObject.SetActive(value);
-            if(value == true)
-            {
-                //selectBtn.GetComponent<Image>().sprite = 
-            }
         }
     }
 
@@ -107,7 +93,7 @@ public class Gadget : MonoBehaviour
 
     private void OnClickAddListener()
     {
-        Debug.Assert(buyBtn != null, "buyBtnBtn is null");
+        Debug.Assert(buyBtn != null, $"buyBtnBtn is null {data.gadgetType}");
         buyBtn.onClick.AddListener(() =>
         {
             if (GameManager.Instance.haveCoin >= data.cost)
@@ -117,16 +103,13 @@ public class Gadget : MonoBehaviour
             }
         });
 
-        Debug.Assert(selectBtn != null, "SelectBtn is null");
+        Debug.Assert(selectBtn != null, $"SelectBtn is null {data.gadgetType}");
         selectBtn.onClick.AddListener(() =>
         {
             if (IsBought == true)
             {
                 if (IsSelected == false)
                 {
-                    var checks = GadgetManager.Instance.CheckSlot();
-                    if (checks[0] == true || checks[1] == true) return;
-
                     GadgetManager.Instance.ApplyGadget(this);
                     IsSelected = true;
                 }
@@ -138,10 +121,11 @@ public class Gadget : MonoBehaviour
             }
         });
 
-        Debug.Assert(deSelectBtn != null, $"DeSelectBtn is null {data.gedgetType}");
+        Debug.Assert(deSelectBtn != null, $"DeSelectBtn is null {data.gadgetType}");
         deSelectBtn.onClick.AddListener(() =>
         {
             GadgetManager.Instance.RemoveGadget(this);
+            IsSelected = false;
         });
     }
 

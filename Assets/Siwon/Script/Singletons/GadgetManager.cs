@@ -167,17 +167,16 @@ public class GadgetManager : Singleton<GadgetManager>
     /// </summary>
     public void ApplyGadget(Gadget gadget)
     {
-        //gadgetSlotList
+        print(gadget.Data.gadgetType);
         if (TryApplyGadget(gadget)) return;
-        else
-        {
-            CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot(gadget));//실행 될까
-        }
+        //else
+        //{
+        //    CselectGadgetSlot = StartCoroutine(CSelectGadgetSlot(gadget));//실행 될까
+        //}
     }
 
     public void RemoveGadget(Gadget gadget)
     {
-        gadget.IsSelected = false;
         gadgetSlotList[gadget.slotIndex].Data = null;
     }
 
@@ -191,6 +190,7 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
+            print(gadgetSlotList[i].Data);
             if (gadgetSlotList[i].Data == null)
             {
                 gadgetSlotList[i].Data = gadget.Data;
@@ -198,6 +198,7 @@ public class GadgetManager : Singleton<GadgetManager>
                 gadgetSlotList[i].gadgetIcon.sprite = gadget.Data.icon;
                 gadgetSlotList[i].gadgetIcon.rectTransform.localScale = new Vector3(ratioXY.x, ratioXY.y, 0);
                 gadget.slotIndex = i;
+                print(i);
                 return true;
             }
         }

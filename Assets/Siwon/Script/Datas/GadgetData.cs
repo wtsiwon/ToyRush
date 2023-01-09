@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GadgetData", menuName = "Datas/GadgetData", order = int.MinValue)]
 public class GadgetData : ScriptableObject
 {
-    public EGadgetType gedgetType;
+    public EGadgetType gadgetType;
     public Sprite icon;
     public string name;
     public string explain;
