@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076fd4024f0ec9f4e99afd91c1d8a72e, type: 3}
   m_Name: GravityBelt
   m_EditorClassIdentifier: 
-  gedgetType: 0
+  gadgetType: 1
   icon: {fileID: 21300000, guid: 9b8d17e65d48695449f208691f89fcf7, type: 3}
   name: "\uC911\uB825 \uBCA8\uD2B8"
   explain: "\uD50C\uB808\uC774\uC5B4\uC758 \uC911\uB825\uC774 \uC99D\uAC00\uD574\uC544\uC789"
   cost: 18181889
-  isBought: 0
+  isBought: 1

@@ -995,8 +995,8 @@ MonoBehaviour:
     - {fileID: 9100000, guid: 75c33fbab9d20f447988b681181b5791, type: 2}
     - {fileID: 9100000, guid: 53cea1d499e6adb48b5cf2126798db84, type: 2}
   isSpawn: 0
-  spawnDelay: 4
-  minSpawnDelay: 0
+  spawnDelay: 5
+  minSpawnDelay: 2
   spawnType: 0
   beforeSpawnPattern: {fileID: 620736078}
 --- !u!4 &8262276506933306181
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   haveCoin: 1000000000
-  spd: 0
+  spd: 5
   piecesList:
   - {fileID: 6265476512858450356, guid: d78bde85c348a6742b8d30e0220945be, type: 3}
   - {fileID: 8438882411311247458, guid: e0fef28e674c6b14eb409b53f1e66982, type: 3}
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   boosterType: 0
   items: []
   isUseXray: 0
-  boostingSpd: 250
+  boostingSpd: 180
   vehicleType: 0
   force: 3100
   spriterenderer: {fileID: 0}
