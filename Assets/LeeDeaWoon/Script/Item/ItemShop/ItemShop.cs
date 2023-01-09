@@ -114,10 +114,8 @@ public class ItemShop : MonoBehaviour
     void PirateRoulette()
     {
         int stateRandom = Random.Range(0, state.Count);
+        playerStateText.text = state[stateRandom];
 
-        switch(stateRandom)
-        {
-
-        }
+        Debug.Log(playerStateText);
     }
 }
