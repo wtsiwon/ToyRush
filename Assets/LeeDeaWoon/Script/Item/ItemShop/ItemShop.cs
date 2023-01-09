@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class ItemShop : MonoBehaviour
 {
     public EShopItem eShopItem;
+    public TextMeshProUGUI playerStateText;
+
+    public List<string> state = new List<string>();
     Button itemShopBtn;
+    
 
     [Header("ΩΩ∂Û¿”")]
     public GameObject slime;
     float magnetTimer = 0;
+
     const int magnetWaitingTime = 7;
 
     void Start()
@@ -53,6 +59,7 @@ public class ItemShop : MonoBehaviour
                         break;
 
                     case EShopItem.PirateRoulette:
+                        PirateRoulette();
                         break;
                 }
             }
@@ -106,6 +113,11 @@ public class ItemShop : MonoBehaviour
 
     void PirateRoulette()
     {
+        int stateRandom = Random.Range(0, state.Count);
 
+        switch(stateRandom)
+        {
+
+        }
     }
 }
