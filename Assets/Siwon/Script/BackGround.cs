@@ -36,10 +36,10 @@ public class BackGround : MovingElement
 
     protected override void FixedUpdate()
     {
-        if(isfirstBack == true && GameManager.Instance.IsGameStart == true)
-        {
-            rb.velocity = Vector3.left * BackGroundSpawner.Instance.backgroundSpd * Time.fixedDeltaTime;
-        }
+        //if(isfirstBack == true && GameManager.Instance.IsGameStart == true)
+        //{
+        //    rb.velocity = Vector3.left * GameManager.Instance.pd * Time.fixedDeltaTime;
+        //}
         //base.FixedUpdate();
     }
 

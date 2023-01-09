@@ -59,14 +59,14 @@ public class Gadget : MonoBehaviour
             if (value == true)
             {
                 //장착되었다면 선택완료 Sprite로 변경
-                selectBtn.GetComponent<Image>().sprite
-                    = GadgetManager.Instance.selectedBtnSprite;
+                selectBtn.gameObject.SetActive(!value);
+                deSelectBtn.gameObject.SetActive(value);
             }
             else
             {
                 //장착 해제가 되었으면 선택 Sprite로 변경
-                selectBtn.GetComponent<Image>().sprite
-                    = GadgetManager.Instance.selectBtnSprite;
+                selectBtn.gameObject.SetActive(value);
+                deSelectBtn.gameObject.SetActive(!value);
             }
         }
     }
@@ -138,7 +138,7 @@ public class Gadget : MonoBehaviour
             }
         });
 
-        Debug.Assert(deSelectBtn != null, "DeSelectBtn is null");
+        Debug.Assert(deSelectBtn != null, $"DeSelectBtn is null {data.gedgetType}");
         deSelectBtn.onClick.AddListener(() =>
         {
             GadgetManager.Instance.RemoveGadget(this);

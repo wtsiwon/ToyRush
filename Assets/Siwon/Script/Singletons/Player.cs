@@ -131,7 +131,7 @@ public class Player : Singleton<Player>
     private IEnumerator CWaitChangeBoosterSpd()
     {
         yield return new WaitForSeconds(2f);
-        BackGroundSpawner.Instance.backgroundSpd = boostingSpd;
+        GameManager.Instance.spd = boostingSpd;
     }
 
 

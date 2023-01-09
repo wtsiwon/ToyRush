@@ -358,9 +358,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     private IEnumerator CCoinPattern1()
     {
-        Instantiate(coinPatterns[0], spawnPoses[2]);
-        coinPatterns[0].GetComponent<Rigidbody2D>().velocity
-            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+        //Instantiate(coinPatterns[0], spawnPoses[2]);
+        //coinPatterns[0].GetComponent<Rigidbody2D>().velocity
+        //    = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
         yield return new WaitForSeconds(1f);
     }
 
@@ -368,7 +368,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         Instantiate(coinPatterns[1], spawnPoses[1].position, Quaternion.identity);
         coinPatterns[1].GetComponent<Rigidbody2D>().velocity
-            = Vector2.left * BackGroundSpawner.Instance.backgroundSpd * Time.deltaTime;
+            = Vector2.left * GameManager.Instance.spd * Time.deltaTime;
 
         yield return new WaitForSeconds(1f);
     }

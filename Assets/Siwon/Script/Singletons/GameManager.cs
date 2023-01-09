@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public const float STARTSPD = 5f;
 
+    public float spd;
+
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
     public List<GameObject> piecesList = new List<GameObject>();
 
@@ -128,11 +130,11 @@ public class GameManager : MonoBehaviour
 
             if (isGameStart == true)
             {
-                distance += BackGroundSpawner.Instance.backgroundSpd / 50;
+                distance += spd / 50;
                 if (Player.Instance.IsBoosting == false && distance <= 3500f)
                 {
-                    BackGroundSpawner.Instance.backgroundSpd = STARTSPD + (distance / 500);
-                    Mathf.Clamp(BackGroundSpawner.Instance.backgroundSpd, 1f, 50f);
+                    spd = STARTSPD + (distance / 500);
+                    Mathf.Clamp(spd, 1f, 50f);
 
                 }
             }
@@ -142,14 +144,14 @@ public class GameManager : MonoBehaviour
     private IEnumerator CSetGame()
     {
         StopCoroutine(nameof(CAddDistance));
-        BackGroundSpawner.Instance.backgroundSpd = STARTSPD;
+        spd = STARTSPD;
         distance = 0;
         yield return new WaitForSeconds(0.1f);
 
         MovingElementSpawner.Instance.isSpawn = true;
         StartCoroutine(nameof(CAddDistance));
         StartCoroutine(CCheckCoroutine());
-        print(BackGroundSpawner.Instance.backgroundSpd);
+        print(spd);
         print(distance);
 
         if (SoundManager.isBGMCheck == true)
