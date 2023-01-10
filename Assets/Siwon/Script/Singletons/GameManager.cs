@@ -30,12 +30,18 @@ public class GameManager : MonoBehaviour
 
     public const float STARTSPD = 5f;
 
+    [Space(10f)]
     public float spd;
 
     [Tooltip("죽을 때 나오는 조각들의 Sprite")]
+    [Space(10f)]
     public List<GameObject> piecesList = new List<GameObject>();
 
+    [SerializeField]
+    private BoxCollider2D border;
+
     [Tooltip("시작확인")]
+    [Space(10f)]
     [SerializeField]
     private bool isGameStart;
     public bool IsGameStart
@@ -94,6 +100,28 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void DestroyObstacleOnBorder()
+    {
+        Collider2D[] cols = Physics2D.OverlapBoxAll(Vector2.zero, border.size, 0);
+
+        List<Obstacle> obstacles = new List<Obstacle>();
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            if (cols[i].TryGetComponent(out Obstacle obstacle))
+            {
+                obstacles.Add(obstacle);
+            }
+        }
+
+        for (int i = 0; i < obstacles.Count; i++)
+        {
+            Destroy(obstacles[i].gameObject);
+        }
+    }
+
+
 
     private IEnumerator CToDropOnePieces()
     {
