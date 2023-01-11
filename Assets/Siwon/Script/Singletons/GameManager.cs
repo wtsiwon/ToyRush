@@ -100,10 +100,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
+    /// <summary>
+    /// 현재 있는 장애물을 파괴하는 함수
+    /// </summary>
     public void DestroyObstacleOnBorder()
     {
-        Collider2D[] cols = Physics2D.OverlapBoxAll(Vector2.zero, border.size, 0);
+        Collider2D[] cols = Physics2D.OverlapBoxAll(border.offset, border.size, 0);
 
         List<Obstacle> obstacles = new List<Obstacle>();
 
@@ -179,6 +182,7 @@ public class GameManager : MonoBehaviour
         MovingElementSpawner.Instance.isSpawn = true;
         StartCoroutine(nameof(CAddDistance));
         StartCoroutine(CCheckCoroutine());
+
         print(spd);
         print(distance);
 
@@ -188,6 +192,35 @@ public class GameManager : MonoBehaviour
             SoundManager.PlaySoundClip("DiamondRush", SoundType.BGM);
         }
         yield return new WaitForSeconds(1f);
+    }
+
+    private void ApplyGadgetAbility()
+    {
+        GadgetData[] datas = new GadgetData[2];
+        for (int i = 0; i < datas.Length; i++)
+        {
+            datas[i] = GadgetManager.Instance.gadgetSlotList[i].Data;
+            switch (datas[i].gadgetType)
+            {
+                case EGadgetType.None:
+                    
+                    break;
+                case EGadgetType.GravityBelt:
+
+                    break;
+                case EGadgetType.Magnet:
+
+                    break;
+                case EGadgetType.SlowRocket:
+
+                    break;
+                case EGadgetType.XrayGoggles:
+
+                    break;
+            }
+        }
+
+        
     }
 
     private IEnumerator CCheckCoroutine()

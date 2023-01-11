@@ -53,13 +53,27 @@ public class Player : Singleton<Player>
     public EBoosterType boosterType;
     #endregion
 
+    #region GadgetStat
+    [Space(10f)]
+    public float gravitybeltGravity;
+    public float attackPatternSpd;
+    public bool isUseXray;
+    #endregion
+
+    #region MaxPos
+    public float maxYpos;
+    #endregion
+
     [Tooltip("뭐지")]
     public List<Item> items = new List<Item>();
 
     public bool isUseItem =>
      IsBig || isBoosting;
 
-    public bool isUseXray;
+    [Tooltip("바닥에 닿아 있는가")]
+    [SerializeField]
+    private bool isGround;
+    public bool IsGround { get; set; }
 
     public float boostingSpd;
 
@@ -115,8 +129,23 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
+        transform.position = RestrictMovePos(transform.localPosition);
+
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
+    }
+
+    /// <summary>
+    /// 플레이어 움직임 제한하는 함수
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    private Vector3 RestrictMovePos(Vector3 pos) 
+    {
+        return new Vector3
+            (pos.x
+            ,Mathf.Clamp(pos.y, -maxYpos, maxYpos)
+            , 0);
     }
 
     private IEnumerator CUpdate()
@@ -124,7 +153,7 @@ public class Player : Singleton<Player>
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            //print(isPressing);
+            print(isPressing);
         }
     }
 
@@ -218,11 +247,8 @@ public class Player : Singleton<Player>
                 IsDie = true;
             }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.CompareTag("Ground"))
         {
             if (IsBig == true)
             {
@@ -231,13 +257,10 @@ public class Player : Singleton<Player>
             }
         }
     }
-
-
-
     #region 탈것
 
     /// <summary>
-    /// ���� ������~
+    /// 
     /// </summary>
     private void Flying()
     {
@@ -248,7 +271,7 @@ public class Player : Singleton<Player>
     }
 
     /// <summary>
-    /// UFO����
+    /// 
     /// </summary>
     private void MoveUFO()
     {
