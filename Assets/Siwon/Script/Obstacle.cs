@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Runtime.CompilerServices;
 
 public class Obstacle : MovingElement
 {
@@ -172,6 +173,38 @@ public class Obstacle : MovingElement
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
+            if (Player.Instance.IsBoosting == true)
+            {
+                SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+                gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+
+                GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+                piggybankDirector.transform.SetParent(gameObject.transform, false);
+                piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
+            }
+            else if (Player.Instance.IsBig == true)
+            {
+                SoundManager.instance.PlaySoundClip("Fragments", SoundType.SFX, 1f);
+
+                Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
+                gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+                GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+                piggybankDirector.transform.SetParent(gameObject.transform, false);
+                piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);
+
+
+                yield return new WaitForSeconds(1);
+
+                transform.DOKill();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private IEnumerator OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (Player.Instance.IsBoosting == true)
             {

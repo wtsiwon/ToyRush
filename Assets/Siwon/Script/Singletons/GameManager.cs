@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
     }
     
     /// <summary>
-    /// 현재 있는 장애물을 파괴하는 함수
+    /// 현재 스폰 되어있는 장애물을 파괴하는 함수
     /// </summary>
     public void DestroyObstacleOnBorder()
     {
@@ -123,8 +123,6 @@ public class GameManager : MonoBehaviour
             Destroy(obstacles[i].gameObject);
         }
     }
-
-
 
     private IEnumerator CToDropOnePieces()
     {

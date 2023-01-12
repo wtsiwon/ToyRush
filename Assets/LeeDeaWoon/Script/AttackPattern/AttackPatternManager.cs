@@ -43,6 +43,7 @@ public class AttackPatternManager : MonoBehaviour
                 yield return new WaitForSeconds(coolTime);
                 MovingElementSpawner.Instance.isSpawn = false;
 
+                GameManager.Instance.DestroyObstacleOnBorder();
                 yield return new WaitForSeconds(attackDel);
                 Instantiate(attackList[attckRandom], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
                 attackList.RemoveAt(attckRandom);

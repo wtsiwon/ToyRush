@@ -129,7 +129,7 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
-        transform.position = RestrictMovePos(transform.localPosition);
+        //transform.position = RestrictMovePos(transform.localPosition);
 
         InputKey(vehicleType);
         CurrentVehicle(vehicleType);
@@ -196,6 +196,9 @@ public class Player : Singleton<Player>
                 {
                     isPressing = false;
                 }
+                break;
+            default:
+
                 break;
         }
     }

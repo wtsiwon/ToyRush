@@ -965,6 +965,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3493952217301723485, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1012,6 +1016,14 @@ PrefabInstance:
     - target: {fileID: 3493952217606925705, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_Name
       value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218431737236, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493952218431737238, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5435507617834973576, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1301,7 +1313,7 @@ MonoBehaviour:
   - {fileID: 7955794894560215054, guid: f056e43272b768d4c95fee55ad54b685, type: 3}
   - {fileID: 3766059458984880851, guid: c652d4b9f6372284f89e08b463274ae9, type: 3}
   - {fileID: 2543098710399312488, guid: 0c95eb855324b8148b1eff1decb63e78, type: 3}
-  border: {fileID: 0}
+  border: {fileID: 193324369}
   isGameStart: 0
 --- !u!4 &8262276507760920034
 Transform:
@@ -1458,7 +1470,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.99}
