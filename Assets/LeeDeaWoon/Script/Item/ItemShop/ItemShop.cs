@@ -76,7 +76,7 @@ public class ItemShop : MonoBehaviour
                         break;
 
                     case EShopItem.TreasureBox:
-                        TreasureBox();
+                        StartCoroutine(TreasureBox());
                         break;
                 }
             }
@@ -128,7 +128,7 @@ public class ItemShop : MonoBehaviour
         Quaternion.identity).transform.parent = gameObject.transform;
     }
 
-    void TreasureBox()
+    IEnumerator TreasureBox()
     {
         float waitTime = 0.5f;
 
@@ -143,16 +143,29 @@ public class ItemShop : MonoBehaviour
             playerStateText.DOFade(0, waitTime).SetEase(Ease.Linear);
         });
 
-        switch(stateList[stateRandom].eState)
+        switch (stateList[stateRandom].eState)
         {
+            // 이동속도 저하
             case EState.SlowMove:
                 break;
+
+            // 체력감소 저하
             case EState.SlowHP:
+                float currentHpSpeed = UIManager.Instance.hpReductionSpeed;
+                UIManager.Instance.hpReductionSpeed /= 2;
+                yield return new WaitForSeconds(3);
+                UIManager.Instance.hpReductionSpeed = currentHpSpeed;
                 break;
+
+            // 제트팩 강화
             case EState.EnhanceJetPack:
                 break;
+
+            // 제트팩 약화
             case EState.WeakenJetPack:
                 break;
+
+            // 충돌 데미지 감소
             case EState.SlowCollisionDamage:
                 break;
         }
