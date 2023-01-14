@@ -12745,7 +12745,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.5, y: 0}
@@ -20333,7 +20333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3493952218431737237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -4.45, z: 0}
   m_LocalScale: {x: 30.299177, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3493952218717909855}
@@ -20400,7 +20400,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -23638,13 +23638,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eShopItem: 5
+  stateList:
+  - state: "\uC774\uB3D9\uC18D\uB3C4 \uC800\uD558"
+    eState: 0
+  - state: "\uCCB4\uB825\uAC10\uC18C \uC800\uD558"
+    eState: 1
+  - state: "\uC81C\uD2B8\uD329 \uAC15\uD654"
+    eState: 2
+  - state: "\uC81C\uD2B8\uD329 \uC57D\uD654"
+    eState: 3
+  - state: "\uCDA9\uB3CC \uB370\uBBF8\uC9C0 \uC800\uD558"
+    eState: 4
   playerStateText: {fileID: 0}
-  state:
-  - "\uC774\uB3D9\uC18D\uB3C4 \uC800\uD558"
-  - "\uCCB4\uB825\uC18D\uB3C4 \uC800\uD558"
-  - "\uC81C\uD2B8\uD329 \uAC15\uD654"
-  - "\uC81C\uD2B8\uD329 \uC57D\uD654"
-  - "\uCDA9\uB3CC \uB370\uBBF8\uC9C0 \uC800\uD558"
   slime: {fileID: 4158856634013144709, guid: bdc88ec1d24a97d4ebeebfc52e677c94, type: 3}
 --- !u!114 &1179486058
 MonoBehaviour:

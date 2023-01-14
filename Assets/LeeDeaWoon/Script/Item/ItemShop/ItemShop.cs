@@ -5,14 +5,30 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
+public enum EState
+{
+    SlowMove,
+    SlowHP,
+    EnhanceJetPack,
+    WeakenJetPack,
+    SlowCollisionDamage,
+}
+
+[System.Serializable]
+public class State
+{
+    public string state;
+    public EState eState;
+}
+
 public class ItemShop : MonoBehaviour
 {
     public EShopItem eShopItem;
-    public TextMeshProUGUI playerStateText;
+    public List<State> stateList = new List<State>();
 
-    public List<string> state = new List<string>();
+    public TextMeshProUGUI playerStateText;
+    float statePosY = 0;
     Button itemShopBtn;
-    
 
     [Header("ΩΩ∂Û¿”")]
     public GameObject slime;
@@ -23,6 +39,7 @@ public class ItemShop : MonoBehaviour
     void Start()
     {
         itemShopBtn = GetComponent<Button>();
+        statePosY = playerStateText.transform.localPosition.y;
 
         ItemBtn();
     }
@@ -54,12 +71,12 @@ public class ItemShop : MonoBehaviour
                         Clockwork();
                         break;
 
-                    case EShopItem.TreasureBox:
-                        TreasureBox();
-                        break;
-
                     case EShopItem.PirateRoulette:
                         PirateRoulette();
+                        break;
+
+                    case EShopItem.TreasureBox:
+                        TreasureBox();
                         break;
                 }
             }
@@ -70,7 +87,7 @@ public class ItemShop : MonoBehaviour
     {
         SpriteRenderer playerSprite = Player.Instance.GetComponent<SpriteRenderer>();
         Player.Instance.tag = "Invincibility";
-        playerSprite.DOFade(0.3f, 0.5f).SetEase(Ease.Linear).SetLoops(4, LoopType.Yoyo).OnComplete(() =>
+        playerSprite.DOFade(0.3f, 0.5f).SetEase(Ease.Linear).SetLoops(6, LoopType.Yoyo).OnComplete(() =>
         {
             Player.Instance.tag = "Player";
         });
@@ -105,17 +122,39 @@ public class ItemShop : MonoBehaviour
         UIManager.Instance.currentHp += 20;
     }
 
-    void TreasureBox()
+    void PirateRoulette()
     {
         Instantiate(ItemManager.inst.itemList[Random.Range(0, ItemManager.inst.itemList.Count)], new Vector2(11, 2),
         Quaternion.identity).transform.parent = gameObject.transform;
     }
 
-    void PirateRoulette()
+    void TreasureBox()
     {
-        int stateRandom = Random.Range(0, state.Count);
-        playerStateText.text = state[stateRandom];
+        float waitTime = 0.5f;
 
-        Debug.Log(playerStateText);
+        int stateRandom = Random.Range(0, stateList.Count);
+        playerStateText.transform.DOLocalMoveY(statePosY, 0).SetEase(Ease.Linear);
+        playerStateText.DOFade(1, 0);
+
+        playerStateText.text = stateList[stateRandom].state;
+
+        playerStateText.transform.DOLocalMoveY(statePosY + 800, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            playerStateText.DOFade(0, waitTime).SetEase(Ease.Linear);
+        });
+
+        switch(stateList[stateRandom].eState)
+        {
+            case EState.SlowMove:
+                break;
+            case EState.SlowHP:
+                break;
+            case EState.EnhanceJetPack:
+                break;
+            case EState.WeakenJetPack:
+                break;
+            case EState.SlowCollisionDamage:
+                break;
+        }
     }
 }

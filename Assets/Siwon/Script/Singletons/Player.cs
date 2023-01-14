@@ -153,7 +153,7 @@ public class Player : Singleton<Player>
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            print(isPressing);
+            //print(isPressing);
         }
     }
 

@@ -390,7 +390,7 @@ public class UIManager : MonoBehaviour
         {
             if (itemCount < maxItemCount)
             {
-                currentCoolTime -= Time.deltaTime * 0.1f;
+                currentCoolTime -= Time.deltaTime * 0.5f;
 
                 if (isClickItemUse == false)
                 {
