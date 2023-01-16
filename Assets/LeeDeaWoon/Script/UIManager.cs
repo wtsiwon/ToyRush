@@ -182,6 +182,7 @@ public class UIManager : MonoBehaviour
         quantityText.text = shopQuantity.ToString();
         priceText.text = itemShop[shopItemNumber].itemPirce.ToString();
         totalPriceText.text = (itemShop[shopItemNumber].itemPirce * shopQuantity).ToString();
+
         purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon;
     }
 
@@ -524,7 +525,9 @@ public class UIManager : MonoBehaviour
                 Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
 
                 context.eShopItem = itemShop[shopItemNumber].eShopItem;
+
                 itemSlot.sprite = itemShop[shopItemNumber].itemIcon;
+                itemSlot.GetComponent<RectTransform>().DOSizeDelta(shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<RectTransform>().sizeDelta, 0);
 
                 buy.sprite = selecteBtn;
                 maxItemCount += shopQuantity;
@@ -583,6 +586,8 @@ public class UIManager : MonoBehaviour
 
         buy = shopObj.transform.GetChild(shopItemNumber).GetChild(2).GetComponent<Image>();
         var selecteIcon = shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<Image>();
+        var selecteIconSize = shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<RectTransform>();
+        purchaseItemIcon.GetComponent<RectTransform>().DOSizeDelta(selecteIconSize.sizeDelta * 1.5f, 0);
 
         // 선택 이나 선택완료 버튼이 아닐 때
         if (buy.sprite != choiceBtn && buy.sprite != selecteBtn)
@@ -592,6 +597,8 @@ public class UIManager : MonoBehaviour
         if (buy.sprite == choiceBtn)
         {
             itemSlot.sprite = selecteIcon.sprite;
+            itemSlot.GetComponent<RectTransform>().DOSizeDelta(selecteIconSize.sizeDelta, 0);
+
             context.eShopItem = itemShop[shopItemNumber].eShopItem;
 
             for (int i = 0; i < shopObj.transform.childCount; i++)
