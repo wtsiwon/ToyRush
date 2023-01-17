@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            print("확인");
+            //print("확인");
         }
     }
 }

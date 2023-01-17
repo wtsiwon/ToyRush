@@ -133,6 +133,8 @@ public class ItemShop : MonoBehaviour
         float waitTime = 0.5f;
 
         int stateRandom = Random.Range(0, stateList.Count);
+        float currentPlayerSpd = Player.Instance.force;
+
         playerStateText.transform.DOLocalMoveY(statePosY, 0).SetEase(Ease.Linear);
         playerStateText.DOFade(1, 0);
 
@@ -147,6 +149,10 @@ public class ItemShop : MonoBehaviour
         {
             // 이동속도 저하
             case EState.SlowMove:
+                float currentBackGroundSpd = GameManager.Instance.spd;
+                GameManager.Instance.spd -= 4;
+                yield return new WaitForSeconds(3);
+                GameManager.Instance.spd = currentBackGroundSpd;
                 break;
 
             // 체력감소 저하
@@ -159,10 +165,16 @@ public class ItemShop : MonoBehaviour
 
             // 제트팩 강화
             case EState.EnhanceJetPack:
+                Player.Instance.force += 2000;
+                yield return new WaitForSeconds(3);
+                Player.Instance.force = currentPlayerSpd;
                 break;
 
             // 제트팩 약화
             case EState.WeakenJetPack:
+                Player.Instance.force -= 2000;
+                yield return new WaitForSeconds(3);
+                Player.Instance.force = currentPlayerSpd;
                 break;
 
             // 충돌 데미지 감소
