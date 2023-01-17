@@ -540,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectList:
   - {fileID: 714207502482135431, guid: 9a75c4a773d87824bac806f2571ca279, type: 3}
+  - {fileID: 1582093471560866857, guid: 59fb534b8d29efa459731789c0556556, type: 3}
 --- !u!1 &1493206516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1074,10 @@ MonoBehaviour:
   - {fileID: 9020407646125165618, guid: e0a4a12454db00343a4c416369320518, type: 3}
   - {fileID: 3115571778535039135, guid: fb3b3150c5f2cff4096071ba1056956e, type: 3}
   - {fileID: 6195558483773262074, guid: 4d9e14c0be9b711409664b584195c470, type: 3}
+  - {fileID: 5742458541090045114, guid: 75ac9b1c1dd447340bac6943615d7373, type: 3}
+  - {fileID: 2566529362257116421, guid: 67048540a5abbfc4abe3d5f8ad6520cc, type: 3}
+  - {fileID: 1768172431162549465, guid: 482898a7557475249a6ca57b87adf2bb, type: 3}
+  - {fileID: 2869496096130217134, guid: cc5b249492777dc46a7c6b833bdad761, type: 3}
   obstacleAnimation:
   - list:
     - {fileID: 9100000, guid: 8265a03ede75322498fb3ad3b901b8cf, type: 2}

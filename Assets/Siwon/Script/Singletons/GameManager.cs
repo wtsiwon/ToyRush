@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void DestroyObstacleOnBorder()
     {
+        if(border == null)
+        {
+
+        }
+
         Collider2D[] cols = Physics2D.OverlapBoxAll(border.offset, border.size, 0);
 
         List<Obstacle> obstacles = new List<Obstacle>();
