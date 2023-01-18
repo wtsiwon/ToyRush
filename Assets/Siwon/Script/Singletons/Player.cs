@@ -140,11 +140,11 @@ public class Player : Singleton<Player>
     /// </summary>
     /// <param name="pos"></param>
     /// <returns></returns>
-    private Vector3 RestrictMovePos(Vector3 pos) 
+    private Vector3 RestrictMovePos(Vector3 pos)
     {
         return new Vector3
             (pos.x
-            ,Mathf.Clamp(pos.y, -maxYpos, maxYpos)
+            , Mathf.Clamp(pos.y, -maxYpos, maxYpos)
             , 0);
     }
 
@@ -250,13 +250,16 @@ public class Player : Singleton<Player>
                 IsDie = true;
             }
         }
+    }
 
-        if (collision.CompareTag("Ground"))
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
         {
             if (IsBig == true)
             {
                 Camera.main.transform.DOShakePosition(0.2f, new Vector2(0, 0.3f)).OnComplete(()
-                    => Camera.main.transform.DOMove(new Vector3(0, 0, -10), 0.1f));
+                => Camera.main.transform.DOMove(new Vector3(0, 0, -10), 0.1f));
             }
         }
     }
