@@ -19339,6 +19339,7 @@ MonoBehaviour:
   quantityText: {fileID: 8679372204406552327}
   priceText: {fileID: 8639089654520345757}
   totalPriceText: {fileID: 6208586428774103870}
+  shopItemNumber: 0
   settingWindow: {fileID: 3493952217479879613}
   blackScreen: {fileID: 3493952216813701564}
   creditWindow: {fileID: 3493952216789256845}

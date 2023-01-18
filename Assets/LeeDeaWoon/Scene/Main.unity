@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8acb6e78fdd03c48815d597a786c7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontdestroy: 0
   effectList:
   - {fileID: 714207502482135431, guid: 9a75c4a773d87824bac806f2571ca279, type: 3}
   - {fileID: 1582093471560866857, guid: 59fb534b8d29efa459731789c0556556, type: 3}
