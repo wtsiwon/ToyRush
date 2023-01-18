@@ -57,6 +57,8 @@ public class ItemShop : MonoBehaviour
             if (UIManager.Instance.itemCount > 0)
             {
                 --UIManager.Instance.itemCount;
+                //--UIManager.Instance.itemShop[UIManager.Instance.shopItemNumber].itemNum;
+
                 switch (eShopItem)
                 {
                     case EShopItem.Shield:

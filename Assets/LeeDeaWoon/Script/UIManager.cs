@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image coolTimeSlot;
     [SerializeField] TextMeshProUGUI itemCountText;
 
-    int maxItemCount;
+    int maxItemCount = 0;
     bool isClickItemUse = false;
 
     #region 상점
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour
 
     int shopQuantity;
     int shopPrice;
-    int shopItemNumber;
+    public int shopItemNumber;
 
     bool isShopItemCheck = false;
     #endregion
@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
-        maxCoolTime = currentCoolTime;
+        currentCoolTime = maxCoolTime;
 
         DOTween.PauseAll();
         Time.timeScale = 1;
@@ -184,6 +184,7 @@ public class UIManager : MonoBehaviour
         totalPriceText.text = (itemShop[shopItemNumber].itemPirce * shopQuantity).ToString();
 
         purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon;
+
     }
 
     void hpBar()
@@ -386,6 +387,7 @@ public class UIManager : MonoBehaviour
     void ClickItem()
     {
         itemCountText.text = itemCount.ToString();
+        //maxItemCount = itemShop[shopItemNumber].itemNum;
 
         if (GameManager.Instance.IsGameStart == true)
         {
@@ -408,11 +410,13 @@ public class UIManager : MonoBehaviour
                     ++itemCount;
                 }
             }
-        }
 
+            else if (maxItemCount == 0)
+                coolTimeSlot.fillAmount = 1;
+        }
     }
 
-    IEnumerator CoolTime()
+    public IEnumerator CoolTime()
     {
         while (coolTimeSlot.fillAmount > 0)
         {
@@ -509,38 +513,50 @@ public class UIManager : MonoBehaviour
 
             if (shopQuantity > 0)
             {
-                for (int i = 0; i < shopObj.transform.childCount; i++)
+                if (GameManager.Instance.haveCoin >= itemShop[shopItemNumber].itemPirce)
                 {
-                    var choice = shopObj.transform.GetChild(i).GetChild(2).GetComponent<Image>();
+                    Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
 
-                    if (choice.sprite == selecteBtn)
+                    GameManager.Instance.haveCoin -= itemShop[shopItemNumber].itemPirce; // 구매 금액만큼 소지금액을 차감한다.
+
+                    // 적용버튼이 있는 상태에서 다른 아이템을 구매할 시 구매 아이템을 제외한 적용 버튼을 선택 버튼으로 변경한다.
+                    for (int i = 0; i < shopObj.transform.childCount; i++)
                     {
-                        addPurchas = shopObj.transform.GetChild(i).GetChild(0).gameObject;
-                        addPurchas.SetActive(false);
-                        choice.sprite = choiceBtn;
-                        break;
+                        var choice = shopObj.transform.GetChild(i).GetChild(2).GetComponent<Image>();
+
+                        if (choice.sprite == selecteBtn)
+                        {
+                            addPurchas = shopObj.transform.GetChild(i).GetChild(0).gameObject;
+                            addPurchas.SetActive(false);
+                            choice.sprite = choiceBtn;
+                            break;
+                        }
                     }
+
+                    context.eShopItem = itemShop[shopItemNumber].eShopItem;
+
+                    itemSlot.sprite = itemShop[shopItemNumber].itemIcon; // 구매한 아이템을 아이템 슬롯에 넣어준다.
+                    itemSlot.GetComponent<RectTransform>().DOSizeDelta(shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<RectTransform>().sizeDelta, 0); // 구매한 아이템의 크기와 동일하게 해준다.
+
+                    buy.sprite = selecteBtn; // 구매 버튼을 적용 버튼으로 변경한다.
+
+                    maxItemCount += shopQuantity;
+                    itemShop[shopItemNumber].itemNum += shopQuantity;
+                    itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
+
+                    // 추가 구매를 하기 위해 addPurchas를 활성화 한다.
+                    addPurchas = shopObj.transform.GetChild(shopItemNumber).GetChild(0).gameObject;
+                    addPurchas.SetActive(true);
+
+                    // 구매 창을 비활성화 한다.
+                    purchaseWindow.SetActive(false);
                 }
-
-                Debug.Log(itemShop[shopItemNumber].itemName + "을 " + shopQuantity + "개 구매하셨습니다.");
-
-                context.eShopItem = itemShop[shopItemNumber].eShopItem;
-
-                itemSlot.sprite = itemShop[shopItemNumber].itemIcon;
-                itemSlot.GetComponent<RectTransform>().DOSizeDelta(shopObj.transform.GetChild(shopItemNumber).GetChild(4).GetChild(2).GetComponent<RectTransform>().sizeDelta, 0);
-
-                buy.sprite = selecteBtn;
-                maxItemCount += shopQuantity;
-                itemShop[shopItemNumber].itemNum += shopQuantity;
-                itemBar.text = itemShop[shopItemNumber].itemNum.ToString();
-
-                addPurchas = shopObj.transform.GetChild(shopItemNumber).GetChild(0).gameObject;
-                addPurchas.SetActive(true);
-
-                purchaseWindow.SetActive(false);
+                else
+                    Debug.Log("해당 금액보다 돈이 없습니다.");
             }
             else
                 Debug.Log("수량을 선택해주세요.");
+
         });
 
         //감소 버튼을 눌렀을 때
