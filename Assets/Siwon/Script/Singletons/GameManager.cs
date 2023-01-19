@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         if(border == null)
         {
-
+            border = GetComponentInChildren<BoxCollider2D>();
         }
 
         Collider2D[] cols = Physics2D.OverlapBoxAll(border.offset, border.size, 0);
@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < obstacles.Count; i++)
         {
+            EffectManager.Instance.GetEffect(EEffectType.Coin, obstacles[i].transform.position);
             Destroy(obstacles[i].gameObject);
         }
     }

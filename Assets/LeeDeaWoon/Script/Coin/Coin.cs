@@ -29,10 +29,14 @@ public class Coin : MovingElement
         {
             SoundManager.instance.PlaySoundClip("Coin", SoundType.SFX, SoundManager.instance.soundSFX - 0.8f);
 
-            GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
-            director.transform.SetParent(gameObject.transform, false);
-            director.transform.position = new Vector3(director.transform.position.x,
-                director.transform.position.y, 0);
+            GameObject effect = EffectManager.Instance.GetEffect(EEffectType.Coin, transform.position);
+            effect.transform.localScale = transform.localScale;
+
+
+            //GameObject director = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
+            //director.transform.SetParent(gameObject.transform, false);
+            //director.transform.position = new Vector3(director.transform.position.x,
+            //    director.transform.position.y, 0);
 
             spriteRenderer.DOFade(0, 0);
 

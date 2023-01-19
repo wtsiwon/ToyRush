@@ -12,6 +12,7 @@ public class ObjPool : Singleton<ObjPool>
 
     public Dictionary<EPoolType, Queue<PoolingObj>> pool = new Dictionary<EPoolType, Queue<PoolingObj>>();
 
+    public Queue<GameObject> effectQ = new Queue<GameObject>();
 
     /// <summary>
     /// 가져오는 함수
@@ -23,15 +24,15 @@ public class ObjPool : Singleton<ObjPool>
     {
         PoolingObj obj = null;
 
-        if(pool.ContainsKey(type) == false)
+        if (pool.ContainsKey(type) == false)
         {
             pool.Add(type, new Queue<PoolingObj>());
         }
         Queue<PoolingObj> queue = pool[type];
-        
+
         PoolingObj origin = originObjs[(int)type];
 
-        if(queue.Count > 0)
+        if (queue.Count > 0)
         {
             obj = queue.Dequeue();
         }
@@ -39,10 +40,10 @@ public class ObjPool : Singleton<ObjPool>
         {
             obj = Instantiate(origin);
         }
-            
+
         obj.transform.position = pos;
         obj.gameObject.SetActive(true);
-        
+
         return obj;
     }
 
@@ -76,7 +77,19 @@ public class ObjPool : Singleton<ObjPool>
     public GameObject GetEffect(Vector3 pos)
     {
         GameObject effect = null;
-        effect = Get(EPoolType.Effect, pos).GetComponent<GameObject>();
+
+        if (effectQ.Count > 0)
+        {
+            effect = effectQ.Dequeue();
+        }
+        else
+        {
+            effect = Instantiate(EffectManager.Instance.effectList[(int)EEffectType.Coin]);
+        }
+
+        effect.transform.position = pos;
+        effect.SetActive(true);
+
         return effect;
     }
 
@@ -97,8 +110,14 @@ public class ObjPool : Singleton<ObjPool>
     /// <param name="type"></param>
     /// <param name="obj"></param>
     public void Return(EPoolType type, PoolingObj obj)
-    { 
+    {
         obj.gameObject.SetActive(false);
         pool[type].Enqueue(obj);
+    }
+
+    public void EffectReturn(GameObject obj)
+    {
+        obj.SetActive(false);
+        effectQ.Enqueue(obj);
     }
 }

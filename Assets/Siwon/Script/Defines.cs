@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public enum EPoolType
 {
-    Coin,
     Effect,
+    Coin,
 }
 
 public enum EGadgetType
@@ -92,7 +92,8 @@ public enum EObstacleColorType
 
 public enum EEffectType
 {
-    piggybank,
+    BigDirector,
+    Coin,
 }
 
 public enum ESoundType
