@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public enum EShopItem
+public enum EShopItem : short
 {
     Shield,
     Slime,

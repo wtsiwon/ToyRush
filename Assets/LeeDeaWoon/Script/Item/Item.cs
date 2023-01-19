@@ -7,24 +7,29 @@ public class Item : AbstractItem
 {
     public new Collider2D collider2D;
 
-    [Header("아이템 : 부스터")]
+    [EnumType("itemType", (short)EItemType.Booster)]
     public float boosterDuration; // 지속시간
+    [EnumType("itemType", (short)EItemType.Booster)]
     public float boosterSpeed; // 속력
+    [EnumType("itemType", (short)EItemType.Booster)]
     public Ease ease;
 
-    [Header("아이템 : 자석")]
+    [EnumType("itemType", (short)EItemType.Magnet)]
     public SpriteRenderer magnetScale;
+    [EnumType("itemType", (short)EItemType.Magnet)]
     public int magnetWaitingTime; // 기다릴 시간
 
     float magnetTimer;
 
-    [Header("아이템 : 저금통")]
+    [EnumType("itemType", (short)EItemType.Piggybank)]
     public int getCoin;
     //public GameObject piggybankCoin; // 소환될 프리팹 코인
 
-    [Header("아이템 : 크기조절")]
+    [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public int sizeTime; //커지는 시간
+    [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public int sizeWaitingTime; //기다릴 시간
+    [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public Vector2 playerSize;
 
     float sizeTimer;

@@ -46,7 +46,7 @@ public enum ETheme//테마
 /// <summary>
 /// 아이템들
 /// </summary>
-public enum EItemType
+public enum EItemType : short
 {
     Transformation, //변신
     Magnet,         //자석

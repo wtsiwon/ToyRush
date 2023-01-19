@@ -953,9 +953,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1179486057, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: eShopItem
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179486057, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: playerStateText
       value: 
       objectReference: {fileID: 1493206518}
+    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0
