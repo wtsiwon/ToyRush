@@ -30,7 +30,7 @@ public class ItemShop : MonoBehaviour
     float statePosY = 0;
     Button itemShopBtn;
 
-    [Header("ΩΩ∂Û¿”")]
+    [EnumType("eShopItem", (short)EShopItem.Slime)]
     public GameObject slime;
     float magnetTimer = 0;
 
