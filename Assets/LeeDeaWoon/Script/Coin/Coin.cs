@@ -29,7 +29,7 @@ public class Coin : MovingElement
         {
             SoundManager.instance.PlaySoundClip("Coin", SoundType.SFX, SoundManager.instance.soundSFX - 0.8f);
 
-            GameObject effect = EffectManager.Instance.GetEffect(EEffectType.Coin, transform.position);
+            GameObject effect = EffectManager.Instance.GetEffect(EEffectType.Coin, transform.position, true);
             effect.transform.localScale = transform.localScale;
 
 

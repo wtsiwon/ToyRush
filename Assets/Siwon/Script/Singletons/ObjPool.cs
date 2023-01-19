@@ -74,7 +74,7 @@ public class ObjPool : Singleton<ObjPool>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public GameObject GetEffect(Vector3 pos)
+    public GameObject GetEffect(Vector3 pos, bool isCoin = false)
     {
         GameObject effect = null;
 
@@ -87,11 +87,28 @@ public class ObjPool : Singleton<ObjPool>
             effect = Instantiate(EffectManager.Instance.effectList[(int)EEffectType.Coin]);
         }
 
+        if (isCoin == true)
+        {
+            effect.transform.localScale = new Vector3(0.4f, 0.4f, 1);
+        }
+        else
+        {
+            effect.transform.localScale = new Vector3(2, 2, 1);
+        }
         effect.transform.position = pos;
         effect.SetActive(true);
 
         return effect;
     }
+
+    private void InitializeCoinObj()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            effectQ.Enqueue(EffectManager.Instance.effectList[1]);
+        }
+    }
+
 
     /// <summary>
     /// 사운드 가져오는 함수

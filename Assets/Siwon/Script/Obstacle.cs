@@ -189,6 +189,9 @@ public class Obstacle : MovingElement
 
                 Camera.main.transform.DOShakePosition(0.5f, new Vector2(0.2f, 0.2f));
                 gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0);
+                //GameObject effect = EffectManager.Instance.GetEffect(EEffectType.Coin, transform.position);
+
+
                 GameObject piggybankDirector = Instantiate(ItemManager.inst.piggybankDirector, Vector2.zero, Quaternion.identity);
                 piggybankDirector.transform.SetParent(gameObject.transform, false);
                 piggybankDirector.transform.DOScale(new Vector2(2, 2), 0);

@@ -125,7 +125,8 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < obstacles.Count; i++)
         {
-            EffectManager.Instance.GetEffect(EEffectType.Coin, obstacles[i].transform.position);
+            GameObject effect = Instantiate(EffectManager.Instance.effectList[1]);
+            effect.transform.position = obstacles[i].transform.position;
             Destroy(obstacles[i].gameObject);
         }
     }

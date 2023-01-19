@@ -12,9 +12,9 @@ public class EffectManager : Singleton<EffectManager>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="pos"></param>
-    public GameObject GetEffect(EEffectType type,Vector3 pos)
+    public GameObject GetEffect(EEffectType type,Vector3 pos, bool isCoin = false)
     {
-        GameObject effect = ObjPool.Instance.GetEffect(pos);
+        GameObject effect = ObjPool.Instance.GetEffect(pos, isCoin);
         effect = effectList[(int)type];
         StartCoroutine(CDestroyEffect(effect));
 
@@ -28,7 +28,7 @@ public class EffectManager : Singleton<EffectManager>
 
     public IEnumerator CDestroyEffect(GameObject obj)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         ReturnEffect(obj);
     }
 }
