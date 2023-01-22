@@ -23,12 +23,19 @@ public class State
 
 public class ItemShop : MonoBehaviour
 {
+    public static ItemShop instance;
+    void Awake() => instance = this;
+
     public EShopItem eShopItem;
     public List<State> stateList = new List<State>();
 
     public TextMeshProUGUI playerStateText;
     float statePosY = 0;
     Button itemShopBtn;
+
+    [Space(10)]
+    [EnumType("eShopItem", (short)EShopItem.Shield)]
+    public GameObject toyShield;
 
     [EnumType("eShopItem", (short)EShopItem.Slime)]
     public GameObject slime;
@@ -61,22 +68,27 @@ public class ItemShop : MonoBehaviour
 
                 switch (eShopItem)
                 {
+                    // ¿Â≥≠∞® πÊ∆–
                     case EShopItem.Shield:
                         Shield();
                         break;
 
+                    // ΩΩ∂Û¿”
                     case EShopItem.Slime:
                         StartCoroutine(Slime());
                         break;
 
+                    // ≥∞¿∫ ≈¬ø±
                     case EShopItem.Clockwork:
                         Clockwork();
                         break;
 
+                    // «ÿ¿˚ ∑Í∑ø
                     case EShopItem.PirateRoulette:
                         PirateRoulette();
                         break;
 
+                    // ∫∏π∞ ªÛ¿⁄
                     case EShopItem.TreasureBox:
                         StartCoroutine(TreasureBox());
                         break;
@@ -87,12 +99,8 @@ public class ItemShop : MonoBehaviour
 
     void Shield()
     {
-        SpriteRenderer playerSprite = Player.Instance.GetComponent<SpriteRenderer>();
-        Player.Instance.tag = "Invincibility";
-        playerSprite.DOFade(0.3f, 0.5f).SetEase(Ease.Linear).SetLoops(6, LoopType.Yoyo).OnComplete(() =>
-        {
-            Player.Instance.tag = "Player";
-        });
+        Vector2 shildSummonPos = new Vector2(11, 0);
+        Instantiate(toyShield, shildSummonPos, Quaternion.identity);
     }
 
     IEnumerator Slime()
@@ -104,7 +112,7 @@ public class ItemShop : MonoBehaviour
         slimeScaleObj.transform.SetParent(Player.Instance.transform, false);
 
         var spriteRenderer = slimeScaleObj.GetComponent<SpriteRenderer>();
-        slimeScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
+        slimeScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
         spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
         #endregion
 

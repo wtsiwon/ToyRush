@@ -446,10 +446,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pattern1
       objectReference: {fileID: 0}
-    - target: {fileID: 948693822916460320, guid: a5612c0f854bbc8458a95eb822a22991, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 948693822916460321, guid: a5612c0f854bbc8458a95eb822a22991, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -941,14 +937,6 @@ PrefabInstance:
       propertyPath: playerStateText
       value: 
       objectReference: {fileID: 1493206518}
-    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0

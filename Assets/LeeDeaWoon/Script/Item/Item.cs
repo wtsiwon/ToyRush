@@ -7,24 +7,31 @@ public class Item : AbstractItem
 {
     public new Collider2D collider2D;
 
+    #region 부스터 아이템
     [EnumType("itemType", (short)EItemType.Booster)]
     public float boosterDuration; // 지속시간
     [EnumType("itemType", (short)EItemType.Booster)]
     public float boosterSpeed; // 속력
     [EnumType("itemType", (short)EItemType.Booster)]
     public Ease ease;
+    #endregion
 
+    #region 자석 아이템
     [EnumType("itemType", (short)EItemType.Magnet)]
     public SpriteRenderer magnetScale;
     [EnumType("itemType", (short)EItemType.Magnet)]
     public int magnetWaitingTime; // 기다릴 시간
 
     float magnetTimer;
+    #endregion
 
+    #region 돼지저금통 아이템
     [EnumType("itemType", (short)EItemType.Piggybank)]
     public int getCoin;
     //public GameObject piggybankCoin; // 소환될 프리팹 코인
+    #endregion
 
+    #region 거대화 아이템
     [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public int sizeTime; //커지는 시간
     [EnumType("itemType", (short)EItemType.Sizecontrol)]
@@ -33,6 +40,7 @@ public class Item : AbstractItem
     public Vector2 playerSize;
 
     float sizeTimer;
+    #endregion
 
     protected override void Start()
     {
@@ -99,14 +107,14 @@ public class Item : AbstractItem
                         GameObject director = Instantiate(ItemManager.inst.bigDirector, Vector2.zero, Quaternion.identity);
                         director.transform.SetParent(Player.Instance.transform, false);
 
-                        director.transform.DOScale(Vector2.zero, 2f);
+                        director.transform.DOScale(Vector2.zero, 2).SetEase(Ease.Linear);
 
                         SpriteRenderer boosterSprite = director.GetComponent<SpriteRenderer>();
-                        boosterSprite.DOFade(0, 2f);
+                        boosterSprite.DOFade(0, 2).SetEase(Ease.Linear);
                         #endregion
 
                         SoundManager.instance.PlaySoundClip("ChangeBooster", SoundType.SFX, SoundManager.instance.soundSFX);
-                        Camera.main.transform.DOMoveX(3, 2)
+                        Camera.main.transform.DOMoveX(3, 2).SetEase(Ease.Linear)
                                   .OnComplete(() =>
                                   {
                                       director.transform.DOKill();
@@ -115,26 +123,26 @@ public class Item : AbstractItem
                                       Destroy(director);
 
                                       SoundManager.instance.PlaySoundClip("IsBooster", SoundType.SFX, SoundManager.instance.soundSFX);
-                                      Camera.main.transform.DOMoveX(0, 0.4f).OnComplete(() =>
+                                      Camera.main.transform.DOMoveX(0, 0.4f).SetEase(Ease.Linear).OnComplete(() =>
                                       {
-                                          Camera.main.transform.DOShakePosition(3, new Vector2(0.3f, 0.3f));
+                                          Camera.main.transform.DOShakePosition(3, new Vector2(0.3f, 0.3f)).SetEase(Ease.Linear);
                                       });
 
                                       ItemManager.inst.boosterNumber = 3;
 
                                       Instantiate(ItemManager.inst.whiteScreen, Vector2.zero, Quaternion.identity);
-                                      collision.transform.DOLocalMoveX(-3.5f, boosterSpeed);
+                                      collision.transform.DOLocalMoveX(-3.5f, boosterSpeed).SetEase(Ease.Linear);
                                   });
                         yield return new WaitForSeconds(boosterDuration); // 지속시간
 
                         Player.Instance.transform.DOLocalMoveX(5.5f, 0);
-                        collision.transform.DOLocalMoveX(playerXValue, boosterSpeed);
+                        collision.transform.DOLocalMoveX(playerXValue, boosterSpeed).SetEase(Ease.Linear);
 
                         ItemManager.inst.isItemTouch = false;
                         Player.Instance.IsBoosting = false;
 
                         #region 무적시간
-                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
 
                         yield return new WaitForSeconds(ItemManager.inst.invincibilityTimer);
 
@@ -142,7 +150,6 @@ public class Item : AbstractItem
                         Player.Instance.GetComponent<SpriteRenderer>().DOKill();
                         Player.Instance.GetComponent<SpriteRenderer>().DOFade(1, 0);
                         #endregion
-
 
                         yield return new WaitForSeconds(boosterSpeed);
 
@@ -158,14 +165,14 @@ public class Item : AbstractItem
                     {
                         Player.Instance.IsBig = true;
 
-                        collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime);
+                        collision.transform.DOScale(new Vector2(playerSize.x + 0.2f, playerSize.y + 0.2f), sizeTime).SetEase(Ease.Linear);
 
                         yield return new WaitForSeconds(sizeWaitingTime);
-                        collision.transform.DOScale(playerSize, sizeTime);
+                        collision.transform.DOScale(playerSize, sizeTime).SetEase(Ease.Linear);
 
                         #region 무적시간
                         Player.Instance.tag = "Invincibility";
-                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                        Player.Instance.GetComponent<SpriteRenderer>().DOFade(0.5f, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
 
                         yield return new WaitForSeconds(ItemManager.inst.invincibilityTimer);
 
@@ -195,8 +202,8 @@ public class Item : AbstractItem
             magnetScaleObj.transform.SetParent(Player.Instance.transform, false);
 
             var spriteRenderer = magnetScaleObj.GetComponent<SpriteRenderer>();
-            magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart);
-            spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart);
+            magnetScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+            spriteRenderer.DOFade(0, 0.8f).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
             #endregion
 
             yield return new WaitForSeconds(magnetWaitingTime);
