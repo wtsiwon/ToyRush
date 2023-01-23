@@ -43,8 +43,11 @@ public class ItemShop : MonoBehaviour
 
     const int magnetWaitingTime = 7;
 
+    UIManager uiManager;
+
     void Start()
     {
+        uiManager = UIManager.Instance;
         itemShopBtn = GetComponent<Button>();
         statePosY = playerStateText.transform.localPosition.y;
 
@@ -61,10 +64,12 @@ public class ItemShop : MonoBehaviour
     {
         itemShopBtn.onClick.AddListener(() =>
         {
-            if (UIManager.Instance.itemCount > 0)
+            int itemCount = uiManager.itemShop[uiManager.shopItemNumber].itemNum;
+
+            if (itemCount > 0 && uiManager.coolTimeSlot.fillAmount == 0)
             {
-                --UIManager.Instance.itemCount;
-                //--UIManager.Instance.itemShop[UIManager.Instance.shopItemNumber].itemNum;
+                uiManager.isClickItemUse = false;
+                --uiManager.itemShop[uiManager.shopItemNumber].itemNum;
 
                 switch (eShopItem)
                 {

@@ -37,12 +37,12 @@ public class UIManager : MonoBehaviour
     public float currentCoolTime;
     public float maxCoolTime;
 
+    public Image coolTimeSlot;
     [SerializeField] Image itemSlot;
-    [SerializeField] Image coolTimeSlot;
     [SerializeField] TextMeshProUGUI itemCountText;
 
     int maxItemCount = 0;
-    bool isClickItemUse = false;
+    public bool isClickItemUse = false;
 
     #region 상점
     [Header("상점")]
@@ -386,33 +386,21 @@ public class UIManager : MonoBehaviour
     #region 상점 아이템 쿨타임
     void ClickItem()
     {
-        itemCountText.text = itemCount.ToString();
-        //maxItemCount = itemShop[shopItemNumber].itemNum;
+        maxItemCount = itemShop[shopItemNumber].itemNum;
+        itemCountText.text = maxItemCount.ToString();
 
         if (GameManager.Instance.IsGameStart == true)
         {
-            if (itemCount < maxItemCount)
+            currentCoolTime -= Time.deltaTime * 0.5f;
+
+            if (!isClickItemUse)
             {
-                currentCoolTime -= Time.deltaTime * 0.5f;
-
-                if (isClickItemUse == false)
-                {
-                    isClickItemUse = true;
-                    coolTimeSlot.fillAmount = 1;
-                    currentCoolTime = maxCoolTime;
-
-                    StartCoroutine(CoolTime());
-                }
-
-                if (currentCoolTime <= 0)
-                {
-                    isClickItemUse = false;
-                    ++itemCount;
-                }
-            }
-
-            else if (maxItemCount == 0)
+                isClickItemUse = true;
                 coolTimeSlot.fillAmount = 1;
+                currentCoolTime = maxCoolTime;
+
+                StartCoroutine(CoolTime());
+            }
         }
     }
 
