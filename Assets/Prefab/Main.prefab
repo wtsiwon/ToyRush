@@ -6717,7 +6717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 167.15, y: 155}
+  m_AnchoredPosition: {x: -0.000030518, y: 194}
   m_SizeDelta: {x: 103.33, y: 151.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &916301466748038117
@@ -6775,8 +6775,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 153.3
-  m_fontSizeBase: 153.3
+  m_fontSize: 110.7
+  m_fontSizeBase: 110.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19283,9 +19283,10 @@ MonoBehaviour:
   itemCount: 0
   currentCoolTime: 1
   maxCoolTime: 1
-  itemSlot: {fileID: 7627840592074232072}
   coolTimeSlot: {fileID: 631733277}
+  itemSlot: {fileID: 7627840592074232072}
   itemCountText: {fileID: 5453124509195148686}
+  isClickItemUse: 0
   itemShop:
   - eShopItem: 0
     itemName: "\uC7A5\uB09C\uAC10 \uBC29\uD328"
