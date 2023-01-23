@@ -33,7 +33,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider hpSlider;
 
     [Header("상점 아이템")]
-    public int itemCount = 0;
     public float currentCoolTime;
     public float maxCoolTime;
 
@@ -626,6 +625,9 @@ public class UIManager : MonoBehaviour
 
     public void AddPurchaseBtn()
     {
+        shopPrice = 0;
+        shopQuantity = 0;
+
         purchaseWindow.SetActive(true);
     }
 
