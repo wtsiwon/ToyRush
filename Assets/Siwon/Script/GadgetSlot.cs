@@ -30,11 +30,6 @@ public class GadgetSlot : MonoBehaviour
     }
 
     [Header("GadgetSlot UI")]
-    [Space(15f)]
-    [SerializeField]
-    [Tooltip("ÀåÂø ¹öÆ°")]
-    private Button putOnbtn;
-
     [Tooltip("°¡Á¬ ¾ÆÀÌÄÜ")]
     public Image gadgetIcon;
 
@@ -42,15 +37,15 @@ public class GadgetSlot : MonoBehaviour
 
     private void Start()
     {
-        putOnbtn.onClick.AddListener(() =>
-        {
-            if (GadgetManager.Instance.IsPutOnMode == false) return;
+        //putOnbtn.onClick.AddListener(() =>
+        //{
+        //    if (GadgetManager.Instance.IsPutOnMode == false) return;
 
-            if (GadgetManager.Instance.IsPutOnMode == true)
-            {
-                Data = GadgetManager.Instance.currentSelectGadget.Data;
-            }
-        });
+        //    if (GadgetManager.Instance.IsPutOnMode == true)
+        //    {
+        //        Data = GadgetManager.Instance.currentSelectGadget.Data;
+        //    }
+        //});
         StartCoroutine(CCheck());
     }
 

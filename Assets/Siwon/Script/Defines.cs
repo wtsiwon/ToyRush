@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Ç®¸µÇÒ Types
+/// í’€ë§í•  Types
 /// </summary>
 public enum EPoolType
 {
@@ -14,50 +14,51 @@ public enum EPoolType
 public enum EGadgetType
 {
     None,
-    GravityBelt,
-    Magnet,
-    SlowRocket,
-    XrayGoggles,
+    GravityBelt,//ì¤‘ë ¥ ë²¨íŠ¸
+    Magnet,//ìì„
+    SlowRocket,//ìŠ¬ë¡œìš° ë¡œì¼“
+    XrayGoggles,//ì—‘ìŠ¤ë ˆì´ ê³ ê¸€
+    IceSheet,//ë¹™íŒ
 }
 
 /// <summary>
-/// Å»°Í
+/// íƒˆê²ƒ
 /// </summary>
 public enum EVehicleType
 {
-    None,//¾Æ¹«°Íµµ ¾Æ´Ô
-    BusterMachine,//¹ö½ºÅÍ¸Ó½Å
-    Frog,//°³±¸¸®
-    Wyvern,//¿ÍÀÌ¹ø
-    GravitySuit,//Áß·Â¼öÆ®
+    None,//ì•„ë¬´ê²ƒë„ ì•„ë‹˜
+    BusterMachine,//ë²„ìŠ¤í„°ë¨¸ì‹ 
+    Frog,//ê°œêµ¬ë¦¬
+    Wyvern,//ì™€ì´ë²ˆ
+    GravitySuit,//ì¤‘ë ¥ìˆ˜íŠ¸
     ProfitUFO,
 }
 
-public enum ETheme//Å×¸¶
+public enum ETheme//í…Œë§ˆ
 {
-    Supply,//¼ö±Ş
-    Process,//°¡°ø
-    Produce,//»ı»ê
-    Package,//Æ÷ÀåÀå
-    Shipping,//¹è¼ÛÀå
+    Supply,//ìˆ˜ê¸‰
+    Process,//ê°€ê³µ
+    Produce,//ìƒì‚°
+    Package,//í¬ì¥ì¥
+    Shipping,//ë°°ì†¡ì¥
     End,
 }
 
 /// <summary>
-/// ¾ÆÀÌÅÛµé
+/// ì•„ì´í…œë“¤
 /// </summary>
 public enum EItemType : short
 {
-    Transformation, //º¯½Å
-    Magnet,         //ÀÚ¼®
-    Piggybank,      //Àú±İÅë
-    Booster,        //ºÎ½ºÅÍ
-    Coinconverter,  //ÄÚÀÎº¯È¯±â
-    Sizecontrol,    //Å©±âÁ¶Àı
+    Transformation, //ë³€ì‹ 
+    Magnet,         //ìì„
+    Piggybank,      //ì €ê¸ˆí†µ
+    Booster,        //ë¶€ìŠ¤í„°
+    Coinconverter,  //ì½”ì¸ë³€í™˜ê¸°
+    Sizecontrol,    //í¬ê¸°ì¡°ì ˆ
 }
 
 /// <summary>
-/// ºÎ½ºÅÍ Å¸ÀÔ
+/// ë¶€ìŠ¤í„° íƒ€ì…
 /// </summary>
 public enum EBoosterType
 {
@@ -67,7 +68,7 @@ public enum EBoosterType
 }
 
 /// <summary>
-/// Àå¾Ö¹° Å¸ÀÔ
+/// ì¥ì• ë¬¼ íƒ€ì…
 /// </summary>
 public enum EObstacleType
 {
@@ -79,7 +80,7 @@ public enum EObstacleType
 }
 
 /// <summary>
-/// Àå¾Ö¹° 
+/// ì¥ì• ë¬¼ 
 /// </summary>
 public enum EObstacleColorType
 {

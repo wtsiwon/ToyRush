@@ -16,7 +16,25 @@ public class AttackPattern : MonoBehaviour
     }
     public EAttackPattern eAttackPattern;
 
-    float waitTime = 0.5f;
+    private float waittime = 0.5f;
+
+    private float waitTime = 0f;//0.5f
+
+    public float WaitTime
+    {
+        get
+        {
+            if (GadgetManager.Instance.CheckGadgetSlot(EGadgetType.SlowRocket) == true)
+            {
+                waitTime = waittime + waittime / 3;
+            }
+            else
+            {
+                waitTime = waittime;
+            }
+            return waitTime;
+        }
+    }
     float warning = 3;
 
 
@@ -74,21 +92,21 @@ public class AttackPattern : MonoBehaviour
 
                 warningLine.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
 
-                warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                warningLine.DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo);
                 yield return new WaitForSeconds(warning);
 
                 warningLine.DOKill();
                 warningLine.DOFade(0, 0);
 
-                crocodile.transform.DOLocalMoveY(warningLine.transform.position.y, waitTime).SetEase(ease).OnComplete(() =>
+                crocodile.transform.DOLocalMoveY(warningLine.transform.position.y, WaitTime).SetEase(ease).OnComplete(() =>
                 {
-                    crocodile.transform.DORotate(new Vector3(0, 0, 30), waitTime);
+                    crocodile.transform.DORotate(new Vector3(0, 0, 30), WaitTime);
                 });
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(WaitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
-                crocodile.transform.DOLocalMoveX(-13, waitTime * 2).SetEase(ease);
+                crocodile.transform.DOLocalMoveX(-13, WaitTime * 2).SetEase(ease);
 
 
                 yield return new WaitForSeconds(shakeWaitTime);
@@ -112,21 +130,21 @@ public class AttackPattern : MonoBehaviour
                 crocodile.transform.DOLocalMoveX(Player.Instance.transform.position.x, 0);
                 warningLine.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, -1.5f), 0);
 
-                warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                warningLine.DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo);
                 yield return new WaitForSeconds(warning);
 
                 warningLine.DOKill();
                 warningLine.DOFade(0, 0);
 
-                crocodile.transform.DOLocalMoveY(0.5f, waitTime).SetEase(ease);
-                yield return new WaitForSeconds(waitTime);
+                crocodile.transform.DOLocalMoveY(0.5f, WaitTime).SetEase(ease);
+                yield return new WaitForSeconds(WaitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
 
-                crocodile.transform.DOLocalMoveY(-7, waitTime).SetEase(ease);
+                crocodile.transform.DOLocalMoveY(-7, WaitTime).SetEase(ease);
                 Camera.main.transform.DOShakePosition(0.4f, new Vector2(0, 1));
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(WaitTime);
                 AttackPatternManager.inst.isAttackSummon = false;
                 crocodile.transform.DOKill();
                 Destroy(this.gameObject);
@@ -175,7 +193,7 @@ public class AttackPattern : MonoBehaviour
                     warningLine.DOFade(0.5f, 0);
                     transform.DORotate(new Vector3(0, 0, Random.Range(-50, 50)), 0);
 
-                    warningLine.DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                    warningLine.DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo);
                     yield return new WaitForSeconds(warning);
 
                     warningLine.DOKill();
@@ -205,8 +223,8 @@ public class AttackPattern : MonoBehaviour
 
                 for (int i = 0; i <= 2; i++)
                 {
-                    transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), waitTime);
-                    transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, waitTime).SetLoops(-1, LoopType.Yoyo);
+                    transform.GetChild(i).DOLocalRotate(new Vector3(0, 0, random), WaitTime);
+                    transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo);
                 }
 
                 yield return new WaitForSeconds(3);
@@ -217,11 +235,11 @@ public class AttackPattern : MonoBehaviour
                     transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().DOFade(0, 0);
                 }
 
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(WaitTime);
 
                 SoundManager.instance.PlaySoundClip("Attack", SoundType.SFX, SoundManager.instance.soundSFX);
                 for (int i = 0; i <= 2; i++)
-                    transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, waitTime);
+                    transform.GetChild(i).GetChild(0).DOLocalMoveX(-18, WaitTime);
 
                 yield return new WaitForSeconds(1);
                 AttackPatternManager.inst.isAttackSummon = false;

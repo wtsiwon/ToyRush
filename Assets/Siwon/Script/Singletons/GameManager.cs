@@ -208,10 +208,10 @@ public class GameManager : MonoBehaviour
             switch (datas[i].gadgetType)
             {
                 case EGadgetType.None:
-                    
+                    Player.Instance.GetComponent<Rigidbody2D>().gravityScale = Player.Instance.defaultGravityScale;
                     break;
                 case EGadgetType.GravityBelt:
-
+                    Player.Instance.GetComponent<Rigidbody2D>().gravityScale = Player.Instance.gravityBeltGravityScale;
                     break;
                 case EGadgetType.Magnet:
 

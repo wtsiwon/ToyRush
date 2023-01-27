@@ -18,7 +18,7 @@ public class GadgetManager : Singleton<GadgetManager>
     public List<GadgetSlot> gadgetSlotList = new List<GadgetSlot>(2);
 
     [SerializeField]
-    [Tooltip("가젯슬롯에 있는 버튼")]//이 버튼으로 
+    [Tooltip("가젯슬롯에 있는 버튼")]
     private List<Button> gadgetSlotBtns = new List<Button>(2);
 
     [Space(10f)]
@@ -43,9 +43,9 @@ public class GadgetManager : Singleton<GadgetManager>
     private GameObject slot;
     #endregion
 
-    [Space(10f)]
-    [Tooltip("현재 선택된 있는 가젯")]
-    public Gadget currentSelectGadget;
+    //[Space(10f)]
+    //[Tooltip("현재 선택된 있는 가젯")]
+    //public Gadget currentSelectGadget;
 
     #region Positions
     [SerializeField]
@@ -209,13 +209,16 @@ public class GadgetManager : Singleton<GadgetManager>
     /// 가젯 슬롯에 해당하는 가젯이 있는지 확인하는 함수
     /// </summary>
     /// <param name="gadget"></param>
-    public bool CheckGadgetSlot(Gadget gadget)
+    public bool CheckGadgetSlot(EGadgetType type)
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
-            
+            if (gadgetSlotList[i].Data.gadgetType == type)
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     /// <summary>
@@ -386,12 +389,6 @@ public class GadgetManager : Singleton<GadgetManager>
         img.rectTransform.localScale = new Vector3(ratio.x, ratio.y, 0);
 
         img.sprite = sprite;
-    }
-    private IEnumerator CSelectGadgetSlot(Gadget gadget)
-    {
-        IsPutOnMode = true;
-        currentSelectGadget = gadget;
-        yield return null;
     }
 }
 
