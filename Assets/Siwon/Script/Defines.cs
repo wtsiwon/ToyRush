@@ -19,6 +19,7 @@ public enum EGadgetType
     SlowRocket,//슬로우 로켓
     XrayGoggles,//엑스레이 고글
     IceSheet,//빙판
+    LifeRing,//생명의 반지
 }
 
 /// <summary>

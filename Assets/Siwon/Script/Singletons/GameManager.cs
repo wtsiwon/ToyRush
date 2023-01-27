@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public Camera Cam
+    {
+        get
+        {
+            return Camera.main;
+        }
+    }
+
     [Tooltip("거리")]
     [SerializeField]
     private float distance;
@@ -221,6 +229,9 @@ public class GameManager : MonoBehaviour
                     break;
                 case EGadgetType.XrayGoggles:
 
+                    break;
+                case EGadgetType.LifeRing:
+                    
                     break;
             }
         }

@@ -78,6 +78,7 @@ public class Player : Singleton<Player>
     public bool isUseItem =>
      IsBig || isBoosting;
 
+    #region 변수s
     [Tooltip("바닥에 닿아 있는가")]
     [SerializeField]
     private bool isGround;
@@ -106,6 +107,30 @@ public class Player : Singleton<Player>
             }
         }
     }
+
+    private float hp;
+
+    public float Hp
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            hp = value;
+
+            if(value <= 0)
+            {
+                isDie = true;
+            }
+            else
+            {
+
+            }
+        }
+    }
+    #endregion
 
     [Tooltip("탈것의 종류")]
     public EVehicleType vehicleType;
@@ -166,6 +191,14 @@ public class Player : Singleton<Player>
             yield return new WaitForSeconds(1f);
             //print(isPressing);
         }
+    }
+
+    public float shakeDuration;
+
+    public void OnDamaged(float dmg)
+    {
+        GameManager.Instance.Cam.transform.DOShakePosition(shakeDuration,2);
+        Hp -= dmg;
     }
 
     private IEnumerator CWaitChangeBoosterSpd()
