@@ -936,14 +936,6 @@ PrefabInstance:
       propertyPath: playerStateText
       value: 
       objectReference: {fileID: 1493206518}
-    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896823135, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3493952217606925704, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -991,10 +983,6 @@ PrefabInstance:
     - target: {fileID: 3493952217606925705, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
       propertyPath: m_Name
       value: Main
-      objectReference: {fileID: 0}
-    - target: {fileID: 8383768922632944618, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
@@ -1393,11 +1381,14 @@ MonoBehaviour:
   items: []
   isGround: 0
   boostingSpd: 180
+  gravityBeltGravityScale: 0
+  defaultGravityScale: 0
   vehicleType: 0
   force: 3100
   spriterenderer: {fileID: 0}
   magnetRange: {fileID: 1723154080566402426}
   isPressing: 0
+  shakeDuration: 0
 --- !u!50 &8262276508141446412
 Rigidbody2D:
   serializedVersion: 4

@@ -19280,7 +19280,6 @@ MonoBehaviour:
   currentHp: 0
   hpReductionSpeed: 10
   hpSlider: {fileID: 425248664}
-  itemCount: 0
   currentCoolTime: 1
   maxCoolTime: 1
   coolTimeSlot: {fileID: 631733277}
@@ -19316,7 +19315,7 @@ MonoBehaviour:
     itemName: "\uBCF4\uBB3C \uC0C1\uC790"
     itemDescription: "\uB79C\uB364\uD55C \uB2A5\uB825\uCE58\uB97C \uC77C\uC815\uC2DC\uAC04
       \uC5BB\uC2B5\uB2C8\uB2E4."
-    itemIcon: {fileID: 21300000, guid: e017e0158db0c474d8cc30f40d9a978f, type: 3}
+    itemIcon: {fileID: 21300000, guid: 35e1d92ffa8c6a043b9c57247fb1a09a, type: 3}
     itemPirce: 5000
     itemNum: 0
   shopWindow: {fileID: 3493952218374339959}
@@ -23259,7 +23258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 0}
-  putOnbtn: {fileID: 7040779530178128565}
   gadgetIcon: {fileID: 1169414475}
   slotIndex: 0
 --- !u!1 &5169087300060397990
@@ -26912,7 +26910,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2763, y: 1898.11}
+  m_SizeDelta: {x: 2763, y: 2000}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7574747251935485108
 GameObject:
@@ -27796,7 +27794,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 0}
-  putOnbtn: {fileID: 1435815794}
   gadgetIcon: {fileID: 1466203597}
   slotIndex: 0
 --- !u!1 &8346641564163141859
@@ -28706,7 +28703,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -860, y: 0}
-  m_SizeDelta: {x: 216.69, y: 185.95}
+  m_SizeDelta: {x: 216, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3518201680580087081
 CanvasRenderer:
