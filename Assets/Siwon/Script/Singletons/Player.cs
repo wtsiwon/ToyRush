@@ -135,6 +135,9 @@ public class Player : Singleton<Player>
     [Tooltip("탈것의 종류")]
     public EVehicleType vehicleType;
 
+    [SerializeField]
+    private Vehicle vehicle;
+
     [Tooltip("힘")]
     [Range(100, 5000)]
     public float force;
