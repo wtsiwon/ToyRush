@@ -11,6 +11,14 @@ public enum EPoolType
     Coin,
 }
 
+public enum EVehicleState
+{
+    None,//탈것을 안탔음
+    Run,
+    Jump,
+    Descent,
+}
+
 public enum EGadgetType
 {
     None,
