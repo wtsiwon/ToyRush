@@ -43,16 +43,20 @@ public class ItemShop : MonoBehaviour
 
     [EnumType("eShopItem", (short)EShopItem.Clockwork)]
     public GameObject springAnim;
+    GameObject springSummon;
 
     [EnumType("eShopItem", (short)EShopItem.TreasureBox)]
     public GameObject treasureBoxAnim;
     GameObject treasureBoxSummon;
 
     UIManager uiManager;
+    Player player;
 
     void Start()
     {
         uiManager = UIManager.Instance;
+        player = Player.Instance;
+
         itemShopBtn = GetComponent<Button>();
 
         ItemBtn();
@@ -60,11 +64,14 @@ public class ItemShop : MonoBehaviour
 
     void Update()
     {
-        if (magnetTimer < magnetWaitingTime && Player.Instance.IsMagneting)
+        if (magnetTimer < magnetWaitingTime && player.IsMagneting)
             magnetTimer += Time.deltaTime;
 
         if (treasureBoxSummon != null)
-            treasureBoxSummon.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 2), 0).SetEase(Ease.Linear);
+            treasureBoxSummon.transform.DOLocalMove(new Vector2(player.transform.position.x, player.transform.position.y + 2), 0).SetEase(Ease.Linear);
+
+        if(springSummon != null)
+            springSummon.transform.DOLocalMove(new Vector2(player.transform.position.x, player.transform.position.y + 2), 0).SetEase(Ease.Linear);
     }
 
     void ItemBtn()
@@ -92,7 +99,7 @@ public class ItemShop : MonoBehaviour
 
                     // 낡은 태엽
                     case EShopItem.Clockwork:
-                        Clockwork();
+                        StartCoroutine(Clockwork());
                         break;
 
                     // 해적 룰렛
@@ -117,11 +124,11 @@ public class ItemShop : MonoBehaviour
 
     IEnumerator Slime()
     {
-        Player.Instance.IsMagneting = true;
+        player.IsMagneting = true;
 
         #region 슬라임 연출
         var slimeScaleObj = Instantiate(slime.gameObject, Vector2.zero, Quaternion.identity);
-        slimeScaleObj.transform.SetParent(Player.Instance.transform, false);
+        slimeScaleObj.transform.SetParent(player.transform, false);
 
         var spriteRenderer = slimeScaleObj.GetComponent<SpriteRenderer>();
         slimeScaleObj.transform.DOScale(new Vector2(10, 10), 0.8f).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
@@ -129,7 +136,7 @@ public class ItemShop : MonoBehaviour
         #endregion
 
         yield return new WaitForSeconds(magnetWaitingTime);
-        Player.Instance.IsMagneting = false;
+        player.IsMagneting = false;
 
         slimeScaleObj.transform.DOKill();
         spriteRenderer.DOKill();
@@ -139,9 +146,17 @@ public class ItemShop : MonoBehaviour
         Destroy(slimeScaleObj);
     }
 
-    void Clockwork()
+    IEnumerator Clockwork()
     {
-        UIManager.Instance.currentHp += 20;
+        springSummon = Instantiate(springAnim, new Vector2(player.transform.position.x, player.transform.position.y + 2), Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        springSummon.GetComponent<SpriteRenderer>().DOFade(0, 3).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            springSummon.transform.DOKill();
+            Destroy(springSummon);
+        });
+
+        uiManager.currentHp += 20;
     }
 
     void PirateRoulette()
@@ -154,9 +169,9 @@ public class ItemShop : MonoBehaviour
     {
         float waitTime = 0.5f;
 
-        float currentPlayerSpd = Player.Instance.force;
+        float currentPlayerSpd = player.force;
 
-        treasureBoxSummon = Instantiate(treasureBoxAnim, new Vector2(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 2), Quaternion.identity);
+        treasureBoxSummon = Instantiate(treasureBoxAnim, new Vector2(player.transform.position.x, player.transform.position.y + 2), Quaternion.identity);
 
         yield return new WaitForSeconds(1.5f);
 
@@ -191,23 +206,23 @@ public class ItemShop : MonoBehaviour
             // 체력감소 저하
             case EState.SlowHP:
                 float currentHpSpeed = UIManager.Instance.hpReductionSpeed;
-                UIManager.Instance.hpReductionSpeed /= 2;
+                uiManager.hpReductionSpeed /= 2;
                 yield return new WaitForSeconds(5);
-                UIManager.Instance.hpReductionSpeed = currentHpSpeed;
+               uiManager.hpReductionSpeed = currentHpSpeed;
                 break;
 
             // 제트팩 강화
             case EState.EnhanceJetPack:
-                Player.Instance.force += 2000;
+                player.force += 2000;
                 yield return new WaitForSeconds(5);
-                Player.Instance.force = currentPlayerSpd;
+                player.force = currentPlayerSpd;
                 break;
 
             // 제트팩 약화
             case EState.WeakenJetPack:
-                Player.Instance.force -= 500;
+                player.force -= 500;
                 yield return new WaitForSeconds(5);
-                Player.Instance.force = currentPlayerSpd;
+                player.force = currentPlayerSpd;
                 break;
 
             // 충돌 데미지 감소
