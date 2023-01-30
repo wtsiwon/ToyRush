@@ -30,7 +30,6 @@ public class ItemShop : MonoBehaviour
     public List<State> stateList = new List<State>();
 
     public TextMeshProUGUI playerStateText;
-    float statePosY = 0;
     Button itemShopBtn;
 
     [Space(10)]
@@ -40,8 +39,14 @@ public class ItemShop : MonoBehaviour
     [EnumType("eShopItem", (short)EShopItem.Slime)]
     public GameObject slime;
     float magnetTimer = 0;
-
     const int magnetWaitingTime = 7;
+
+    [EnumType("eShopItem", (short)EShopItem.Clockwork)]
+    public GameObject springAnim;
+
+    [EnumType("eShopItem", (short)EShopItem.TreasureBox)]
+    public GameObject treasureBoxAnim;
+    GameObject treasureBoxSummon;
 
     UIManager uiManager;
 
@@ -49,7 +54,6 @@ public class ItemShop : MonoBehaviour
     {
         uiManager = UIManager.Instance;
         itemShopBtn = GetComponent<Button>();
-        statePosY = playerStateText.transform.localPosition.y;
 
         ItemBtn();
     }
@@ -58,6 +62,9 @@ public class ItemShop : MonoBehaviour
     {
         if (magnetTimer < magnetWaitingTime && Player.Instance.IsMagneting)
             magnetTimer += Time.deltaTime;
+
+        if (treasureBoxSummon != null)
+            treasureBoxSummon.transform.DOLocalMove(new Vector2(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 2), 0).SetEase(Ease.Linear);
     }
 
     void ItemBtn()
@@ -147,17 +154,28 @@ public class ItemShop : MonoBehaviour
     {
         float waitTime = 0.5f;
 
-        int stateRandom = Random.Range(0, stateList.Count);
         float currentPlayerSpd = Player.Instance.force;
 
-        playerStateText.transform.DOLocalMoveY(statePosY, 0).SetEase(Ease.Linear);
+        treasureBoxSummon = Instantiate(treasureBoxAnim, new Vector2(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 2), Quaternion.identity);
+
+        yield return new WaitForSeconds(1.5f);
+
+        int stateRandom = Random.Range(0, stateList.Count);
+
+        playerStateText.transform.DOLocalMoveY(treasureBoxSummon.transform.localPosition.y, 0).SetEase(Ease.Linear);
         playerStateText.DOFade(1, 0);
 
         playerStateText.text = stateList[stateRandom].state;
 
-        playerStateText.transform.DOLocalMoveY(statePosY + 800, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+        playerStateText.transform.DOLocalMoveY(treasureBoxSummon.transform.localPosition.y + 200, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
         {
             playerStateText.DOFade(0, waitTime).SetEase(Ease.Linear);
+        });
+
+        treasureBoxSummon.GetComponent<SpriteRenderer>().DOFade(0, 1).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            treasureBoxSummon.transform.DOKill();
+            Destroy(treasureBoxSummon);
         });
 
         switch (stateList[stateRandom].eState)
@@ -166,7 +184,7 @@ public class ItemShop : MonoBehaviour
             case EState.SlowMove:
                 float currentBackGroundSpd = GameManager.Instance.spd;
                 GameManager.Instance.spd -= 4;
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(5);
                 GameManager.Instance.spd = currentBackGroundSpd;
                 break;
 
@@ -174,21 +192,21 @@ public class ItemShop : MonoBehaviour
             case EState.SlowHP:
                 float currentHpSpeed = UIManager.Instance.hpReductionSpeed;
                 UIManager.Instance.hpReductionSpeed /= 2;
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(5);
                 UIManager.Instance.hpReductionSpeed = currentHpSpeed;
                 break;
 
             // ¡¶∆Æ∆— ∞≠»≠
             case EState.EnhanceJetPack:
                 Player.Instance.force += 2000;
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(5);
                 Player.Instance.force = currentPlayerSpd;
                 break;
 
             // ¡¶∆Æ∆— æ‡»≠
             case EState.WeakenJetPack:
-                Player.Instance.force -= 2000;
-                yield return new WaitForSeconds(3);
+                Player.Instance.force -= 500;
+                yield return new WaitForSeconds(5);
                 Player.Instance.force = currentPlayerSpd;
                 break;
 
