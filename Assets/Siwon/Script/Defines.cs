@@ -17,6 +17,7 @@ public enum EVehicleState
     Run,
     Jump,
     Descent,
+    Levitation,//공중에 뜬 상태
 }
 
 public enum EGadgetType

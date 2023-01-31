@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Vehicle : MonoBehaviour
 {
-    public Animator animator;
+    protected Animator animator;
 
     private EVehicleState state;
     public EVehicleState State
@@ -17,26 +17,47 @@ public abstract class Vehicle : MonoBehaviour
         set
         {
             state = value;
+            RideVehicle();
         }
     }
 
-    [SerializeField]
-    protected RuntimeAnimatorController controller;
-
-
+    protected virtual void Start()
+    {
+        GetComponents();
+    }
 
     protected virtual void Update()
     {
-        RideVahicle();
+        //RideVehicle();
     }
 
-    private void RideVahicle()
+    protected virtual void GetComponents()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    protected virtual void RideVehicle()
     {
         switch (state)
         {
             case EVehicleState.None:
-                
+
+                break;
+            case EVehicleState.Run:
+
+                break;
+            case EVehicleState.Jump:
+
+                break;
+            case EVehicleState.Descent:
+
+                break;
+            case EVehicleState.Levitation:
+
                 break;
         }
+        
     }
+
+    
 }

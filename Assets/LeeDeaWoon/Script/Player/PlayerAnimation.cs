@@ -9,6 +9,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -18,7 +19,6 @@ public class PlayerAnimation : MonoBehaviour
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
     }
 
     IEnumerator Animator_Controller(EVehicleType vehicleType)
@@ -60,6 +60,8 @@ public class PlayerAnimation : MonoBehaviour
             }
         }
     }
+
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
