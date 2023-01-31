@@ -65,8 +65,7 @@ public class AttackPattern : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("ATK_Start");
-
+        StartCoroutine(ATK_Start());
     }
 
     private void Update()

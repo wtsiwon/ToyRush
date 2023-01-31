@@ -23652,6 +23652,8 @@ MonoBehaviour:
   playerStateText: {fileID: 0}
   toyShield: {fileID: 6626842008059485245, guid: 5b58aa1142f98444f9b531be41d5d68a, type: 3}
   slime: {fileID: 4158856634013144709, guid: bdc88ec1d24a97d4ebeebfc52e677c94, type: 3}
+  springAnim: {fileID: 933461262165179665, guid: c75fc4a7515d36c449594482a21c335a, type: 3}
+  treasureBoxAnim: {fileID: 3019426682916214899, guid: e70ea60303e2b96499186bbb0ff84367, type: 3}
 --- !u!114 &1179486058
 MonoBehaviour:
   m_ObjectHideFlags: 0
