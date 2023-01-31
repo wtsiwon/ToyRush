@@ -36,6 +36,8 @@ public abstract class Vehicle : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    protected abstract void InputKey();
+
     protected virtual void RideVehicle()
     {
         switch (state)
