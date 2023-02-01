@@ -55,7 +55,7 @@ public abstract class Vehicle : MonoBehaviour
 
                 break;
             case EVehicleState.Levitation:
-
+                animator.SetInteger("State", 0);
                 break;
         }
         
