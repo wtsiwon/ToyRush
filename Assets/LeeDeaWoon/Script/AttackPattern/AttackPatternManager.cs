@@ -50,7 +50,6 @@ public class AttackPatternManager : MonoBehaviour
                 yield return new WaitForSeconds(3);
                 MovingElementSpawner.Instance.isSpawn = true;
             }
-
             else
                 yield return new WaitForSeconds(1.0f);
         }

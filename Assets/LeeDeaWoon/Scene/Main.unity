@@ -839,7 +839,7 @@ Animator:
   m_GameObject: {fileID: 8262276508141446414}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f642f0bec853cea4c99539206ae9e3e6, type: 2}
+  m_Controller: {fileID: 9100000, guid: f886eab0aabbdc14190abc39e778f331, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1385,6 +1385,12 @@ MonoBehaviour:
   gravitybeltGravity: 0
   attackPatternSpd: 0
   isUseXray: 0
+  characterAnimator: {fileID: 9100000, guid: f642f0bec853cea4c99539206ae9e3e6, type: 2}
+  birdAnimator: {fileID: 9100000, guid: 2d664fc4fd30da94c84f28d141b2ada9, type: 2}
+  gravityAnimator: {fileID: 9100000, guid: f886eab0aabbdc14190abc39e778f331, type: 2}
+  frogAnimator: {fileID: 9100000, guid: e872fc428155b57428de0bb46e7bdc7e, type: 2}
+  wyvernAnimator: {fileID: 0}
+  ufoAnimator: {fileID: 0}
   maxYpos: 3.5
   items: []
   isGround: 0

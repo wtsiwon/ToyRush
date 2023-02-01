@@ -37,7 +37,7 @@ public enum EGadgetType
 public enum EVehicleType
 {
     None,//아무것도 아님
-    BusterMachine,//버스터머신
+    BirdMachine,//버드머신
     Frog,//개구리
     Wyvern,//와이번
     GravitySuit,//중력수트

@@ -68,7 +68,23 @@ public class Player : Singleton<Player>
     public bool isUseXray;
     #endregion
 
+    #region VehicleAnimationConroller
+    [Header("Animation")]
+    public RuntimeAnimatorController characterAnimator;
+
+    public RuntimeAnimatorController birdAnimator;
+
+    public RuntimeAnimatorController gravityAnimator;
+
+    public RuntimeAnimatorController frogAnimator;
+
+    public RuntimeAnimatorController wyvernAnimator;
+
+    public RuntimeAnimatorController ufoAnimator;
+    #endregion
+
     #region MaxPos
+    [Space(10f)]
     public float maxYpos;
     #endregion
 
@@ -231,7 +247,7 @@ public class Player : Singleton<Player>
                 //    isPressing = false;
                 //}
                 break;
-            case EVehicleType.BusterMachine:
+            case EVehicleType.BirdMachine:
             case EVehicleType.ProfitUFO:
             case EVehicleType.GravitySuit:
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -274,7 +290,7 @@ public class Player : Singleton<Player>
                     case EVehicleType.ProfitUFO:
                         MoveUFO();
                         break;
-                    case EVehicleType.BusterMachine:
+                    case EVehicleType.BirdMachine:
 
                         break;
                     case EVehicleType.Frog:
