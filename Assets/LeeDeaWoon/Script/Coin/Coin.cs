@@ -40,7 +40,7 @@ public class Coin : MovingElement
 
             spriteRenderer.DOFade(0, 0);
 
-            if (Player.Instance.vehicleType == EVehicleType.ProfitUFO)
+            if (Player.Instance.VehicleType == EVehicleType.ProfitUFO)
             {
                 UIManager.Instance.coin += 2;
                 GameManager.Instance.haveCoin += 2;

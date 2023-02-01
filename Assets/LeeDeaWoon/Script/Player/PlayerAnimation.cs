@@ -14,7 +14,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(Animator_Controller(Player.Instance.vehicleType));
+        StartCoroutine(Animator_Controller(Player.Instance.VehicleType));
     }
 
     void Awake()

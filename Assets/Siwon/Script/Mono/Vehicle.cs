@@ -7,6 +7,8 @@ public abstract class Vehicle : MonoBehaviour
 {
     protected Animator animator;
 
+    protected Player player;
+
     private EVehicleState state;
     public EVehicleState State
     {
@@ -21,14 +23,14 @@ public abstract class Vehicle : MonoBehaviour
         }
     }
 
+    public Vehicle(EVehicleState state)
+    {
+        State = state;
+    }
     protected virtual void Start()
     {
         GetComponents();
-    }
-
-    protected virtual void Update()
-    {
-        //RideVehicle();
+        player = Player.Instance;
     }
 
     protected virtual void GetComponents()
@@ -36,30 +38,13 @@ public abstract class Vehicle : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    protected abstract void InputKey();
+    public abstract void InputKey();
 
-    protected virtual void RideVehicle()
+    protected abstract void RideVehicle();
+
+    public virtual void SetVehicle(EVehicleType type)
     {
-        switch (state)
-        {
-            case EVehicleState.None:
 
-                break;
-            case EVehicleState.Run:
-
-                break;
-            case EVehicleState.Jump:
-
-                break;
-            case EVehicleState.Descent:
-
-                break;
-            case EVehicleState.Levitation:
-                animator.SetInteger("State", 0);
-                break;
-        }
-        
     }
-
     
 }

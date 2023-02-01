@@ -136,7 +136,7 @@ public class Player : Singleton<Player>
         {
             hp = value;
 
-            if(value <= 0)
+            if (value <= 0)
             {
                 isDie = true;
             }
@@ -148,11 +148,28 @@ public class Player : Singleton<Player>
     }
     #endregion
 
+    #region 탈것 변수
     [Tooltip("탈것의 종류")]
-    public EVehicleType vehicleType;
+    private EVehicleType vehicleType;
+    public EVehicleType VehicleType
+    {
+        get
+        {
+            return vehicleType;
+        }
+        set
+        {
+            vehicleType = value;
+
+            ChangeVehicle();
+        }
+
+    }
 
     [SerializeField]
     private Vehicle vehicle;
+
+    #endregion
 
     [Tooltip("힘")]
     [Range(100, 5000)]
@@ -186,8 +203,9 @@ public class Player : Singleton<Player>
     {
         //transform.position = RestrictMovePos(transform.localPosition);
 
-        InputKey(vehicleType);
-        CurrentVehicle(vehicleType);
+        vehicle.InputKey();
+
+        CurrentVehicleKeyInput(vehicleType);
     }
 
     /// <summary>
@@ -216,7 +234,7 @@ public class Player : Singleton<Player>
 
     public void OnDamaged(float dmg)
     {
-        GameManager.Instance.Cam.transform.DOShakePosition(shakeDuration,2);
+        GameManager.Instance.Cam.transform.DOShakePosition(shakeDuration, 2);
         Hp -= dmg;
     }
 
@@ -253,7 +271,6 @@ public class Player : Singleton<Player>
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     isPressing = true;
-                    Debug.Log("asdfasdf");
                 }
                 else
                 {
@@ -270,7 +287,7 @@ public class Player : Singleton<Player>
     /// Input
     /// </summary>
     /// <param name="type"></param>
-    private void CurrentVehicle(EVehicleType type)
+    private void CurrentVehicleKeyInput(EVehicleType type)
     {
         if (SceneManager.GetActiveScene().name == "Main")
         {
@@ -301,6 +318,21 @@ public class Player : Singleton<Player>
         }
         else
             Flying();
+    }
+
+
+    private void ChangeVehicle()
+    {
+        switch (vehicleType)
+        {
+            case EVehicleType.None:
+                vehicle = null;
+                break;
+            case EVehicleType.GravitySuit:
+                vehicle = new GravitySuit(EVehicleState.Levitation);
+                break;
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
