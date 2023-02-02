@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     public float maxHp;
     public float currentHp;
     public float hpReductionSpeed;
-    [SerializeField] Slider hpSlider;
+    [SerializeField] Image hpSlider;
 
     [Header("상점 아이템")]
     public float currentCoolTime;
@@ -188,9 +188,9 @@ public class UIManager : MonoBehaviour
 
     void hpBar()
     {
-        if (GameManager.Instance.IsGameStart == true)
+        if (GameManager.Instance.IsGameStart)
         {
-            hpSlider.value = currentHp / maxHp;
+            hpSlider.fillAmount = currentHp / maxHp;
             currentHp -= Time.deltaTime * hpReductionSpeed;
 
             if (currentHp > maxHp)

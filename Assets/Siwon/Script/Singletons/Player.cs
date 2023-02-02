@@ -230,7 +230,7 @@ public class Player : Singleton<Player>
     {
         //transform.position = RestrictMovePos(transform.localPosition);
 
-        vehicle.InputKey();
+        //vehicle.InputKey();
 
         CurrentVehicleKeyInput(vehicleType);
     }

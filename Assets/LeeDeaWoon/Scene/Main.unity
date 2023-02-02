@@ -1394,10 +1394,10 @@ MonoBehaviour:
   maxYpos: 3.5
   items: []
   isGround: 0
+  isCelling: 0
   boostingSpd: 180
   gravityBeltGravityScale: 0
   defaultGravityScale: 0
-  vehicleType: 0
   vehicle: {fileID: 0}
   force: 3100
   spriterenderer: {fileID: 0}
