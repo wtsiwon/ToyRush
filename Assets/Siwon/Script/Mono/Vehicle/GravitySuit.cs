@@ -37,14 +37,8 @@ public class GravitySuit : Vehicle
         base.Start();
     }
 
-    private void Update()
+    protected override void ChangeState()
     {
-        base.Start();
-    }
 
-    private void FixedUpdate()
-    {
-        base.Start();
     }
-
 }

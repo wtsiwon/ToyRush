@@ -98,7 +98,34 @@ public class Player : Singleton<Player>
     [Tooltip("바닥에 닿아 있는가")]
     [SerializeField]
     private bool isGround;
-    public bool IsGround { get; set; }
+    public bool IsGround
+    {
+        get
+        {
+            return isGround;
+        }
+        set
+        {
+            isGround = value;
+
+            
+        }
+    }
+
+    [SerializeField]
+    private bool isCelling;
+    
+    public bool IsCelling
+    {
+        get
+        {
+            return isCelling;
+        }
+        set
+        {
+            isCelling = value;
+        }
+    }
 
     public float boostingSpd;
 

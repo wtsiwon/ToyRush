@@ -33,6 +33,11 @@ public abstract class Vehicle : MonoBehaviour
         player = Player.Instance;
     }
 
+    protected virtual void Update()
+    {
+        ChangeState();
+    }
+
     protected virtual void GetComponents()
     {
         animator = GetComponent<Animator>();
@@ -42,9 +47,8 @@ public abstract class Vehicle : MonoBehaviour
 
     protected abstract void RideVehicle();
 
-    public virtual void SetVehicle(EVehicleType type)
-    {
-
-    }
-    
+    /// <summary>
+    /// 상태 변화 함수
+    /// </summary>
+    protected abstract void ChangeState();
 }
