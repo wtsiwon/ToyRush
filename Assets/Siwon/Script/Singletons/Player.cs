@@ -364,10 +364,18 @@ public class Player : Singleton<Player>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle") && CompareTag("Player"))
         {
             print(collision.gameObject);
-            if (vehicleType == EVehicleType.None && isUseItem == false)
+            tag = "Invincibility";
+            UIManager.Instance.currentHp -= 10;
+            Camera.main.transform.DOShakePosition(2.5f, new Vector2(0.3f, 0.3f));
+            spriterenderer.DOFade(0.5f, 0.5f).SetEase(Ease.Linear).SetLoops(6, LoopType.Yoyo).OnComplete(() =>
+            {
+                tag = "Player";
+            });
+
+            if (vehicleType == EVehicleType.None && isUseItem == false && UIManager.Instance.currentHp <= 0)
             {
                 IsDie = true;
             }
@@ -385,6 +393,7 @@ public class Player : Singleton<Player>
             }
         }
     }
+
     #region 탈것
 
     /// <summary>

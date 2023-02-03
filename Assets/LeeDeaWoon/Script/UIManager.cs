@@ -196,6 +196,9 @@ public class UIManager : MonoBehaviour
             if (currentHp > maxHp)
                 currentHp = maxHp;
         }
+
+        if(currentHp <= 0)
+            Player.Instance.IsDie = true;
     }
 
     #region 메인버튼

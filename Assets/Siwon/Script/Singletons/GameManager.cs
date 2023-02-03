@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
+        Debug.Log("asdfasdf");
+
         ToDropPieces();
         StartCoroutine(CToDropOnePieces());
     }
