@@ -192,7 +192,8 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.Instance.IsGameStart)
         {
-            hpSlider.fillAmount = currentHp / maxHp;
+            hpSlider.fillAmount = Mathf.Lerp(hpSlider.fillAmount, currentHp / maxHp, Time.deltaTime * hpReductionSpeed);
+
             currentHp -= Time.deltaTime * hpReductionSpeed;
 
             if (currentHp > maxHp)
