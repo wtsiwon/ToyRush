@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UI_setting();
-        ItemShop();
+        ShopItem();
         hpBar();
         ClickItem();
     }
@@ -200,7 +200,7 @@ public class UIManager : MonoBehaviour
                 currentHp = maxHp;
         }
 
-        if(currentHp <= 0 && !isHPCheck)
+        if (currentHp <= 0 && !isHPCheck)
         {
             isHPCheck = true;
             Player.Instance.IsDie = true;
@@ -397,19 +397,26 @@ public class UIManager : MonoBehaviour
         maxItemCount = itemShop[shopItemNumber].itemNum;
         itemCountText.text = maxItemCount.ToString();
 
-        if (GameManager.Instance.IsGameStart == true)
+        if (ItemShop.instance.eShopItem != EShopItem.None)
         {
-            currentCoolTime -= Time.deltaTime * 0.5f;
+            ItemShop.instance.gameObject.SetActive(true);
 
-            if (!isClickItemUse)
+            if (GameManager.Instance.IsGameStart)
             {
-                isClickItemUse = true;
-                coolTimeSlot.fillAmount = 1;
-                currentCoolTime = maxCoolTime;
+                currentCoolTime -= Time.deltaTime * 0.5f;
 
-                StartCoroutine(CoolTime());
+                if (!isClickItemUse)
+                {
+                    isClickItemUse = true;
+                    coolTimeSlot.fillAmount = 1;
+                    currentCoolTime = maxCoolTime;
+
+                    StartCoroutine(CoolTime());
+                }
             }
         }
+        else
+            ItemShop.instance.gameObject.SetActive(false);
     }
 
     public IEnumerator CoolTime()
@@ -640,7 +647,7 @@ public class UIManager : MonoBehaviour
         purchaseWindow.SetActive(true);
     }
 
-    void ItemShop()
+    void ShopItem()
     {
         if (content.transform.GetChild(0).gameObject.activeSelf == true && isShopItemCheck == false)
         {

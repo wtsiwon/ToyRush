@@ -54,6 +54,8 @@ public class ItemShop : MonoBehaviour
 
     void Start()
     {
+        gameObject.SetActive(true);
+
         uiManager = UIManager.Instance;
         player = Player.Instance;
 
@@ -70,8 +72,9 @@ public class ItemShop : MonoBehaviour
         if (treasureBoxSummon != null)
             treasureBoxSummon.transform.DOLocalMove(new Vector2(player.transform.position.x, player.transform.position.y + 2), 0).SetEase(Ease.Linear);
 
-        if(springSummon != null)
+        if (springSummon != null)
             springSummon.transform.DOLocalMove(new Vector2(player.transform.position.x, player.transform.position.y + 2), 0).SetEase(Ease.Linear);
+
     }
 
     void ItemBtn()
@@ -208,7 +211,7 @@ public class ItemShop : MonoBehaviour
                 float currentHpSpeed = UIManager.Instance.hpReductionSpeed;
                 uiManager.hpReductionSpeed /= 2;
                 yield return new WaitForSeconds(5);
-               uiManager.hpReductionSpeed = currentHpSpeed;
+                uiManager.hpReductionSpeed = currentHpSpeed;
                 break;
 
             // Á¦Æ®ÆÑ °­È­
