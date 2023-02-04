@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     public float hpReductionSpeed;
     [SerializeField] Image hpSlider;
 
+    bool isHPCheck = false;
+
     [Header("상점 아이템")]
     public float currentCoolTime;
     public float maxCoolTime;
@@ -197,8 +199,11 @@ public class UIManager : MonoBehaviour
                 currentHp = maxHp;
         }
 
-        if(currentHp <= 0)
+        if(currentHp <= 0 && !isHPCheck)
+        {
+            isHPCheck = true;
             Player.Instance.IsDie = true;
+        }
     }
 
     #region 메인버튼
