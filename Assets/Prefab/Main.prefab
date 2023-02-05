@@ -19074,6 +19074,7 @@ MonoBehaviour:
   touchToStart: {fileID: 3493952218339067149}
   haveCoin: {fileID: 6779909252430537639}
   coin: 0
+  gadgetSlots: {fileID: 1121481314799157877}
   coinText: {fileID: 2695611189431266611}
   distanceText: {fileID: 3493952218361883668}
   maxHp: 100
@@ -26086,7 +26087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6855808269102112532

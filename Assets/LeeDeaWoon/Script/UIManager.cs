@@ -9,9 +9,9 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    private void Awake() => Instance = this;
+    void Awake() => Instance = this;
 
-    private float waitTime = 0.5f;
+    float waitTime = 0.5f;
 
     [Header("타이틀")]
     public GameObject title;
@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [Header("인게임")]
     public int coin;
 
+    public RectTransform gadgetSlots;
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI distanceText;
 
@@ -235,6 +236,7 @@ public class UIManager : MonoBehaviour
         gadgetBtn.onClick.AddListener(() =>
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            gadgetSlots.DOAnchorPosY(-70, 0);
             shopWindow.SetActive(true);
             content.transform.GetChild(2).gameObject.SetActive(true);
             //GadgetManager.Instance.IsShopActive = true;
@@ -249,8 +251,6 @@ public class UIManager : MonoBehaviour
             //GadgetManager.Instance.IsShopActive = true;
         });
     }
-
-
     #endregion
 
     #region 설정 창
@@ -587,6 +587,7 @@ public class UIManager : MonoBehaviour
         shopsCancelBtn.onClick.AddListener(() =>
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            gadgetSlots.DOAnchorPosY(500, 0);
             shopWindow.SetActive(false);
 
             for (int i = 0; i < 4; i++)

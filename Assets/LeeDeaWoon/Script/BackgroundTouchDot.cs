@@ -60,7 +60,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
 
     public IEnumerator BtnMove()
     {
-        if (isStartClick == false)
+        if (!isStartClick)
         {
             int titleDistance = 1500;
             int mainBtnDistance = -1100;
@@ -78,7 +78,7 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
             UIManager.Instance.touchToStart.DOKill();
             UIManager.Instance.title.transform.DOKill();
 
-            UIManager.Instance.touchToStart.DOFade(0, time);
+            UIManager.Instance.touchToStart.DOFade(0, time).SetEase(Ease.Linear);
 
             for (int i = 1; i <= 4; i++)
             {
@@ -98,15 +98,18 @@ public class BackgroundTouchDot : MonoBehaviour, IPointerClickHandler, IPointerD
                         ingame.transform.DOLocalMoveY(-100, time).SetEase(easeType);
                         itemSlot.transform.DOLocalMoveY(-500, time).SetEase(easeType);
                         mainBtn.transform.GetChild(0).DOLocalMoveY(mainBtnDistance, time).SetEase(easeType);
+                        UIManager.Instance.gadgetSlots.DOAnchorPosY(-70, time).SetEase(easeType);
                         break;
                 }
             }
 
             yield return new WaitForSeconds(1);
+
             smokeBoomb.SetActive(true);
             UIManager.Instance.firstBackGround.GetComponent<SpriteRenderer>().sprite
                 = UIManager.Instance.brokenBackGround;
-            Player.Instance.transform.DOLocalMoveX(-playerDistance, playerWaitTime);
+            Player.Instance.transform.DOLocalMoveX(-playerDistance, playerWaitTime).SetEase(Ease.Linear);
+
             yield return new WaitForSeconds(playerWaitTime);
             screenPrevent.raycastTarget = false;
             screenClick.raycastTarget = true;
