@@ -403,7 +403,7 @@ public class UIManager : MonoBehaviour
 
             if (GameManager.Instance.IsGameStart)
             {
-                currentCoolTime -= Time.deltaTime * 0.5f;
+                currentCoolTime -= Time.deltaTime * 0.1f;
 
                 if (!isClickItemUse)
                 {

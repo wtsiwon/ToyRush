@@ -91,7 +91,7 @@ public class AttackPattern : MonoBehaviour
 
                 warningLine.transform.DOLocalMoveY(Player.Instance.transform.position.y, 0);
 
-                warningLine.DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo);
+                warningLine.DOFade(0, WaitTime).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
                 yield return new WaitForSeconds(warning);
 
                 warningLine.DOKill();
@@ -99,7 +99,7 @@ public class AttackPattern : MonoBehaviour
 
                 crocodile.transform.DOLocalMoveY(warningLine.transform.position.y, WaitTime).SetEase(ease).OnComplete(() =>
                 {
-                    crocodile.transform.DORotate(new Vector3(0, 0, 30), WaitTime);
+                    crocodile.transform.DORotate(new Vector3(0, 0, 30), WaitTime).SetEase(Ease.Linear);
                 });
 
                 yield return new WaitForSeconds(WaitTime);
@@ -109,7 +109,7 @@ public class AttackPattern : MonoBehaviour
 
 
                 yield return new WaitForSeconds(shakeWaitTime);
-                Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(2, 0f));
+                Camera.main.transform.DOShakePosition(shakeWaitTime, new Vector2(2, 0f)).SetEase(Ease.Linear);
 
                 yield return new WaitForSeconds(1);
 
