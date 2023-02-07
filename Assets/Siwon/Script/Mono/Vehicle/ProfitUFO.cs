@@ -2,16 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProfitUFO : MonoBehaviour
+public class ProfitUFO : Vehicle
 {
-    // Start is called before the first frame update
-    void Start()
+    public ProfitUFO(EVehicleState state) : base(state)
+    {
+
+    }
+
+    public override void InputKey()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ChangeState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void RideVehicle()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         
     }
