@@ -122,6 +122,7 @@ public class UIManager : MonoBehaviour
     [Header("게임오버")]
     [SerializeField] GameObject gameOverWindow;
 
+    [SerializeField] Button resurrectionBtn;
     [SerializeField] Button gameOverMenuBtn;
 
     [SerializeField] TextMeshProUGUI gameOverCoin;
@@ -703,6 +704,12 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.IsGameStart = false;
             SceneManager.LoadScene("Main");
         });
+
+        resurrectionBtn.onClick.AddListener(() =>
+        {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+        });
     }
     #endregion
+
 }
