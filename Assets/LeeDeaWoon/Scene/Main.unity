@@ -247,6 +247,7 @@ MonoBehaviour:
   truePos: {x: 0, y: -70, z: 0}
   falsePos: {x: 340, y: -1250, z: 0}
   gameStartPos: {x: 0, y: -1250, z: 0}
+  gravityScale: 2.5
 --- !u!1 &620736078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 948693822916460320, guid: a5612c0f854bbc8458a95eb822a22991, type: 3}
@@ -1384,7 +1385,6 @@ MonoBehaviour:
   wyvernAnimator: {fileID: 0}
   ufoAnimator: {fileID: 0}
   maxYpos: 3.5
-  items: []
   isGround: 0
   isCelling: 0
   boostingSpd: 180

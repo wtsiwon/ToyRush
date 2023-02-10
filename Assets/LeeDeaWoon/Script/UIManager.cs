@@ -5,6 +5,8 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using GoogleMobileAds.Api;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -128,6 +130,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverCoin;
     [SerializeField] TextMeshProUGUI gameOverDistance;
 
+    InterstitialAd interstitial;
     #endregion
 
     void Start()
@@ -703,14 +706,43 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
 
             GameManager.Instance.IsGameStart = false;
-            SceneManager.LoadScene("Main");
+            RetryGamePlay();
         });
 
         resurrectionBtn.onClick.AddListener(() =>
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            //RequestInterstitial();
         });
+    }
+
+    void RequestInterstitial()
+    {
+        string adUnitld = "ca-app-pub-3940256099942544/1033173712";
+
+        interstitial = new InterstitialAd(adUnitld);
+        interstitial.OnAdClosed += HandleOnAdClose;
+
+        AdRequest request = new AdRequest.Builder().Build();
+        interstitial.LoadAd(request);
+    }
+
+    void HandleOnAdClose(object sender, EventArgs args)
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    private void GameOverAd()
+    {
+        if (interstitial.IsLoaded())
+        {
+            interstitial.Show();
+        }
+    }
+
+    public void RetryGamePlay()
+    {
+        RequestInterstitial();
+        GameOverAd();
     }
     #endregion
 
