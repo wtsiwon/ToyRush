@@ -127,6 +127,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI gameOverCoin;
     [SerializeField] TextMeshProUGUI gameOverDistance;
+
     #endregion
 
     void Start()
@@ -708,6 +709,7 @@ public class UIManager : MonoBehaviour
         resurrectionBtn.onClick.AddListener(() =>
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            //RequestInterstitial();
         });
     }
     #endregion
