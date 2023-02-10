@@ -61,6 +61,8 @@ public class GadgetManager : Singleton<GadgetManager>
     private Vector3 gameStartPos;
     #endregion
 
+    public float gravityScale = 2.5f;
+
     [Tooltip("임나ㅓㅇ")]
     private Coroutine CselectGadgetSlot;
 
@@ -77,6 +79,7 @@ public class GadgetManager : Singleton<GadgetManager>
     }
 
     private bool isShopActive;
+
     public bool IsShopActive
     {
         get => isShopActive;
@@ -147,10 +150,10 @@ public class GadgetManager : Singleton<GadgetManager>
                 Player.Instance.isUseXray = false;
                 break;
             case EGadgetType.GravityBelt:
-
+                Player.Instance.GetComponent<Rigidbody2D>().gravityScale = gravityScale;
                 break;
             case EGadgetType.SlowRocket:
-
+                
                 break;
             case EGadgetType.Magnet:
                 Player.Instance.IsMagneting = true;

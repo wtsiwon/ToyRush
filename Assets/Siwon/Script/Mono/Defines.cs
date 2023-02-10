@@ -65,6 +65,7 @@ public enum EItemType : short
     Booster,        //부스터
     Coinconverter,  //코인변환기
     Sizecontrol,    //크기조절
+    Healing,//체력
 }
 
 /// <summary>
