@@ -88,9 +88,6 @@ public class Player : Singleton<Player>
     public float maxYpos;
     #endregion
 
-    [Tooltip("뭐지")]
-    public List<Item> items = new List<Item>();
-
     public bool isUseItem =>
      IsBig || isBoosting;
 
@@ -228,10 +225,6 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
-        //transform.position = RestrictMovePos(transform.localPosition);
-
-        //vehicle.InputKey();
-
         CurrentVehicleKeyInput(vehicleType);
     }
 
@@ -358,7 +351,6 @@ public class Player : Singleton<Player>
             case EVehicleType.GravitySuit:
                 vehicle = new GravitySuit(EVehicleState.Levitation);
                 break;
-
         }
     }
 

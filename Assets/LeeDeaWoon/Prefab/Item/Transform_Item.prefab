@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1259858425016253863}
   - component: {fileID: 4422120531135653475}
   m_Layer: 0
-  m_Name: SizeControl_Item
+  m_Name: Transform_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriterenderer: {fileID: 0}
-  itemType: 5
+  itemType: 0
   collider2D: {fileID: 0}
   boosterDuration: 0
   boosterSpeed: 0

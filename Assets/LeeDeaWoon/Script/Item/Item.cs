@@ -42,6 +42,16 @@ public class Item : AbstractItem
     float sizeTimer;
     #endregion
 
+    #region 체력 아이템
+    [EnumType("itemType", (short)EItemType.Healing)]
+    public int recoveryAmount;
+    #endregion
+
+    #region 변신 아이템(탈것)
+    [EnumType("itemType", (short)EItemType.Transformation)]
+    public EVehicleType type;
+    #endregion
+
     protected override void Start()
     {
         base.Start();
@@ -83,12 +93,12 @@ public class Item : AbstractItem
             switch (itemType)
             {
                 case EItemType.Transformation:
+                    //엄청난 효과
+                    Player.Instance.VehicleType = type;//탈것 바꾸기
                     break;
-
                 case EItemType.Magnet: // 자석
                     StartCoroutine(Magnet());
                     break;
-
                 case EItemType.Piggybank: // 저금통
                     Piggybank();
                     break;
