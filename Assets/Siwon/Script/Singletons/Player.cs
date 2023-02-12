@@ -200,7 +200,7 @@ public class Player : Singleton<Player>
     public float force;
 
     #region GetComponent한 Component
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [HideInInspector]
     public SpriteRenderer spriterenderer;

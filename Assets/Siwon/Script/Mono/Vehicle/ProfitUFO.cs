@@ -11,26 +11,29 @@ public class ProfitUFO : Vehicle
 
     public override void InputKey()
     {
-        throw new System.NotImplementedException();
+        if (player.isPressing == true)
+        {
+            player.rb.AddForce(Vector2.up * player.force);
+        }
     }
 
     protected override void ChangeState()
     {
-        throw new System.NotImplementedException();
+        animator.SetInteger("State", (int)State);
     }
 
     protected override void RideVehicle()
     {
-        throw new System.NotImplementedException();
+        animator.runtimeAnimatorController = player.ufoAnimator;
     }
 
     protected override void Start()
     {
-        
+
     }
 
     protected override void Update()
     {
-        
+
     }
 }
