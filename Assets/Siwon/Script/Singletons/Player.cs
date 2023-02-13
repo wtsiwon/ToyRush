@@ -148,6 +148,7 @@ public class Player : Singleton<Player>
         }
     }
 
+    [SerializeField]
     private float hp;
 
     public float Hp

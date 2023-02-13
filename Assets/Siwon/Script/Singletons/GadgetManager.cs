@@ -216,6 +216,8 @@ public class GadgetManager : Singleton<GadgetManager>
     {
         for (int i = 0; i < gadgetSlotList.Count; i++)
         {
+            if (gadgetSlotList[i].Data == null) return false;
+
             if (gadgetSlotList[i].Data.gadgetType == type)
             {
                 return true;
