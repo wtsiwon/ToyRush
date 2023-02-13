@@ -985,6 +985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main
       objectReference: {fileID: 0}
+    - target: {fileID: 3493952218034657294, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
+      propertyPath: hpReductionSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5999e62dc8fdc4f8edb96d3601766f, type: 3}
 --- !u!114 &4815618705780800759 stripped
@@ -1391,6 +1395,7 @@ MonoBehaviour:
   boostingSpd: 180
   gravityBeltGravityScale: 0
   defaultGravityScale: 0
+  hp: 0
   vehicle: {fileID: 0}
   force: 3100
   rb: {fileID: 0}
