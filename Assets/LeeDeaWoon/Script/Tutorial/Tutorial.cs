@@ -29,7 +29,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     void Description_Box()
     {
-        if (isNextCheck == true)
+        if (isNextCheck)
         {
             isNextCheck = false;
             descriptionBar.transform.GetChild(nextNum - 1).gameObject.SetActive(false);
@@ -39,7 +39,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     IEnumerator NextDescription()
     {
-        if (isNumberCheck == false)
+        if (!isNumberCheck)
         {
             isNumberCheck = true;
 
@@ -72,7 +72,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
         obstacle.transform.DOMoveX(-14, 5).SetEase(Ease.Linear).OnComplete(() =>
         {
-            if (Player.Instance.IsDie == true)
+            if (Player.Instance.IsDie)
             {
                 descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "다시 한 번 해봅시다.";
                 Obstacle();
@@ -94,7 +94,7 @@ public class Tutorial : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
         yield return new WaitForSeconds(7);
 
-        if (Player.Instance.IsDie == true)
+        if (Player.Instance.IsDie)
         {
             descriptionBar.transform.GetChild(nextNum).GetComponent<TextMeshProUGUI>().text = "다시 한 번 해봅시다.";
 
