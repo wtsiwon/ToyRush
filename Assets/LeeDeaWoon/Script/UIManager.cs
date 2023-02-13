@@ -715,6 +715,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    #region ±¤°í
     void RequestInterstitial()
     {
         string adUnitld = "ca-app-pub-3940256099942544/1033173712";
@@ -744,6 +745,7 @@ public class UIManager : MonoBehaviour
         RequestInterstitial();
         GameOverAd();
     }
+    #endregion
     #endregion
 
 }

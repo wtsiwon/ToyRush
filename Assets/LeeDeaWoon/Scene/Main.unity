@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 0
-  haveCoin: 1000000000
+  haveCoin: 0
   spd: 5
   piecesList:
   - {fileID: 6265476512858450356, guid: d78bde85c348a6742b8d30e0220945be, type: 3}
