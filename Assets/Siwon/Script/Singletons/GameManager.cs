@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
+        Cheat();
     }
 
     private void Awake()
@@ -248,5 +248,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             //print("확인");
         }
+    }
+
+    private void Cheat()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+            haveCoin += 10000000;
     }
 }
