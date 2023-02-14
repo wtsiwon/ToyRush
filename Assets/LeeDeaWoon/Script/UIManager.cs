@@ -280,7 +280,7 @@ public class UIManager : MonoBehaviour
 
             Sequence sequence = DOTween.Sequence();
 
-            if (isStopCheck == false)
+            if (!isStopCheck)
             {
                 creditWindow.transform.DOLocalMoveX(rightMovePos, waitTime).SetUpdate(true);
 
@@ -304,7 +304,7 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
 
-            if (SoundManager.instance.isBGMCheck == true)
+            if (SoundManager.instance.isBGMCheck) // BGM OFF
             {
                 SoundManager.instance.isBGMCheck = false;
 
@@ -312,7 +312,7 @@ public class UIManager : MonoBehaviour
                 bgmColor.DOColor(Color.gray, 0).SetUpdate(true);
                 Debug.Log("BGM이 꺼졌습니다");
             }
-            else
+            else // BGM ON
             {
                 SoundManager.instance.isBGMCheck = true;
 
@@ -329,23 +329,20 @@ public class UIManager : MonoBehaviour
         // 효과음 버튼을 눌렀을 때
         effectBtn.onClick.AddListener(() =>
         {
-
-            if (SoundManager.instance.isEffectCheck == true)
+            if (SoundManager.instance.isEffectCheck) // 효과음 ON
             {
                 SoundManager.instance.isEffectCheck = false;
 
                 SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 0;
                 effectColor.DOColor(Color.gray, 0).SetUpdate(true);
-                Debug.Log("Effect가 꺼졌습니다");
             }
-            else
+            else // 효과음 OFF
             {
                 SoundManager.instance.isEffectCheck = true;
 
                 SoundManager.instance.audioSourceClasses[SoundType.SFX].audioSource.volume = 1;
                 SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
                 effectColor.DOColor(Color.white, 0).SetUpdate(true);
-                Debug.Log("Effect가 켜졌습니다.");
             }
         });
 
