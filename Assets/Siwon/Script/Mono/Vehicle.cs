@@ -45,6 +45,9 @@ public abstract class Vehicle : MonoBehaviour
 
     public abstract void InputKey();
 
+    /// <summary>
+    /// runtimeAnimationControllerπŸ≤„¡÷±‚
+    /// </summary>
     protected abstract void RideVehicle();
 
     /// <summary>
