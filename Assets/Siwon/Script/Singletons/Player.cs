@@ -247,7 +247,7 @@ public class Player : Singleton<Player>
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            //print(isPressing);
+            print(vehicle);
         }
     }
 
@@ -350,7 +350,7 @@ public class Player : Singleton<Player>
                 vehicle = null;
                 break;
             case EVehicleType.GravitySuit:
-                vehicle = new GravitySuit(EVehicleState.Levitation);
+                //vehicle = new GravitySuit(EVehicleState.Levitation);
                 break;
         }
     }
