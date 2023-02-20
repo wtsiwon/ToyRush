@@ -39,8 +39,7 @@ public class Player : Singleton<Player>
             isMagneting = value;
 
             //자석 가젯이 장착중이라면
-            if (GadgetManager.Instance.gadgetSlotList[0].Data.gadgetType != EGadgetType.Magnet &&
-                    GadgetManager.Instance.gadgetSlotList[1].Data.gadgetType != EGadgetType.Magnet)
+            if (GadgetManager.Instance.CheckGadgetSlot(EGadgetType.Magnet) == true)
             {
                 value = true;
             }

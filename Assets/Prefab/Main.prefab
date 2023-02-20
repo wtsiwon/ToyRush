@@ -19187,7 +19187,7 @@ MonoBehaviour:
   distanceText: {fileID: 3493952218361883668}
   maxHp: 100
   currentHp: 0
-  hpReductionSpeed: 10
+  hpReductionSpeed: 1
   hpSlider: {fileID: 4721771516487761435}
   currentCoolTime: 1
   maxCoolTime: 1
@@ -25064,7 +25064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8352941}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
