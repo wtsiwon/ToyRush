@@ -15,6 +15,6 @@ MonoBehaviour:
   gadgetType: 1
   icon: {fileID: 21300000, guid: 9b8d17e65d48695449f208691f89fcf7, type: 3}
   name: "\uC911\uB825 \uBCA8\uD2B8"
-  explain: "\uD50C\uB808\uC774\uC5B4\uC758 \uC911\uB825\uC774 \uC99D\uAC00\uD574\uC544\uC789"
+  explain: "\uD50C\uB808\uC774\uC5B4\uC758 \uC911\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   cost: 20000
   isBought: 1
