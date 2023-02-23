@@ -14,7 +14,7 @@ public class EffectManager : Singleton<EffectManager>
     /// <param name="pos"></param>
     public GameObject GetEffect(EEffectType type,Vector3 pos, bool isCoin = false)
     {
-        GameObject effect = ObjPool.Instance.GetEffect(pos, isCoin);
+        GameObject effect = Instantiate(effectList[0]);
         effect = effectList[(int)type];
         StartCoroutine(CDestroyEffect(effect));
 
