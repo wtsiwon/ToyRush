@@ -13,7 +13,7 @@ public class BoosterItem : AbstractItem
     protected override IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        if (Player.Instance.IsBoosting == false)
+        if (!Player.Instance.IsBoosting)
         {
             float playerXValue = collision.transform.position.x;
 
