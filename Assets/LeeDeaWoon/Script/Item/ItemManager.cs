@@ -74,41 +74,39 @@ public class ItemManager : MonoBehaviour
         // 500원 부스터 버튼을 눌렀을 때
         booster500Btn.onClick.AddListener(() =>
         {
-            //if (GameManager.Instance.haveCoin > 500)
-            //{
+            if (GameManager.Instance.haveCoin >= 500)
+            {
+                isStartItemClick = true;
 
-            //}
-            isStartItemClick = true;
+                StartItem_DoKill();
+                boosterRayCast500.raycastTarget = false;
+                boosterRayCast1500.raycastTarget = false;
 
-            StartItem_DoKill();
-            boosterRayCast500.raycastTarget = false;
-            boosterRayCast1500.raycastTarget = false;
+                booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
+                booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
-            booster1500Btn.transform.DOLocalMoveY(movePos, waitTime);
-            booster500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
-
-            boosterNumber = 1;
-            StartCoroutine(Start_Booster());
+                boosterNumber = 1;
+                StartCoroutine(Start_Booster());
+            }
         });
 
         // 1500원 부스터 버튼을 눌렀을 때
         booster1500Btn.onClick.AddListener(() =>
         {
-            //if (GameManager.Instance.haveCoin >= 1500)
-            //{
+            if (GameManager.Instance.haveCoin >= 1500)
+            {
+                isStartItemClick = true;
 
-            //}
-            isStartItemClick = true;
+                StartItem_DoKill();
+                boosterRayCast500.raycastTarget = false;
+                boosterRayCast1500.raycastTarget = false;
 
-            StartItem_DoKill();
-            boosterRayCast500.raycastTarget = false;
-            boosterRayCast1500.raycastTarget = false;
+                booster500Btn.transform.DOLocalMoveY(movePos, waitTime);
+                booster1500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
 
-            booster500Btn.transform.DOLocalMoveY(movePos, waitTime);
-            booster1500Btn.transform.DOScale(new Vector2(0, 0), waitTime);
-
-            boosterNumber = 2;
-            StartCoroutine(Start_Booster());
+                boosterNumber = 2;
+                StartCoroutine(Start_Booster());
+            }
         });
     }
 
