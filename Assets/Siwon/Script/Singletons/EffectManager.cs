@@ -14,10 +14,10 @@ public class EffectManager : Singleton<EffectManager>
     /// <param name="pos"></param>
     public GameObject GetEffect(EEffectType type,Vector3 pos, bool isCoin = false)
     {
-        GameObject effect = Instantiate(effectList[0]);
+        GameObject effect = Instantiate(effectList[1]);
         effect = effectList[(int)type];
-        StartCoroutine(CDestroyEffect(effect));
-
+        effect.transform.position = pos;
+        //StartCoroutine(CDestroyEffect(effect));
         return effect;
     }
 
