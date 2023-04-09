@@ -33,19 +33,15 @@ public class ItemShop : MonoBehaviour
     Button itemShopBtn;
 
     [Space(10)]
-    [EnumType("eShopItem", (short)EShopItem.Shield)]
     public GameObject toyShield;
 
-    [EnumType("eShopItem", (short)EShopItem.Slime)]
     public GameObject slime;
     float magnetTimer = 0;
     const int magnetWaitingTime = 7;
 
-    [EnumType("eShopItem", (short)EShopItem.Clockwork)]
     public GameObject springAnim;
     GameObject springSummon;
 
-    [EnumType("eShopItem", (short)EShopItem.TreasureBox)]
     public GameObject treasureBoxAnim;
     GameObject treasureBoxSummon;
 

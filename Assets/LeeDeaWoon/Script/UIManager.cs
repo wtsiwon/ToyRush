@@ -133,6 +133,10 @@ public class UIManager : MonoBehaviour
     InterstitialAd interstitial;
     #endregion
 
+    [Header("사운드")]
+    bool isMain = false;
+    bool isIngame = false;
+
     void Start()
     {
         currentHp = maxHp;
@@ -148,10 +152,11 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        UI_setting();
-        ShopItem();
+        Sound();
         hpBar();
+        ShopItem();
         ClickItem();
+        UI_setting();
     }
 
     void UI_Btns()
@@ -177,12 +182,12 @@ public class UIManager : MonoBehaviour
     {
         context = itemSlot.GetComponent<ItemShop>();
 
-        shopObj = GameObject.Find("Shop_Content");
 
         distanceText.text = $"{GameManager.Instance.Distance.ToString("F0")}m";
 
         coinText.text = coin.ToString();
 
+        GameManager.Instance.currentCoin += coin;
         haveCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
         haveShopCoin.text = string.Format("{0:#,0}", GameManager.Instance.haveCoin);
 
@@ -192,6 +197,25 @@ public class UIManager : MonoBehaviour
 
         purchaseItemIcon.sprite = itemShop[shopItemNumber].itemIcon;
 
+    }
+
+    void Sound()
+    {
+        if (!GameManager.Instance.IsGameStart && !isMain)
+        {
+            isMain = true;
+            if (SoundManager.instance.isBGMCheck)
+                SoundManager.instance.PlaySoundClip("MainScene", SoundType.BGM);
+            else
+                SoundManager.instance.StopSoundClip(SoundType.BGM);
+        }
+
+        else if(GameManager.Instance.IsGameStart && !isIngame)
+        {
+            isIngame = true;
+            SoundManager.instance.StopSoundClip(SoundType.BGM);
+            SoundManager.instance.PlaySoundClip("DiamondRush", SoundType.BGM);
+        }
     }
 
     void hpBar()
@@ -213,50 +237,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    #region 메인버튼
-    void Main_Btns()
-    {
-        // 상점 버튼을 눌렀을 때
-        shopBtn.onClick.AddListener(() =>
-        {
-            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            shopWindow.SetActive(true);
-            content.transform.GetChild(0).gameObject.SetActive(true);
-            isShopItemCheck = false;
-
-
-            //GadgetManager.Instance.IsShopActive = true;
-        });
-
-        // 캐릭터 버튼을 눌렀을 때
-        characterBtn.onClick.AddListener(() =>
-        {
-            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            shopWindow.SetActive(true);
-            content.transform.GetChild(1).gameObject.SetActive(true);
-            //GadgetManager.Instance.IsShopActive = true;
-        });
-
-        // 가젯 버튼을 눌렀을 때
-        gadgetBtn.onClick.AddListener(() =>
-        {
-            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            gadgetSlots.DOAnchorPosY(-70, 0);
-            shopWindow.SetActive(true);
-            content.transform.GetChild(2).gameObject.SetActive(true);
-            //GadgetManager.Instance.IsShopActive = true;
-        });
-
-        // 탈것 버튼을 눌렀을 때
-        vehicleBtn.onClick.AddListener(() =>
-        {
-            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-            shopWindow.SetActive(true);
-            content.transform.GetChild(3).gameObject.SetActive(true);
-            //GadgetManager.Instance.IsShopActive = true;
-        });
-    }
-    #endregion
 
     #region 설정 창
     void Setting_Btns()
@@ -652,9 +632,10 @@ public class UIManager : MonoBehaviour
 
     void ShopItem()
     {
-        if (content.transform.GetChild(0).gameObject.activeSelf == true && isShopItemCheck == false)
+        if (content.transform.GetChild(0).gameObject.activeSelf && !isShopItemCheck)
         {
             isShopItemCheck = true;
+            shopObj = GameObject.Find("Shop_Content");
 
             for (int i = 0; i < shopObj.transform.childCount; i++)
             {
@@ -702,6 +683,7 @@ public class UIManager : MonoBehaviour
             DOTween.PauseAll();
             Time.timeScale = 1;
 
+            SceneManager.LoadScene("Main");
             GameManager.Instance.IsGameStart = false;
             RetryGamePlay();
         });
@@ -745,4 +727,47 @@ public class UIManager : MonoBehaviour
     #endregion
     #endregion
 
+    #region 메인버튼
+    void Main_Btns()
+    {
+        // 상점 버튼을 눌렀을 때
+        shopBtn.onClick.AddListener(() =>
+        {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            shopWindow.SetActive(true);
+            content.transform.GetChild(0).gameObject.SetActive(true);
+            isShopItemCheck = false;
+
+            //GadgetManager.Instance.IsShopActive = true;
+        });
+
+        //// 캐릭터 버튼을 눌렀을 때
+        //characterBtn.onClick.AddListener(() =>
+        //{
+        //    SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+        //    shopWindow.SetActive(true);
+        //    content.transform.GetChild(1).gameObject.SetActive(true);
+        //    //GadgetManager.Instance.IsShopActive = true;
+        //});
+
+        // 가젯 버튼을 눌렀을 때
+        gadgetBtn.onClick.AddListener(() =>
+        {
+            SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+            gadgetSlots.DOAnchorPosY(-70, 0);
+            shopWindow.SetActive(true);
+            content.transform.GetChild(2).gameObject.SetActive(true);
+            //GadgetManager.Instance.IsShopActive = true;
+        });
+
+        //// 탈것 버튼을 눌렀을 때
+        //vehicleBtn.onClick.AddListener(() =>
+        //{
+        //    SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
+        //    shopWindow.SetActive(true);
+        //    content.transform.GetChild(3).gameObject.SetActive(true);
+        //    //GadgetManager.Instance.IsShopActive = true;
+        //});
+    }
+    #endregion
 }

@@ -15077,7 +15077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3493952217323410233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16705,7 +16705,7 @@ MonoBehaviour:
   distanceText: {fileID: 3493952218361883668}
   maxHp: 100
   currentHp: 0
-  hpReductionSpeed: 1
+  hpReductionSpeed: 5
   hpSlider: {fileID: 4721771516487761435}
   currentCoolTime: 1
   maxCoolTime: 1
@@ -18095,7 +18095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3493952218740327557
 RectTransform:
   m_ObjectHideFlags: 0

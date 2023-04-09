@@ -61,34 +61,23 @@ public class GameManager : MonoBehaviour
         set
         {
             isGameStart = value;
-            if (value == false)
-            {
+            if (!value)
                 distance = 0;
-
-                if (SoundManager.isBGMCheck == true)
-                    SoundManager.PlaySoundClip("MainScene", SoundType.BGM);
-                else
-                    SoundManager.StopSoundClip(SoundType.BGM);
-            }
             else
-            {
-                print(isGameStart + "isGameStart");
                 StartCoroutine(CSetGame());
-            }
         }
     }
 
     private SoundManager SoundManager;
+    public int currentCoin = 0;
 
     private void Start()
     {
-        SoundManager = SoundManager.instance;
-
         //StartCoroutine(UpDate());
-        if (SoundManager.isBGMCheck == true)
-            SoundManager.PlaySoundClip("MainScene", SoundType.BGM);
-        else
-            SoundManager.StopSoundClip(SoundType.BGM);
+        //if (SoundManager.isBGMCheck == true)
+        //    SoundManager.PlaySoundClip("MainScene", SoundType.BGM);
+        //else
+        //    SoundManager.StopSoundClip(SoundType.BGM);
     }
 
     private void Update()
@@ -96,17 +85,15 @@ public class GameManager : MonoBehaviour
         Cheat();
     }
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
-        {
-            Destroy(gameObject);
-        }
+            Destroy(this.gameObject);
     }
     
     /// <summary>
@@ -147,8 +134,6 @@ public class GameManager : MonoBehaviour
 
     public void OnDie(Transform pos)
     {
-        Debug.Log("asdfasdf");
-
         ToDropPieces();
         StartCoroutine(CToDropOnePieces());
     }
@@ -201,11 +186,6 @@ public class GameManager : MonoBehaviour
         print(spd);
         print(distance);
 
-        if (SoundManager.isBGMCheck == true)
-        {
-            SoundManager.StopSoundClip(SoundType.BGM);
-            SoundManager.PlaySoundClip("DiamondRush", SoundType.BGM);
-        }
         yield return new WaitForSeconds(1f);
     }
 

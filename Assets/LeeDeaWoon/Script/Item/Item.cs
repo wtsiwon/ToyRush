@@ -7,50 +7,30 @@ public class Item : AbstractItem
 {
     public new Collider2D collider2D;
 
-    #region 부스터 아이템
-    [EnumType("itemType", (short)EItemType.Booster)]
+    [Header("부스터")]
     public float boosterDuration; // 지속시간
-    [EnumType("itemType", (short)EItemType.Booster)]
     public float boosterSpeed; // 속력
-    [EnumType("itemType", (short)EItemType.Booster)]
     public Ease ease;
-    #endregion
 
-    #region 자석 아이템
-    [EnumType("itemType", (short)EItemType.Magnet)]
+    [Header("자석")]
     public SpriteRenderer magnetScale;
-    [EnumType("itemType", (short)EItemType.Magnet)]
     public int magnetWaitingTime; // 기다릴 시간
-
     float magnetTimer;
-    #endregion
 
-    #region 돼지저금통 아이템
-    [EnumType("itemType", (short)EItemType.Piggybank)]
+    [Header("돼지저금통")]
     public int getCoin;
-    //public GameObject piggybankCoin; // 소환될 프리팹 코인
-    #endregion
 
-    #region 거대화 아이템
-    [EnumType("itemType", (short)EItemType.Sizecontrol)]
+    [Header("거대화")]
     public int sizeTime; //커지는 시간
-    [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public int sizeWaitingTime; //기다릴 시간
-    [EnumType("itemType", (short)EItemType.Sizecontrol)]
     public Vector2 playerSize;
-
     float sizeTimer;
-    #endregion
 
-    #region 체력 아이템
-    [EnumType("itemType", (short)EItemType.Healing)]
+    [Header("체력")]
     public int recoveryAmount;
-    #endregion
 
-    #region 변신 아이템(탈것)
-    [EnumType("itemType", (short)EItemType.Transformation)]
+    [Header("변신")]
     public EVehicleType type;
-    #endregion
 
     protected override void Start()
     {
@@ -171,7 +151,7 @@ public class Item : AbstractItem
                     break;
 
                 case EItemType.Sizecontrol: // 크기 조절
-                    if (Player.Instance.IsBoosting == false)
+                    if (!Player.Instance.IsBoosting)
                     {
                         Player.Instance.IsBig = true;
 
