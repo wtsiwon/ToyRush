@@ -28,8 +28,6 @@ public class AttackPatternManager : MonoBehaviour
 
     IEnumerator Attack_Spawn()
     {
-
-
         while (true)
         {
             if (GameManager.Instance.IsGameStart == true)

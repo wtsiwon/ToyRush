@@ -7,5 +7,4 @@ using UnityEngine;
 public class AttackPatternData : MonoBehaviour
 {
     public List<AttackPattern> attackPatternDatas = new List<AttackPattern>();
-
 }

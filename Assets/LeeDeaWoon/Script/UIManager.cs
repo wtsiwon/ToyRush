@@ -662,7 +662,7 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         SoundManager.instance.PlaySoundClip("GameOver", SoundType.SFX, SoundManager.instance.soundSFX + 0.5f);
-        Time.timeScale = 0f;
+        Time.timeScale = 0;
 
         blackScreen.SetActive(true);
 
@@ -741,15 +741,6 @@ public class UIManager : MonoBehaviour
             //GadgetManager.Instance.IsShopActive = true;
         });
 
-        //// 캐릭터 버튼을 눌렀을 때
-        //characterBtn.onClick.AddListener(() =>
-        //{
-        //    SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-        //    shopWindow.SetActive(true);
-        //    content.transform.GetChild(1).gameObject.SetActive(true);
-        //    //GadgetManager.Instance.IsShopActive = true;
-        //});
-
         // 가젯 버튼을 눌렀을 때
         gadgetBtn.onClick.AddListener(() =>
         {
@@ -759,15 +750,6 @@ public class UIManager : MonoBehaviour
             content.transform.GetChild(2).gameObject.SetActive(true);
             //GadgetManager.Instance.IsShopActive = true;
         });
-
-        //// 탈것 버튼을 눌렀을 때
-        //vehicleBtn.onClick.AddListener(() =>
-        //{
-        //    SoundManager.instance.PlaySoundClip("ButtonClick", SoundType.SFX, SoundManager.instance.soundSFX);
-        //    shopWindow.SetActive(true);
-        //    content.transform.GetChild(3).gameObject.SetActive(true);
-        //    //GadgetManager.Instance.IsShopActive = true;
-        //});
     }
     #endregion
 }
